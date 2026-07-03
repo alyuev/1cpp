@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Math</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="math">
+<h1 class="title">Math</h1>
+<!-- Author: kms, mailto: lionsgr@zmail.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+    <insert nodes="//common/maininfo/*"/>
+    <klinks>
+        Математика
+        Math
+    </klinks>
+</chminfo>
+<div class="contents topic" id="id1">
+<p class="topic-title first"><a name="id1">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id2" id="id3" name="id3">Методы</a><ul>
+<li><a class="reference" href="#long" id="id4" name="id4">Число / Long</a></li>
+<li><a class="reference" href="#double" id="id5" name="id5">Double</a></li>
+<li><a class="reference" href="#abs" id="id6" name="id6">ABS</a></li>
+<li><a class="reference" href="#acos" id="id7" name="id7">ACOS</a></li>
+<li><a class="reference" href="#asin" id="id8" name="id8">ASIN</a></li>
+<li><a class="reference" href="#atan" id="id9" name="id9">ATAN</a></li>
+<li><a class="reference" href="#atan2" id="id10" name="id10">ATAN2</a></li>
+<li><a class="reference" href="#ceil" id="id11" name="id11">CEIL</a></li>
+<li><a class="reference" href="#copysign" id="id12" name="id12">COPYSIGN</a></li>
+<li><a class="reference" href="#cos" id="id13" name="id13">COS</a></li>
+<li><a class="reference" href="#cosh" id="id14" name="id14">COSH</a></li>
+<li><a class="reference" href="#exp" id="id15" name="id15">EXP</a></li>
+<li><a class="reference" href="#floor" id="id16" name="id16">FLOOR</a></li>
+<li><a class="reference" href="#fmod" id="id17" name="id17">FMOD</a></li>
+<li><a class="reference" href="#frexp" id="id18" name="id18">FREXP</a></li>
+<li><a class="reference" href="#hypot" id="id19" name="id19">HYPOT</a></li>
+<li><a class="reference" href="#ldexp" id="id20" name="id20">LDEXP</a></li>
+<li><a class="reference" href="#ldiv" id="id21" name="id21">LDIV</a></li>
+<li><a class="reference" href="#log" id="id22" name="id22">LOG</a></li>
+<li><a class="reference" href="#log10" id="id23" name="id23">LOG10</a></li>
+<li><a class="reference" href="#modf" id="id24" name="id24">MODF</a></li>
+<li><a class="reference" href="#pi" id="id25" name="id25">PI</a></li>
+<li><a class="reference" href="#pow" id="id26" name="id26">POW</a></li>
+<li><a class="reference" href="#rand" id="id27" name="id27">RAND</a></li>
+<li><a class="reference" href="#rand1" id="id28" name="id28">RAND1</a></li>
+<li><a class="reference" href="#rotl" id="id29" name="id29">ROTL</a></li>
+<li><a class="reference" href="#rotr" id="id30" name="id30">ROTR</a></li>
+<li><a class="reference" href="#shl" id="id31" name="id31">SHL</a></li>
+<li><a class="reference" href="#shr" id="id32" name="id32">SHR</a></li>
+<li><a class="reference" href="#sin" id="id33" name="id33">SIN</a></li>
+<li><a class="reference" href="#sinh" id="id34" name="id34">SINH</a></li>
+<li><a class="reference" href="#sqrt" id="id35" name="id35">SQRT</a></li>
+<li><a class="reference" href="#srand" id="id36" name="id36">SRAND</a></li>
+<li><a class="reference" href="#tan" id="id37" name="id37">TAN</a></li>
+<li><a class="reference" href="#tanh" id="id38" name="id38">TANH</a></li>
+<li><a class="reference" href="#bitand" id="id39" name="id39">BITAND</a></li>
+<li><a class="reference" href="#bitor" id="id40" name="id40">BITOR</a></li>
+<li><a class="reference" href="#compl" id="id41" name="id41">COMPL</a></li>
+<li><a class="reference" href="#xor" id="id42" name="id42">XOR</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Класс Математика / Math</strong></p>
+<p>Класс элементарной математики.
+Включает битовые операции и методы конверсии строк в числа.</p>
+<div class="section" id="id2">
+<h1><a name="id2">Методы</a></h1>
+<chminfo split="0" splitchild="1">
+    <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<!-- Число -->
+<div class="section" id="long">
+<h2><a name="long">Число / Long</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">Long(Параметр, чБаза =0)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt><em>Параметр</em>: Число или Строка</dt>
+<dd><p class="first last">Число или Строка, которые нужно перевести в тип Long</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>чБаза</em>:</dt>
+<dd><p class="first last">База числа</p>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body">Число</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first line-block">
+<div class="line">Переводит переданный параметр в тип Long.</div>
+<div class="line">При этом строка должна иметь следующий формат:</div>
+<div class="line"><br /></div>
+<div class="line">[whitespace] [{+ | -}] [0 [{ x | X }]] [digits]</div>
+</div>
+<p>A whitespace may consist of space and tab characters,
+which are ignored; digits are one or more decimal digits.
+The first character that does not fit this form stops the scan.
+If base is between 2 and 36, then it is used as the base of the number.
+If base is 0, the initial characters of the string are used to determine the base.
+If the first character is 0 and the second character is not 'x' or 'X',
+the string is interpreted as an octal integer; otherwise, it is interpreted
+as a decimal number. If the first character is '0' and the second character
+is 'x' or 'X', the string is interpreted as a hexadecimal integer.
+If the first character is '1' through '9', the string is interpreted as a decimal integer.
+The letters 'a' through 'z' (or 'A' through 'Z') are assigned the values 10 through 35;
+only letters whose assigned values are less than base are permitted.</p>
+<div class="last line-block">
+<div class="line">Т.е. стандарным образом можно задавать десятичные, шестнадцатеричные и восьмеричные числа.</div>
+<div class="line">Если второй параметр равен нулю, база определяется автоматически,</div>
+<div class="line">иначе используется переданная база. База не может быть больше 36.</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Примеры:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Long(&quot;0x100&quot;) == 256</div>
+<div class="line">Long(&quot;100&quot;, 2) == 4</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- Double -->
+</div>
+<div class="section" id="double">
+<h2><a name="double">Double</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">Double(Параметр)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt><em>Параметр</em>: Число или Строка</dt>
+<dd><p class="first last">Число или Строка, которые нужно перевести в тип Double</p>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body">Число</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first line-block">
+<div class="line">Переводит переданную строку в тип Double.</div>
+<div class="line">При этом строка должна иметь следующий формат:</div>
+<div class="line"><br /></div>
+<div class="line">[whitespace] [sign] [digits] [.digits] [ {d | D | e | E}[sign]digits]</div>
+</div>
+<p>A whitespace may consist of space and tab characters,
+which are ignored; sign is either plus (+) or minus (-);
+and digits are one or more decimal digits. If no digits appear before
+the radix character, at least one must appear after the radix character.
+The decimal digits can be followed by an exponent,
+which consists of an introductory letter (d, D, e, or E)
+and an optionally signed integer. If neither an exponent part
+nor a radix character appears, a radix character is assumed to follow
+the last digit in the string. The first character that does not fit this form
+stops the scan.</p>
+<p class="last">Таким образом можно легко задавать числа с плавающей точкой.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Примеры:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Double(&quot;-1.5e+3&quot;) == -1500</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- ABS -->
+</div>
+<div class="section" id="abs">
+<h2><a name="abs">ABS</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">ABS(Параметр)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>Параметр</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Абсолютное значение x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает abs(x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- ACOS -->
+</div>
+<div class="section" id="acos">
+<h2><a name="acos">ACOS</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">ACOS(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Арккосинус x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает acos(x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- ASIN -->
+</div>
+<div class="section" id="asin">
+<h2><a name="asin">ASIN</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">ASIN(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Арксинус x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает asin(x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- ATAN -->
+</div>
+<div class="section" id="atan">
+<h2><a name="atan">ATAN</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">ATAN(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Арктангенс x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает atan(x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- ATAN2 -->
+</div>
+<div class="section" id="atan2">
+<h2><a name="atan2">ATAN2</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">ATAN2(y, x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>y</em>: Число или Строка</li>
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Арктангенс y/x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает atan(y/x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- CEIL -->
+</div>
+<div class="section" id="ceil">
+<h2><a name="ceil">CEIL</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">CEIL(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает наименьшее целое, большее x</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- COPYSIGN -->
+</div>
+<div class="section" id="copysign">
+<h2><a name="copysign">COPYSIGN</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">COPYSIGN(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает число x со знаком числа y</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- COS -->
+</div>
+<div class="section" id="cos">
+<h2><a name="cos">COS</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">COS(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Косинус x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает cos(x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- COSH -->
+</div>
+<div class="section" id="cosh">
+<h2><a name="cosh">COSH</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">COSH(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Косинус гиперболический x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает cosh(x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- EXP -->
+</div>
+<div class="section" id="exp">
+<h2><a name="exp">EXP</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">EXP(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Экспонента x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает e^x</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- FLOOR -->
+</div>
+<div class="section" id="floor">
+<h2><a name="floor">FLOOR</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">FLOOR(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает наибольшее целое, меньшее x</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- FMOD -->
+</div>
+<div class="section" id="fmod">
+<h2><a name="fmod">FMOD</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">FMOD(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">остаток от деления x/y</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><p class="first">The function calculates the floating-point remainder f of x / y
+such that x = i * y + f, where i is an integer, f has the same sign as x,
+and the absolute value of f is less than the absolute value of y.</p>
+<p class="last">Функция возвращает такое значение остатка f, что x = i * y + f, где i - целое,
+f - одного знака с x, и абсолютное значение f меньше абсолютного значения y.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- FREXP -->
+</div>
+<div class="section" id="frexp">
+<h2><a name="frexp">FREXP</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">FREXP(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Мантисса x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><p class="first">The function breaks down the floating-point value (x) into a mantissa (m)
+and an exponent (n), such that the absolute value of m is greater than or equal
+to 0.5 and less than 1.0, and x = m * 2^n.</p>
+<p class="last">Функция разбирает число x на мантиссу (m) и степень (n) таким образом, что
+0.5 &lt;= abs(m) &lt; 1.0, и x = m * 2^n.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- HYPOT -->
+</div>
+<div class="section" id="hypot">
+<h2><a name="hypot">HYPOT</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">HYPOT(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">значение гипотенузы</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Функция возвращает SQRT(X^2 + y^2)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- LDEXP -->
+</div>
+<div class="section" id="ldexp">
+<h2><a name="ldexp">LDEXP</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">LDEXP(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает x * 2^y</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- LDIV -->
+</div>
+<div class="section" id="ldiv">
+<h2><a name="ldiv">LDIV</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">LDIV(x, y, rem)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+<li><em>rem</em>: Число (возврат)</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Частное от целочисленного деления x/y</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Функция вычисляет частное и остаток от целочисленного деления x на y,</div>
+<div class="line">остаток возвращается в параметре rem</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- LOG -->
+</div>
+<div class="section" id="log">
+<h2><a name="log">LOG</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">LOG(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Логарифм x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Функция вычисляет натуральный логарифм log(x)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- LOG10 -->
+</div>
+<div class="section" id="log10">
+<h2><a name="log10">LOG10</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">LOG10(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Десятичный логарифм x </div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Функция вычисляет десятичный логарифм log10(x)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- MODF -->
+</div>
+<div class="section" id="modf">
+<h2><a name="modf">MODF</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">MODF(x, fract)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>fract</em>: Число (возврат)</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Целая часть x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Функция разбирает x на целую и дробную часть того же знака, что и x,</div>
+<div class="line">дробная часть возвращается в переменной fract</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- PI -->
+</div>
+<div class="section" id="pi">
+<h2><a name="pi">PI</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">PI()</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body">нет</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает число PI</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- POW -->
+</div>
+<div class="section" id="pow">
+<h2><a name="pow">POW</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">POW(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">x ^ y</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- RAND -->
+</div>
+<div class="section" id="rand">
+<h2><a name="rand">RAND</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">RAND()</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body">нет</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Случайное число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Возвращает случайное число в диапазоне от 0 до RAND_MAX (определен как 0x7fff)</div>
+<div class="line">Для возврата случайного числа в диапазоне от 0 до 1 предназначена функция <a class="reference" href="#rand1">RAND1</a></div>
+<div class="line">Для инициализации генератора предназначена функция <a class="reference" href="#srand">SRAND</a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- RAND1 -->
+</div>
+<div class="section" id="rand1">
+<h2><a name="rand1">RAND1</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">RAND1()</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body">нет</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Случайное число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Возвращает случайное число в диапазоне от 0 до 1</div>
+<div class="line">Для инициализации генератора предназначена функция <a class="reference" href="#srand">SRAND</a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- ROTL -->
+</div>
+<div class="section" id="rotl">
+<h2><a name="rotl">ROTL</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">ROTL(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Функция выполняет кольцевой сдвиг числа x на y разрядов влево</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- ROTR -->
+</div>
+<div class="section" id="rotr">
+<h2><a name="rotr">ROTR</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">ROTR(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Функция выполняет кольцевой сдвиг числа x на y разрядов вправо</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- SHL -->
+</div>
+<div class="section" id="shl">
+<h2><a name="shl">SHL</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">SHL(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Функция выполняет сдвиг числа x на y разрядов влево</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- SHR -->
+</div>
+<div class="section" id="shr">
+<h2><a name="shr">SHR</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">SHR(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Функция выполняет сдвиг числа x на y разрядов вправо</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- SIN -->
+</div>
+<div class="section" id="sin">
+<h2><a name="sin">SIN</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">SIN(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Синус x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Возвращает sin(x)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- SINH -->
+</div>
+<div class="section" id="sinh">
+<h2><a name="sinh">SINH</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">SINH(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Синус гиперболический x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Возвращает sinh(x)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- SQRT -->
+</div>
+<div class="section" id="sqrt">
+<h2><a name="sqrt">SQRT</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">SQRT(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Корень квадратный х</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Возвращает x ^ 0.5</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- SRAND -->
+</div>
+<div class="section" id="srand">
+<h2><a name="srand">SRAND</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">SRAND(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt><em>x</em>: Число или Строка</dt>
+<dd><p class="first last">seed генератора</p>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body">нет</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Инициализирует генератор псевдослучайных чисел</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- TAN -->
+</div>
+<div class="section" id="tan">
+<h2><a name="tan">TAN</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">TAN(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Тангенс x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает tan(x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- TANH -->
+</div>
+<div class="section" id="tanh">
+<h2><a name="tanh">TANH</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">TANH(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Тангенс гиперболический x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает tanh(x)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- BITAND -->
+</div>
+<div class="section" id="bitand">
+<h2><a name="bitand">BITAND</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">BITAND(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает x &amp; y</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- BITOR -->
+</div>
+<div class="section" id="bitor">
+<h2><a name="bitor">BITOR</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">BITOR(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает x | y</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- COMPL -->
+</div>
+<div class="section" id="compl">
+<h2><a name="compl">COMPL</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">COMPL(x)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+<div class="line">Инверсия x</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает ~x</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- XOR -->
+</div>
+<div class="section" id="xor">
+<h2><a name="xor">XOR</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">XOR(x, y)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last simple">
+<li><em>x</em>: Число или Строка</li>
+<li><em>y</em>: Число или Строка</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Число</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body">Возвращает x ^ y</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

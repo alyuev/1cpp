@@ -1,0 +1,4 @@
+*.pyc
+*.md *.MD
+scripts.ini
+load_cfg.py

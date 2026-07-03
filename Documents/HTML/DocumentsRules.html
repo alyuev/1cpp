@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Правила оформления документации</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">Правила оформления документации</h1>
+<!-- Автор: Дмитрий Ощепков aka DmitrO, mailto: dmitro@russian.ru -->
+<div class="contents topic" id="id2">
+<p class="topic-title first"><a name="id2"><strong>Содержание</strong></a></p>
+<ul class="simple">
+<li><a class="reference" href="#id3" id="id35" name="id35">Разработка документации</a><ul>
+<li><a class="reference" href="#id5" id="id36" name="id36">Компиляция документации</a><ul>
+<li><a class="reference" href="#id6" id="id37" name="id37">Установка программного обеспечения</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#id7" id="id38" name="id38">Оформление описания объектов (встроенных классов)</a><ul>
+<li><a class="reference" href="#id8" id="id39" name="id39">Описание объекта</a></li>
+<li><a class="reference" href="#id9" id="id40" name="id40">Описание свойства</a><ul>
+<li><a class="reference" href="#id10" id="id41" name="id41">Секция Доступ</a></li>
+<li><a class="reference" href="#id11" id="id42" name="id42">Секция Тип</a></li>
+<li><a class="reference" href="#id13" id="id43" name="id43">Секция Описание</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id14" id="id44" name="id44">Описание метода</a><ul>
+<li><a class="reference" href="#id17" id="id45" name="id45">Секция Синтаксис</a></li>
+<li><a class="reference" href="#id20" id="id46" name="id46">Секция Параметры</a></li>
+<li><a class="reference" href="#id21" id="id47" name="id47">Секция Возвращает</a></li>
+<li><a class="reference" href="#id23" id="id48" name="id48">Секция Описание</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id24" id="id49" name="id49">Описание события</a></li>
+<li><a class="reference" href="#id26" id="id50" name="id50">Описание конструктора</a><ul>
+<li><a class="reference" href="#id28" id="id51" name="id51">Секция Синтаксис</a></li>
+<li><a class="reference" href="#id30" id="id52" name="id52">Секция Параметры</a></li>
+<li><a class="reference" href="#id32" id="id53" name="id53">Секция Описание</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1><a class="toc-backref" href="#id35" name="id3">Разработка документации</a></h1>
+<p>Документация разрабатывается в <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> формате (сокращенно ReST). 
+Для написания документации в формате ReST достаточно изучить
+<a class="reference" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">краткое описание</a>.</p>
+<p>Разработка документации ведется в отдельном проекте MSVS: <tt class="docutils literal"><span class="pre">Documents</span></tt>. 
+У проекта две конфигурации: HTML и ALS.</p>
+<p>Каждый разработчик сам пишет документацию на свои объекты, и 
+согласовывает с руководителем проекта в какую часть общей документации 
+будет входить документация по его разработке.</p>
+<p>Для добавления произвольных html-файлов к сборке 1С++ нужно не забыть 
+добавить имена файлов в раздел &quot;Учебник&quot; в файле 1cpp.rst.
+Сами файлы нужно поместить в подкаталог kb.
+Для примера можно посмотреть подключение файла TSQLInV7FirstSteps</p>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id36" name="id5">Компиляция документации</a></h2>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id37" name="id6">Установка программного обеспечения</a></h3>
+<blockquote>
+<ul>
+<li><p class="first">Установить Python: <a class="reference" href="http://www.python.org">http://www.python.org</a>
+(рекомендуется версия 2.4)</p>
+</li>
+<li><p class="first">Установить Docutils: <a class="reference" href="http://docutils.sourceforge.net/index.html">http://docutils.sourceforge.net/index.html</a>
+(рекомендованная версия 0.4). Распаковать *.tgz архив, зайти в 
+каталог Docutils, запустить:</p>
+<pre class="literal-block">
+setup.py install
+</pre>
+</li>
+<li><p class="first">В VS Tools/Options закладка Directories, Show Directories for: 
+Executable files прописать путь: 
+<tt class="docutils literal"><span class="pre">&lt;Каталог</span> <span class="pre">установки</span> <span class="pre">Docutils&gt;\tools</span></tt></p>
+</li>
+</ul>
+</blockquote>
+<p>После этого файлы проекта Documents можно компилировать как обычно это 
+делается в VS.</p>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h1><a class="toc-backref" href="#id38" name="id7">Оформление описания объектов (встроенных классов)</a></h1>
+<p>В начале описания объекта размещается общая информация об объекте.
+Свойства, методы, события, конструкторы (создание через фабрику 
+объектов) описываюстя в соответствующих подразделах. Формат описания 
+объекта:</p>
+<blockquote>
+<div class="line-block">
+<div class="line">&lt;РусскоеИмяВстроенногоКласса&gt; / &lt;АнглийскоеИмяВстроенногоКласса&gt;</div>
+<div class="line">&lt;<a class="reference" href="#id8">Описание объекта</a>&gt;</div>
+<div class="line"><br /></div>
+<div class="line">Свойства</div>
+<div class="line">&lt;<a class="reference" href="#id9">Описание свойства</a>&gt; [ ...n]</div>
+<div class="line"><br /></div>
+<div class="line">Методы</div>
+<div class="line">&lt;<a class="reference" href="#id14">Описание метода</a>&gt; [ ...n]</div>
+<div class="line"><br /></div>
+<div class="line">События</div>
+<div class="line">&lt;<a class="reference" href="#id24">Описание события</a>&gt; [ ...n]</div>
+<div class="line"><br /></div>
+<div class="line">Конструкторы</div>
+<div class="line">&lt;<a class="reference" href="#id26">Описание конструктора</a>&gt; [ ...n]</div>
+</div>
+</blockquote>
+<p>Любой подраздел может отсутствовать.</p>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id39" name="id8">Описание объекта</a></h2>
+<p>Описание назначения и возможностей объекта.</p>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id40" name="id9">Описание свойства</a></h2>
+<p>Заголовок описания свойства должен быть таким:</p>
+<pre class="literal-block">
+&lt;РусскоеИмяСвойства&gt; / &lt;АнглийскоеИмяСвойства&gt;
+</pre>
+<p>Описание свойства составляется из следующих секций:</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><strong>Доступ:</strong> &lt;<a class="reference" href="#id10">Секция Доступ</a>&gt;.</div>
+<div class="line"><strong>Тип:</strong> &lt;<a class="reference" href="#id11">Секция Тип</a>&gt;.</div>
+<div class="line"><strong>Описание:</strong> &lt;<a class="reference" href="#id13">Секция Описание</a>&gt;.</div>
+</div>
+</blockquote>
+<p>Секции должны следовать в указанном порядке. Заголовки секций 
+выделяются жирным шрифтом.</p>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id41" name="id10">Секция Доступ</a></h3>
+<p>Содержит описание вида доступа к свойству. Присутствует всегда. Может 
+содержать следующие варианты:</p>
+<pre class="literal-block">
+чтение и запись.
+только чтение.
+только запись.
+</pre>
+</div>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id42" name="id11">Секция Тип</a></h3>
+<p>Содержит имя типа свойства. Присутствует всегда. Допускается 
+указывать: <tt class="docutils literal"><span class="pre">Любой</span></tt>.</p>
+</div>
+<span id="id12"></span><div class="section" id="id13">
+<h3><a class="toc-backref" href="#id43" name="id13">Секция Описание</a></h3>
+<p>Содержит описание свойства. Присутствует всегда.</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id44" name="id14">Описание метода</a></h2>
+<p>Заголовок описания метода должен быть таким:</p>
+<pre class="literal-block">
+&lt;РусскоеИмяМетода&gt; / &lt;АнглийскоеИмяМетода&gt;
+</pre>
+<p>Описание метода составляется из следующих секций:</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><strong>Синтаксис:</strong> &lt;<a class="reference" href="#id17">Секция Синтаксис</a>&gt;.</div>
+<div class="line"><strong>Параметры:</strong></div>
+<div class="line-block">
+<div class="line">&lt;<a class="reference" href="#id20">Секция Параметры</a>&gt;.</div>
+</div>
+<div class="line"><strong>Возвращает:</strong> &lt;<a class="reference" href="#id21">Секция Возвращает</a>&gt;.</div>
+<div class="line"><strong>Описание:</strong> &lt;<a class="reference" href="#id23">Секция Описание</a>&gt;.</div>
+</div>
+</blockquote>
+<p>Секции должны следовать в указанном порядке. Заголовки секций 
+выделяются жирным шрифтом.</p>
+<span id="id16"></span><span id="id15"></span><div class="section" id="id17">
+<h3><a class="toc-backref" href="#id45" name="id17">Секция Синтаксис</a></h3>
+<p>Содержит синтаксис вызова метода. Формат:</p>
+<pre class="literal-block">
+&lt;РусскоеИмяМетода&gt;([&lt;ИмяПараметра&gt; [, ...n]])
+</pre>
+<p>Присутствует всегда.</p>
+<p>Если параметр не обязательный, то имя параметра должно быть заключено 
+в квадратные скобки.</p>
+</div>
+<span id="id19"></span><span id="id18"></span><div class="section" id="id20">
+<h3><a class="toc-backref" href="#id46" name="id20">Секция Параметры</a></h3>
+<p>Должна быть представлена не нумерованным списком. Каждый элемент 
+списка - описание параметра.</p>
+<p>Формат описания параметра:</p>
+<pre class="literal-block">
+- &lt;ИмяПараметра&gt; - тип: &lt;ИмяТипа&gt; [, ...n]. &lt;Описание параметра&gt;;
+</pre>
+<p>Последний элемент списка заканчивается точкой. Если метод не имеет 
+параметров - должна отсутствовать.</p>
+<p>Если параметр не обязательный, в описании параметра указывается 
+значение по умолчанию.</p>
+</div>
+<div class="section" id="id21">
+<h3><a class="toc-backref" href="#id47" name="id21">Секция Возвращает</a></h3>
+<p>Формат:</p>
+<pre class="literal-block">
+тип: &lt;ИмяТипа&gt; [, ...n]. &lt;Описание возвращаемого значения&gt;.
+</pre>
+<p>В случае если метод не возвращает значение (является процедурой) - 
+должна отсутствовать.</p>
+</div>
+<span id="id22"></span><div class="section" id="id23">
+<h3><a class="toc-backref" href="#id48" name="id23">Секция Описание</a></h3>
+<p>Содержит описание метода. Присутствует всегда.</p>
+</div>
+</div>
+<div class="section" id="id24">
+<h2><a class="toc-backref" href="#id49" name="id24">Описание события</a></h2>
+<p>Формат описания события совпадает с форматом <a class="reference" href="#id14">описания метода</a>.</p>
+</div>
+<div class="section" id="id26">
+<h2><a class="toc-backref" href="#id50" name="id26">Описание конструктора</a></h2>
+<p>Заголовок описания конструктора может быть любым. Рекомендуется чтобы 
+он пояснял назначение и функциональность
+данного конструктора.</p>
+<p>Описание конструктора составляется из следующих секций:</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><strong>Синтаксис:</strong> &lt;<a class="reference" href="#id28">Секция Синтаксис</a>&gt;.</div>
+<div class="line"><strong>Параметры:</strong></div>
+<div class="line-block">
+<div class="line">&lt;<a class="reference" href="#id30">Секция Параметры</a>&gt;.</div>
+</div>
+<div class="line"><strong>Описание:</strong> &lt;<a class="reference" href="#id32">Секция Описание</a>&gt;.</div>
+</div>
+</blockquote>
+<p>Секции должны следовать в указанном порядке. Заголовки секций 
+выделяются жирным шрифтом.</p>
+<span id="id27"></span><div class="section" id="id28">
+<h3><a class="toc-backref" href="#id51" name="id28">Секция Синтаксис</a></h3>
+<p>Формат должен совпадать с <a class="reference" href="#id16">форматом одноименной секции из описания 
+метода</a>.</p>
+</div>
+<span id="id29"></span><div class="section" id="id30">
+<h3><a class="toc-backref" href="#id52" name="id30">Секция Параметры</a></h3>
+<p>Формат должен совпадать с <a class="reference" href="#id19">форматом одноименной секции из описания 
+метода</a>.</p>
+</div>
+<span id="id31"></span><div class="section" id="id32">
+<h3><a class="toc-backref" href="#id53" name="id32">Секция Описание</a></h3>
+<p>Содержит описание конструктора. Присутствует всегда.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

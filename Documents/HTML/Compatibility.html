@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Изменения, влияющие на обеспечение обратной совместимости</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">Изменения, влияющие на обеспечение обратной совместимости</h1>
+<!-- Автор: icpp community, http://www.1cpp.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_compatibility_</alinks>
+</chminfo>
+<div class="contents topic" id="id2">
+<p class="topic-title first"><a name="id2">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#v-3-0-1-14" id="id13" name="id13">v.3.0.1.14</a><ul>
+<li><a class="reference" href="#sql-dbf" id="id14" name="id14">Метапарсер SQL и DBF</a></li>
+<li><a class="reference" href="#id4" id="id15" name="id15">ООП - пользовательские классы</a></li>
+<li><a class="reference" href="#id6" id="id16" name="id16">ВыполняемыйМодуль</a></li>
+<li><a class="reference" href="#id7" id="id17" name="id17">АктивИкс</a></li>
+<li><a class="reference" href="#id8" id="id18" name="id18">Перехватчик</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#v-3-0-1-26" id="id19" name="id19">v.3.0.1.26</a><ul>
+<li><a class="reference" href="#id9" id="id20" name="id20">Восстановление настроек из реестра</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#v-3-2-1-0" id="id21" name="id21">v.3.2.1.0</a><ul>
+<li><a class="reference" href="#id11" id="id22" name="id22">Восстановление настроек из реестра</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="v-3-0-1-14">
+<h1><a name="v-3-0-1-14">v.3.0.1.14</a></h1>
+<p>Отличия от версии 1cpp v.2.5.0.7</p>
+<div class="section" id="sql-dbf">
+<h2><a name="sql-dbf">Метапарсер SQL и DBF</a></h2>
+<blockquote>
+<a class="reference" href="http://www.1cpp.ru/bugs/show_bug.cgi?id=3996">3996</a>
+Метапарсер некорректно типизирует пустые значения неопределенного типа</blockquote>
+</div>
+<div class="section" id="id4">
+<h2><a name="id4">ООП - пользовательские классы</a></h2>
+<blockquote>
+<a class="reference" href="http://cvs.alterplast.ru/bugs/show_bug.cgi?id=3871">3871</a>
+Устранены неверные ограничения доступа к свойствам при наследовании 
+классов - например, у базы доступ к свойству только для чтения, а у 
+наследника можно и записывать.</blockquote>
+</div>
+<div class="section" id="id6">
+<h2><a name="id6">ВыполняемыйМодуль</a></h2>
+<blockquote>
+Встроенный класс &quot;ВыполняемыйМодуль&quot; теперь умеет выдавать обычные 
+исключения 1С, как синтаксические, так и ошибки выполнения</blockquote>
+</div>
+<div class="section" id="id7">
+<h2><a name="id7">АктивИкс</a></h2>
+<blockquote>
+Англоязычное название класса приведено в соответствие с документацией - стало ActiveX</blockquote>
+</div>
+<div class="section" id="id8">
+<h2><a name="id8">Перехватчик</a></h2>
+<blockquote>
+<p>Англоязычное название класса изменено - вместо Hooker стало Interceptor</p>
+<p>Исправлена неверная работа с событием &quot;Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации&quot; в ранних версиях Перехватчика.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="v-3-0-1-26">
+<h1><a name="v-3-0-1-26">v.3.0.1.26</a></h1>
+<div class="section" id="id9">
+<h2><a name="id9">Восстановление настроек из реестра</a></h2>
+<blockquote>
+<p><a class="reference" href="http://www.1cpp.ru/bugs/show_bug.cgi?id=4427">4427</a>
+Изменены значения настроек TRUE и FALSE (в реестра) для</p>
+<ul class="simple">
+<li>EnableTableSourceTable</li>
+<li>TurboBL</li>
+<li>EnableHookEventsGroupContext</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div class="section" id="v-3-2-1-0">
+<h1><a name="v-3-2-1-0">v.3.2.1.0</a></h1>
+<div class="section" id="id11">
+<h2><a name="id11">Восстановление настроек из реестра</a></h2>
+<blockquote>
+<a class="reference" href="http://www.1cpp.ru/bugs/show_bug.cgi?id=4465">4465</a>
+Изменено расположение настроек в реестре
+Изменен формат хранения
+Изменены значения настроек</blockquote>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

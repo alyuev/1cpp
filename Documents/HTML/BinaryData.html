@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>BinaryData</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="binarydata">
+<h1 class="title">BinaryData</h1>
+<!-- Автор: Дмитрий Ощепков aka DmitrO, mailto: dmitro@russian.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_guid_</alinks>
+        <klinks>
+                BinaryData
+        </klinks>
+</chminfo>
+<div class="contents topic" id="id1">
+<p class="topic-title first"><a name="id1">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id2" id="id4" name="id4">Свойства</a><ul>
+<li><a class="reference" href="#encoding" id="id5" name="id5">Кодировка / Encoding</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id3" id="id6" name="id6">Методы</a><ul>
+<li><a class="reference" href="#loadfromfile" id="id7" name="id7">ЗагрузитьИзФайла / LoadFromFile</a></li>
+<li><a class="reference" href="#savetofile" id="id8" name="id8">СохранитьВФайл / SaveToFile</a></li>
+<li><a class="reference" href="#attachtofile" id="id9" name="id9">ПодключитьсяКФайлу / AttachToFile</a></li>
+<li><a class="reference" href="#writestring" id="id10" name="id10">ЗаписатьСтроку / WriteString</a></li>
+<li><a class="reference" href="#writedata" id="id11" name="id11">ЗаписатьДанные / WriteData</a></li>
+<li><a class="reference" href="#readstring" id="id12" name="id12">ПрочитатьСтроку / ReadString</a></li>
+<li><a class="reference" href="#readdata" id="id13" name="id13">ПрочитатьДанные / ReadData</a></li>
+<li><a class="reference" href="#seek" id="id14" name="id14">Перейти / Seek</a></li>
+<li><a class="reference" href="#size" id="id15" name="id15">Размер / Size</a></li>
+<li><a class="reference" href="#lock" id="id16" name="id16">УстБлокировку / Lock</a></li>
+<li><a class="reference" href="#unlock" id="id17" name="id17">СнятьБлокировку / Unlock</a></li>
+<li><a class="reference" href="#writebom" id="id18" name="id18">ЗаписатьМПБ / WriteBOM</a></li>
+<li><a class="reference" href="#readbom" id="id19" name="id19">ПрочитатьМПБ / ReadBOM</a></li>
+<li><a class="reference" href="#close" id="id20" name="id20">Закрыть / Close</a></li>
+<li><a class="reference" href="#pkzip" id="id21" name="id21">pkZip</a></li>
+<li><a class="reference" href="#pkunzip" id="id22" name="id22">pkUnzip</a></li>
+<li><a class="reference" href="#pkcompress" id="id23" name="id23">pkCompress</a></li>
+<li><a class="reference" href="#pkdecompress" id="id24" name="id24">pkDecompress</a></li>
+<li><a class="reference" href="#pkappendfile" id="id25" name="id25">pkAppendFile</a></li>
+<li><a class="reference" href="#pkreadfile" id="id26" name="id26">pkReadFile</a></li>
+<li><a class="reference" href="#pkreadentry" id="id27" name="id27">pkReadEntry</a></li>
+<li><a class="reference" href="#zip" id="id28" name="id28">Zip</a></li>
+<li><a class="reference" href="#unzip" id="id29" name="id29">Unzip</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Класс предназначен для работы с двоичными данными. Объект может хранить данные в памяти или в файловой системе
+(в общем случае на диске). После создания объекта он находится в таком состоянии, когда не содержит никаких данных.
+Все методы работы с объектом, кроме AttachToFile(), неявно переводят объект в состояние работы с памятью (если он
+находился в состоянии отсутствия данных).</p>
+<p>Объект имеет внутренний указатель текущей позиции в данных, чтение и запись идут всегда по текущей позиции. После
+исполнения методов чтения/записи текущая позиция перемещается на размер прочитанных/записанных байтов. После исполнения
+остальных методов текущая позиция не определена, если не оговорено особо.</p>
+<div class="section" id="id2">
+<h1><a name="id2">Свойства</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="encoding">
+<h2><a name="encoding">Кодировка / Encoding</a></h2>
+<blockquote>
+<p><strong>Доступ:</strong> чтение и запись.</p>
+<p><strong>Тип:</strong> Число.</p>
+<dl class="docutils">
+<dt><strong>Описание:</strong> Содержит текущую кодировку, в которой будут происходить чтение и запись строк.</dt>
+<dd><ul class="first last simple">
+<li>1 - ANSI (по умолчанию);</li>
+<li>2 - OEM;</li>
+<li>3 - UTF-16(LE);</li>
+<li>4 - UTF-8.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id3">
+<h1><a name="id3">Методы</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="loadfromfile">
+<h2><a name="loadfromfile">ЗагрузитьИзФайла / LoadFromFile</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗагрузитьИзФайла(ИмяФайла, [ФлагСжатия])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяФайла</strong> - тип: Строка. Имя файла - источника данных;</li>
+<li><strong>ФлагСжатия</strong> - тип: Число. 0 - загрузка данными как есть, 1 - при загрузке данные будут сжаты
+внутренним архиватором 1С (zip), после этого объект будет содержать данные файла в сжатом виде. По умолчанию 0.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - удачно, 0 - неудачно.</p>
+<p><strong>Описание:</strong> загружает объект данными из файла. Если объект был подключен к файлу, данные загружаются в файл.
+Текущие данные объекта очищаются.</p>
+</blockquote>
+</div>
+<div class="section" id="savetofile">
+<h2><a name="savetofile">СохранитьВФайл / SaveToFile</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> СохранитьВФайл(ИмяФайла, [ФлагСжатия])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяФайла</strong> - тип: Строка. Имя файла - приемника данных;</li>
+<li><strong>ФлагСжатия</strong> - тип: Число. 0 - выгрузка данных как есть, 1 - при выгрузке данные будут расжаты внутренним
+архиватором 1С (zip), и файл приемник будет содержать исходные данные. По умолчанию 0.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - удачно, 0 - неудачно.</p>
+<p><strong>Описание:</strong> выгружает данные объекта в файл.</p>
+</blockquote>
+</div>
+<div class="section" id="attachtofile">
+<h2><a name="attachtofile">ПодключитьсяКФайлу / AttachToFile</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПодключитьсяКФайлу(ИмяФайла, [РежимРазделения], [РежимДоступа])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>ИмяФайла</strong> - тип: Строка. Имя файла, к которому необходимо подключиться;</p>
+</li>
+<li><p class="first"><strong>РежимРазделения</strong> - тип: Число. Режим открытия файла:</p>
+<blockquote>
+<ul class="simple">
+<li>0 - эксклюзивно (по умолчанию);</li>
+<li>1 - разделенно, другим процессам разрешены чтение и запись;</li>
+<li>2 - разделенно, другим процессам разрешено только чтение;</li>
+<li>3 - разделенно, другим процессам разрешена только запись.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first"><strong>РежимДоступа</strong> - тип: Число. Режим открытия файла, желаемый доступ:</p>
+<blockquote>
+<ul class="simple">
+<li>0 - чтение и запись (по умолчанию);</li>
+<li>1 - только чтение;</li>
+<li>2 - только запись.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - удачно, 0 - неудачно.</p>
+<p><strong>Описание:</strong> подключает объект к файлу. После этого объект хранит свои данные в файле. Если объект
+до этого содержал данные в памяти - они теряются. Если он работал с файлом - старый файл освобождается.
+Если файла не существует - он создается с нулевой длиной.</p>
+</blockquote>
+</div>
+<div class="section" id="writestring">
+<h2><a name="writestring">ЗаписатьСтроку / WriteString</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗаписатьСтроку(Данные, [Режим])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Данные</strong> - тип: Строка. Строка данных для записи;</li>
+<li><strong>Режим</strong> - тип: Число. режим записи; 0 - запись строки с добавлением символов конца строки CR LF.
+1 - запись строки как есть (без терминатора). По умолчанию 0.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> записывает строку в данные объекта. Строка будет перекодирована и записана в файл
+в соответствии со свойством <a class="reference" href="#encoding">Кодировка / Encoding</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="writedata">
+<h2><a name="writedata">ЗаписатьДанные / WriteData</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗаписатьДанные(Данные, [Режим])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>Данные</strong> - тип: Число. Число, которое необходимо записать;</p>
+</li>
+<li><p class="first"><strong>Режим</strong> - тип: Число. Режим записи:</p>
+<blockquote>
+<ul class="simple">
+<li>0 - записывается число в 1 байт (по умолчанию);</li>
+<li>1 - записывается число в 2 байта;</li>
+<li>2 - записывается число в 4 байта.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> записывает переданное число в данные объекта. Число может быть только целым, записывается
+младшими байтами вперед.</p>
+</blockquote>
+</div>
+<div class="section" id="readstring">
+<h2><a name="readstring">ПрочитатьСтроку / ReadString</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПрочитатьСтроку(Данные, [Режим])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Данные</strong> - тип: Строка. Строка для приема прочитанных данных;</li>
+<li><strong>Режим</strong> - тип: Число. Режим чтения или длина. 0 - чтение строки, с терминатором CR LF, при этом
+чтение может завершиться, если встретится байт со значением 0; текущая позиция внутреннего указателя
+будет всегда за терминатором; также может произойти чтение до конца данных, при этом в Данные будет
+прочитанная строка, и функция вернет 1 (0 функция вернет при следующем вызове). Иначе - чтение строки
+указанной длины. Если данных недостаточно или на этой длине встречается байт со значением 0 - происходит
+исключение. В этом режиме невозможно чтение в кодировке UTF-8. По умолчанию 0.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - строка прочитана, 0 - достигнут конец файла.</p>
+<p><strong>Описание:</strong> читает строку из данных объекта. Строка будет прочитана из файла и перекодирована
+в соответствии со свойством <a class="reference" href="#encoding">Кодировка / Encoding</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="readdata">
+<h2><a name="readdata">ПрочитатьДанные / ReadData</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПрочитатьДанные(Данные, [Режим])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>Данные</strong> - тип: Число. Число, для приема прочитанных данных;</p>
+</li>
+<li><p class="first"><strong>Режим</strong> - тип: Число. Режим чтения:</p>
+<blockquote>
+<ul class="simple">
+<li>0 - читается число в 1 байт (по умолчанию);</li>
+<li>1 - читается число в 2 байта;</li>
+<li>2 - читается число в 4 байта.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> читает число из данных объекта. Если данных недостаточно для чтения числа - происходит исключение.</p>
+</blockquote>
+</div>
+<div class="section" id="seek">
+<h2><a name="seek">Перейти / Seek</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Перейти(Перемещение, [Режим])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>Перемещение</strong> - тип: Число. Количество байт, на которое нужно переместить указатель.</p>
+</li>
+<li><p class="first"><strong>Режим</strong> - тип: Число. Режим перемещения:</p>
+<blockquote>
+<ul class="simple">
+<li>0 - относительно начала;</li>
+<li>1 - относительно текущей позиции (по умолчанию);</li>
+<li>2 - относительно конца.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Новая текущая позиция внутреннего указателя.</p>
+<p><strong>Описание:</strong> перемещает внутренний указатель текущей позиции.</p>
+</blockquote>
+</div>
+<div class="section" id="size">
+<h2><a name="size">Размер / Size</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Размер(НовыйРазмер)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>НовыйРазмер</strong> - тип Число. Новый размер в байтах. По умолчанию пустое значение.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Размер в байтах.</p>
+<p><strong>Описание:</strong> устанавливает новый размер данных или, если пустое значение - возвращает текущий размер.</p>
+<p>В случае установки нового размера, длина данных может быть уменьшена или увеличена. При увеличении,
+содержимое байтов, на которые увеличиваются данные, не определено. Если происходит получение размера, положение
+внутреннего указателя не изменяется; если происходит установка размера, внутренний указатель всегда находится
+в конце файла.</p>
+</blockquote>
+</div>
+<div class="section" id="lock">
+<h2><a name="lock">УстБлокировку / Lock</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстБлокировку(Смещение, Длина, [Таймаут])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Смещение</strong> - тип Число. Смещение блокируемого диапазона относительно начала файла в байтах;</li>
+<li><strong>Длина</strong> - тип Число. Длина блокируемого диапазона в байтах;</li>
+<li><strong>Таймаут</strong> - тип Число. Таймаут для установки блокировки в миллисекундах, по умолчанию 0.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - удачно (блокировка установлена), 0 - неудачно (блокировку установить не удалось).</p>
+<p><strong>Описание:</strong> устанавливает блокировку на указанный диапазон в файле (когда объект работает с памятью -
+смысла не имеет). Блокируемые участки не должны пересекаться. Блокирование за концом файла не является ошибкой.</p>
+</blockquote>
+</div>
+<div class="section" id="unlock">
+<h2><a name="unlock">СнятьБлокировку / Unlock</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстБлокировку(Смещение, Длина, [Таймаут])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Смещение</strong> - тип Число. Смещение блокируемого диапазона относительно начала файла в байтах;</li>
+<li><strong>Длина</strong> - тип Число. Длина блокируемого диапазона в байтах;</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> снимает блокировку с участка файла. Смежные заблокированные участки не могут рассматриваться
+как один (снимать блокировку нужно с обоих).</p>
+</blockquote>
+</div>
+<div class="section" id="writebom">
+<h2><a name="writebom">ЗаписатьМПБ / WriteBOM</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗаписатьМПБ()</p>
+<p><strong>Описание:</strong> записывает в файл метку порядка байтов (byte order mark).</p>
+<dl class="docutils">
+<dt>В зависимости от текущей кодировки:</dt>
+<dd><ul class="first last simple">
+<li>UTF-16 {0xFF, 0xFE};</li>
+<li>UTF-8 {0xEF, 0xBB, 0xBF};</li>
+<li>для остальных ничего не происходит.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="readbom">
+<h2><a name="readbom">ПрочитатьМПБ / ReadBOM</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПрочитатьМПБ()</p>
+<p><strong>Описание:</strong> читает из файла метку порядка байтов, и определяет по ней кодировку, устанавливая свойство
+<a class="reference" href="#encoding">Кодировка / Encoding</a>.
+Кодировка может быть определена только для UTF-16 и UTF-8, в этом случае внутренний указатель будет установлен
+сразу за МПБ, если же прочитанные байты не совпадают ни с тем, ни с другим значением МПБ - свойство
+<a class="reference" href="#encoding">Кодировка / Encoding</a> не изменяется и внутренний указатель возвращается в положение до вызова метода.</p>
+</blockquote>
+</div>
+<div class="section" id="close">
+<h2><a name="close">Закрыть / Close</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Закрыть()</p>
+<p><strong>Описание:</strong> переводит объект в режим отсутствия данных. Если он работал с памятью - данные теряются,
+если с файлом - файл освобождается. Действия этого метода неявно выполняются при разрушении объекта.</p>
+</blockquote>
+</div>
+<div class="section" id="pkzip">
+<h2><a name="pkzip">pkZip</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> pkZip(Команда)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>Команда</strong> - тип Строка. Командная строка архиватору. Формат командной строки:</p>
+<pre class="literal-block">
+[-s[пароль]] имя_и_путь_создаваемого_архива имя_и_путь_архивируемого_файла(ов)
+</pre>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> сжимает файлы внутренним архиватором. Метод не влияет на состояние и на данные объекта.</p>
+</blockquote>
+</div>
+<div class="section" id="pkunzip">
+<h2><a name="pkunzip">pkUnzip</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> pkUnzip(Команда)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>Команда</strong> - тип Строка. Командная строка архиватору. Формат командной строки:</p>
+<pre class="literal-block">
+[-s[пароль]] имя_и_путь_архива путь_к_каталогу_назначения
+</pre>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> разжимает файлы внутренним архиватором. Метод не влияет на состояние и на данные объекта.</p>
+</blockquote>
+</div>
+<div class="section" id="pkcompress">
+<h2><a name="pkcompress">pkCompress</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> pkCompress(Приемник)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Приемник</strong> - тип BinaryData.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> сжимает данные текущего объекта в данные объекта приемника.</p>
+</blockquote>
+</div>
+<div class="section" id="pkdecompress">
+<h2><a name="pkdecompress">pkDecompress</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> pkDecompress(Приемник)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Приемник</strong> - тип BinaryData.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> расжимает данные текущего объекта в данные объекта приемника.</p>
+<p>Данные текущего объекта должны быть в zip-сжатом виде.</p>
+</blockquote>
+</div>
+<div class="section" id="pkappendfile">
+<h2><a name="pkappendfile">pkAppendFile</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> pkAppendFile(ИмяФайла, ИмяПотока[, Пароль])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяФайла</strong> - тип Строка. Имя архивного файла в который будет добавлен сжатый поток.</li>
+<li><strong>ИмяПотока</strong> - тип Строка. Название потока в архиве.</li>
+<li><strong>Пароль</strong> - тип Строка. Необязательный.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> сжимает данные текущего объекта и добавляет их в архивный файл под указанным названием потока.</p>
+<p>При отсутствии файл будет создан.</p>
+</blockquote>
+</div>
+<div class="section" id="pkreadfile">
+<h2><a name="pkreadfile">pkReadFile</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> pkReadFile(ИмяФайла, ИмяПотока[, Пароль])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяФайла</strong> - тип Строка. Имя архивного файла из которого будет прочитан сжатый поток.</li>
+<li><strong>ИмяПотока</strong> - тип Строка. Название потока в архиве.</li>
+<li><strong>Пароль</strong> - тип Строка. Необязательный.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> читает из архивного файла указанный поток и расжимает его в данные текущего объекта.</p>
+</blockquote>
+</div>
+<div class="section" id="pkreadentry">
+<h2><a name="pkreadentry">pkReadEntry</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> pkReadEntry(ИмяФайла, Список)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяФайла</strong> - тип Строка. Имя архивного файла.</li>
+<li><strong>Список</strong> - тип СписокЗначение. Список для добавления элементов архива.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> читает из архивного файла список элементов типа OLE.IzipEntry. Переданный список не очищается.</p>
+<dl class="docutils">
+<dt>Каждый элемент в списке описывает один поток архива и имеет следующую структуру:</dt>
+<dd><ul class="first last simple">
+<li>Name - строка (BSTR). Название потока</li>
+<li>Comment - строка (BSTR). Комментарий</li>
+<li>Size - число (UI4).</li>
+<li>CompressedSize - число (UI4).</li>
+<li>Crc32 - число (UI4).</li>
+<li>Method - число (UI2).</li>
+<li>Time - число (UI4).</li>
+<li>Flags - число (UI4).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Примечание</strong> Значения типа UI4 и UI2 получить явно невозможно.
+Для получания можно использовать спец-средства. Например ВК OLEExSup.dll версии не ниже 1.0.0.7ч</p>
+</blockquote>
+<p>Пример*:</p>
+<pre class="literal-block">
+OLEExSup=СоздатьОбъект(&quot;OLEExSup&quot;);
+
+Сп = СоздатьОбъект(&quot;СписокЗначений&quot;);
+Данные = СоздатьОбъект(&quot;BinaryData&quot;);
+Данные.pkReadEntry(&quot;c:\Test.zip&quot;, Сп);
+
+Для Сч = 1 По Сп.РазмерСписка() Цикл
+  Элемент = Сп.ПолучитьЗначение(Сч);
+  Сообщить(Элемент);
+  Сообщить(&quot;  Name: &quot;+Элемент.Name);
+  Сообщить(&quot;  Comment: &quot;+Элемент.Comment);
+  Сообщить(&quot;  Size: &quot;+OLEExSup.ПолучитьСвойство(Элемент,&quot;Size&quot;));
+  Сообщить(&quot;  CompressedSize: &quot;+OLEExSup.ПолучитьСвойство(Элемент,&quot;CompressedSize&quot;));
+  Сообщить(&quot;  Crc32: &quot;+OLEExSup.ПолучитьСвойство(Элемент,&quot;Crc32&quot;));
+  Сообщить(&quot;  Method: &quot;+OLEExSup.ПолучитьСвойство(Элемент,&quot;Method&quot;));
+  Сообщить(&quot;  Time: &quot;+OLEExSup.ПолучитьСвойство(Элемент,&quot;Time&quot;));
+  Сообщить(&quot;  Flags: &quot;+OLEExSup.ПолучитьСвойство(Элемент,&quot;Flags&quot;));
+КонецЦикла;
+</pre>
+</div>
+<div class="section" id="zip">
+<h2><a name="zip">Zip</a></h2>
+<blockquote>
+<strong>Описание:</strong> синоним метода <a class="reference" href="#pkzip">pkZip</a></blockquote>
+</div>
+<div class="section" id="unzip">
+<h2><a name="unzip">Unzip</a></h2>
+<blockquote>
+<strong>Описание:</strong> синоним метода <a class="reference" href="#pkunzip">pkUnzip</a></blockquote>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

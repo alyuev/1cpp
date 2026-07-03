@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>АктивИкс</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id2">
+<h1 class="title"><span class="target" id="id1">АктивИкс</span></h1>
+<!-- Автор: Рыбальченко Степан aka Steban -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>
+                                _1cpp_ativex_ctrl_
+                                _1cpp_formex_cc_target_
+                        </alinks>
+</chminfo>
+<div class="contents topic" id="id3">
+<p class="topic-title first"><a name="id3">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#activex" id="id11" name="id11"><strong>Класс &quot;АктивИкс&quot; / &quot;ActiveX&quot;.</strong></a></li>
+<li><a class="reference" href="#id4" id="id12" name="id12">События</a><ul>
+<li><a class="reference" href="#selection" id="id13" name="id13">Выбор / Selection</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id6" id="id14" name="id14">Свойства</a><ul>
+<li><a class="reference" href="#object" id="id15" name="id15">Объект / Object</a></li>
+<li><a class="reference" href="#eventprocessing" id="id16" name="id16">ОбработкаСобытий / EventProcessing</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id8" id="id17" name="id17">Методы</a><ul>
+<li><a class="reference" href="#assignattrib" id="id18" name="id18">УстановитьАтрибут / AssignAttrib</a></li>
+<li><a class="reference" href="#createcontrol" id="id19" name="id19">СоздатьЭУ / CreateControl</a></li>
+<li><a class="reference" href="#setfocus" id="id20" name="id20">УстановитьФокус / SetFocus</a></li>
+<li><a class="reference" href="#destroy" id="id21" name="id21">Уничтожить / Destroy</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="activex">
+<h1><a name="activex"><strong>Класс &quot;АктивИкс&quot; / &quot;ActiveX&quot;.</strong></a></h1>
+<chminfo split="0" splitchild="0">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p>Класс позволяет размещать на формах 1С:Предприятие элементы управления (далее ЭУ) ActiveX
+и обрабатывать события, возникающие в ЭУ.
+При возникновении события вызывается процедура модуля формы с именем:</p>
+<pre class="literal-block">
+&lt;ИдентификаторЭлементаДиалога&gt;_&lt;Событие&gt;
+</pre>
+<p>где ИдентификаторЭлементаДиалога - идентификатор элемента диалога, на месте которого создан ЭУ,
+и Событие - наименование события ЭУ (например OnClick).
+Например, обработчик Процедура ИДБраузер_BeforeNavigate2(Параметры...)</p>
+<p>Класс может служить базовым классом для классов, определяемых пользователем.</p>
+<p>В этом случае, если в модуле реализации КОП-наследника определены процедуры или функции с именами,
+совпадающими с именами событий (например, OnClick) без указания имени реквизита:</p>
+<pre class="literal-block">
+&lt;Событие&gt;
+</pre>
+<p>где Событие - наименование события ЭУ (например OnClick),
+Например, обработчик Процедура BeforeNavigate2(Параметры...)</p>
+<p>то при возникновении соответствующих событий они будут вызваны.
+Если определены обработчики в модуле формы и в модуле реализации КОП, то сначала будут вызваны
+обработчики из модуля реализации КОП.
+Для обработки событий в модуле реализации КОП экземпляр класса должен быть создан следующим образом:</p>
+<pre class="literal-block">
+АтрФормы = СоздатьОбъект(&quot;АтрибутФормы&quot;);
+АтрФормы.УстановитьАтрибут(Форма,&quot;ФДерево&quot;);
+Дерево=СоздатьОбъект(&quot;Дерево&quot;);//класс-наследник АктивИкс
+АтрФормы.СоздатьЭлементУправления(Дерево); // СоздатьЭУ
+Дерево.СоздатьЭУ(&quot;MSComctlLib.TreeCtrl&quot;);
+</pre>
+</div>
+<div class="section" id="id4">
+<h1><a name="id4">События</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="selection">
+<h2><a name="selection"><span class="target" id="id5">Выбор</span> / Selection</a></h2>
+<blockquote>
+<p><strong>Синтаксис для формы:</strong> Выбор( Объект )</p>
+<p><strong>Синтаксис для КОП:</strong> Выбор()</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Объект - тип: АктивИкс или КОП-наследник АктивИкс. Параметр Объект не передается в случае нахождения обработчика в наследнике АктивИкс.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> Возникает при нажатии Enter или двойном щелчке на элементе АктивИкс в форме.
+После обработки данного события управление передается самому ЭУ.
+Применение данного события полностью идентично применению штатным событиям АктивИкс.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id6">
+<h1><a name="id6">Свойства</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="object">
+<h2><a name="object"><span class="target" id="id7">Объект</span> / Object</a></h2>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> OLE объект.</p>
+<p><strong>Описание:</strong> Обеспечивает доступ к свойствам и методам созданного элемента управления.</p>
+</blockquote>
+</div>
+<div class="section" id="eventprocessing">
+<h2><a name="eventprocessing">ОбработкаСобытий / EventProcessing</a></h2>
+<blockquote>
+<p><strong>Доступ:</strong> чтение и запись.</p>
+<p><strong>Тип:</strong> Число.</p>
+<p><strong>Описание:</strong> Управляет вызовом процедур - обработчиков событий.</p>
+</blockquote>
+<p>Если 0, то при возникновении событий в элементе управления
+процедуры-обработчики не вызываются. При любых других значениях обработка событий производится.</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h1><a name="id8">Методы</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="assignattrib">
+<h2><a name="assignattrib"><span class="target" id="id9">УстановитьАтрибут</span> / AssignAttrib</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьАтрибут(Форма, ИдентификаторЭлементаДиалога)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Форма</strong> - тип: Форма. Форма, на которой будет создан элемент ActiveX</li>
+<li><strong>ИдентификаторЭлементаДиалога</strong> - тип: Строка. Идентификатор элемента
+диалога, на месте которого будет создан элемент ActiveX.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Указывает размещение создаваемого элемента,
+а также устанавливает префикс для имен процедур-обработчиков событий, расположенных
+в модуле формы.</p>
+</blockquote>
+<p>имена процедур-обработчиков событий, расположенных в модуле
+<a class="reference" href="classes.chm::/classes0.html">КОП-наследника</a> АктивИкс совпадают с именами событий.</p>
+<div class="important">
+<p class="first admonition-title">Important</p>
+<p class="last">Метод работает после физического открытия окна формы (например - в предопределенной процедуре
+ПослеОткрытия). Метод работает только для реквизитов диалога типа &quot;Текст&quot;.</p>
+</div>
+</div>
+<div class="section" id="createcontrol">
+<h2><a name="createcontrol">СоздатьЭУ / CreateControl</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong></p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ProgID</strong> - тип: Строка. ProgID элемента управления как указано в реестре.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> OLE объект созданного элемента управления.</p>
+<p><strong>Описание:</strong> Создает в месте, указанном при вызове процедуры <a class="reference" href="#id9">УстановитьАтрибут</a>
+элемент управления ActiveX с указанным ProgID.</p>
+</blockquote>
+<div class="important">
+<p class="first admonition-title">Important</p>
+<p class="last">Метод работает после указания расположения ЭУ вызовом <a class="reference" href="#id9">УстановитьАтрибут</a> класса <a class="reference" href="#id1">АктивИкс</a>
+или вызовом СоздатьЭУ(СоздатьТабличноеПоле) класса АтрибутФормы.</p>
+</div>
+<p>OLE-объект возвращаемый при выполнении метода может быть сохранен в переменной.
+В дальнейшем доступ к этому объекту может осуществляться через свойство <a class="reference" href="#id7">Объект</a>.</p>
+</div>
+<div class="section" id="setfocus">
+<h2><a name="setfocus">УстановитьФокус / SetFocus</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьФокус()</p>
+<p><strong>Описание:</strong> Устанавливает фокус ввода.</p>
+</blockquote>
+</div>
+<div class="section" id="destroy">
+<h2><a name="destroy">Уничтожить / Destroy</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Уничтожить()</p>
+<p><strong>Описание:</strong> уничтожает элемент управления.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

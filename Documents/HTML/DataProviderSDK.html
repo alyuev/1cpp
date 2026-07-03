@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Описание интерфейса поставщиков данных табличного поля</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">Описание интерфейса поставщиков данных табличного поля</h1>
+<!-- Автор: Дмитрий Ощепков aka DmitrO, mailto: dmitro@russian.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_data_provider_sdk_</alinks>
+</chminfo>
+<div class="contents topic" id="id2">
+<p class="topic-title first"><a name="id2">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#cdataprovider" id="id12" name="id12">CDataProvider</a><ul>
+<li><a class="reference" href="#id3" id="id13" name="id13">Интерфейс общего назначения</a><ul>
+<li><a class="reference" href="#getcontrol" id="id14" name="id14">GetControl</a></li>
+<li><a class="reference" href="#setcontrol" id="id15" name="id15">SetControl</a></li>
+<li><a class="reference" href="#resetdata" id="id16" name="id16">ResetData</a></li>
+<li><a class="reference" href="#setcurrentrow" id="id17" name="id17">SetCurrentRow</a></li>
+<li><a class="reference" href="#ondetach" id="id18" name="id18">OnDetach</a></li>
+<li><a class="reference" href="#onattach" id="id19" name="id19">OnAttach</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id4" id="id20" name="id20">Интерфейс запроса и получения строк</a><ul>
+<li><a class="reference" href="#queryrows" id="id21" name="id21">QueryRows</a></li>
+<li><a class="reference" href="#fetch" id="id22" name="id22">Fetch</a></li>
+<li><a class="reference" href="#refreshrow" id="id23" name="id23">RefreshRow</a></li>
+<li><a class="reference" href="#comparerows" id="id24" name="id24">CompareRows</a></li>
+<li><a class="reference" href="#getlasterror" id="id25" name="id25">GetLastError</a></li>
+<li><a class="reference" href="#getrowcount" id="id26" name="id26">GetRowCount</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id5" id="id27" name="id27">Интерфейс управления составом полей</a><ul>
+<li><a class="reference" href="#queryfield" id="id28" name="id28">QueryField</a></li>
+<li><a class="reference" href="#releasefield" id="id29" name="id29">ReleaseField</a></li>
+<li><a class="reference" href="#onfieldschanged" id="id30" name="id30">OnFieldsChanged</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id6" id="id31" name="id31">Интерфейс быстрого поиска</a><ul>
+<li><a class="reference" href="#getquicksearchtype" id="id32" name="id32">GetQuickSearchType</a></li>
+<li><a class="reference" href="#quicksearch" id="id33" name="id33">QuickSearch</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id7" id="id34" name="id34">Структуры даных</a><ul>
+<li><a class="reference" href="#stquicksearchpattern" id="id35" name="id35">stQuickSearchPattern</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id8" id="id36" name="id36">Перечисления</a><ul>
+<li><a class="reference" href="#datatype" id="id37" name="id37">DataType</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#cdatarow" id="id38" name="id38">CDataRow</a><ul>
+<li><a class="reference" href="#id9" id="id39" name="id39">Интерфейс строки данных</a><ul>
+<li><a class="reference" href="#getfieldcount" id="id40" name="id40">GetFieldCount</a></li>
+<li><a class="reference" href="#getfieldindexof" id="id41" name="id41">GetFieldIndexOf</a></li>
+<li><a class="reference" href="#getfieldname" id="id42" name="id42">GetFieldName</a></li>
+<li><a class="reference" href="#getfieldtype" id="id43" name="id43">GetFieldType</a></li>
+<li><a class="reference" href="#formatfield" id="id44" name="id44">FormatField</a></li>
+<li><a class="reference" href="#getrowindex" id="id45" name="id45">GetRowIndex</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#cv7dataprovider" id="id46" name="id46">CV7DataProvider</a><ul>
+<li><a class="reference" href="#id10" id="id47" name="id47">Интерфейс</a><ul>
+<li><a class="reference" href="#getv7datarow" id="id48" name="id48">GetV7DataRow</a></li>
+<li><a class="reference" href="#getrowvalue" id="id49" name="id49">GetRowValue</a></li>
+<li><a class="reference" href="#buildrowbyvalue" id="id50" name="id50">BuildRowByValue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#cv7datarow" id="id51" name="id51">CV7DataRow</a><ul>
+<li><a class="reference" href="#id11" id="id52" name="id52">Интерфейс</a><ul>
+<li><a class="reference" href="#getvalue" id="id53" name="id53">GetValue</a></li>
+<li><a class="reference" href="#formatvalue" id="id54" name="id54">FormatValue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Настоящее описание является основной документацией для разработки <em>поставщиков данных</em>.
+Поставщики данных - это объекты, работающие под управлением элемента управления (ЭУ) - объекта ТабличноеПоле.</p>
+<p>Поставщик данных должен реализовать интерфейсы двух абстрактных классов:</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference" href="#cdataprovider">CDataProvider</a>;</li>
+<li><a class="reference" href="#cv7dataprovider">CV7DataProvider</a>.</li>
+</ul>
+</blockquote>
+<p>Через эти интерфейсы поставщик должен передавать <em>объекты строк данных</em>. Эти объекты должны реализовать интерфейсы
+двух абстрактных классов:</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference" href="#cdatarow">CDataRow</a>;</li>
+<li><a class="reference" href="#cv7datarow">CV7DataRow</a>.</li>
+</ul>
+</blockquote>
+<p>Поставщик данных должен создавать экземпляры строк, и передавать указатели на них элементу управления. За дальнейшее
+использование и уничтожение объектов строк отвечает элемент управления. Разрушение объектов строк происходит
+только за счет вызова виртуального деструктора.</p>
+<p>Классы <a class="reference" href="#cdataprovider">CDataProvider</a> и <a class="reference" href="#cdatarow">CDataRow</a> описаны в заголовочном файле DataProvider.h. Они являются общими и могут применяться
+вне среды 1C (V7).</p>
+<p>Классы <a class="reference" href="#cv7dataprovider">CV7DataProvider</a> и <a class="reference" href="#cv7datarow">CV7DataRow</a> описаны в заголовочном файле V7DataProvider.h. Они являются расширением интерфейса
+поставщиков данных для более эффективной и гибкой работы в среде 1C (V7).</p>
+<div class="section" id="cdataprovider">
+<h1><a name="cdataprovider">CDataProvider</a></h1>
+<p>Базовый класс для всех поставщиков данных. Содержит интерфейсы, через которые ЭУ управляет поставщиком данных.
+Каждый поставщик данных должен реализовать <a class="reference" href="#id4">Интерфейс запроса и получения строк</a>.</p>
+<div class="section" id="id3">
+<h2><a name="id3">Интерфейс общего назначения</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p>Собраны функции общего назначения.</p>
+<div class="section" id="getcontrol">
+<h3><a name="getcontrol">GetControl</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">HWND</span> <span class="pre">GetControl()</span> <span class="pre">const;</span></tt></p>
+<p><strong>Возвращает:</strong> дескриптор ЭУ, если NULL - поставщик не подключен к ЭУ.</p>
+<p><strong>Описание:</strong> позволяет получить дескриптор ЭУ, подключенного в данный момент к поставщику данных.</p>
+</blockquote>
+</div>
+<div class="section" id="setcontrol">
+<h3><a name="setcontrol">SetControl</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">void</span> <span class="pre">SetControl(HWND</span> <span class="pre">hControl);</span></tt></p>
+<p><strong>Описание:</strong> позволяет установить дескриптор ЭУ, подключая таким образом поставщика данных к ЭУ. Эту процедуру
+вызывает сам ЭУ.</p>
+</blockquote>
+</div>
+<div class="section" id="resetdata">
+<h3><a name="resetdata">ResetData</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">void</span> <span class="pre">ResetData(CDataRow*</span> <span class="pre">pDataRow</span> <span class="pre">=</span> <span class="pre">NULL);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>pDataRow - указатель на строку данных, которую требуется сделать текущей при инициализации.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет инициализировать заполнение ЭУ. Имеет эффект только в том случае, когда поставщик данных
+подключен к ЭУ.</p>
+</blockquote>
+</div>
+<div class="section" id="setcurrentrow">
+<h3><a name="setcurrentrow">SetCurrentRow</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">void</span> <span class="pre">SetCurrentRow(CDataRow*</span> <span class="pre">pDataRow);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>pDataRow - указатель на строку данных, которую требуется сделать текущей.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет сделать текущей переданную строку. Имеет эффект только в том случае, когда поставщик данных
+подключен к ЭУ.</p>
+</blockquote>
+</div>
+<div class="section" id="ondetach">
+<h3><a name="ondetach">OnDetach</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">OnDetach();</span></tt></p>
+<p><strong>Описание:</strong> вызвается после отключения поставщика данных от ЭУ.</p>
+</blockquote>
+</div>
+<div class="section" id="onattach">
+<h3><a name="onattach">OnAttach</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">OnAttach();</span></tt></p>
+<p><strong>Описание:</strong> вызвается после подключения поставщика данных к ЭУ.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a name="id4">Интерфейс запроса и получения строк</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p>Основной интерфейс поставщика данных.</p>
+<p>Реализация обязательна.</p>
+<div class="section" id="queryrows">
+<h3><a name="queryrows">QueryRows</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">QueryRows(CDataRow*</span> <span class="pre">pRowFrom,</span> <span class="pre">int</span> <span class="pre">nRowsCount,</span> <span class="pre">int</span> <span class="pre">nPageSizeHint)</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>pRowFrom - строка данных, от которой необходимо получить строки. Может быть равен NULL, это означает, что
+строки запрашиваются с крайнего положения: с начала или с конца (см. параметр nRowsCount);</li>
+<li>nRowsCount - запрашиваемое количество строк. Знак указывает направление.
+Если параметр больше нуля - запрашиваются следующие строки (вниз).
+Если параметр меньше нуля - запрашиваются предыдущие строки (вверх);</li>
+<li>nPageSizeHint - размер страницы. Всегда положительное число, которое передается элементом управления
+для подсказки поставщику, чтобы тот мог оптимизировать свое поведение.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> запрашивает строки у поставщика данных. После вызова метода всегда будет один или несколько вызов
+<a class="reference" href="#fetch">Fetch</a> для собственно получения строк элементом управления.</p>
+</blockquote>
+</div>
+<div class="section" id="fetch">
+<h3><a name="fetch">Fetch</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">CDataRow*</span> <span class="pre">Fetch()</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Возвращает:</strong> указатель на строку данных.</p>
+<p><strong>Описание:</strong> возвращает запрошенные методом <a class="reference" href="#queryrows">QueryRows</a> строки данных. Если возвращается NULL - это означает,
+что все строки последнего запроса были выбраны. Поставщик данных должен вернуть столько строк,
+сколько запрошено в параметре nRowsCount в предыдущем вызове метода <a class="reference" href="#queryrows">QueryRows</a>, иначе ЭУ считает, что в
+данном направлении достигнут конец выборки строк, и последующие запросы в этом направлении выполнять не будет.</p>
+<p><strong>Замечание:</strong> поставщик данных не должен следить за освобождением памяти объекта строки данных. После того,
+как строка передана поставщику данных ЭУ, освобождение этого объекта - ответственность ЭУ.</p>
+</blockquote>
+</div>
+<div class="section" id="refreshrow">
+<h3><a name="refreshrow">RefreshRow</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">BOOL</span> <span class="pre">RefreshRow(CDataRow*</span> <span class="pre">pRowFrom)</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>pRowFrom - указатель на строку данных, данные которой необходимо обновить.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> результат успешности обновления данных строки.</p>
+<p><strong>Описание:</strong> поставщик данных должен обновить данные строки.</p>
+</blockquote>
+</div>
+<div class="section" id="comparerows">
+<h3><a name="comparerows">CompareRows</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">BOOL</span> <span class="pre">CompareRows(CDataRow*</span> <span class="pre">pRow1,</span> <span class="pre">CDataRow*</span> <span class="pre">pRow2)</span> <span class="pre">const</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>pRow1 - указатель на одну строку данных;</li>
+<li>pRow2 - указатель на другую строку данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> TRUE, если эти два объекта представляют одну и ту же строку, иначе FALSE.</p>
+<p><strong>Описание:</strong> поставщик данных должен сравнить объекты строк. Дело в том, что при работе ЭУ может сохранять
+объекты строк, но в некоторых ситуациях он может запросить те же строки заново. Для того, чтобы ЭУ знал, что
+новый полученный объект представляет ту же строку - необходим этот метод.</p>
+</blockquote>
+</div>
+<div class="section" id="getlasterror">
+<h3><a name="getlasterror">GetLastError</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">LPCSTR</span> <span class="pre">GetLastError();</span></tt></p>
+<p><strong>Возвращает:</strong> указатель на строку - описание ошибки в работе поставщика данных.</p>
+<p><strong>Описание:</strong> метод нужен для диагностики неправильной работы поставщика данных. Если метод возвращает не NULL,
+то ЭУ будет визуально сообщать об ошибке текстом полученным при вызове этого метода.</p>
+</blockquote>
+</div>
+<div class="section" id="getrowcount">
+<h3><a name="getrowcount">GetRowCount</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">BOOL</span> <span class="pre">GetRowCount(UINT*</span> <span class="pre">pCount);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>pCount - указатель на переменную, принимающую количество строк в наборе данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> поддерживает ли поставщик данных определение относительного положения записи.</p>
+<p><strong>Описание:</strong> этим методом запрашивается общее количество строк в наборе данных и размер набора данных. Если метод
+возвращает TRUE - значит, поставщик поддерживает определение относительного положения записи во всем наборе данных,
+и по указателю pCount записано общее количество строк в наборе, иначе поставщик не поддерживает определение
+относительное положения записи в наборе данных.
+См. также <a class="reference" href="#getrowindex">GetRowIndex</a>.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a name="id5">Интерфейс управления составом полей</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p>Если поставщику данных не требуется управлять составом полей данных в зависимости от видимости колонок ЭУ, поставщик
+может не реализовывать функции этого интерфейса.</p>
+<p>Реализация не обязательна.</p>
+<div class="section" id="queryfield">
+<h3><a name="queryfield">QueryField</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">QueryField(LPCSTR</span> <span class="pre">szFieldName);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>szFieldName - имя поля данных.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> метод вызывается, когда элементу управления требуется отображать содержимое поля с именем szFieldName.</p>
+</blockquote>
+</div>
+<div class="section" id="releasefield">
+<h3><a name="releasefield">ReleaseField</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">ReleaseField(LPCSTR</span> <span class="pre">szFieldName);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>szFieldName - имя поля данных.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> метод вызывается, когда элементу управления больше не требуется отображать содержимое поля с именем
+szFieldName.</p>
+</blockquote>
+</div>
+<div class="section" id="onfieldschanged">
+<h3><a name="onfieldschanged">OnFieldsChanged</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">OnFieldsChanged();</span></tt></p>
+<p><strong>Описание:</strong> этот метод должен вызываться поставщиком данных внутренне при изменении состава полей данных.
+Стандартные действия этого метода - команда элементу управления о том, что состав полей изменился.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><a name="id6">Интерфейс быстрого поиска</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p>Используется для обслуживания <em>быстрого поиска</em> в наборе данных отображаемом поставщиком данных.</p>
+<p>Реализация не обязательна.</p>
+<div class="section" id="getquicksearchtype">
+<h3><a name="getquicksearchtype">GetQuickSearchType</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">DataType</span> <span class="pre">GetQuickSearchType(LPCSTR</span> <span class="pre">szFieldName);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>szFieldName - имя поля данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип данных для ввода образца для поиска по полю szFieldName.</p>
+<p><strong>Описание:</strong> метод вызывается, когда элементу управления требуется определить - поддерживается ли поставщиком данных
+быстрый поиск по полю szFieldName. Если возвращается dtUndefined - по этому полю быстрый поиск не поддерживается,
+иначе возвращяемое значение определяет тип данных для ввода образца для поиска по полю szFieldName.</p>
+<p><strong>Замечание:</strong> в настоящий момент поддерживается только dtText.</p>
+</blockquote>
+</div>
+<div class="section" id="quicksearch">
+<h3><a name="quicksearch">QuickSearch</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">QuickSearch(stQuickSearchPattern&amp;</span> <span class="pre">QSPattern);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>QSPattern - ссылка на структуру <a class="reference" href="#stquicksearchpattern">stQuickSearchPattern</a> - с данными образца для поиска.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> поставщик данных должен выполнить быстрый поиск по переданному образцу. Результатом поиска должна
+быть активизация строки (<a class="reference" href="#setcurrentrow">SetCurrentRow</a>). А также возможно изменение данных структуры <a class="reference" href="#stquicksearchpattern">stQuickSearchPattern</a>.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a name="id7">Структуры даных</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="stquicksearchpattern">
+<h3><a name="stquicksearchpattern">stQuickSearchPattern</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong></p>
+<pre class="literal-block">
+struct stQuickSearchPattern
+{
+        LPCSTR szFieldName;
+        DataType dataType;
+        union
+        {
+                CString* pTextData; //for text fields;
+        };
+};
+</pre>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">szFieldName:</th><td class="field-body">Имя поля данных, по которому требуется выполнить поиск.</td>
+</tr>
+<tr class="field"><th class="field-name">dataType:</th><td class="field-body">Тип данных образца для поиска.</td>
+</tr>
+<tr class="field"><th class="field-name">pTextData:</th><td class="field-body">Образец для поиска типа dtText. После поиска поставщик должен изменить эту строку в зависимости
+от результатов поиска: в ней должно остаться столько символов слева, сколько удовлетворяет значению поля
+в найденной строке.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Описание:</strong> используется для передачи образца данных для выполнения быстрого поиска поставщиком данных.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a name="id8">Перечисления</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="datatype">
+<h3><a name="datatype">DataType</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong></p>
+<pre class="literal-block">
+enum DataType
+{
+        dtUndefined,
+        dtText,
+        dtNumeric,
+        dtDate,
+        dtFalse,
+        dtTrue,
+};
+</pre>
+<p><strong>Описание:</strong> используется для обозначения типа данных поля поставщика данных:</p>
+<blockquote>
+<ul class="simple">
+<li>dtUndefined: тип не определен;</li>
+<li>dtText: строка (текст);</li>
+<li>dtNumeric: число;</li>
+<li>dtDate: дата;</li>
+<li>dtFalse: булево значение Ложь;</li>
+<li>dtTrue: булево значение Истина.</li>
+</ul>
+</blockquote>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="cdatarow">
+<h1><a name="cdatarow">CDataRow</a></h1>
+<p>Базовый класс для класса строки данных (записи).</p>
+<div class="section" id="id9">
+<h2><a name="id9">Интерфейс строки данных</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="getfieldcount">
+<h3><a name="getfieldcount">GetFieldCount</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">int</span> <span class="pre">GetFieldCount()</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Возвращает:</strong> количество полей.</p>
+<p><strong>Описание:</strong> позволяет определить количество полей.</p>
+</blockquote>
+</div>
+<div class="section" id="getfieldindexof">
+<h3><a name="getfieldindexof">GetFieldIndexOf</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">int</span> <span class="pre">GetFieldIndexOf(LPCSTR</span> <span class="pre">szFieldName)</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>szFieldName - имя поля данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> индекс поля данных.</p>
+<p><strong>Описание:</strong> позволяет определить индекс поля по имени. Если поля с таким именем нет, должно возвращаться
+значение -1.</p>
+</blockquote>
+</div>
+<div class="section" id="getfieldname">
+<h3><a name="getfieldname">GetFieldName</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">LPCSTR</span> <span class="pre">GetFieldName(int</span> <span class="pre">nIndex)</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>nIndex - индекс поля данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> указатель на строку с именем поля данных.</p>
+<p><strong>Описание:</strong> позволяет определить имя поля по индексу.</p>
+</blockquote>
+</div>
+<div class="section" id="getfieldtype">
+<h3><a name="getfieldtype">GetFieldType</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">DataType</span> <span class="pre">GetFieldType(int</span> <span class="pre">nIndex);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>nIndex - индекс поля данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип поля данных.</p>
+<p><strong>Описание:</strong> позволяет определить тип поля данных. Используется элементом управления, для общепринятого
+отображения различных типов данных.</p>
+</blockquote>
+</div>
+<div class="section" id="formatfield">
+<h3><a name="formatfield">FormatField</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">FormatField(int</span> <span class="pre">nIndex,</span> <span class="pre">CString&amp;</span> <span class="pre">strValue)</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>nIndex - индекс поля данных;</li>
+<li>strValue - строка для форматирования значения поля данных.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> форматирует значение поля данных. strValue - строка, в которой должно произойти форматирование.</p>
+</blockquote>
+</div>
+<div class="section" id="getrowindex">
+<h3><a name="getrowindex">GetRowIndex</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">UINT</span> <span class="pre">GetRowIndex();</span></tt></p>
+<p><strong>Возвращает:</strong> индекс строки данных (записи) в наборе данных.</p>
+<p><strong>Описание:</strong> позволяет получить индекс строки (записи) для определения относительного положения строки в наборе
+данных. Метод вызывается только в том случае, если поставщик поддерживает этот функционал.
+См. также <a class="reference" href="#getrowcount">GetRowCount</a>.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="cv7dataprovider">
+<h1><a name="cv7dataprovider">CV7DataProvider</a></h1>
+<p>Базовый класс для поставщика данных. Этот класс является расширением поставщиков данных для среды 1CV7.</p>
+<div class="section" id="id10">
+<h2><a name="id10">Интерфейс</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="getv7datarow">
+<h3><a name="getv7datarow">GetV7DataRow</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">CV7DataRow*</span> <span class="pre">GetV7DataRow(CDataRow*</span> <span class="pre">pDataRow)</span> <span class="pre">const</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>pDataRow - указатель на строку данных (получен от поставщика данных).</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> указатель на строку данных типа <a class="reference" href="#cv7datarow">CV7DataRow</a>.</p>
+<p><strong>Описание:</strong> Этот метод является вспомогательным. Служит для преобразования CDataRow* в CV7DataRow*. Дело в том,
+что сам ЭУ не может выполнить такое преобразование безопасно, или для этого придется применять динамическое
+преобразование по RTTI - это неоправдано медленно для каждой строки. А поставщик данных может выполнить
+такое преобразование статически. (фактически нужно выполнить upcast и downcast)</p>
+</blockquote>
+</div>
+<div class="section" id="getrowvalue">
+<h3><a name="getrowvalue">GetRowValue</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">void</span> <span class="pre">GetRowValue(CDataRow*</span> <span class="pre">pDataRow,</span> <span class="pre">CValue&amp;</span> <span class="pre">value)</span> <span class="pre">const;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>pDataRow - указатель на строку данных (получен от поставщика данных).</li>
+<li>value - [out] объект для приема результата.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> с помощью этого метода ЭУ получает в параметре value значение, представляющее переданную параметром
+pDataRow строку данных.</p>
+<p><strong>Примечание:</strong> метод используется для реализации свойства табличного поля ТекущаяСтрока по чтению. Поставщик должен
+реализовать этот метод, если требуется этот функционал.</p>
+</blockquote>
+</div>
+<div class="section" id="buildrowbyvalue">
+<h3><a name="buildrowbyvalue">BuildRowByValue</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">CDataRow*</span> <span class="pre">BuildRowByValue(const</span> <span class="pre">CValue&amp;</span> <span class="pre">value);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>value - значение представляющее строку данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> указатель на строку данных.</p>
+<p><strong>Описание:</strong> с помощью этого метода ЭУ пытается получить от поставщика данных новый экземпляр строки данных по
+значению переданному параметром value. Значение параметра должно представлять строку данных. Объект строки
+данных, указатель на который возвращается, должен быть временным и будет освобожден элементом управления, после
+использования его для установки текущей строки.</p>
+<p><strong>Примечание:</strong> метод используется для реализации свойства табличного поля ТекущаяСтрока по записи.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="cv7datarow">
+<h1><a name="cv7datarow">CV7DataRow</a></h1>
+<p>Базовый класс для класса строки данных (записи).  Этот класс является расширением класса строки данных для среды 1CV7.</p>
+<div class="section" id="id11">
+<h2><a name="id11">Интерфейс</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="getvalue">
+<h3><a name="getvalue">GetValue</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">virtual</span> <span class="pre">const</span> <span class="pre">CValue&amp;</span> <span class="pre">GetValue(int</span> <span class="pre">nIndex)</span> <span class="pre">const</span> <span class="pre">=</span> <span class="pre">0;</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>nIndex - индекс поля данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> ссылку на объект значения поля данных.</p>
+<p><strong>Описание:</strong> позволяет элементу управления получить значение поля данных.</p>
+</blockquote>
+</div>
+<div class="section" id="formatvalue">
+<h3><a name="formatvalue">FormatValue</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> <tt class="docutils literal"><span class="pre">static</span> <span class="pre">void</span> <span class="pre">FormatValue(const</span> <span class="pre">CValue&amp;</span> <span class="pre">Value,</span> <span class="pre">CString&amp;</span> <span class="pre">strValue);</span></tt></p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Value - значение для форматирования;</li>
+<li>strValue - [out] результат форматирования.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> вспомогательная процедура, которая форматирует значение Value по общепринятым в 1CV7
+правилам форматирования значений для отображения в таблицах.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

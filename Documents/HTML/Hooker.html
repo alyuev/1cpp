@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Перехватчик</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">Перехватчик</h1>
+<!-- Автор: Артур Аюханов aka artbear, mailto: artbear@inbox.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_hooker_</alinks>
+        <klinks>
+                Перехватчик
+                Interceptor
+        </klinks>
+</chminfo>
+<div class="contents topic" id="id2">
+<p class="topic-title first"><a name="id2">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id3" id="id43" name="id43"><strong>Общая схема перехвата:</strong></a></li>
+<li><a class="reference" href="#id4" id="id44" name="id44">Перехват событий модулей форм и групповых контекстов</a><ul>
+<li><a class="reference" href="#hookeventsofgroupcontext" id="id45" name="id45">ПерехватитьСобытияГК / HookEventsOfGroupContext</a></li>
+<li><a class="reference" href="#runeventofgroupcontext" id="id46" name="id46">ВыполнитьСобытиеГК / RunEventOfGroupContext</a></li>
+<li><a class="reference" href="#runoriginaleventofgroupcontext" id="id47" name="id47">ВыполнитьОригинальноеСобытиеГК / RunOriginalEventOfGroupContext</a></li>
+<li><a class="reference" href="#gethookobjectforeventsofgroupcontext" id="id48" name="id48">ПолучитьПерехватчикСобытийГК / GetHookObjectForEventsOfGroupContext</a></li>
+<li><a class="reference" href="#k-unhookeventsofgroupcontext" id="id49" name="id49">СнятьПерехватСобытийГK / UnHookEventsOfGroupContext</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id9" id="id50" name="id50">Перехват событий глобального модуля</a><ul>
+<li><a class="reference" href="#hookeventsofglobalmodule" id="id51" name="id51">ПерехватитьСобытияГлобальногоМодуля / HookEventsOfGlobalModule</a></li>
+<li><a class="reference" href="#runeventofglobalmodule" id="id52" name="id52">ВыполнитьСобытиеГлобальногоМодуля / RunEventOfGlobalModule</a></li>
+<li><a class="reference" href="#runoriginaleventofglobalmodule" id="id53" name="id53">ВыполнитьОригинальноеСобытиеГлобальногоМодуля / RunOriginalEventOfGlobalModule</a></li>
+<li><a class="reference" href="#gethookobjectforeventsofglobalmodule" id="id54" name="id54">ПолучитьПерехватчикСобытийГлобальногоМодуля / GetHookObjectForEventsOfGlobalModule</a></li>
+<li><a class="reference" href="#unhookeventsofglobalmodule" id="id55" name="id55">СнятьПерехватСобытийГлобальногоМодуля / UnHookEventsOfGlobalModule</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id15" id="id56" name="id56">Дополнительные методы для работы с доп.перехватами в глобальном модуле</a><ul>
+<li><a class="reference" href="#addevent-unhandlederror" id="id57" name="id57">ПодключитьСобытие_НеобработаннаяОшибка / AddEvent_UnHandledError</a></li>
+<li><a class="reference" href="#addevent-reporteventa" id="id58" name="id58">ПодключитьСобытие_ЗаписьСобытияЖурналаРегистрации / AddEvent_ReportEventA</a></li>
+<li><a class="reference" href="#addevent-reportuserevent" id="id59" name="id59">ПодключитьСобытие_ЗаписьПользовательскогоСобытияЖурналаРегистрации / AddEvent_ReportUserEvent</a></li>
+<li><a class="reference" href="#addverylongstringrestructure" id="id60" name="id60">ВключитьРазбиениеДлинныхСтрокДляМетодаСообщить / AddVeryLongStringRestructure</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id20" id="id61" name="id61">Перехват событий проведения и отмены проведения документов</a><ul>
+<li><a class="reference" href="#hookeventsofdocumenttransaction" id="id62" name="id62">ПерехватитьСобытияПроведенияДокумента / HookEventsOfDocumentTransaction</a></li>
+<li><a class="reference" href="#gethookobjectforeventsofdocumenttransaction" id="id63" name="id63">ПолучитьПерехватчикСобытийПроведенияДокумента / GetHookObjectForEventsOfDocumentTransaction</a></li>
+<li><a class="reference" href="#unhookeventsofdocumenttransaction" id="id64" name="id64">СнятьПерехватСобытийПроведенияДокумента / UnHookEventsOfDocumentTransaction</a></li>
+<li><a class="reference" href="#id25" id="id65" name="id65">Описание обработчика события модуля документа</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id26" id="id66" name="id66">События глобального модуля</a><ul>
+<li><a class="reference" href="#id29" id="id67" name="id67">Событие_НеобработаннаяОшибка</a></li>
+<li><a class="reference" href="#id31" id="id68" name="id68">Событие_ЗаписьСобытияЖурналаРегистрации</a></li>
+<li><a class="reference" href="#id33" id="id69" name="id69">Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id34" id="id70" name="id70">Специальные события глобального модуля - только для классов-перехватчиков ГМ</a><ul>
+<li><a class="reference" href="#id36" id="id71" name="id71">СобытиеГМ_СозданиеКонтекста</a></li>
+<li><a class="reference" href="#id38" id="id72" name="id72">СобытиеГМ_ПриОткрытии</a></li>
+<li><a class="reference" href="#id40" id="id73" name="id73">СобытиеГМ_ВводНового</a></li>
+<li><a class="reference" href="#id42" id="id74" name="id74">СобытиеГМ_ВводНаОсновании</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Класс &quot;Перехватчик&quot; / &quot;Interceptor&quot;.</strong></p>
+<p>Специальный класс, предназначенный для перехвата предопределенных событий
+1С и ВК FormEx, вызываемых для групповых контекстов, модулей проведения документов и/или глобального модуля,
+с помощью специальных объектов пользовательских классов 1С++ или объектов типа ВыполняемыйМодуль 
+или наследников от произвольных CBL-контекстов.</p>
+<p><strong>Версия: релиз 2.5 и выше.</strong></p>
+<div class="section" id="id3">
+<h1><a name="id3"><strong>Общая схема перехвата:</strong></a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p>0. Для использования перехвата должна быть включена настройка 1С++
+&quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+См. <a class="reference" href="SettingsManager.chm::/SettingsManager0.html">SettingsManager</a></p>
+<p>1.0 В качестве собственных объектов-перехватчиков можно использовать как 
+пользовательский класс 1С++, так и объект типа ВыполняемыйМодуль, а также 
+наследников от произвольных CBL-контекстов (например, для произвольных 
+ВК - подобная ВК со своими классами есть у Александра Орефкова aka orefkov)</p>
+<p>1.1 Необходимо использовать модуль, в котором должны
+быть определены <strong>обработчики соответствующих событий с названием события</strong>
+(ПриЗакрытии, ПриНачалеВыбораЗначения, ПриНажатииКнопкиКлавиатуры) или
+<strong>со специальным названием в виде Событие_НаименованиеСобытия</strong>
+(Событие_ПриЗакрытии, Событие_ПриНачалеВыбораЗначения, СобытиеГМ_ПриНажатииКнопкиКлавиатуры)</p>
+<p>1.2 Для событий глобального модуля <strong>всегда используется префикс ``СобытиеГМ_``</strong>
+(СобытиеГМ_ПриЗавершенииРаботыСистемы, СобытиеГМ_ПриНажатииКнопкиКлавиатуры)</p>
+<p>2. Каждый обработчик должен быть определен <strong>с атрибутом Экспорт</strong>, иначе
+перехват указанного события будет невозможен.</p>
+<p>Например, для перехвата событий ПриЗакрытии и ПриНачалеВыбораЗначения в
+классе-перехватчике необходимо написать</p>
+<blockquote>
+<dl class="docutils">
+<dt>Процедура ПриЗакрытии() Экспорт</dt>
+<dd>// текст обработчика события</dd>
+</dl>
+<p>КонецПроцедуры</p>
+<dl class="docutils">
+<dt>Процедура Событие_ПриНачалеВыбораЗначения(НужныеПараметры и т.д.) Экспорт</dt>
+<dd>// текст обработчика события</dd>
+</dl>
+<p>КонецПроцедуры</p>
+</blockquote>
+<p>Или для перехвата события ПриЗавершенииРаботыСистемы в
+классе-перехватчике необходимо написать</p>
+<blockquote>
+<dl class="docutils">
+<dt>Процедура СобытиеГМ_ПриЗавершенииРаботыСистемы() Экспорт</dt>
+<dd>// текст обработчика события</dd>
+</dl>
+<p>КонецПроцедуры</p>
+</blockquote>
+<p>3. Для включения перехвата конкретного контекста формы нужно использовать
+код</p>
+<blockquote>
+<ul class="simple">
+<li>ОбъектПерехватчикГК = СоздатьОбъект(&quot;КлассПерехватчикГК&quot;);</li>
+<li>Перехватчик = СоздатьОбъект(&quot;Перехватчик&quot;);</li>
+<li>Перехватчик. <a class="reference" href="#id5">ПерехватитьСобытияГК</a> (КонтФормы, ОбъектПерехватчикГК);</li>
+</ul>
+<p>или</p>
+<ul class="simple">
+<li>Перехватчик. <a class="reference" href="#id10">ПерехватитьСобытияГлобальногоМодуля</a> (ОбъектПерехватчикГМ);</li>
+</ul>
+<p>или</p>
+<ul class="simple">
+<li>ПредОбработчик = Перехватчик. <a class="reference" href="#id5">ПерехватитьСобытияГК</a> (ОбъектПерехватчикГК);</li>
+<li>ПредОбработчик = Перехватчик. <a class="reference" href="#id10">ПерехватитьСобытияГлобальногоМодуля</a> (ОбъектПерехватчикГМ);</li>
+</ul>
+</blockquote>
+<p>4. В перехваченном контексте или перехваченном глобальном модуле
+<strong>обработчики событий могут вообще отсутствовать или быть определены без
+атрибута Экспорт</strong>.</p>
+<p>5. После установки перехвата при вызове системой события
+управление   будет   передано   в   соответствующий   обработчик   события    в
+классе-перехватчике.
+В этом случае встроенные обработчики предопределенных событий в
+перехваченном контексте или глобальном модуле автоматически вызываться не
+будут.
+Разработчик сам должен вызвать данные обработчики (см. п.7), когда это
+необходимо.</p>
+<p>6. Для включения перехвата событий глобального модуля необходимо
+использовать код</p>
+<blockquote>
+<ul class="simple">
+<li>ОбъектПерехватчикСобытийГлобальногоМодуля = СоздатьОбъект(&quot;КлассПерехватчикСобытийГлобальногоМодуля&quot;);</li>
+<li>Перехватчик = СоздатьОбъект(&quot;Перехватчик&quot;);</li>
+<li>Перехватчик. <a class="reference" href="#id10">ПерехватитьСобытияГлобальногоМодуля</a> (ОбъектПерехватчикСобытийГлобальногоМодуля);</li>
+</ul>
+</blockquote>
+<p>7. При необходимости вызова обработчиков событий, которые определены в контексте
+или в глобальном модуле, в обработчике события внутри пользовательского модуля
+нужно использовать код</p>
+<blockquote>
+<p>Процедура Событие_ПриЗакрытии() Экспорт</p>
+<ul class="simple">
+<li>Перехватчик = СоздатьОбъект(&quot;Перехватчик&quot;);</li>
+<li>Перехватчик. <a class="reference" href="#id7">ВыполнитьОригинальноеСобытиеГК</a> (КонтПерехваченнойФормы, &quot;ПриЗакрытии&quot;);</li>
+</ul>
+<p>или для вызова предыдущего сохраненного обработчика</p>
+<ul class="simple">
+<li>Перехватчик. <a class="reference" href="#id6">ВыполнитьСобытиеГК</a> (КонтПерехваченнойФормы, &quot;ПриЗакрытии&quot;, ПредыдущийОбработчик);</li>
+</ul>
+<p>КонецПроцедуры</p>
+</blockquote>
+<p>или</p>
+<blockquote>
+<p>Процедура СобытиеГМ_ПриЗавершенииРаботыСистемы() Экспорт</p>
+<ul class="simple">
+<li>Перехватчик = СоздатьОбъект(&quot;Перехватчик&quot;);</li>
+<li>Перехватчик. <a class="reference" href="#id12">ВыполнитьОригинальноеСобытиеГлобальногоМодуля</a> (&quot;ПриЗавершенииРаботыСистемы&quot;);</li>
+</ul>
+<p>или для вызова предыдущего сохраненного обработчика</p>
+<ul class="simple">
+<li>Перехватчик. <a class="reference" href="#id11">ВыполнитьСобытиеГлобальногоМодуля</a> (&quot;ПриЗавершенииРаботыСистемы&quot;, ПредыдущийОбработчик);</li>
+</ul>
+<p>КонецПроцедуры</p>
+</blockquote>
+<p>При этом неважно, существует ли обработчик в модуле формы или глобальном модуле.</p>
+<p><strong>Таким образом, для обработки цепочки из нескольких перехватчиков существуют методы</strong>
+<a class="reference" href="#id6">ВыполнитьСобытиеГК</a>
+<a class="reference" href="#id11">ВыполнитьСобытиеГлобальногоМодуля</a></p>
+<p>8. <strong>Важно помнить, что после установки перехвата на контекст формы или глобальный модуль
+на пользовательский объект-перехватчик добавляется еще одна ссылка.</strong>
+В результате деструктор данного объекта-перехватчика будет вызван только
+при закрытии формы или завершении работы 1С соответственно или снятии
+перехвата вручную.</p>
+<p>Например, код</p>
+<blockquote>
+<ul class="simple">
+<li>ОбъектПерехватчикГК = СоздатьОбъект(&quot;КлассПерехватчикГК&quot;);</li>
+<li>Перехватчик = СоздатьОбъект(&quot;Перехватчик&quot;);</li>
+<li>Перехватчик. <a class="reference" href="#id5">ПерехватитьСобытияГК</a> (КонтФормы, ОбъектПерехватчикГК);</li>
+<li>ОбъектПерехватчикГК = 0;</li>
+</ul>
+</blockquote>
+<p>не вызывет деструктор немедленно!</p>
+<p>9. <strong>Метод-обработчик события может возвращать необходимый статус возврата.</strong>
+Для этого обработчик нужно определить как функцию</p>
+<pre class="literal-block">
+Функция ПриЗакрытии() Экспорт
+        // текст обработчика события
+        Возврат 0; // т.е. фактически СтатусВозврата(0) и форма не будет закрыта.
+КонецФункции
+</pre>
+<ol class="arabic simple" start="10">
+<li><strong>Все вышесказанное относится также и к предопределенным событиям ВК FormEx.</strong></li>
+</ol>
+<p>12. <strong>В добавление ко всем стандартным событиям 1С и ВК FormEx добавлено специальное событие</strong>
+<a class="reference" href="#id35">СобытиеГМ_СозданиеКонтекста</a></p>
+<p>12. <strong>В добавление ко всем стандартным событиям 1С и ВК FormEx добавлены специальные события</strong>
+<a class="reference" href="#id37">СобытиеГМ_ПриОткрытии</a> , <a class="reference" href="#id39">СобытиеГМ_ВводНового</a> , <a class="reference" href="#id41">СобытиеГМ_ВводНаОсновании</a></p>
+<p>Данные события вызываются до соответствующих событий формы и могут отключать обработчики из формы.</p>
+</div>
+<div class="section" id="id4">
+<h1><a name="id4">Перехват событий модулей форм и групповых контекстов</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<span id="id5"></span><div class="section" id="hookeventsofgroupcontext">
+<h2><a name="hookeventsofgroupcontext">ПерехватитьСобытияГК / HookEventsOfGroupContext</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПерехватитьСобытияГК(ГрупповойКонтекстФормы, ОбъектПользовательскогоКлассаОбработчикаПерехвата)</p>
+<p><strong>Возвращает:</strong> тип: Предыдущий обработчик или пустое значение - см. метод <a class="reference" href="#id8">ПолучитьПерехватчикСобытийГК</a> .</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>ГрупповойКонтекстФормы</strong> - тип: ГрупповойКонтекст.</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>ОбъектПользовательскогоКлассаОбработчикаПерехвата</strong>  -  тип:  Класс КОП или ВыполняемыйМодуль или произвольный контекст.</dt>
+<dd><p class="first last">Пользовательский класс, в котором определены обработчики событий контекста формы.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Описание:</strong> Перехватывает любые предопределенные события контекста формы, как 1С, так и FormEx.
+Снять перехват можно с использованием метода <a class="reference" href="#k">СнятьПерехватСобытийГK</a> .</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.
+В случае, если первый параметр не является групповым контекстом, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id6"></span><div class="section" id="runeventofgroupcontext">
+<h2><a name="runeventofgroupcontext">ВыполнитьСобытиеГК / RunEventOfGroupContext</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьСобытиеГК(ОбработчикСобытияИлиПустоеЗначение, ГрупповойКонтекстФормы, ИмяСобытия, ...)</p>
+<p><strong>Возвращает:</strong> тип: Число - статус возврата модуля указанного контекста.</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ОбработчикСобытияИлиПустоеЗначение</strong>  -  тип:  класс КОП или ВыполняемыйМодуль или произвольный контекст или пустое значение.</li>
+<li><strong>ГрупповойКонтекстФормы</strong> - тип: ГрупповойКонтекст.</li>
+<li><strong>ИмяСобытия</strong>  -  тип:  Строка.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Вызывает соответствующий обработчик события контекста
+формы. Если обработчик не задан, просто выполняется вызов <a class="reference" href="#id7">ВыполнитьОригинальноеСобытиеГК</a>
+Если обработчик задан, то выполняется вызов соответствующего
+метода. Если метод является функцией,  возвращает результат
+выполнения этой функции,  иначе 1
+Если метод не найден, возвращается 1 и не выдается сообщений об ошибках.</p>
+</blockquote>
+</div>
+<span id="id7"></span><div class="section" id="runoriginaleventofgroupcontext">
+<h2><a name="runoriginaleventofgroupcontext">ВыполнитьОригинальноеСобытиеГК / RunOriginalEventOfGroupContext</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьОригинальноеСобытиеГК(ГрупповойКонтекстФормы, ИмяСобытия, ...)</p>
+<p><strong>Возвращает:</strong> тип: Число - статус возврата модуля указанного контекста.</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ГрупповойКонтекстФормы</strong> - тип: ГрупповойКонтекст.</li>
+<li><strong>ИмяСобытия</strong>  -  тип:  Строка.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Вызывает обработчик события контекста формы, который опреден в модуле этой формы.
+Если обработчика в форме не существует, ошибки не выдается.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.
+В случае, если первый параметр не является групповым контекстом, выдается исключение.
+В случае, если второй параметр не является строкой или строка пуста, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id8"></span><div class="section" id="gethookobjectforeventsofgroupcontext">
+<h2><a name="gethookobjectforeventsofgroupcontext">ПолучитьПерехватчикСобытийГК / GetHookObjectForEventsOfGroupContext</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьПерехватчикСобытийГК(ГрупповойКонтекстФормы)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ГрупповойКонтекстФормы</strong> - тип: ГрупповойКонтекст.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: объект КОП или ВыполняемыйМодуль или произвольный контекст, если для данной формы был включен
+перехват или Неопределено, если нет.</p>
+<p><strong>Описание:</strong> Возвращает объект-перехватчик событий, если для данной
+формы был включен перехват.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.
+В случае, если параметр не является групповым контекстом, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="k"></span><div class="section" id="k-unhookeventsofgroupcontext">
+<h2><a name="k-unhookeventsofgroupcontext">СнятьПерехватСобытийГK / UnHookEventsOfGroupContext</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> СнятьПерехватСобытийГK(ГрупповойКонтекстФормы)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ГрупповойКонтекстФормы</strong> - тип: ГрупповойКонтекст.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Снимает перехват событий контекста формы, если перехват был
+установлен для данной формы.</p>
+<p>Если на пользовательский объект-перехватчик больше нет ссылок, будет
+вызван деструктор данного объекта.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.
+В случае, если параметр не является групповым контекстом, выдается исключение.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id9">
+<h1><a name="id9">Перехват событий глобального модуля</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<span id="id10"></span><div class="section" id="hookeventsofglobalmodule">
+<h2><a name="hookeventsofglobalmodule">ПерехватитьСобытияГлобальногоМодуля / HookEventsOfGlobalModule</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПерехватитьСобытияГлобальногоМодуля(ОбъектПользовательскогоКлассаОбработчикаПерехвата)</p>
+<p><strong>Возвращает:</strong> тип: Предыдущий обработчик или пустое значение - см. метод <a class="reference" href="#id13">ПолучитьПерехватчикСобытийГлобальногоМодуля</a> .</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first">
+<li><dl class="first docutils">
+<dt><strong>ОбъектПользовательскогоКлассаОбработчикаПерехвата</strong>  -  тип:  Класс КОП или ВыполняемыйМодуль или произвольный контекст.</dt>
+<dd><p class="first last">Пользовательский класс, в котором определены обработчики событий глобального модуля.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Описание:</strong> Перехватывает любые предопределенные события глобального модуля, как 1С, так и FormEx.
+Снять перехват можно с использованием метода <a class="reference" href="#id14">СнятьПерехватСобытийГлобальногоМодуля</a> .</p>
+<p class="last">Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+<span id="id11"></span><div class="section" id="runeventofglobalmodule">
+<h2><a name="runeventofglobalmodule">ВыполнитьСобытиеГлобальногоМодуля / RunEventOfGlobalModule</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьСобытиеГлобальногоМодуля(ОбработчикСобытияИлиПустоеЗначение, ИмяСобытия, ...)</p>
+<p><strong>Возвращает:</strong> тип: Число - статус возврата модуля глобального модуля.</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ОбработчикСобытияИлиПустоеЗначение</strong>  -  тип:  класс КОП или ВыполняемыйМодуль или произвольный контекст или пустое значение.</li>
+<li><strong>ИмяСобытия</strong>  -  тип:  Строка.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Вызывает соответствующий обработчик события глобального
+модуля. Если обработчик не задан, просто выполняется вызов <a class="reference" href="#id12">ВыполнитьОригинальноеСобытиеГлобальногоМодуля</a>
+Если обработчик задан, то выполняется вызов соответствующего
+метода. Если метод является функцией,  возвращает результат
+выполнения этой функции,  иначе 1
+Если метод не найден, возвращается 1 и не выдается сообщений об ошибках.</p>
+</blockquote>
+</div>
+<span id="id12"></span><div class="section" id="runoriginaleventofglobalmodule">
+<h2><a name="runoriginaleventofglobalmodule">ВыполнитьОригинальноеСобытиеГлобальногоМодуля / RunOriginalEventOfGlobalModule</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьОригинальноеСобытиеГлобальногоМодуля(ИмяСобытия, ...)</p>
+<p><strong>Возвращает:</strong> тип: Число - статус возврата глобального модуля.</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяСобытия</strong>  -  тип:  Строка.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Вызывает обработчик события глобального модуля, который опреден в глобальном модуле.
+Если обработчика в глобальном модуле не существует, ошибки не выдается.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.
+В случае, если первый параметр не является строкой или строка пуста, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id13"></span><div class="section" id="gethookobjectforeventsofglobalmodule">
+<h2><a name="gethookobjectforeventsofglobalmodule">ПолучитьПерехватчикСобытийГлобальногоМодуля / GetHookObjectForEventsOfGlobalModule</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьПерехватчикСобытийГлобальногоМодуля()</p>
+<p><strong>Возвращает:</strong> тип: объект КОП или ВыполняемыйМодуль или произвольный контекст, если был включен
+перехват событий глобального модуля или Неопределено, если нет.</p>
+<p><strong>Описание:</strong> Возвращает объект-перехватчик событий, если был включен
+перехват событий глобального модуля.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.</p>
+</blockquote>
+</div>
+<span id="id14"></span><div class="section" id="unhookeventsofglobalmodule">
+<h2><a name="unhookeventsofglobalmodule">СнятьПерехватСобытийГлобальногоМодуля / UnHookEventsOfGlobalModule</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> СнятьПерехватСобытийГлобальногоМодуля()</p>
+<p><strong>Описание:</strong> Снимает перехват событий глобального модуля, если перехват был
+установлен.</p>
+<p>Если на пользовательский объект-перехватчик больше нет ссылок, будет
+вызван деструктор данного объекта.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id15">
+<h1><a name="id15">Дополнительные методы для работы с доп.перехватами в глобальном модуле</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<span id="id16"></span><div class="section" id="addevent-unhandlederror">
+<h2><a name="addevent-unhandlederror">ПодключитьСобытие_НеобработаннаяОшибка / AddEvent_UnHandledError</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПодключитьСобытие_НеобработаннаяОшибка()</p>
+<p><strong>Описание:</strong> Подключает возможность получения необработанной ошибки в обработчике
+внутри глобального модуля Событие_НеобработаннаяОшибка()</p>
+<p><strong>Описание обработчика:</strong>
+Функция/Процедура Событие_НеобработаннаяОшибка(СообщениеОбОшибке, Маркер,
+ИмяФайла, Парам4, НомерСтрокиОшибки, Парам6)</p>
+<p>Если обработчик является функцией, то если он возвращает 0, системное
+сообщение об ошибке не показывается. Если 1, то показывается.
+Если процедурой, системное сообщение об ошибке также показывается.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.</p>
+</blockquote>
+</div>
+<span id="id17"></span><div class="section" id="addevent-reporteventa">
+<h2><a name="addevent-reporteventa">ПодключитьСобытие_ЗаписьСобытияЖурналаРегистрации / AddEvent_ReportEventA</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПодключитьСобытие_ЗаписьСобытияЖурналаРегистрации()</p>
+<p><strong>Описание:</strong> Подключает возможность получения события запись в системный журнал регистрации 1С
+в обработчике внутри глобального модуля Событие_ЗаписьСобытияЖурналаРегистрации().
+При этом  неважно,  программная  это  запись  или  запись,  выполненная
+системой.</p>
+<p><strong>Данное событие может вызываться как при внутренних системных событиях, так и при вызове штатного метода 1С &quot;ЗаписьЖурналаРегистрации&quot;.</strong></p>
+<p><strong>Описание обработчика:</strong>
+Функция/Процедура Событие_ЗаписьСобытияЖурналаРегистрации(EventCategory,
+Event, EvType, comment, object, ObjDescr)</p>
+<p>Если обработчик является функцией, то если он возвращает 0, системная
+запись в журнал регистрации выполняться не будет. Если 1, то запись будет выполнена.
+Если процедурой, системная запись в журнал регистрации будет выполнена.</p>
+<p>В параметре object передается ссылка на реальный объект, породивший данное событие.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.</p>
+</blockquote>
+</div>
+<span id="id18"></span><div class="section" id="addevent-reportuserevent">
+<h2><a name="addevent-reportuserevent">ПодключитьСобытие_ЗаписьПользовательскогоСобытияЖурналаРегистрации / AddEvent_ReportUserEvent</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПодключитьСобытие_ЗаписьПользовательскогоСобытияЖурналаРегистрации()</p>
+<p><strong>Описание:</strong> Подключает возможность получения события пользовательская запись
+в системный журнал регистрации 1С в обработчике внутри глобального модуля
+Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации().</p>
+<p><strong>Данное событие вызывается только при вызове штатного метода 1С &quot;ЗаписьЖурналаРегистрации&quot;.</strong></p>
+<p><strong>Описание обработчика:</strong>
+Функция/Процедура Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации(EventCategory,
+Event, EvType, comment, object, ObjDescr)</p>
+<p>Если обработчик является функцией, то если он возвращает 0, системная
+запись в журнал регистрации выполняться не будет. Если 1, то запись будет выполнена.
+Если процедурой, системная запись в журнал регистрации будет выполнена.</p>
+<p>В случае разрешения системной записи системой будет вызвано событие &quot;Событие_ЗаписьСобытияЖурналаРегистрации&quot;
+Поэтому в случае обработки обоих событий необходимо делать доп.проверку на пользовательские события.</p>
+<p>В параметре object передается ссылка на реальный объект, породивший данное событие.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.</p>
+</blockquote>
+</div>
+<span id="id19"></span><div class="section" id="addverylongstringrestructure">
+<h2><a name="addverylongstringrestructure">ВключитьРазбиениеДлинныхСтрокДляМетодаСообщить / AddVeryLongStringRestructure</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВключитьРазбиениеДлинныхСтрокДляМетодаСообщить()</p>
+<p><strong>Описание:</strong> Подключает возможность вывода очень длинных строк в окно 
+сообщений. Т.е. метод решает известный баг 1С - если длина строки очень 
+велика, например, 500, тогда данная строка в окно сообщений не 
+выводится, а выдается предупреждение на экран, причем данное предупреждение 
+выдается всегда, даже в блоке Попытка-Исключение-КонецПопытки</p>
+<p>При использовании данного метода подобные длинные строки перед выводом в 
+окно сообщений делятся на строки размером 450 символов + перевод строки, 
+и только потом показываются на экран, уже без ошибок и предупреждений.</p>
+<p>Перехват можно только включить, для его отключения нужно перезапустить 
+сеанс 1С.</p>
+<p>Работа перехвата не зависит от настройки 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id20">
+<h1><a name="id20">Перехват событий проведения и отмены проведения документов</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<span id="id21"></span><div class="section" id="hookeventsofdocumenttransaction">
+<h2><a name="hookeventsofdocumenttransaction">ПерехватитьСобытияПроведенияДокумента / HookEventsOfDocumentTransaction</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПерехватитьСобытияПроведенияДокумента(ВидДокумента, ОбъектПользовательскогоКлассаОбработчикаПерехвата)</p>
+<p><strong>Возвращает:</strong> тип: Предыдущий обработчик или пустое значение - см. метод <a class="reference" href="#id22">ПолучитьПерехватчикСобытийПроведенияДокумента</a> .</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>ВидДокумента</strong> - тип: Строка. Вид документа, возвращаемый методом Вид(). <strong>ВНИМАНИЕ</strong> Нельзя передавать строку типа &quot;Документ.Накладная&quot;, только &quot;Накладная&quot;.</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>ОбъектПользовательскогоКлассаОбработчикаПерехвата</strong>  -  тип:  Класс КОП или ВыполняемыйМодуль или произвольный контекст.</dt>
+<dd><p class="first last">Пользовательский объект, в котором определены обработчики событий контекста формы.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Описание:</strong> Перехватывает любые предопределенные события проведения и отмены проведения из модуля документа для документов указанного вида.
+Снять перехват можно с использованием метода <a class="reference" href="#id23">СнятьПерехватСобытийПроведенияДокумента</a> .</p>
+<p>Из обработчика перехвата можно выполнить оригинальное событие из модуля документа с помощью метода <a class="reference" href="#id6">ВыполнитьСобытиеГК</a> .
+Описание обработчика см. в <a class="reference" href="#id24">ОписаниеОбработчикаСобытияМодуляДокумента</a> .</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.
+В случае, если первый параметр не является видом существующего документа, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id22"></span><div class="section" id="gethookobjectforeventsofdocumenttransaction">
+<h2><a name="gethookobjectforeventsofdocumenttransaction">ПолучитьПерехватчикСобытийПроведенияДокумента / GetHookObjectForEventsOfDocumentTransaction</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьПерехватчикСобытийПроведенияДокумента(ГрупповойКонтекстФормы)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ВидДокумента</strong> - тип: Строка. Вид документа, возвращаемый методом Вид(). <strong>ВНИМАНИЕ</strong> Нельзя передавать строку типа &quot;Документ.Накладная&quot;, только &quot;Накладная&quot;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: объект КОП или ВыполняемыйМодуль или произвольный контекст, если для документов данного вида был включен
+перехват или Неопределено, если нет.</p>
+<p><strong>Описание:</strong> Возвращает объект-перехватчик событий, если для документов данного вида был включен перехват.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.
+В случае, если параметр не является групповым контекстом, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id23"></span><div class="section" id="unhookeventsofdocumenttransaction">
+<h2><a name="unhookeventsofdocumenttransaction">СнятьПерехватСобытийПроведенияДокумента / UnHookEventsOfDocumentTransaction</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> СнятьПерехватСобытийПроведенияДокумента(ВидДокумента)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ВидДокумента</strong> - тип: Строка. Вид документа, возвращаемый методом Вид(). <strong>ВНИМАНИЕ</strong> Нельзя передавать строку типа &quot;Документ.Накладная&quot;, только &quot;Накладная&quot;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Снимает перехват событий проведения и отмены проведения из модуля документа, если перехват был
+установлен для документов данного вида.</p>
+<p>Если на пользовательский объект-перехватчик больше нет ссылок, будет
+вызван деструктор данного объекта.</p>
+<p>Если настройка 1С++ &quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+не включена, будет выдано исключение.
+В случае, если параметр не является групповым контекстом, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id24"></span><div class="section" id="id25">
+<h2><a name="id25">Описание обработчика события модуля документа</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Событие_ОбработкаПроведения(КонтекстДокумента, [ДопПараметрПроведения]) Экспорт</p>
+<p><strong>Синтаксис:</strong> Событие_ОбработкаУдаленияПроведения(КонтекстДокумента) Экспорт</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>КонтекстДокумента</strong> - тип: контекст документа в модуле проведения.</li>
+</ul>
+</dd>
+</dl>
+<p>В обработчике события к предопределенным методам модуля документа можно обращаться через полученный контекст.
+Например, КонтекстДокумента.ИтогиАктуальны() или КонтекстДокумента.ГрупповаяОбработка().</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id26">
+<h1><a name="id26">События глобального модуля</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p><strong>Инструкция для использования</strong></p>
+<p>1. Для использования перехвата должна быть включена настройка 1С++
+&quot; <strong>ПерехватитьСобытияГК / EnableHookEventsGroupContext</strong> &quot;
+с помощью встроенного класса &quot;УправлениеНастройками&quot;
+См. <a class="reference" href="SettingsManager.chm::/SettingsManager0.html">SettingsManager</a></p>
+<p>2. Подключение любого из событий возможно в произвольный момент,
+по умолчанию при загрузке 1С++ они выключены.</p>
+<p>Например:</p>
+<pre class="literal-block">
+Перехватчик = СоздатьОбъект(&quot;Перехватчик&quot;);
+Перехватчик.ПодключитьСобытие_НеобработаннаяОшибка();
+Перехватчик.ПодключитьСобытие_ЗаписьСобытияЖурналаРегистрации();
+Перехватчик.ПодключитьСобытие_ЗаписьПользовательскогоСобытияЖурналаРегистрации();
+</pre>
+<ol class="arabic" start="3">
+<li><dl class="first docutils">
+<dt>При подключении в глобальнике единственный раз идет поиск соответствующих событий</dt>
+<dd><ul class="first last simple">
+<li><a class="reference" href="#id28">Событие_НеобработаннаяОшибка</a> ()</li>
+<li><a class="reference" href="#id30">Событие_ЗаписьСобытияЖурналаРегистрации</a> ()</li>
+<li><a class="reference" href="#id32">Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации</a> ()</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p>В дальнейшем повторного поиска не происходит, в отличие от ФормЕкс, что дает хорошую скорость работы.</p>
+<p>4. Обработчики событий могут быть функциями,
+в этом случае если возвращается 0, системная функция не вызывается.
+Если обработчик события является процедурой, то системная функция вызывается всегда.</p>
+<p>5. Перед подключением можно установить перехват на глобальник,
+тогда указанные события будут ловиться в классах с помощью перехвата глобального модуля.</p>
+<span id="id28"></span><div class="section" id="id29">
+<h2><a name="id29">Событие_НеобработаннаяОшибка</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Функция/Процедура Событие_НеобработаннаяОшибка(СообщениеОбОшибке, Маркер,
+ИмяФайла, Парам4, НомерСтрокиОшибки, Парам6)</p>
+<p><strong>Описание:</strong> Подключает возможность получения необработанной ошибки в обработчике
+внутри глобального модуля Событие_НеобработаннаяОшибка()</p>
+<p>Если обработчик является функцией, то если он возвращает 0, системное
+сообщение об ошибке не показывается. Если 1, то показывается.
+Если процедурой, системное сообщение об ошибке также показывается.</p>
+</blockquote>
+</div>
+<span id="id30"></span><div class="section" id="id31">
+<h2><a name="id31">Событие_ЗаписьСобытияЖурналаРегистрации</a></h2>
+<blockquote>
+<dl class="docutils">
+<dt><strong>Синтаксис:</strong> Функция/Процедура Событие_ЗаписьСобытияЖурналаРегистрации(EventCategory,</dt>
+<dd>Event, EvType, comment, object, ObjDescr)</dd>
+<dt><strong>Описание:</strong> Подключает возможность получения события запись в системный журнал регистрации 1С</dt>
+<dd>в обработчике внутри глобального модуля Событие_ЗаписьСобытияЖурналаРегистрации().
+При этом неважно, программная это запись или запись, выполненная системой.</dd>
+</dl>
+<p>Если обработчик является функцией, то если он возвращает 0, системная
+запись в журнал регистрации выполняться не будет. Если 1, то запись будет выполнена.
+Если процедурой, системная запись в журнал регистрации будет выполнена.</p>
+</blockquote>
+</div>
+<span id="id32"></span><div class="section" id="id33">
+<h2><a name="id33">Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации</a></h2>
+<blockquote>
+<dl class="docutils">
+<dt><strong>Синтаксис:</strong> Функция/Процедура Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации(EventCategory,</dt>
+<dd>Event, EvType, comment, object, ObjDescr)</dd>
+<dt><strong>Описание:</strong> Подключает возможность получения события пользовательская запись</dt>
+<dd><p class="first">в системный журнал регистрации 1С в обработчике внутри глобального модуля
+Событие_ЗаписьСобытияЖурналаРегистрации().
+При этом  неважно,  программная  это  запись  или  запись,  выполненная системой.</p>
+<p class="last">Если обработчик является функцией, то если он возвращает 0, системная</p>
+</dd>
+<dt>запись в журнал регистрации выполняться не будет. Если 1, то запись будет выполнена.</dt>
+<dd>Если процедурой, системная запись в журнал регистрации будет выполнена.</dd>
+</dl>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id34">
+<h1><a name="id34">Специальные события глобального модуля - только для классов-перехватчиков ГМ</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<span id="id35"></span><div class="section" id="id36">
+<h2><a name="id36">СобытиеГМ_СозданиеКонтекста</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> СобытиеГМ_СозданиеКонтекста(КонтФормы)</p>
+<p><strong>Возвращает:</strong> тип: Число. Не используется. Т.е. обработчик может быть и процедурой</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>КонтФормы</strong> - тип: ГрупповойКонтекст.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Описание:</strong> 
+Если есть обработчик этого события, то он будет вызван раньше любых событий 1С, FormEx и других ВК.</p>
+<p>Данное событие возникает сразу после компиляции модуля формы контекста.</p>
+<p>Данное событие всегда вызывается для любого группового контекста и 
+всегда только один раз для одного контекста.</p>
+<p>Его очень удобно использовать для установки перехвата на форму для 
+работы с событиями формы.</p>
+</blockquote>
+<pre class="literal-block">
+    Функция СобытиеГМ_СозданиеКонтекста(КонтФормы) Экспорт
+            // текст обработчика события
+    КонецФункции
+
+Если в глобальнике просто определить функцию  СобытиеГМ_СозданиеКонтекста(КонтФормы),
+то она работать не будет. Данная функция сделана только для перехвата в классах перехвата.
+</pre>
+</div>
+<span id="id37"></span><div class="section" id="id38">
+<h2><a name="id38">СобытиеГМ_ПриОткрытии</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> СобытиеГМ_ПриОткрытии(КонтФормы, ФлагЧтенияНастройки)</p>
+<p><strong>Возвращает:</strong> тип: Число. 0 или 1.</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first simple">
+<li><strong>КонтФормы</strong> - тип: ГрупповойКонтекст.</li>
+<li><strong>ФлагЧтенияНастройки</strong>  -  тип:  число или пустое значение.</li>
+</ul>
+<p class="last">Параметр ФлагЧтенияНастройки имеет смысл только для контекстов форм отчетов и обработок, внешних или встроенных,
+для остальных форм он будет иметь пустое значение.</p>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Описание:</strong> 
+Если есть обработчик этого события, то она будет вызван раньше системного
+обработчика ПриОткрытии в модуле формы контекста.
+Если обработчик вернет 0,  то  форма  не  будет  открыта  и  вызов  обработчика
+ПриОткрытии из модуля формы контекста не будет выполнен.</p>
+</blockquote>
+<pre class="literal-block">
+    Функция СобытиеГМ_ПриОткрытии(КонтФормы) Экспорт
+            // текст обработчика события
+            Возврат 0; // возвращаемое значение является статусом возврата, т. е. в таком случае форма не будет открыта.
+            // в случае Возврат 1; форма будет открыта.
+    КонецФункции
+
+Если в глобальнике просто определить функцию  СобытиеГМ_ПриОткрытии(КонтФормы),
+то она работать не будет. Данная функция сделана только для перехвата в классах перехвата.
+
+Возможно задавать в классе-перехватчике как событие с одним параметром, 
+так и с двумя параметрами.
+</pre>
+</div>
+<span id="id39"></span><div class="section" id="id40">
+<h2><a name="id40">СобытиеГМ_ВводНового</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> СобытиеГМ_ВводНового(КонтФормы, ФлагКопирования, ОбъектКопирования)</p>
+<p><strong>Возвращает:</strong> тип: Число. 0 или 1.</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first simple">
+<li><strong>КонтФормы</strong> - тип: ГрупповойКонтекст.</li>
+<li><strong>ФлагКопирования</strong>  -  тип:  число или пустое значение.</li>
+<li><strong>ОбъектКопирования</strong>  -  тип:  объект или пустое значение.</li>
+</ul>
+<p class="last">Параметры ФлагКопирования и ОбъектКопирования имеют смысл только для контекстов форм документов или справочников,
+для остальных форм они будет иметь пустое значение.</p>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Описание:</strong> 
+Если есть обработчик этого события, то она будет вызван раньше системного
+обработчика ВводНового в модуле формы контекста.
+Если обработчик вернет 0,  то  форма  не  будет  открыта  и  вызов  обработчика
+ВводНового из модуля формы контекста не будет выполнен.</p>
+</blockquote>
+<pre class="literal-block">
+    Функция СобытиеГМ_ВводНового(КонтФормы) Экспорт
+            // текст обработчика события
+            Возврат 0; // возвращаемое значение является статусом возврата, т. е. в таком случае форма не будет открыта.
+            // в случае Возврат 1; форма будет открыта.
+    КонецФункции
+
+Если в глобальнике просто определить функцию  СобытиеГМ_ВводНового(КонтФормы),
+то она работать не будет. Данная функция сделана только для перехвата в классах перехвата.
+
+            Возможно задавать в классе-перехватчике как событие с одним параметром, 
+            так и с двумя/тремя параметрами.
+</pre>
+</div>
+<span id="id41"></span><div class="section" id="id42">
+<h2><a name="id42">СобытиеГМ_ВводНаОсновании</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> СобытиеГМ_ВводНаОсновании(КонтФормы, ДокументОснование)</p>
+<p><strong>Возвращает:</strong> тип: Число. 0 или 1.</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first simple">
+<li><strong>КонтФормы</strong> - тип: ГрупповойКонтекст.</li>
+<li><strong>ДокументОснование</strong>  -  тип:  Документ или пустое значение.</li>
+</ul>
+<p class="last">Параметр ДокументОснование имеет смысл только для контекстов форм документов,
+для остальных форм они будет иметь пустое значение.</p>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Описание:</strong> 
+Если есть обработчик этого события, то она будет вызван раньше системного
+обработчика ВводНаОсновании в модуле формы документа.
+Если обработчик вернет 0,  то  форма  не  будет  открыта  и  вызов  обработчика
+ВводНаОсновании из модуля формы документа не будет выполнен.</p>
+</blockquote>
+<pre class="literal-block">
+    Функция СобытиеГМ_ВводНаОсновании(КонтФормы, ДокументОснование) Экспорт
+            // текст обработчика события
+            Возврат 0; // возвращаемое значение является статусом возврата, т. е. в таком случае форма не будет открыта.
+            // в случае Возврат 1; форма будет открыта.
+    КонецФункции
+
+Если в глобальнике просто определить функцию  СобытиеГМ_ВводНаОсновании(...),
+то она работать не будет. Данная функция сделана только для перехвата в классах перехвата.
+
+            Возможно задавать в классе-перехватчике обработчик как событие с одним параметром, 
+            так и с двумя параметрами.
+</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

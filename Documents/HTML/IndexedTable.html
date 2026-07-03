@@ -1,0 +1,1729 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>ИндексированнаяТаблица</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">ИндексированнаяТаблица</h1>
+<!-- Автор: Алексей Диркс aka ADirks, mailto: adirks@ngs.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_index_table_</alinks>
+        <klinks>
+                ИндексированнаяТаблица
+                IndexedTable
+        </klinks>
+</chminfo>
+<div class="contents topic" id="id2">
+<p class="topic-title first"><a name="id2">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id3" id="id8" name="id8">Свойства</a><ul>
+<li><a class="reference" href="#rownumber" id="id9" name="id9">НомерСтроки / RowNumber</a></li>
+<li><a class="reference" href="#id4" id="id10" name="id10">&lt;ИмяКолонки&gt;</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id5" id="id11" name="id11">Методы</a><ul>
+<li><a class="reference" href="#newcolumn" id="id12" name="id12">НоваяКолонка / NewColumn</a></li>
+<li><a class="reference" href="#renamecolumn" id="id13" name="id13">ПереименоватьКолонку / RenameColumn</a></li>
+<li><a class="reference" href="#removecolumn" id="id14" name="id14">УдалитьКолонку / RemoveColumn</a></li>
+<li><a class="reference" href="#columncount" id="id15" name="id15">КоличествоКолонок / ColumnCount</a></li>
+<li><a class="reference" href="#columnname" id="id16" name="id16">ИмяКолонки / ColumnName</a></li>
+<li><a class="reference" href="#columnnumber" id="id17" name="id17">НомерКолонки / ColumnNumber</a></li>
+<li><a class="reference" href="#newrow" id="id18" name="id18">НоваяСтрока / NewRow</a></li>
+<li><a class="reference" href="#removerow" id="id19" name="id19">УдалитьСтроку / RemoveRow</a></li>
+<li><a class="reference" href="#removerows" id="id20" name="id20">УдалитьСтроки / RemoveRows</a></li>
+<li><a class="reference" href="#rowcount" id="id21" name="id21">КоличествоСтрок / RowCount</a></li>
+<li><a class="reference" href="#id6" id="id22" name="id22">НомерСтроки / RowNumber</a></li>
+<li><a class="reference" href="#cleanup" id="id23" name="id23">Очистить / Cleanup</a></li>
+<li><a class="reference" href="#addindex" id="id24" name="id24">ДобавитьИндекс / AddIndex</a></li>
+<li><a class="reference" href="#dropindex" id="id25" name="id25">УдалитьИндекс / DropIndex</a></li>
+<li><a class="reference" href="#indexcount" id="id26" name="id26">КоличествоИндексов / IndexCount</a></li>
+<li><a class="reference" href="#indexname" id="id27" name="id27">ИмяИндекса / IndexName</a></li>
+<li><a class="reference" href="#indexexpr" id="id28" name="id28">ВыражениеИндекса / IndexExpr</a></li>
+<li><a class="reference" href="#indexnumber" id="id29" name="id29">НомерИндекса / IndexNumber</a></li>
+<li><a class="reference" href="#sort" id="id30" name="id30">Сортировать / Sort</a></li>
+<li><a class="reference" href="#indexisunique" id="id31" name="id31">ИндексУникален / IndexIsUnique</a></li>
+<li><a class="reference" href="#uniquekeycount" id="id32" name="id32">КоличествоУникальныхКлючей / UniqueKeyCount</a></li>
+<li><a class="reference" href="#keyvaluecount" id="id33" name="id33">КоличествоЗначенийКлюча / KeyValueCount</a></li>
+<li><a class="reference" href="#findrow" id="id34" name="id34">НайтиСтроку / FindRow</a></li>
+<li><a class="reference" href="#findnearestge" id="id35" name="id35">НайтиБлижайшуюБольше / FindNearestGE</a></li>
+<li><a class="reference" href="#findnearestle" id="id36" name="id36">НайтиБлижайшуюМеньше / FindNearestLE</a></li>
+<li><a class="reference" href="#setfilter" id="id37" name="id37">УстановитьФильтр / SetFilter</a></li>
+<li><a class="reference" href="#subset" id="id38" name="id38">Подмножество / Subset</a></li>
+<li><a class="reference" href="#dropfilter" id="id39" name="id39">ВыключитьФильтр / DropFilter</a></li>
+<li><a class="reference" href="#firstrow" id="id40" name="id40">ВНачало / FirstRow</a></li>
+<li><a class="reference" href="#selectrows" id="id41" name="id41">ВыбратьСтроки / SelectRows</a></li>
+<li><a class="reference" href="#lastrow" id="id42" name="id42">ВКонец / LastRow</a></li>
+<li><a class="reference" href="#next" id="id43" name="id43">СледующаяСтрока / Next</a></li>
+<li><a class="reference" href="#getrow" id="id44" name="id44">ПолучитьСтроку / GetRow</a></li>
+<li><a class="reference" href="#previous" id="id45" name="id45">ПредыдущаяСтрока / Previous</a></li>
+<li><a class="reference" href="#getvalue" id="id46" name="id46">ПолучитьЗначение / GetValue</a></li>
+<li><a class="reference" href="#get" id="id47" name="id47">Получить / Get</a></li>
+<li><a class="reference" href="#setvalue" id="id48" name="id48">УстановитьЗначение / SetValue</a></li>
+<li><a class="reference" href="#set" id="id49" name="id49">Установить / Set</a></li>
+<li><a class="reference" href="#groupby" id="id50" name="id50">Свернуть / GroupBy</a></li>
+<li><a class="reference" href="#sum" id="id51" name="id51">Итог / Sum</a></li>
+<li><a class="reference" href="#sumbyrange" id="id52" name="id52">ИтогПоДиапазону / SumByRange</a></li>
+<li><a class="reference" href="#nodesum" id="id53" name="id53">ИтогПоУзлу / NodeSum</a></li>
+<li><a class="reference" href="#group" id="id54" name="id54">Группировать / Group</a></li>
+<li><a class="reference" href="#fillrow" id="id55" name="id55">ЗаполнитьСтроку / FillRow</a></li>
+<li><a class="reference" href="#fillcolumn-1" id="id56" name="id56">ЗаполнитьКолонку / FillColumn  (вариант 1)</a></li>
+<li><a class="reference" href="#fillcolumn-2" id="id57" name="id57">ЗаполнитьКолонку / FillColumn  (вариант 2)</a></li>
+<li><a class="reference" href="#fillcolumn-3" id="id58" name="id58">ЗаполнитьКолонку / FillColumn  (вариант 3)</a></li>
+<li><a class="reference" href="#unload" id="id59" name="id59">Выгрузить / Unload</a></li>
+<li><a class="reference" href="#id7" id="id60" name="id60">ВыгрузитьСтроку / Unload</a></li>
+<li><a class="reference" href="#load" id="id61" name="id61">Загрузить / Load</a></li>
+<li><a class="reference" href="#loadquery" id="id62" name="id62">ЗагрузитьЗапрос / LoadQuery</a></li>
+<li><a class="reference" href="#innerjoin" id="id63" name="id63">ВнутреннееСоединение / InnerJoin</a></li>
+<li><a class="reference" href="#leftjoin" id="id64" name="id64">ЛевоеСоединение / LeftJoin</a></li>
+<li><a class="reference" href="#rightjoin" id="id65" name="id65">ПравоеСоединение / RightJoin</a></li>
+<li><a class="reference" href="#fulljoin" id="id66" name="id66">ПолноеСоединение / FullJoin</a></li>
+<li><a class="reference" href="#merge" id="id67" name="id67">Объединить / Merge</a></li>
+<li><a class="reference" href="#conjunction" id="id68" name="id68">Пересечение / Conjunction</a></li>
+<li><a class="reference" href="#difference" id="id69" name="id69">Разность / Difference</a></li>
+<li><a class="reference" href="#copy" id="id70" name="id70">Копия / Copy</a></li>
+<li><a class="reference" href="#savetofile" id="id71" name="id71">ВФайл / SaveToFile</a></li>
+<li><a class="reference" href="#loadfromfile" id="id72" name="id72">ИзФайла / LoadFromFile</a></li>
+<li><a class="reference" href="#savetostring" id="id73" name="id73">ВСтроку / SaveToString</a></li>
+<li><a class="reference" href="#loadfromstring" id="id74" name="id74">ИзСтроки / LoadFromString</a></li>
+<li><a class="reference" href="#chooseline" id="id75" name="id75">ВыбратьСтроку / ChooseLine</a></li>
+<li><a class="reference" href="#show" id="id76" name="id76">Показать / Show</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Класс &quot;ИндексированнаяТаблица&quot; / &quot;IndexedTable&quot;.</strong></p>
+<p>Аналог встроенного типа &quot;ТаблицаЗначений&quot;, дополненный возможностью создавать и использовать индексы
+над таблицей. Индексы строятся в виде двоичных поисковых деревьев, таким образом - получаем затраты на
+поиск O(log2(N)), тогда как в стандартном типе &quot;ТаблицаЗначений&quot; поиск осуществляется перебором строк,
+и следовательно, затраты на поиск - O(N).</p>
+<dl class="docutils">
+<dt>Индекс может быть двух типов:</dt>
+<dd><ol class="first last arabic simple">
+<li>по всем строкам таблицы;</li>
+<li>по строкам с уникальными значениями ключа. Строки с повторяющимися значениями ключа будут проигнорированы, и в операции перебора строк, суммирования, свёртки, выгрузки, загрузки не попадут.</li>
+</ol>
+</dd>
+<dt>Использование индексов даёт и другие преимущества, кроме ускорения поиска:</dt>
+<dd><ul class="first last simple">
+<li>возможность поиска по нескольким значениям (по составному ключу);</li>
+<li>наличие нескольких индексов для одной таблицы, независимые выборки для каждого индекса;</li>
+<li>поиск по условиям &quot;больше либо равно&quot;, &quot;меньше либо равно&quot;;</li>
+<li>построение индекса только по уникальным значениям даёт возможность получить список уникальных
+ключей без свёртывания таблицы;</li>
+<li>свёртка по существующему индексу - при этом не теряется время на построение временного индекса;</li>
+<li>динамическая фильтрация строк;</li>
+<li>суммирование и свёртка по динамическому фильтру.</li>
+</ul>
+</dd>
+</dl>
+<p>Таблица всегда имеет 1 индекс (в дальнейшем будем называть его &quot;основной индекс&quot;), который нельзя удалить.
+Номер этого индекса - 1, имя - &quot;&quot; (пустая строка). Если в операциях, использующих индекс, не
+указано имя индекса, то используется основной индекс. При операциях перепозиционирования
+(ВНачало(), СледующаяСтрока(), ПредыдущаяСтрока() и т.д.)  основной индекс позиционируется на ту же строку.</p>
+<div class="section" id="id3">
+<h1><a name="id3">Свойства</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="rownumber">
+<h2><a name="rownumber">НомерСтроки / RowNumber</a></h2>
+<blockquote>
+<p><strong>Доступ:</strong> чтение и запись.</p>
+<p><strong>Тип:</strong> Число.</p>
+<p><strong>Описание:</strong> Номер текущей строки в основном индексе. Если строка не выбрана, то 0.</p>
+</blockquote>
+</div>
+<div class="section" id="id4">
+<h2><a name="id4">&lt;ИмяКолонки&gt;</a></h2>
+<blockquote>
+<p><strong>Доступ:</strong> чтение и запись.</p>
+<p><strong>Тип:</strong> любой.</p>
+<p><strong>Описание:</strong> Обращение к значениям колонок, созданных методом НоваяКолонка().</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id5">
+<h1><a name="id5">Методы</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="newcolumn">
+<h2><a name="newcolumn">НоваяКолонка / NewColumn</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> НоваяКолонка(стрИмяКолонки)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрИмяКолонки</strong> - тип: Строка. Идентификатор создаваемой колонки. В идентификаторе колонки можно
+использовать любые символы, но следует помнить, что символы '-', '*', '#', '^' и '&amp;' используются
+как модификаторы при построении индексных выражений, и по колонкам с такими символами построить индекс будет
+невозможно.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Номер созданной колонки.</p>
+<p><strong>Описание:</strong> Создаёт колонку в таблице.</p>
+</blockquote>
+</div>
+<div class="section" id="renamecolumn">
+<h2><a name="renamecolumn">ПереименоватьКолонку / RenameColumn</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПереименоватьКолонку(Колонка, стрНовоеИмяКолонки)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер колонки.</li>
+<li><strong>стрНовоеИмяКолонки</strong> - тип: Строка. Новый идентификатор колонки.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Переименовывает колонку таблицы.</p>
+</blockquote>
+</div>
+<div class="section" id="removecolumn">
+<h2><a name="removecolumn">УдалитьКолонку / RemoveColumn</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УдалитьКолонку(Колонка)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер колонки.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Удаляет указанную колонку.</p>
+</blockquote>
+</div>
+<div class="section" id="columncount">
+<h2><a name="columncount">КоличествоКолонок / ColumnCount</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> КоличествоКолонок()</p>
+<p><strong>Возвращает:</strong> тип:  Число. Количество колонок в таблице.</p>
+<p><strong>Описание:</strong> Возвращает количество колонок в таблице.</p>
+</blockquote>
+</div>
+<div class="section" id="columnname">
+<h2><a name="columnname">ИмяКолонки / ColumnName</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИмяКолонки(Колонка)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер колонки.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Строка. Идентификатор колонки. Если такой колонки нет, то возникает исключение.</p>
+<p><strong>Описание:</strong> Возвращает идентификатор указанной колонки, как он был задан в методе НоваяКолонка().</p>
+</blockquote>
+</div>
+<div class="section" id="columnnumber">
+<h2><a name="columnnumber">НомерКолонки / ColumnNumber</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> НомерКолонки(Колонка)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер колонки.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Номер колонки.</p>
+<p><strong>Описание:</strong> Возвращает номер указанной колонки.</p>
+</blockquote>
+</div>
+<div class="section" id="newrow">
+<h2><a name="newrow">НоваяСтрока / NewRow</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> НоваяСтрока()</p>
+<p><strong>Возвращает:</strong> тип: Число. Номер созданной строки.</p>
+<p><strong>Описание:</strong> Cоздаёт новую строку в конце таблицы.</p>
+</blockquote>
+</div>
+<div class="section" id="removerow">
+<h2><a name="removerow">УдалитьСтроку / RemoveRow</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УдалитьСтроку(чСтрока)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>чСтрока</strong> - тип: Число. Номер удаляемой строки</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Удаляет указанную строку.</p>
+</blockquote>
+</div>
+<div class="section" id="removerows">
+<h2><a name="removerows">УдалитьСтроки / RemoveRows</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УдалитьСтроки([Индекс])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. Если параметр указан, и по данному
+индексу установлен фильтр, то удалятся строки, удовлетворяющие условиям фильтра.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Удаляет строки из таблицы. Если указан индекс, то при удалении учитывается наложенный фильтр.</p>
+</blockquote>
+</div>
+<div class="section" id="rowcount">
+<h2><a name="rowcount">КоличествоСтрок / RowCount</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> КоличествоСтрок([Индекс = &quot;&quot;], [флТолькоУникальные = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. Если параметр указан, и по данному
+индексу установлен фильтр, то считаются только строки, удовлетворяющие условиям фильтра.</li>
+<li><strong>флТолькоУникальные</strong> - тип: Число. Флаг учета только уникальных значений индекса.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. количество строк в таблице.</p>
+<p><strong>Описание:</strong> Возвращает количество строк в таблице.</p>
+</blockquote>
+</div>
+<div class="section" id="id6">
+<h2><a name="id6">НомерСтроки / RowNumber</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> НомерСтроки(Индекс)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. идентификатор или номер индекса.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Номер текущей строки в указанном индексе. Если строка не выбрана, то 0.</p>
+<p><strong>Описание:</strong> Возвращает текущий номер строки в выборке для указанного индекса.</p>
+</blockquote>
+</div>
+<div class="section" id="cleanup">
+<h2><a name="cleanup">Очистить / Cleanup</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Очистить()</p>
+<p><strong>Описание:</strong> Полная очистка таблицы. Удаляются все индексы, строки и колонки.</p>
+</blockquote>
+</div>
+<div class="section" id="addindex">
+<h2><a name="addindex">ДобавитьИндекс / AddIndex</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ДобавитьИндекс(стрИдентификатор, стрВыражение, [чТолькоУникальныеЗначения = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрИдентификатор</strong> - тип: Строка. Идентификатор создаваемого индекса;</li>
+<li><strong>стрВыражение</strong> - тип: Строка. Индексное выражение.  Индексное выражение состоит из списка
+идентификаторов колонок, разделённого запятыми.
+Если перед именем колонки стоит символ '-', то сортировка осуществляется в обратном порядке.
+Если перед именем колонки стоит символ '*', то сортировка осуществляется по внутреннему
+представлению объекта.
+Если перед именем колонки стоит символ '#', то перед сравнением строк обрезаются пробелы слева и справа.
+Если перед именем колонки стоит символ '^', то строки сравниваются без учёта регистра.
+Модификаторы сортировки ('-', '*', &quot;#&quot;, &quot;^&quot;) можно использовать в любых сочетаниях.
+Индексное выражение может быть пустой строкой - это эквивалентно сортировке по номеру
+строки, или отсутствию сортировки (фильтр на такой индекс установить нельзя).</li>
+<li><strong>чТолькоУникальныеЗначения</strong> - тип: Число. Если 1, то в индекс попадут только строки,
+содержащие уникальные значения индекса. Строки с повторяющимися индексами будут
+проигнорированы, и в операции перебора строк, суммирования, свёртки, выгрузки,
+загрузки не попадут.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Номер созданного индекса.</p>
+<p><strong>Описание:</strong> Добавляет индекс к таблице.</p>
+</blockquote>
+</div>
+<div class="section" id="dropindex">
+<h2><a name="dropindex">УдалитьИндекс / DropIndex</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УдалитьИндекс(Индекс)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Удаление указанного индекса.</p>
+</blockquote>
+</div>
+<div class="section" id="indexcount">
+<h2><a name="indexcount">КоличествоИндексов / IndexCount</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> КоличествоИндексов()</p>
+<p><strong>Возвращает:</strong> тип: Число. Количество индексов в таблице.</p>
+<p><strong>Описание:</strong> Возвращает количество индексов в таблице.</p>
+</blockquote>
+</div>
+<div class="section" id="indexname">
+<h2><a name="indexname">ИмяИндекса / IndexName</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИмяИндекса(Индекс)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+</ul>
+</dd>
+<dt><strong>Возвращает:</strong> тип: Строка. Имя индекса.</dt>
+<dd>Если индекс отсутствует в таблице, генерируется исключение.</dd>
+</dl>
+<p><strong>Описание:</strong> Возвращает имя индекса.</p>
+</blockquote>
+</div>
+<div class="section" id="indexexpr">
+<h2><a name="indexexpr">ВыражениеИндекса / IndexExpr</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыражениеИндекса(Индекс)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+</ul>
+</dd>
+<dt><strong>Возвращает:</strong> тип: Строка. Индексное выражение.</dt>
+<dd>Если индекс отсутствует в таблице, генерируется исключение.</dd>
+</dl>
+<p><strong>Описание:</strong> Возвращает индексное выражение для заданного индекса.</p>
+</blockquote>
+</div>
+<div class="section" id="indexnumber">
+<h2><a name="indexnumber">НомерИндекса / IndexNumber</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> НомерИндекса(Индекс)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+</ul>
+</dd>
+<dt><strong>Возвращает:</strong> тип: Число. Номер индекса.</dt>
+<dd>Если индекс отсутствует в таблице, функция возвращает 0.</dd>
+</dl>
+<p><strong>Описание:</strong> Возвращает номер индекса.</p>
+</blockquote>
+</div>
+<div class="section" id="sort">
+<h2><a name="sort">Сортировать / Sort</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Сортировать(стрВыражение)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрВыражение</strong> - тип: Строка. Индексное выражение.  Индексное выражение состоит из списка
+идентификаторов колонок, разделённого запятыми. Если перед именем колонки стоит символ '-',
+то сортировка осуществляется в обратном порядке. Если перед именем колонки стоит символ '*',
+то сортировка осуществляется по внутреннему представлению объекта. Если индексное выражение
+- пустая строка, то сортировка выключается (фильтр на такой индекс установить нельзя).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Изменение сортировки в основном индексе.</p>
+</blockquote>
+</div>
+<div class="section" id="indexisunique">
+<h2><a name="indexisunique">ИндексУникален / IndexIsUnique</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИндексУникален([Индекс = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - в таблице нет строк, с повторяющимися значениями ключа;
+0 - таблица содержит строки с одинаковыми значениями ключа.</p>
+<p><strong>Описание:</strong> проверяет, уникален ли индекс.</p>
+</blockquote>
+</div>
+<div class="section" id="uniquekeycount">
+<h2><a name="uniquekeycount">КоличествоУникальныхКлючей / UniqueKeyCount</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> КоличествоУникальныхКлючей([Индекс = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Количество уникальных ключей.</p>
+<p><strong>Описание:</strong> возвращает количество уникальных ключей по указанному индексу.</p>
+</blockquote>
+</div>
+<div class="section" id="keyvaluecount">
+<h2><a name="keyvaluecount">КоличествоЗначенийКлюча / KeyValueCount</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> КоличествоЗначенийКлюча([Индекс = &quot;&quot;], Ключ)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+<li><strong>Ключ</strong> - тип: любой. Если индекс построен по одной колонке - то значение поиска.
+Если же индекс по нескольким колонкам, то это должен быть СписокЗначений,
+содержащий значения ключевых колонок, заданных в методе  ДобавитьИндекс().</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Количество строк с указанным ключом.</p>
+<p><strong>Описание:</strong> возвращает количество строк, для которых значение ключа равно параметру Ключ.</p>
+</blockquote>
+</div>
+<div class="section" id="findrow">
+<h2><a name="findrow">НайтиСтроку / FindRow</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> НайтиСтроку(Индекс, Ключ, [чНайтиПоследнюю  = 0], [чСпозиционироваться = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+<li><strong>Ключ</strong> - тип: любой. Если индекс построен по одной колонке - то значение поиска.
+Если же индекс по нескольким колонкам, то это должен быть СписокЗначений,
+содержащий значения ключевых колонок, заданных в методе  ДобавитьИндекс().</li>
+<li><strong>чНайтиПоследнюю</strong> - тип: Число. Если 1, то будет найдена последняя строк с совпадающим значением ключа.</li>
+<li><strong>чСпозиционироваться</strong> - тип: Число. Если 1, то при успешном поиске индекс будет спозиционирован на
+найденной строке.
+Если перед выполнением метода была открыта выборка (методом ВыбратьСтроки), то она перепозиционируется
+на найденное значение. Если выборка не была открыта, то она открывается, и после успешного поиска
+могут быть использованы методы ПолучитьСтроку(), СледующаяСтрока() и ПредыдущаяСтрока().
+Основной индекс также перепозиционируется.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Номер найденной строки. Если ничего не найдено, то 0.</p>
+<p><strong>Описание:</strong> Найти строку, точно соответствующую ключу.</p>
+</blockquote>
+</div>
+<div class="section" id="findnearestge">
+<h2><a name="findnearestge">НайтиБлижайшуюБольше / FindNearestGE</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> НайтиБлижайшуюБольше(Ключ, [Индекс = &quot;&quot;], [чСпозиционироваться = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Ключ</strong> - тип: любой. Если индекс построен по одной колонке - то значение поиска.
+Если же индекс по нескольким колонкам, то это должен быть СписокЗначений,
+содержащий значения ключевых колонок, заданных в методе  ДобавитьИндекс().</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чСпозиционироваться</strong> - тип: Число. Если 1, то при успешном поиске индекс будет спозиционирован на
+найденной строке.
+Если перед выполнением метода была открыта выборка (методом ВыбратьСтроки), то она перепозиционируется
+на найденное значение. Если выборка не была открыта, то она открывается, и после успешного поиска
+могут быть использованы методы ПолучитьСтроку(), СледующаяСтрока() и ПредыдущаяСтрока().
+Основной индекс также перепозиционируется.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Номер найденной строки. Если ничего не найдено, то 0.</p>
+<p><strong>Описание:</strong> Найти строку, которая равна или больше ключа.</p>
+</blockquote>
+</div>
+<div class="section" id="findnearestle">
+<h2><a name="findnearestle">НайтиБлижайшуюМеньше / FindNearestLE</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> НайтиБлижайшуюМеньше(Ключ, [Индекс = &quot;&quot;], [чСпозиционироваться = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Ключ</strong> - тип: любой. Если индекс построен по одной колонке - то значение поиска.
+Если же индекс по нескольким колонкам, то это должен быть СписокЗначений,
+содержащий значения ключевых колонок, заданных в методе  ДобавитьИндекс().</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чСпозиционироваться</strong> - тип: Число. Если 1, то при успешном поиске индекс будет спозиционирован на
+найденной строке.
+Если перед выполнением метода была открыта выборка (методм ВыбратьСтроки), то она перепозиционируется
+на найденное значение. Если выборка не была открыта, то она открывается, и после успешного поиска
+могут быть использованы методы ПолучитьСтроку(), СледующаяСтрока() и ПредыдущаяСтрока().
+Основной индекс также перепозиционируется.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Номер найденной строки. Если ничего не найдено, то 0.</p>
+<p><strong>Описание:</strong> Найти строку, которая равна или меньше ключа.</p>
+</blockquote>
+</div>
+<div class="section" id="setfilter">
+<h2><a name="setfilter">УстановитьФильтр / SetFilter</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьФильтр(КлючМин, КлючМакс, [Индекс = &quot;&quot;], [чТолькоУникальные = 0], [чИнверсия = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first simple">
+<li><strong>КлючМин</strong> - тип: любой. Нижняя граница фильтра. Задаётся так же, как в методе НайтиСтроку().</li>
+<li><strong>КлючМакс</strong> - тип: любой. Верхняя границы фильтра. Задаётся так же, как в методе НайтиСтроку().</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чТолькоУникальные</strong> - тип: Число. Если 1 - то в выборку попадут только строки с уникальным
+значением ключа.</li>
+<li><strong>чИнверсия</strong> - тип: Число. 0 - обычный фильтр, 1 - инверсный фильтр.</li>
+</ul>
+<p>Если индекс построен по одной колонке, то в качестве ключей можно использовать значение колонки.
+Если же индекс по нескольким колонкам, то ключ должен быть СписокЗначений,
+содержащий значения ключевых колонок, заданных в методе  ДобавитьИндекс().</p>
+<p class="last">Один из ключей может быть опущен - при этом в качестве опущеного значения будет автоматически
+задействовано минимально/максимально возможное значение. Т.е. фильтр будет с открытой границей.</p>
+</dd>
+</dl>
+<p><strong>Описание:</strong> устанавливает динамический фильтр на таблицу по указанному индексу.
+Фильтр влияет на работу методов: ВНачало(), ВыбратьСтроки(), ВКонец(), ПолучитьСтроку(),
+СледующаяСтрока(), ПредыдущаяСтрока(),Свернуть(),Итог(), ЗаполнитьКолонку(),
+Выгрузить(), Загрузить(), Объединить().</p>
+</blockquote>
+</div>
+<div class="section" id="subset">
+<h2><a name="subset">Подмножество / Subset</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Подмножество(сзКлюч, чКоличествоФиксКолонок, [Индекс = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>сзКлюч</strong> - тип: СписокЗначений. Список, содержащий значения фиксируемых колонок индекса.</li>
+<li><strong>чКоличествоФиксКолонок</strong> - тип: Число. Количество фиксируемых колонок индекса</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> устанавливает фильтр, фиксируя значения первых колонок индекса.</p>
+<p>Пример:</p>
+<pre class="literal-block">
+ТЗ.ДобавитьИндекс(&quot;и1&quot;, &quot;к1, к2&quot;);
+сзКлюч = СоздатьОбъект(&quot;СписокЗначений&quot;);
+сзКлюч.ДобавитьЗначение(5);
+ТЗ.Подмножество(сзКлюч, 1, &quot;и1&quot;);
+</pre>
+<p>в результате в выборке будут только те строки, у которых колонка к1 = 5.</p>
+</blockquote>
+</div>
+<div class="section" id="dropfilter">
+<h2><a name="dropfilter">ВыключитьФильтр / DropFilter</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыключитьФильтр([Индекс = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> выключает фильтр у указанного индекса.</p>
+</blockquote>
+</div>
+<div class="section" id="firstrow">
+<h2><a name="firstrow">ВНачало / FirstRow</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВНачало([Индекс = &quot;&quot;], [флТолькоУникальные = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чТолькоУникальные</strong> - тип: Число. Флаг выборки по уникальным значениям.
+Флаг влияет на результат всех последующих вызовов методов ПолучитьСтроку(), СледующаяСтрока(), ПредыдущаяСтрока() по данной выборке.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: Число. 1 - операция завершилась успешно, 0 - выборка пуста.</p>
+<p><strong>Описание:</strong> позиционируется перед первой строкой указанного индекса, так что метод
+СледующаяСтрока() спозиционируется на первой строке.</p>
+</blockquote>
+</div>
+<div class="section" id="selectrows">
+<h2><a name="selectrows">ВыбратьСтроки / SelectRows</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыбратьСтроки([Индекс = &quot;&quot;], [флТолькоУникальные = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чТолькоУникальные</strong> - тип: Число. Флаг выборки по уникальным значениям.
+Флаг влияет на результат всех последующих вызовов методов ПолучитьСтроку(), СледующаяСтрока(), ПредыдущаяСтрока() по данной выборке.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: Число. 1 - операция завершилась успешно, 0 - выборка пуста.</p>
+<p><strong>Описание:</strong> позиционируется перед первой строкой указанного индекса, так что метод
+ПолучитьСтроку() спозиционируется на первой строке.</p>
+</blockquote>
+</div>
+<div class="section" id="lastrow">
+<h2><a name="lastrow">ВКонец / LastRow</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВКонец([Индекс = &quot;&quot;], [флТолькоУникальные = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чТолькоУникальные</strong> - тип: Число. Флаг выборки по уникальным значениям.
+Флаг влияет на результат всех последующих вызовов методов ПолучитьСтроку(), СледующаяСтрока(), ПредыдущаяСтрока() по данной выборке.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: Число. 1 - операция завершилась успешно, 0 - выборка пуста.</p>
+<p><strong>Описание:</strong> позиционируется после последней строки указанного индекса, так что метод
+ПредыдущаяСтрока() спозиционируется на последней строке.</p>
+</blockquote>
+</div>
+<div class="section" id="next">
+<h2><a name="next">СледующаяСтрока / Next</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> СледующаяСтрока([Индекс = &quot;&quot;], [чТолькоУникальные = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чТолькоУникальные</strong> - тип: Число. 1 - будет получена следующая строка с отличающимся значением
+ключа, все повторяющиеся строки будут пропущены.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: Число. 1 - операция завершилась успешно, 0 - больше нет строк.</p>
+<p><strong>Описание:</strong> переход к следующей строке индекса.</p>
+<p><strong>Примечание:</strong> флаг уникальной выборки, установленный в 1 в методах ВНачало() и ВКонец() имеет приоритет над флагом данного метода.</p>
+</blockquote>
+</div>
+<div class="section" id="getrow">
+<h2><a name="getrow">ПолучитьСтроку / GetRow</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьСтроку([Индекс = &quot;&quot;], [чТолькоУникальные = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чТолькоУникальные</strong> - тип: Число. 1 - будет получена следующая строка с отличающимся значением
+ключа, все повторяющиеся строки будут пропущены.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: Число. 1 - операция завершилась успешно, 0 - больше нет строк.</p>
+<p><strong>Описание:</strong> переход к следующей строке индекса.</p>
+<p><strong>Примечание:</strong> флаг уникальной выборки, установленный в 1 в методах ВНачало() и ВКонец(), имеет приоритет над флагом данного метода.</p>
+</blockquote>
+</div>
+<div class="section" id="previous">
+<h2><a name="previous">ПредыдущаяСтрока / Previous</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПредыдущаяСтрока([Индекс = &quot;&quot;], [чТолькоУникальные = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>чТолькоУникальные</strong> - тип: Число. 1 - будет получена следующая строка с отличающимся значением
+ключа, все повторяющиеся строки будут пропущены.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: Число. 1 - операция завершилась успешно, 0 - больше нет строк.</p>
+<p><strong>Описание:</strong> переход к предыдущей строке индекса.</p>
+<p><strong>Примечание:</strong> флаг уникальной выборки, установленный в 1 в методах ВНачало() и ВКонец(), имеет приоритет над флагом данного метода.</p>
+</blockquote>
+</div>
+<div class="section" id="getvalue">
+<h2><a name="getvalue">ПолучитьЗначение / GetValue</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьЗначение([чСтрока = ПустоеЗначение], Колонка)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>чСтрока</strong> - тип: Число. Номер строки. Если номер строки не указан, то берётся текущая строка.</li>
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер колонки.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: любой. Значение ячейки таблицы.</p>
+<p><strong>Описание:</strong> возвращает значение в указанной ячейке таблицы.</p>
+</blockquote>
+</div>
+<div class="section" id="get">
+<h2><a name="get">Получить / Get</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Получить(чСтрока, Колонка)</p>
+<p><strong>Описание:</strong> синоним метода ПолучитьЗначение().</p>
+</blockquote>
+</div>
+<div class="section" id="setvalue">
+<h2><a name="setvalue">УстановитьЗначение / SetValue</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьЗначение([чСтрока = ПустоеЗначение], Колонка, Значение)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>чСтрока</strong> - тип: Число. Номер строки. Если номер строки не указан, то устанавливается
+значение в текущей строке.</li>
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер колонки.</li>
+<li><strong>Значение</strong> - тип: любой. Новое значение ячейки.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> устанавливает значение указанной ячейки.</p>
+</blockquote>
+</div>
+<div class="section" id="set">
+<h2><a name="set">Установить / Set</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Установить(чСтрока, Колонка, Значение)</p>
+<p><strong>Описание:</strong> синоним метода УстановитьЗначение().</p>
+</blockquote>
+</div>
+<div class="section" id="groupby">
+<h2><a name="groupby">Свернуть / GroupBy</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Свернуть(стрКолонкиСвёртки, стрКолонкиСумм [, ИмяСуществующегоИндекса = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрКолонкиСвёртки</strong> - тип: Строка. Список колонок, по которым будет осуществляться свёртка. Эта строка
+полностью аналогична индексному выражению в методе ДобавитьИндекс(). Для свёртки таблица сначала
+индексируется по этому выражению, а затем строки с одинаковым индексом суммируются. Результат
+всегда помещается в первую по номеру строку, все остальные строки удаляются.</li>
+<li><strong>стрКолонкиСумм</strong> - тип: Строка. Список колонок, которые нужно просуммировать. Разделитель  - символ ','.
+Пробелы игнорируются.</li>
+<li><strong>ИмяСуществующегоИндекса</strong>  - тип: Стрка, Число. Если указано имя индекса, то КолонкиСвёртки
+игнорируются, а свёртка осуществляется по указанному индексу. В свёртке учавствуют только
+те строки, которые входят в фильтр.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> сворачивает таблицу по колонкам &lt;КолонкиСвёртки&gt;, суммируя значения в
+колонках &lt;КолонкиСумм&gt;. Колонки, не вошедшие в &lt;КолонкиСвёртки&gt; и &lt;КолонкиСумм&gt; из
+таблицы не удаляются. Свёртка возможна и по существующему индексу - при этом не теряется
+время на построение временного индекса, и возможна выборочная свёртка по текущему фильтру индекса.</p>
+</blockquote>
+</div>
+<div class="section" id="sum">
+<h2><a name="sum">Итог / Sum</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Итог(КолонкаСуммы, [Индекс = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>КолонкаСуммы</strong> - тип: Строка, Число. Колонка, по которой нужно получить сумму.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: Число. Сумма по указанной колонке.</p>
+<p><strong>Описание:</strong> считает сумму по указанной колонке, при этом учитывается фильтр индекса.</p>
+</blockquote>
+</div>
+<div class="section" id="sumbyrange">
+<h2><a name="sumbyrange">ИтогПоДиапазону / SumByRange</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИтогПоДиапазону(КолонкаСуммы, [Индекс = &quot;&quot;], КлючМин, КлючМакс)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>КолонкаСуммы</strong> - тип: Строка, Число. Колонка, по которой нужно получить сумму.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>КлючМин</strong> - тип: любой. Нижняя граница диапазона. Задаётся так же, как в методе НайтиСтроку().</li>
+<li><strong>КлючМакс</strong> - тип: любой. Верхняя границы диапазона. Задаётся так же, как в методе НайтиСтроку().</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает</strong> тип: Число. Сумма по указанной колонке.</p>
+<p><strong>Описание:</strong> считает сумму по указанной колонке, с заданием диапазона суммирования.
+Функция не учитывает установленные фильтры и сама перманентных фильтров не устанавливает.</p>
+</blockquote>
+</div>
+<div class="section" id="nodesum">
+<h2><a name="nodesum">ИтогПоУзлу / NodeSum</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИтогПоУзлу(КолонкаСуммы  [, Индекс])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>КолонкаСуммы</strong> - тип: Строка, Число. Колонка, по которой нужно получить сумму.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Сумма по указанной колонке. Если выборка не активна (нет
+текущего узла), то возвращает 0.</p>
+<p><strong>Описание:</strong> считает сумму по указанной колонке для текущего узла индексного дерева.
+Имеет смысл, когда индекс не уникален, и нужно посчитать итог по текущему ключу.</p>
+<p>Пример: на входе имеем таблицу</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Фамилия</th>
+<th class="head">Сумма</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Иванов</td>
+<td>100</td>
+</tr>
+<tr><td>Иванов</td>
+<td>120</td>
+</tr>
+<tr><td>Иванов</td>
+<td>200</td>
+</tr>
+<tr><td>Петров</td>
+<td>500</td>
+</tr>
+<tr><td>Петров</td>
+<td>600</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<pre class="literal-block">
+ТЗ.ДобавитьИндекс(&quot;Фамилия&quot;, &quot;Фамилия&quot;, 0);
+ТЗ.НайтиСтроку(&quot;Фамилия&quot;, &quot;Иванов&quot;, 0, 1); //позиционируемся на узел, в котором собраны все строки с фамилией Иванов
+Сум = ТЗ.ИтогПоУзлу(&quot;Сумма&quot;, &quot;Фамилия&quot;); //вернёт 420  (100 + 120 + 200)
+ТЗ.НайтиСтроку(&quot;Фамилия&quot;, &quot;Петров&quot;, 0, 1); //позиционируемся на узел, в котором собраны все строки с фамилией Петров
+Сум = ТЗ.ИтогПоУзлу(&quot;Сумма&quot;, &quot;Фамилия&quot;); //вернёт 1100  (500 + 600)
+</pre>
+</div>
+<div class="section" id="group">
+<h2><a name="group">Группировать / Group</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Группировать(стрГруппировки, стрКолонкиСумм, [чРасшифровкаПоследнегоУровня = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрГруппировки</strong> - тип: Строка. Строка, описывающая требуемую структуру группировки. Задаётся в виде
+&lt;ИмяИндекса1&gt;: &lt;ИндексноеВыражение1&gt; [; &lt;ИмяИндекса2&gt;: &lt;ИндексноеВыражение2&gt; ... ].
+ИндексноеВыражение - строка в том же формате, что и для метода ДобавитьИндекс(), с одним
+дополнением: если в списке модификаторов колонки присутствует символ '&amp;', то по этой колонке
+будут посчитаны итоги по группам справочника. Колонка с таким модификатором может быть
+только одна на каждом уровне группировки.</li>
+<li><strong>стрКолонкиСумм</strong> - тип: Строка. Строка с колонками, по которым нужно считать суммы.</li>
+<li><strong>чРасшифровкаПоследнегоУровня</strong> - тип: Число. 1 - в каждой строке последнего
+уровня группировки будет таблица с расшифровкой, содержащая строки исходной таблицы в
+нетронутом виде. 0 - последний уровень будет свёрнут.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> формирует таблицу с древовидной структурой в соответствии с группировками.
+На каждом уровне группировки остаются только уникальные значения по соответствующему индексу.
+В колонки сумм записываются суммы по всем строкам с совпадающим значением ключа.
+Строки с совпадающими значениями ключа записываются в таблицу, которая помещается в колонку тзПотомки -
+эта колонка создаётся в процессе группировки.</p>
+<p>Пример: на входе имеем таблицу</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="39%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Фамилия</th>
+<th class="head">Имя</th>
+<th class="head">Сумма</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Иванов</td>
+<td>Иван</td>
+<td>100</td>
+</tr>
+<tr><td>Иванов</td>
+<td>Сергей</td>
+<td>120</td>
+</tr>
+<tr><td>Петров</td>
+<td>Пётр</td>
+<td>130</td>
+</tr>
+<tr><td>Петров</td>
+<td>Александр</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>группируем её:</p>
+<pre class="literal-block">
+ТЗ.Группировать(&quot;Фамилия: Фамилия; Имя: Имя&quot;, &quot;Сумма&quot;);
+</pre>
+<p>и получаем таблицу такого вида (в колонке тзПотомки показано содержимое таблицы тзПотомки):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="19%" />
+<col width="14%" />
+<col width="16%" />
+<col width="19%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head" rowspan="2">Фамилия</th>
+<th class="head" rowspan="2">Имя</th>
+<th class="head" rowspan="2">Сумма</th>
+<th class="head" colspan="3">тзПотомки</th>
+</tr>
+<tr><th class="head">Фамилия</th>
+<th class="head">Имя</th>
+<th class="head">Сумма</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td rowspan="2">Иванов</td>
+<td rowspan="2">Иван</td>
+<td rowspan="2">220</td>
+<td>Иванов</td>
+<td>Иван</td>
+<td>100</td>
+</tr>
+<tr><td>Иванов</td>
+<td>Сергей</td>
+<td>120</td>
+</tr>
+<tr><td rowspan="2">Петров</td>
+<td rowspan="2">Пётр</td>
+<td rowspan="2">330</td>
+<td>Петров</td>
+<td>Пётр</td>
+<td>130</td>
+</tr>
+<tr><td>Петров</td>
+<td>Александр</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>При группировке возможно также подсчитывать суммы по группам справочников - для этого в списке
+модификаторов индекса нужно указать '&amp;'. Если в таблице есть колонка с именем
+'&lt;ИмяКолонкиСправочника&gt;_Родитель', то родитель для элемента будет браться из этой колонки -
+это уменьшает количество обращений к базе, и заметно увеличивает производительность.
+Итоговая таблица будет организована в виде дерева, в точности повторяющего структуру справочника.
+Следующий уровень группировки располагается в листьях этого дерева (т.е. в строках, не являющихся группами).
+Для удобства работы с полученным деревом в таблицу добавляется колонка '__ЭтоГруппа__', в которую
+записывается 1 для всех групп, и ПустоеЗначение для элементов. Также добавляется колонка '__Уровень__',
+которая заполняется значением уровня групп справочника (нумерация начинается с 1). Для элементов
+в колонку '__Уровень__' записывается ПустоеЗначение.</p>
+</blockquote>
+</div>
+<div class="section" id="fillrow">
+<h2><a name="fillrow">ЗаполнитьСтроку / FillRow</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗаполнитьСтроку([чНомерСтроки = 0], Источник, [чНомерСтрокиИсточника = 0], [чПоИменамКолонок = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>чНомерСтроки</strong> - тип: Число. Номер строки, которую нужно заполнить. Если &lt;= 0, то заполняется
+текущая строка.</li>
+<li><strong>Источник</strong> - тип: ИндексированнаяТаблица, ТаблицаЗначений, Список значений.
+Источник данных для заполнения строки.</li>
+<li><strong>чНомерСтрокиИсточника</strong> - тип: Число. Номер строки в таблице-источнике.  По умолчанию берётся
+текущая строка в предопределённом индексе. Если Источник - СписокЗначений, то этот
+параметр игнорируется.</li>
+<li><strong>чПоИменамКолонок</strong> - тип: Число. 0 - значения из источника копируются по номерам колонок;
+1 - значения копируются по именам колонок.  Если в приёмнике нет колонки с таким
+именем, то значение не копируется. Если Источник - СписокЗначений, то именами колонок
+считаются символьные представления значений.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> заполняет строку таблицы из строки другой таблицы, или из списка значений.</p>
+</blockquote>
+</div>
+<div class="section" id="fillcolumn-1">
+<h2><a name="fillcolumn-1">ЗаполнитьКолонку / FillColumn  (вариант 1)</a></h2>
+<chminfo>
+        <autokw/>
+        <klinks>
+                ЗаполнитьКолонку
+                FillColumn
+        </klinks>
+        <alinks>_1cpp_it_fillcolumn_</alinks>
+        <seealso>_1cpp_it_fillcolumn_</seealso>
+</chminfo>
+<!--  -->
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗаполнитьКолонку([Индекс = &quot;&quot;], Колонка, Источник, [ИндексИсточника = &quot;&quot;], [КолонкаИсточника = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса, по которому упорядочиваются и фильтруются
+строки заполняемой таблицы. По умолчанию используется основной индекс.</li>
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер заполняемой колонки.</li>
+<li><strong>Источник</strong> - тип: ИндексированнаяТаблица. Источник данных для заполнения колонки.</li>
+<li><strong>ИндексИсточника</strong> - тип: Строка, Число. Идентификатор или номер индекса, по которому упорядочиваются и фильтруются
+строки таблицы-источника. По умолчанию используется основной индекс.</li>
+<li><strong>КолонкаИсточника</strong> - тип: Строка, Число. Идентификатор или номер колонки, из которой будут
+браться значения.
+Если параметр не указан, то колонка-источник определяется параметром <strong>Колонка</strong>.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> заполняет колонку таблицы из колонки другой индексированной таблицы.</p>
+</blockquote>
+</div>
+<div class="section" id="fillcolumn-2">
+<h2><a name="fillcolumn-2">ЗаполнитьКолонку / FillColumn  (вариант 2)</a></h2>
+<chminfo>
+        <autokw/>
+        <klinks>
+                ЗаполнитьКолонку
+                FillColumn
+        </klinks>
+        <alinks>_1cpp_it_fillcolumn_</alinks>
+        <seealso>_1cpp_it_fillcolumn_</seealso>
+</chminfo>
+<!--  -->
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗаполнитьКолонку([Индекс = &quot;&quot;], Колонка, Источник, [КолонкаИсточника = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса, по которому упорядочиваются и фильтруются
+строки заполняемой таблицы. По умолчанию используется основной индекс.</li>
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер заполняемой колонки.</li>
+<li><strong>Источник</strong> - тип: ТаблицаЗначений, СписокЗначений. Источник данных для заполнения колонки.</li>
+<li><strong>КолонкаИсточника</strong> - номер или идентификатор колонки, из которой будут браться значения.
+Если параметр не указан, то колонка-источник определяется параметром <em>Колонка</em>.
+Для списка значений параметр игнорируется.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> заполняет колонку таблицы из колонки другой таблицы (ТаблицаЗначений) или списка значений.</p>
+</blockquote>
+</div>
+<div class="section" id="fillcolumn-3">
+<h2><a name="fillcolumn-3">ЗаполнитьКолонку / FillColumn  (вариант 3)</a></h2>
+<chminfo>
+        <autokw/>
+        <klinks>
+                ЗаполнитьКолонку
+                FillColumn
+        </klinks>
+        <alinks>_1cpp_it_fillcolumn_</alinks>
+        <seealso>_1cpp_it_fillcolumn_</seealso>
+</chminfo>
+<!--  -->
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗаполнитьКолонку([Индекс = &quot;&quot;], Колонка, Значение)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса, по которому упорядочиваются и фильтруются
+строки заполняемой таблицы. По умолчанию используется основной индекс.</li>
+<li><strong>Колонка</strong> - тип: Строка, Число. Идентификатор или номер заполняемой колонки.</li>
+<li><strong>Значение</strong> - тип: любой, кроме ИндексированнаяТаблица, ТаблицаЗначений, СписокЗначений.
+Значение, которым будет заполнена колонка.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> заполняет колонку таблицы одним и тем же значением.</p>
+</blockquote>
+</div>
+<div class="section" id="unload">
+<h2><a name="unload">Выгрузить / Unload</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Выгрузить(Приемник [, Индекс = &quot;&quot;] [, Колонки = &quot;&quot;] [, чТолькоУникальные = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Приемник</strong> - тип: ИндексированнаяТаблица, ТаблицаЗначений, Документ, СписокЗначений, Неопределенный или произвольная коллекция или любой объект, поддерживающий универсальный интерфейс загрузки.
+Переменная, в которую будет выгружена таблица.
+Если это документ, то заполняется его табличная часть.
+Если тип Неопределенный, то создаётся таблица типа ИндексированнаяТаблица.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.</li>
+<li><strong>Колонки</strong> - тип: Строка, Число. Список колонок через запятую или номер колонки для выгрузки.
+Если значение не задано или задана пустая строка, параметр игнорируется.</li>
+<li><strong>чТолькоУникальные</strong> - тип: Число. Флаг выгрузки только уникальных значений.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> выгружает текущую таблицу в другую таблицу, или в новую.  Если таблица-приёмник
+существует, то она полностью очищается.  Индексы при выгрузке не копируются.
+Выгрузка осуществляется с учётом  индекса и фильтра.</p>
+</blockquote>
+</div>
+<div class="section" id="id7">
+<h2><a name="id7">ВыгрузитьСтроку / Unload</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыгрузитьСтроку(Приемник, [чНомерСтроки = 0], [Колонки = &quot;&quot;], [чПоложениеИменКолонок = 0])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><strong>чНомерСтроки</strong> - тип: Число. Номер строки.</dt>
+<dd><ul class="first last simple">
+<li>0 - не выгружать данные</li>
+<li>не задан - выгружать данные текущей строки</li>
+<li>номер строки - выгружать данные заданной строки</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Приемник</strong> - тип: СписокЗначений, ТаблицаЗначений, произвольная коллекция или любой объект, поддерживающий универсальный интерфейс загрузки.
+Переменная, в которую будет выгружена таблица.</p>
+</li>
+<li><p class="first"><strong>Колонки</strong> - тип: Строка, Число. Список колонок через запятую или номер колонки для выгрузки.
+Если значение не задано или задана пустая строка, параметр игнорируется.</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>чПоложениеИменКолонок</strong> - тип: Число. Флаг выгрузки дополнительно имен колонок.</dt>
+<dd><ul class="first simple">
+<li>0 или не задан - не выгружать имена колонок</li>
+<li>1 - выгружать имена колонок перед данными</li>
+<li>2 - выгружать имена колонок после данных</li>
+</ul>
+<p class="last">Если чПоложениеИменКолонок &lt;&gt; 0 и чНомерСтроки = 0, тогда будут 
+выгружены только имена колонок, данные строки не выгрузятся.
+Таким образом, результат может содержать одну колонку с именами колонок,
+либо одну колонку с данными строки, либо обе колонки вместе.
+Если значение не задано или задана пустая строка, параметр игнорируется.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> выгружает текущую или заданную строку таблицы в объект-коллекцию;
+коллекция-приемник не очищается.</p>
+</blockquote>
+</div>
+<div class="section" id="load">
+<h2><a name="load">Загрузить / Load</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Загрузить(Источник, [Индекс = &quot;&quot;], [Колонки = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Источник</strong> - тип: ИндексированнаяТаблица, ТаблицаЗначений, Документ. Таблица, из которой будут
+загружены данные.
+Если тип - Документ, то будет загружена табличная часть документа.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса в таблице - источнике. По умолчанию используется
+основной индекс.
+Если параметр Источник имеет тип Документ, то Индекс интерпретируется как строка, содержащая список
+полей табличной части документа.
+Если Источник имеет тип ТаблицаЗначений, то этот параметр игнорируется.</li>
+<li><strong>Колонки</strong> - тип: Строка, Число. Список колонок через запятую или номер колонки для загрузки в таблице - источнике.
+Определяет список колонкок, которые будут загружены в таблицу. Если значение не задано или задана пустая строка,
+параметр игнорируется. Если источник имеет тип Документ, этот параметр игнорируется (используйте параметр Индекс).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> загружает данные из указанной таблицы, в соответствии с индексом.
+Перед загрузкой текущая таблица полностью очищается. Индексы не копируются.</p>
+</blockquote>
+</div>
+<div class="section" id="loadquery">
+<h2><a name="loadquery">ЗагрузитьЗапрос / LoadQuery</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗагрузитьЗапрос(Запрос, [чФлаг = 0], [чИтоги = 1])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Запрос</strong> - тип: Запрос. Запрос, из которого будут загружены данные.</li>
+<li><strong>чФлаг</strong> - тип: Число, Строка. 0 - значения групп и функций (по умолчанию);
+1 - значения групп и функций, дополнительных переменных;
+2 - значения упорядочиваний групп и функций;
+3 - значения упорядочиваний групп и функций, дополнительных переменных;
+Строка - 'Товар(1), Товар(2), Товар, Склад, Приход, Расход', где Товар(1) - значение первого
+упорядочивания группировки 'Товар'.</li>
+<li><strong>чИтоги</strong> - тип: Число.
+0 - итоги по группировкам не выводить;
+1 - итоги по группировкам выводить сверху (по умолчанию);
+2 - итоги по группировкам выводить снизу;
+3 - итоги по группировкам выводить сверху и снизу.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> загружает данные из указанного запроса. Перед загрузкой текущая таблица полностью очищается.</p>
+</blockquote>
+</div>
+<div class="section" id="innerjoin">
+<h2><a name="innerjoin">ВнутреннееСоединение / InnerJoin</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВнутреннееСоединение(стрКолонкиЛевойИТ, ПраваяИТ, ИндексПравойИТ, стрКолонкиПравойИТ)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрКолонкиЛевойИТ</strong> - тип: Строка. Колонки, значения которых будут использованы для поиска строки в правой таблице.</li>
+<li><strong>ПраваяИТ</strong> - тип: ИндексированнаяТаблица. Присоединяемая таблица.</li>
+<li><strong>ИндексПравойИТ</strong> - тип: Строка, Число. Имя или номер индекса, по которому будут искаться строки в правой таблице.
+Количество колонок индекса должно быть равно количеству колонок поиска (см. параметр <em>стрКолонкиЛевойИТ</em>).</li>
+<li><strong>стрКолонкиПравойИТ</strong> - тип: Строка. Список колонок, которые будут копироваться из правой таблицы в левую.
+Список задаётся в формате &quot;&lt;ИмяКолИст&gt;|&lt;ИмяКолИст:ИмяКолНазн&gt; [,...]&quot;. &lt;ИмяКолИст&gt; - имя колонки в правой таблице; 
+если такой колонки нет в левой таблице, то она будет создана. &lt;ИмяКолНазн&gt; - если указана, то значение из колонки 
+правой таблицы с названием &lt;ИмяКолИст&gt; будет скопировано в колонку левой таблицы &lt;ИмяКолНазн&gt;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Выполняет операцию, аналогичную команде SQL <strong>Inner Join</strong>. Для каждой строки из левой таблицы (левой 
+таблицей является текущий объект) добавляются все строки из правой таблицы, соответствующие ключевому выражению.
+Ключевое выражение определяется параметром <em>стрКолонкиЛевойИТ</em>. Из правой таблицы в левую переносятся значения 
+колонок, указанных в параметре <em>стрКолонкиПравойИТ</em>. Если строка левой таблицы не найдена в правой, то строка
+в левой таблице удаляется.</p>
+</blockquote>
+</div>
+<div class="section" id="leftjoin">
+<h2><a name="leftjoin">ЛевоеСоединение / LeftJoin</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЛевоеСоединение(стрКолонкиЛевойИТ, ПраваяИТ, ИндексПравойИТ, стрКолонкиПравойИТ)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрКолонкиЛевойИТ</strong> - тип: Строка. Колонки, значения которых будут использованы для поиска строки в правой таблице.</li>
+<li><strong>ПраваяИТ</strong> - тип: ИндексированнаяТаблица. Присоединяемая таблица.</li>
+<li><strong>ИндексПравойИТ</strong> - тип: Строка, Число. Имя или номер индекса, по которому будут искаться строки в правой таблице.
+Количество колонок индекса должно быть равно количеству колонок поиска (см. параметр <em>стрКолонкиЛевойИТ</em>).</li>
+<li><strong>стрКолонкиПравойИТ</strong> - тип: Строка. Список колонок, которые будут копироваться из правой таблицы в левую.
+Список задаётся в формате &quot;&lt;ИмяКолИст&gt;|&lt;ИмяКолИст:ИмяКолНазн&gt; [,...]&quot;. &lt;ИмяКолИст&gt; - имя колонки в правой таблице; 
+если такой колонки нет в левой таблице, то она будет создана. &lt;ИмяКолНазн&gt; - если указана, то значение из колонки 
+правой таблицы с названием &lt;ИмяКолИст&gt; будет скопировано в колонку левой таблицы &lt;ИмяКолНазн&gt;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Выполняет операцию, аналогичную команде SQL <strong>Left Join</strong>. Для каждой строки из левой таблицы (левой 
+таблицей является текущий объект) добавляются все строки из правой таблицы, соответствующие ключевому выражению.
+Ключевое выражение определяется параметром <em>стрКолонкиЛевойИТ</em>. Из правой таблицы в левую переносятся значения 
+колонок, указанных в параметре <em>стрКолонкиПравойИТ</em>. Если строка левой таблицы не найдена в правой, то значения 
+колонок левой таблицы <strong>остаются неизменными</strong>.</p>
+</blockquote>
+</div>
+<div class="section" id="rightjoin">
+<h2><a name="rightjoin">ПравоеСоединение / RightJoin</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПравоеСоединение(стрКолонкиЛевойИТ, ПраваяИТ, ИндексПравойИТ, стрКолонкиПравойИТ)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрКолонкиЛевойИТ</strong> - тип: Строка. Колонки, значения которых будут использованы для поиска строки в правой таблице.</li>
+<li><strong>ПраваяИТ</strong> - тип: ИндексированнаяТаблица. Присоединяемая таблица.</li>
+<li><strong>ИндексПравойИТ</strong> - тип: Строка, Число. Имя или номер индекса, по которому будут искаться строки в правой таблице.
+Количество колонок индекса должно быть равно количеству колонок поиска (см. параметр <em>стрКолонкиЛевойИТ</em>).</li>
+<li><strong>стрКолонкиПравойИТ</strong> - тип: Строка. Список колонок, которые будут копироваться из правой таблицы в левую.
+Список задаётся в формате &quot;&lt;ИмяКолИст&gt;|&lt;ИмяКолИст:ИмяКолНазн&gt; [,...]&quot;. &lt;ИмяКолИст&gt; - имя колонки в правой таблице; 
+если такой колонки нет в левой таблице, то она будет создана. &lt;ИмяКолНазн&gt; - если указана, то значение из колонки 
+правой таблицы с названием &lt;ИмяКолИст&gt; будет скопировано в колонку левой таблицы &lt;ИмяКолНазн&gt;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Выполняет операцию, аналогичную команде SQL <strong>Right Join</strong>. Для каждой строки из левой таблицы (левой 
+таблицей является текущий объект) добавляются все строки из правой таблицы, соответствующие ключевому выражению.
+Ключевое выражение определяется параметром <em>стрКолонкиЛевойИТ</em>. Из правой таблицы в левую переносятся значения 
+колонок, указанных в параметре <em>стрКолонкиПравойИТ</em>. Если строка левой таблицы не найдена в правой, то она удаляется.
+Если строка правой таблицы отсутствует в левой, то она добавляется,
+при этом все колонки кроме указанных в параметре <em>стрКолонкиПравойИТ</em> заполняются пустыми значениями.</p>
+</blockquote>
+</div>
+<div class="section" id="fulljoin">
+<h2><a name="fulljoin">ПолноеСоединение / FullJoin</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолноеСоединение(стрКолонкиЛевойИТ, ПраваяИТ, ИндексПравойИТ, стрКолонкиПравойИТ)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрКолонкиЛевойИТ</strong> - тип: Строка. Колонки, значения которых будут использованы для поиска строки в правой таблице.</li>
+<li><strong>ПраваяИТ</strong> - тип: ИндексированнаяТаблица. Присоединяемая таблица.</li>
+<li><strong>ИндексПравойИТ</strong> - тип: Строка, Число. Имя или номер индекса, по которому будут искаться строки в правой таблице.
+Количество колонок индекса должно быть равно количеству колонок поиска (см. параметр <em>стрКолонкиЛевойИТ</em>).</li>
+<li><strong>стрКолонкиПравойИТ</strong> - тип: Строка. Список колонок, которые будут копироваться из правой таблицы в левую.
+Список задаётся в формате &quot;&lt;ИмяКолИст&gt;|&lt;ИмяКолИст:ИмяКолНазн&gt; [,...]&quot;. &lt;ИмяКолИст&gt; - имя колонки в правой таблице; 
+если такой колонки нет в левой таблице, то она будет создана. &lt;ИмяКолНазн&gt; - если указана, то значение из колонки 
+правой таблицы с названием &lt;ИмяКолИст&gt; будет скопировано в колонку левой таблицы &lt;ИмяКолНазн&gt;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Выполняет операцию, аналогичную команде SQL <strong>Full Join</strong>. Для каждой строки из левой таблицы (левой 
+таблицей является текущий объект) добавляются все строки из правой таблицы, соответствующие ключевому выражению.
+Ключевое выражение определяется параметром <em>стрКолонкиЛевойИТ</em>. Из правой таблицы в левую переносятся значения 
+колонок, указанных в параметре <em>стрКолонкиПравойИТ</em>. Если строка левой таблицы не найдена в правой, то значения 
+колонок левой таблицы <strong>остаются неизменными</strong>.
+Если строка правой таблицы отсутствует в левой, то она добавляется,
+при этом все колонки кроме указанных в параметре <em>стрКолонкиПравойИТ</em> заполняются пустыми значениями.</p>
+</blockquote>
+</div>
+<div class="section" id="merge">
+<h2><a name="merge">Объединить / Merge</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Объединить(ТЗ [, Индекс = &quot;&quot;] [, Колонки = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ТЗ</strong> - тип: ИндексированнаяТаблица, ТаблицаЗначений. Таблица, из которой будут
+загружены данные.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса в таблице - источнике. По умолчанию используется
+основной индекс. Если ТЗ имеет тип ТаблицаЗначений, то этот параметр игнорируется.</li>
+<li><strong>Колонки</strong> - тип: Строка, Число. Список колонок через запятую или номер колонки в таблице - источнике.
+Определяет список колонкок, которые будут участвовать в процессе объединения.
+Если значение не задано или задана пустая строка, параметр игнорируется.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> добавляет строки из таблицы - источника в текущую таблицу.  Если в таблице - источнике
+есть колонки, которых нет в текущей, то они создаются. Объединени осуществляется с учётом
+индекса и фильтра таблицы - источника.</p>
+</blockquote>
+</div>
+<div class="section" id="conjunction">
+<h2><a name="conjunction">Пересечение / Conjunction</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Пересечение(ТЗ2, ИндексТекущейТЗ, ИндексТЗ2 [, флДобавлятьСтрокиТЗ2 = 1])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ТЗ2</strong> - тип: ИндексированннаяТаблица. Таблица, с которой строится пересечение.</li>
+<li><strong>ИндексТекущейТЗ</strong> - тип: Строка, Число. Имя или номер индекса в текущей таблицы.</li>
+<li><strong>ИндексВторойТЗ</strong> - тип: Строка, Число. Имя или номер индекса в ТЗ2.</li>
+<li><strong>флДобавлятьСтрокиТЗ2</strong> - тип: Число. Флаг добавления строк ТЗ2 в  результат.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> пересечение двух таблиц по ключевым полям.  Результатом пересечения является
+таблица, в которой присутствуют строки текущей ТЗ,  которые есть в ТЗ2, и строки ТЗ2,
+которые есть в текущей ТЗ (с учетом флДобавлятьСтрокиТЗ2).  Совпадение строк определяется
+по индексам ИндексТекущейТЗ и  ИндексТЗ2.  Количество колонок в индексах должно быть одинаковым.</p>
+</blockquote>
+</div>
+<div class="section" id="difference">
+<h2><a name="difference">Разность / Difference</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Разность(ТЗ2, ИндексТекущейТЗ, ИндексТЗ2 [, флДобавлятьСтрокиТЗ2 = 1])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ТЗ2</strong> - тип: ИндексированннаяТаблица. Таблица, с которой строится разность.</li>
+<li><strong>ИндексТекущейТЗ</strong> - тип: Строка, Число. Имя или номер индекса в текущей таблицы.</li>
+<li><strong>ИндексВторойТЗ</strong> - тип: Строка, Число. Имя или номер индекса в ТЗ2.</li>
+<li><strong>флДобавлятьСтрокиТЗ2</strong> - тип: Число. Флаг добавления строк ТЗ2 в результат.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> разность двух таблиц по ключевым полям.  Результатом является
+таблица, в которой присутствуют строки текущей ТЗ, которых нет в ТЗ2, и строки ТЗ2,
+которых нет в текущей ТЗ (с учетом флДобавлятьСтрокиТЗ2). Совпадение строк определяется
+по индексам ИндексТекущейТЗ и ИндексТЗ2.  Количество колонок в индексах должно быть одинаковым.</p>
+</blockquote>
+</div>
+<div class="section" id="copy">
+<h2><a name="copy">Копия / Copy</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Копия([чКопироватьИндексы = 0], [чКопироватьДанные = 1])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>чКопироватьИндексы</strong> - тип: Число. Если 1, то индексы и фильтры тоже будут скопированы.</li>
+<li><strong>чКопироватьДанные</strong> - тип: Число. Если 1, то данные будут скопированы;
+если 0 - то копируется только структура.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: ИндексированнаяТаблица. Переменная, являющаяся копией объекта.</p>
+<p><strong>Описание:</strong> создаёт копию таблицы.</p>
+</blockquote>
+</div>
+<div class="section" id="savetofile">
+<h2><a name="savetofile">ВФайл / SaveToFile</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВФайл(стрИмяФайла, [чФормат = 1], [Индекс = &quot;&quot;], [чСИменамиКолонок = 1])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрИмяФайла</strong> - тип: Строка. Имя файла, в который нужно записать таблицу. Если файл уже существует,
+то он перезаписывается.</li>
+<li><strong>чФормат</strong> - тип: Число. Формат файла.  Может принимать следующие значения: 1 - запись значений во
+внутреннем формате; 2 - запись значений во внешнем формате; 3 - csv файл со значениями во внутреннем
+формате; 4 - csv файл со значениями во внешнем формате.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.
+Выгрузка в файл производится с учётом сортировки и фильтра (если есть) по указанному индексу.</li>
+<li><strong>чСИменамиКолонок</strong> - тип: Число. 1 - в первую строку файла будут записаны имена колонок.
+Имеет смысл только для csv-файлов.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> записывает таблицу в файл.</p>
+</blockquote>
+</div>
+<div class="section" id="loadfromfile">
+<h2><a name="loadfromfile">ИзФайла / LoadFromFile</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИзФайла(стрИмяФайла, [чФормат = 1], [чСИменамиКолонок = 1])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрИмяФайла</strong> - тип: Строка. Имя файла, из которого нужно считать таблицу.</li>
+<li><strong>чФормат</strong> - тип: Число. Формат файла.  Может принимать следующие значения: 1 - запись значений во
+внутреннем формате; 2 - запись значений во внешнем формате; 3 - csv файл со значениями во внутреннем
+формате; 4 - csv файл со значениями во внешнем формате.</li>
+<li><strong>чСИменамиКолонок</strong> - тип: Число. 1 - в первой строке файла хранятся имена колонок.
+Имеет смысл только для csv-файлов. Если параметр = 0, то имена колонок образуются как __col__&lt;НомерКолонки&gt;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - таблица считана успешно; 0 - ошибка при чтении.</p>
+<p><strong>Описание:</strong> считывает таблицу из файла.</p>
+</blockquote>
+</div>
+<div class="section" id="savetostring">
+<h2><a name="savetostring">ВСтроку / SaveToString</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВСтроку([чФормат = 1], [Индекс = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>чФормат</strong> - тип: Число. 1 - запись значений во внутреннем формате; 0 - запись значений во внешнем формате.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.
+Выгрузка в файл производится с учётом сортировки и фильтра (если есть) по указанному индексу.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Строка. Строковое представление таблицы.</p>
+<p><strong>Описание:</strong> Преобразует таблицу в строковое представление для сериализации.
+Полученная строка впоследствии может использоваться в методе ИзСтроки().</p>
+</blockquote>
+</div>
+<div class="section" id="loadfromstring">
+<h2><a name="loadfromstring">ИзСтроки / LoadFromString</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИзСтроки(стрПредставление)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>стрПредставление</strong> - тип: Строка. Строковое представление таблицы.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> загружает таблицу из строкового представления.</p>
+</blockquote>
+</div>
+<div class="section" id="chooseline">
+<h2><a name="chooseline">ВыбратьСтроку / ChooseLine</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыбратьСтроку([Строка = 0], [стрЗаголовокОкна = &quot;&quot;], [чТаймаут = 0], [Индекс = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Строка</strong> - тип: любой. Переменная, куда помещается значение - номер выбранной строки.
+При вызове метода здесь можно передавать значение начального номера строки.</li>
+<li><strong>стрЗаголовокОкна</strong> - тип: Строка. Заголовок окна выбора.</li>
+<li><strong>чТаймаут</strong> - тип: Число. Время ожидания системы (в секундах) на отклик пользователя.
+Если не задано, то время ожидания бесконечно.</li>
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.
+В окне выбора строки появятся с учётом сортировки и фильтра (если есть) по указанному индексу.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - если выбор произведен (нажата кнопка 'ОК');
+0 - если выбор не произведен (нажата кнопка 'ОТМЕНА').</p>
+<p><strong>Описание:</strong> Открывает окно для интерактивного выбора строки в таблице значений.
+Метод предназначен в основном для отладки.</p>
+</blockquote>
+</div>
+<div class="section" id="show">
+<h2><a name="show">Показать / Show</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> Показать([Индекс = &quot;&quot;])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>Индекс</strong> - тип: Строка, Число. Идентификатор или номер индекса. По умолчанию используется основной индекс.
+В окне выбора строки появятся с учётом сортировки и фильтра (если есть) по указанному индексу.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. 1 - если выбор произведен (нажата кнопка 'ОК');
+0 - если выбор не произведен (нажата кнопка 'ОТМЕНА').</p>
+<p><strong>Описание:</strong> Открывает окно для интерактивного выбора строки в таблице значений.
+Метод предназначен в основном для отладки.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

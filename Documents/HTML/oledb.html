@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Прямой доступ через OLE DB</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="ole-db">
+<h1 class="title">Прямой доступ через OLE DB</h1>
+<!-- Автор: Кирилл Мирошниченко aka spock, mailto: spock@km.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_oledb_</alinks>
+</chminfo>
+<div class="contents topic" id="id1">
+<p class="topic-title first"><a name="id1">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#oledbdata" id="id6" name="id6">OLEDBData</a><ul>
+<li><a class="reference" href="#id2" id="id7" name="id7">Методы</a><ul>
+<li><a class="reference" href="#connect" id="id8" name="id8">Соединение / Connect</a></li>
+<li><a class="reference" href="#createcommand" id="id9" name="id9">СоздатьКоманду / CreateCommand</a></li>
+<li><a class="reference" href="#close" id="id10" name="id10">Закрыть / Close</a></li>
+<li><a class="reference" href="#attachib" id="id11" name="id11">ПрисоединитьИБ / AttachIB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#oledbcommand" id="id12" name="id12">OLEDBCommand</a><ul>
+<li><a class="reference" href="#id3" id="id13" name="id13">Формат типизирующего псевдонима</a></li>
+<li><a class="reference" href="#id4" id="id14" name="id14">Методы</a><ul>
+<li><a class="reference" href="#debug" id="id15" name="id15">Отладка / Debug</a></li>
+<li><a class="reference" href="#execute" id="id16" name="id16">Выполнить / Execute</a></li>
+<li><a class="reference" href="#executestatement" id="id17" name="id17">ВыполнитьИнструкцию / ExecuteStatement</a></li>
+<li><a class="reference" href="#id5" id="id18" name="id18">Закрыть / Close</a></li>
+<li><a class="reference" href="#settextparam" id="id19" name="id19">УстановитьТекстовыйПараметр / SetTextParam</a></li>
+<li><a class="reference" href="#settemptablesdir" id="id20" name="id20">УстановитьКаталогВремТаблиц / SetTempTablesDir</a></li>
+<li><a class="reference" href="#putobjectlist" id="id21" name="id21">УложитьСписокОбъектов / PutObjectList</a></li>
+<li><a class="reference" href="#setexectimeout" id="id22" name="id22">УстановитьТаймаутВыполнения / SetExecTimeOut</a></li>
+<li><a class="reference" href="#addparam" id="id23" name="id23">ДобПараметр / AddParam</a></li>
+<li><a class="reference" href="#setparam" id="id24" name="id24">УстановитьПараметр / SetParam</a></li>
+<li><a class="reference" href="#paramcnt" id="id25" name="id25">КолвоПараметров / ParamCnt</a></li>
+<li><a class="reference" href="#deleteparam" id="id26" name="id26">УдалитьПараметр / DeleteParam</a></li>
+<li><a class="reference" href="#deleteparams" id="id27" name="id27">УдалитьПараметры / DeleteParams</a></li>
+<li><a class="reference" href="#prepare" id="id28" name="id28">Подготовить / Prepare</a></li>
+<li><a class="reference" href="#unprepare" id="id29" name="id29">ОтменитьПодготовку / Unprepare</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#oledb-ole-db-1" id="id30" name="id30">Приложение #1 OLEDB: Преобразование типов OLE DB к типам 1С</a></li>
+<li><a class="reference" href="#oledb-1-ole-db" id="id31" name="id31">Приложение #2 OLEDB: Преобразование типов 1С к типам OLE DB</a></li>
+</ul>
+</div>
+<p>Используется для прямого доступа к базе данных через OLEDB-провайдер.
+Для доступа используются классы:</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference" href="#oledbdata">OLEDBData</a> - класс предназначен для осуществления подключения 
+к источнику данных и создания команд в контексте данного под-
+ключения.</li>
+<li><a class="reference" href="#oledbcommand">OLEDBCommand</a> - класс предназначен для выполнения команд через
+oledb-провайдер и манипулирования данными.</li>
+</ul>
+</blockquote>
+<div class="section" id="oledbdata">
+<h1><a name="oledbdata">OLEDBData</a></h1>
+<p>Данный класс предоставляет доступ для подкючения к источнику данных 
+через oledb-провайдер. Класс используется совместно с 
+классом <a class="reference" href="#oledbcommand">OLEDBCommand</a>.</p>
+<div class="section" id="id2">
+<h2><a name="id2">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="connect">
+<h3><a name="connect">Соединение / Connect</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong>  Соединение(СтрокаСоединения)</p>
+<p><strong>Возвращает:</strong> тип: Число. 1 - удачное установление соединения, 0 - не удачное.</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>СтрокаСоединения - тип: Строка.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> позволяет сконфигурировать соединение 
+с указанным источником данных.</p>
+</blockquote>
+<p>Пример:</p>
+<pre class="literal-block">
+oledb.Connect(&quot;Provider=VFPOLEDB.1;Deleted=Yes;Data Source=&quot; + 
+КаталогИБ() + &quot;;Mode=ReadWrite;Mask Password=False;
+Collating Sequence=MACHINE;&quot;);
+</pre>
+</div>
+<div class="section" id="createcommand">
+<h3><a name="createcommand">СоздатьКоманду / CreateCommand</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> СоздатьКоманду()</p>
+<p><strong>Возвращает:</strong> тип: экземпляр класса OLEDBCommand.</p>
+<p><strong>Описание:</strong> возвращает основной объект, в контексте которого
+осуществляется работа с данными (выполнение запросов, манипу-
+лирование данными).</p>
+</blockquote>
+</div>
+<div class="section" id="close">
+<h3><a name="close">Закрыть / Close</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Закрыть()</p>
+<p><strong>Описание:</strong> закрывает текущее подключение.</p>
+</blockquote>
+</div>
+<div class="section" id="attachib">
+<h3><a name="attachib">ПрисоединитьИБ / AttachIB</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong>  ПрисоединитьИБ(КаталогИБ, [СтрокаСоединения])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>КаталогИБ - тип: Строка. Путь к каталогу информационной базы. Должен заканчиваться &quot;\&quot;.</li>
+<li>СтрокаСоединения - тип: Строка. Строка соединения указывающая источник данных. Значение по умолчанию - &quot;Provider=VFPOLEDB.1;Deleted=Yes;Mode=ReadWrite;Collating Sequence=MACHINE;Data Source=%1&quot;, где %1 - переданный КаталогИБ.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> позволяет загрузить метаданные из указанного каталога ИБ
+и сконфигурировать соединение с указанным источником данных.
+В дальнейшем, при выполнении запросов через OLEDBCommand, парсер будет
+разрешать метаимена по подключенным метаданным.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="oledbcommand">
+<h1><a name="oledbcommand">OLEDBCommand</a></h1>
+<p>Данный класс предназначен для получения данных от провайдера и 
+манипулирования данными. Экземпляр класса не может быть создан явно 
+( прим: <strong>СоздатьОбъект(&quot;OLEDBCommand&quot;)</strong> ). Создать экземпляр класса 
+можно только при помощи метода СоздатьКоманду() класса <a class="reference" href="#oledbdata">OLEDBData</a>.
+В тексте sql-выражений допускается использование метаимен, которые 
+транслируются в:</p>
+<blockquote>
+<ul class="simple">
+<li>реальные имена таблиц;</li>
+<li>реальные имена полей таблиц;</li>
+</ul>
+</blockquote>
+<p>В тексте запроса позволено использование типизирующего псевдонима.</p>
+<div class="section" id="id3">
+<h2><a name="id3">Формат типизирующего псевдонима</a></h2>
+<p>Квадратные скобки являются элементом формата:</p>
+<pre class="literal-block">
+[&lt;ИмяПоля&gt; $&lt;Тип1С&gt;]
+&lt;ИмяПоля&gt; ::= &lt;имя, которое будет доступно для обращения&gt;
+&lt;Тип1С&gt; ::= &lt;строка представляющая тип 1С&gt;
+</pre>
+<p>Пример (<cite>запрос по справочнику Номенклатура с приведением результата к типу Справочник.Номенклатура</cite>):</p>
+<pre class="literal-block">
+SELECT 
+        SPR.ID as [Элемент $Справочник.Номенклатура] 
+FROM 
+        $Справочник.Номенклатура as SPR
+</pre>
+</div>
+<div class="section" id="id4">
+<h2><a name="id4">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="debug">
+<h3><a name="debug">Отладка / Debug</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Отладка(Режим)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>Режим - тип: Число. 1 - включить отладку, 0 - отключить отладку.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Примечание:</strong> По умолчанию отладка отключена.</p>
+<p><strong>Описание:</strong> включает/отключает режим отладки sql-выражения. 
+При включенной отладке, sql-выражения, транслированные в реальные имена, 
+будут выводиться в окно сообщений.</p>
+</blockquote>
+</div>
+<div class="section" id="execute">
+<h3><a name="execute">Выполнить / Execute</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Выполнить([ТекстSQL])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>ТекстSQL - тип: Строка. SQL-выражение (вида INSERT, UPDATE, DELETE). Для подготовленного запроса параметр должен быть опущен.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Число. Количество обработанных строк.</p>
+<p><strong>Описание:</strong> выполняет SQL-выражение (DML, вида INSERT, UPDATE, DELETE) 
+и возвращает количество обработанных строк. В случае возникновения 
+ошибки, будет сгенерировано исключение с описанием ошибки.</p>
+</blockquote>
+</div>
+<div class="section" id="executestatement">
+<h3><a name="executestatement">ВыполнитьИнструкцию / ExecuteStatement</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьИнструкцию([ТекстSQL], [ТаблицаРезультатов], [флОчищать=1])</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>ТекстSQL - тип: Строка. SQL-выражение. Для подготовленного запроса параметр должен быть опущен.</li>
+<li>ТаблицаРезультатов - тип: ТаблицаЗначений. Объект, в который будет выгружен результат запроса. Не обязателен.</li>
+<li>флОчищать - тип: Число. 1 - очищать переданную таблицу результатов (ТаблицаРезультатов), 0 - не очищать. Параметр не обязателен, по умлочанию - 1.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: ТаблицаЗначений. Результат запроса в виде 
+таблицы значений. Колонки таблицы значений будут типизированы 
+соответствующими значениями.</p>
+<p><strong>Описание:</strong> выполняет SQL-выражение и возвращает результат в виде 
+таблицы значений. Если результат запроса пустой, то возвращается 
+таблица значений с типизированными колонками. В случае возникновения 
+ошибки, будет сгенерировано исключение с описанием ошибки.</p>
+</blockquote>
+</div>
+<div class="section" id="id5">
+<h3><a name="id5">Закрыть / Close</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Закрыть()</p>
+<p><strong>Описание:</strong> закрывает команду.</p>
+</blockquote>
+</div>
+<div class="section" id="settextparam">
+<h3><a name="settextparam">УстановитьТекстовыйПараметр / SetTextParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьТекстовыйПараметр(ИмяПараметра, ЗначениеПараметра)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>ИмяПараметра - тип: Строка. Имя текстового параметра.</li>
+<li>ЗначениеПараметра - тип: Неопределенный. Значение текстового параметра.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> устанавливает текстовый параметр, имя которого 
+было описано в SQL-выражении. Метод необходимо вызывать до передачи 
+текста запроса провайдеру.</p>
+</blockquote>
+</div>
+<div class="section" id="settemptablesdir">
+<h3><a name="settemptablesdir">УстановитьКаталогВремТаблиц / SetTempTablesDir</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьКаталогВремТаблиц(Директория)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>Директория - тип: Строка. Каталог, в котором будут создаваться временные таблицы.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> метод устанавливает каталог, в котором могут создаваться 
+временные таблицы. Путь к каталогу временных таблиц не должен содержать 
+пробелов. Проверка на правильность пути классом не производится.</p>
+<p><strong>Примечание:</strong> Использование метода не обязательно. В этом случае 
+все временные таблицы будут создаваться в каталоге ИБ.</p>
+</blockquote>
+</div>
+<div class="section" id="putobjectlist">
+<h3><a name="putobjectlist">УложитьСписокОбъектов / PutObjectList</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УложитьСписокОбъектов(Объект, ИмяТабл, ВидСпр)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>Объект - тип: Справочник/Документ/СписокЗначений (содержащий элементы типа Справочник, Документ). Объект, который необходимо уложить во временную таблицу.</li>
+<li>ИмяТабл - тип: Строка. Возвращаемое значение. Имя временной таблицы, которое будет сгенерировано методом и возвращено через этот параметр.</li>
+<li>ВидСпр - тип: Строка. Вид справочника для иерархического включения элементов.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> сохраняет Объект (или список объектов, если передан список значений) 
+во временную таблицу. Имя временной таблицы генерируется методом и 
+возвращается через второй параметр (именем является GUID). Временная таблица имеет 
+поле VAL CHAR(9) и служебное поле ISFOLDER NUMERIC(1,0).</p>
+<p>Если указан параметр ВидСпр (вид многоуровневого справочника), то таблица будет содержать элементы (без групп), иерархически принадлежащие группам (Подобно оператору &quot;в&quot; встроенного языка запросов 1С).</p>
+<p>Уничтожать временные таблицы явным образом не обязательно ( прим: DROP TABLE MyTmpTbl ) - все временные таблицы
+будут уничтожены в момент закрытия команды ( Закрыть() ) или при уничтожении объекта <a class="reference" href="#oledbcommand">OLEDBCommand</a>.</p>
+</blockquote>
+<p>Пример:</p>
+<pre class="literal-block">
+ВрТабл = &quot;&quot;;
+cmd.УложитьСписокОбъектов(ТекГруппа, ВрТабл, &quot;Номенклатура&quot;);
+Сообщить(&quot;Что тут: &quot; + ВрТабл); // Например, &quot;Что тут: 858573b1-5a6f-459e-9c75-ec63e2a1d858&quot;
+</pre>
+</div>
+<div class="section" id="setexectimeout">
+<h3><a name="setexectimeout">УстановитьТаймаутВыполнения / SetExecTimeOut</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьТаймаутВыполнения(Таймаут)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>Таймаут - тип: Число. Количество секунд таймаута запроса.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> метод устанавливает количество секунд таймаута запроса. 
+После истечения этого времени запрос прекращается с ошибкой.
+Значение параметра равное 0 - бесконечное выполнение запроса.</p>
+</blockquote>
+</div>
+<div class="section" id="addparam">
+<h3><a name="addparam">ДобПараметр / AddParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ДобПараметр(IOType, DBType, Len, Prec)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first">IOType - тип: Число. Направления параметра:</p>
+<blockquote>
+<ul class="simple">
+<li>1 - DBPARAMIO_INPUT;</li>
+<li>2 - DBPARAMIO_OUTPUT;</li>
+<li>3 - DBPARAMIO_INPUT | DBPARAMIO_OUTPUT.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">DBType - тип: Число. DBTYPE-тип параметра.</p>
+</li>
+<li><p class="first">Len - тип: Число. Длина параметра.</p>
+</li>
+<li><p class="first">Prec - тип: Число. Точность параметра.</p>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> добавляет описание параметра для параметризированного запроса.</p>
+</blockquote>
+</div>
+<div class="section" id="setparam">
+<h3><a name="setparam">УстановитьПараметр / SetParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьПараметр(НомерПараметра, Значение)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>НомерПараметра - тип: Число. Номер параметра, отсчет идет от 1.</li>
+<li>Значение - тип: Любой. Значение параметра.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> устанавливает значение параметра параметризированного запроса.</p>
+</blockquote>
+</div>
+<div class="section" id="paramcnt">
+<h3><a name="paramcnt">КолвоПараметров / ParamCnt</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> КолвоПараметров()</p>
+<p><strong>Возвращает:</strong> тип: Число. Количество добавленных параметров.</p>
+<p><strong>Описание:</strong> Возвращает количество добавленных параметров.</p>
+</blockquote>
+</div>
+<div class="section" id="deleteparam">
+<h3><a name="deleteparam">УдалитьПараметр / DeleteParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УдалитьПараметр(НомерПараметра)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>НомерПараметра - тип: Число. Номер параметра, отсчет идет от 1.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> удалаяет параметр.</p>
+</blockquote>
+</div>
+<div class="section" id="deleteparams">
+<h3><a name="deleteparams">УдалитьПараметры / DeleteParams</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УдалитьПараметры()</p>
+<p><strong>Описание:</strong> удалаяет параметры.</p>
+</blockquote>
+</div>
+<div class="section" id="prepare">
+<h3><a name="prepare">Подготовить / Prepare</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Подготовить(ТекстSQL)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li>ТекстSQL - тип: Строка. SQL-выражение.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> позволяет <em>подготовить</em> SQL запрос. Примняется для параметризированных запросов.
+Параметризированный запрос может иметь параметры (скалярные значения некоторых констант в запросе заменяют
+символами подстановки &quot;?&quot; (<em>SQL параметры</em>)). В последствии предварительно изменяя значения параметров
+подготовленный запрос можно выполнить несколько раз. Так обеспечивается наиболее оптимальное выполнение
+нескольких запрсов отличающихся скалярными характеристиками.</p>
+</blockquote>
+</div>
+<div class="section" id="unprepare">
+<h3><a name="unprepare">ОтменитьПодготовку / Unprepare</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ОтменитьПодготовку()</p>
+<p><strong>Описание:</strong> сбросить подготовленный запрос.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="oledb-ole-db-1">
+<h1><a name="oledb-ole-db-1">Приложение #1 OLEDB: Преобразование типов OLE DB к типам 1С</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="34%" />
+<col width="23%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Код</td>
+<td>Тип OLEDB</td>
+<td>Тип 1С</td>
+<td>Примечание</td>
+</tr>
+<tr><td>131</td>
+<td>DBTYPE_NUMERIC</td>
+<td rowspan="14">Число</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>2</td>
+<td>DBTYPE_I2</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>3</td>
+<td>DBTYPE_I4</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>4</td>
+<td>DBTYPE_R4</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>5</td>
+<td>DBTYPE_R8</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>6</td>
+<td>DBTYPE_CY</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>14</td>
+<td>DBTYPE_DECIMAL</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>17</td>
+<td>DBTYPE_UI1</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>16</td>
+<td>DBTYPE_I1</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>18</td>
+<td>DBTYPE_UI2</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>19</td>
+<td>DBTYPE_UI4</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>20</td>
+<td>DBTYPE_I8</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>21</td>
+<td>DBTYPE_UI8</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>11</td>
+<td>DBTYPE_BOOL</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>133</td>
+<td>DBTYPE_DBDATE</td>
+<td rowspan="2">Дата</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>135</td>
+<td>DBTYPE_DBTIMESTAMP</td>
+<td>С обрез. времени</td>
+</tr>
+<tr><td>130</td>
+<td>DBTYPE_WSTR</td>
+<td rowspan="12">Строка</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>DBTYPE_NULL</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>7</td>
+<td>DBTYPE_DATE</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>8</td>
+<td>DBTYPE_BSTR</td>
+<td>не поддерж.</td>
+</tr>
+<tr><td>10</td>
+<td>DBTYPE_ERROR</td>
+<td>не поддерж.</td>
+</tr>
+<tr><td>12</td>
+<td>DBTYPE_VARIANT</td>
+<td>не поддерж.</td>
+</tr>
+<tr><td>13</td>
+<td>DBTYPE_IUNKNOWN</td>
+<td>не поддерж.</td>
+</tr>
+<tr><td>72</td>
+<td>DBTYPE_GUID</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>128</td>
+<td>DBTYPE_BYTES</td>
+<td>не поддерж.</td>
+</tr>
+<tr><td>129</td>
+<td>DBTYPE_STR</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>132</td>
+<td>DBTYPE_UDT</td>
+<td>не поддерж.</td>
+</tr>
+<tr><td>134</td>
+<td>DBTYPE_DBTIME</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="oledb-1-ole-db">
+<h1><a name="oledb-1-ole-db">Приложение #2 OLEDB: Преобразование типов 1С к типам OLE DB</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="14%" />
+<col width="19%" />
+<col width="24%" />
+<col width="21%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Тип OLEDB</td>
+<td>Тип 1С</td>
+<td>Примечание</td>
+<td>SQLOLEDB</td>
+<td>VFPOLEDB</td>
+</tr>
+<tr><td>DBTYPE_I2</td>
+<td rowspan="14">Число</td>
+<td>&nbsp;</td>
+<td>smallint</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_I4</td>
+<td>&nbsp;</td>
+<td>int</td>
+<td>integer</td>
+</tr>
+<tr><td>DBTYPE_R4</td>
+<td>&nbsp;</td>
+<td>float</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_R8</td>
+<td>&nbsp;</td>
+<td>real</td>
+<td>double</td>
+</tr>
+<tr><td>DBTYPE_CY</td>
+<td>&nbsp;</td>
+<td>money</td>
+<td>currency</td>
+</tr>
+<tr><td>DBTYPE_BOOL</td>
+<td>0-ложь, 1-истина</td>
+<td>bit</td>
+<td>logical</td>
+</tr>
+<tr><td>DBTYPE_DECIMAL</td>
+<td>&nbsp;</td>
+<td>decimal</td>
+<td>numeric, float</td>
+</tr>
+<tr><td>DBTYPE_UI1</td>
+<td>&nbsp;</td>
+<td>tinyint</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_I1</td>
+<td>&nbsp;</td>
+<td>numeric(3,0)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_UI2</td>
+<td>&nbsp;</td>
+<td>numeric(5,0)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_UI4</td>
+<td>&nbsp;</td>
+<td>numeric(10,0)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_I8</td>
+<td>&nbsp;</td>
+<td>bigint</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_UI8</td>
+<td>&nbsp;</td>
+<td>numeric(20,0)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_NUMERIC</td>
+<td>&nbsp;</td>
+<td>numeric</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_GUID</td>
+<td>Строка</td>
+<td>&nbsp;</td>
+<td>uniqueidentifier</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td rowspan="11">DBTYPE_STR</td>
+<td>Строка</td>
+<td>&nbsp;</td>
+<td rowspan="11">char, varchar, text</td>
+<td rowspan="11">character</td>
+</tr>
+<tr><td>Число</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Дата</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Перечисление</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Справочник</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Документ</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Календарь</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>ВидРасчета</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Счет</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>ВидСубконто</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>ПланСчетов</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>DBTYPE_DATE</td>
+<td rowspan="2">Дата</td>
+<td>&nbsp;</td>
+<td>datetime</td>
+<td>date</td>
+</tr>
+<tr><td>DBTYPE_DBDATE</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>date</td>
+</tr>
+<tr><td rowspan="2">DBTYPE_DBTIMESTAMP</td>
+<td>Дата</td>
+<td>&nbsp;</td>
+<td rowspan="2">datetime</td>
+<td rowspan="2">datetime</td>
+</tr>
+<tr><td>Строка</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td rowspan="2">DBTYPE_DBTIME</td>
+<td>Число</td>
+<td>&nbsp;</td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2">&nbsp;</td>
+</tr>
+<tr><td>Строка</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:13 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

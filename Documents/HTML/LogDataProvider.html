@@ -1,0 +1,2533 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Поставщик данных - журнал регистрации</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">Поставщик данных - журнал регистрации</h1>
+<!-- Автор: Трапезников Василий aka trav, mailto: trav78@yandex.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_table_data_providers_</alinks>
+</chminfo>
+<div class="contents topic" id="id2">
+<p class="topic-title first"><a name="id2">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#logprovider" id="id62" name="id62">ПоставщикДанныхЖурналРегистрации / LogProvider</a><ul>
+<li><a class="reference" href="#id3" id="id63" name="id63">Свойства</a><ul>
+<li><a class="reference" href="#position" id="id64" name="id64">Позиция / Position</a></li>
+<li><a class="reference" href="#date" id="id65" name="id65">Дата / Date</a></li>
+<li><a class="reference" href="#time" id="id66" name="id66">Время / Time</a></li>
+<li><a class="reference" href="#user" id="id67" name="id67">Пользователь / User</a></li>
+<li><a class="reference" href="#mode" id="id68" name="id68">Режим / Mode</a></li>
+<li><a class="reference" href="#eventtype" id="id69" name="id69">ТипСобытия / EventType</a></li>
+<li><a class="reference" href="#event" id="id70" name="id70">Событие / Event</a></li>
+<li><a class="reference" href="#category" id="id71" name="id71">Категория / Category</a></li>
+<li><a class="reference" href="#comment" id="id72" name="id72">Комментарий / Comment</a></li>
+<li><a class="reference" href="#object" id="id73" name="id73">Объект / Object</a></li>
+<li><a class="reference" href="#objectpresent" id="id74" name="id74">ПредставлениеОбъекта / ObjectPresent</a></li>
+<li><a class="reference" href="#beginofperiod" id="id75" name="id75">НачалоПериода / BeginOfPeriod</a></li>
+<li><a class="reference" href="#periodbeginingtime" id="id76" name="id76">ВремяНачалаПериода / PeriodBeginingTime</a></li>
+<li><a class="reference" href="#endofperiod" id="id77" name="id77">КонецПериода / EndOfPeriod</a></li>
+<li><a class="reference" href="#periodendingtime" id="id78" name="id78">ВремяОкончанияПериода / PeriodEndingTime</a></li>
+<li><a class="reference" href="#scandeep" id="id79" name="id79">ГлубинаПросмотра / ScanDeep</a></li>
+<li><a class="reference" href="#lastscandate" id="id80" name="id80">ПоследняяПросмотреннаяДата / LastScanDate</a></li>
+<li><a class="reference" href="#usingbuffer" id="id81" name="id81">ИспользованиеБуфера / UsingBuffer</a></li>
+<li><a class="reference" href="#filename" id="id82" name="id82">ИмяФайла / FileName</a></li>
+<li><a class="reference" href="#archivesview" id="id83" name="id83">ПросмотрАрхивов / ArchivesView</a></li>
+<li><a class="reference" href="#eventtypes" id="id84" name="id84">ТипыСобытий / EventTypes</a></li>
+<li><a class="reference" href="#filter" id="id85" name="id85">Отбор / Filter</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id10" id="id86" name="id86">Методы</a><ul>
+<li><a class="reference" href="#setperiod" id="id87" name="id87">УстановитьПериод / SetPeriod</a></li>
+<li><a class="reference" href="#setperiodex" id="id88" name="id88">УстановитьПериодРасш / SetPeriodEx</a></li>
+<li><a class="reference" href="#setscandeep" id="id89" name="id89">УстановитьГлубину / SetScanDeep</a></li>
+<li><a class="reference" href="#changefilter" id="id90" name="id90">ИзменитьФильтр / ChangeFilter</a><ul>
+<li><a class="reference" href="#id17" id="id91" name="id91">Варианты отборов и возможные значения</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#setfilter" id="id92" name="id92">УстановитьФильтр / SetFilter</a></li>
+<li><a class="reference" href="#openfile" id="id93" name="id93">ОткрытьФайл / OpenFile</a></li>
+<li><a class="reference" href="#closefile" id="id94" name="id94">ЗакрытьФайл / CloseFile</a></li>
+<li><a class="reference" href="#selectlines" id="id95" name="id95">ВыбратьСтроки / SelectLines</a></li>
+<li><a class="reference" href="#getline" id="id96" name="id96">ПолучитьСтроку / GetLine</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#logeventtypes" id="id97" name="id97">ТипыСобытийЖурналаРегистрации / LogEventTypes</a><ul>
+<li><a class="reference" href="#id25" id="id98" name="id98">Свойства</a><ul>
+<li><a class="reference" href="#id26" id="id99" name="id99">&lt;ТипСобытия&gt;</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id27" id="id100" name="id100">Методы</a><ul>
+<li><a class="reference" href="#count" id="id101" name="id101">Количество / Count</a></li>
+<li><a class="reference" href="#get" id="id102" name="id102">Получить / Get</a></li>
+<li><a class="reference" href="#indexof" id="id103" name="id103">Индекс / IndexOf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#logeventtype" id="id104" name="id104">ТипСобытияЖурналаРегистрации / LogEventType</a><ul>
+<li><a class="reference" href="#id29" id="id105" name="id105">Свойства</a><ul>
+<li><a class="reference" href="#index" id="id106" name="id106">Индекс / Index</a></li>
+<li><a class="reference" href="#identifier" id="id107" name="id107">Идентификатор / Identifier</a></li>
+<li><a class="reference" href="#description" id="id108" name="id108">Описание / Description</a></li>
+<li><a class="reference" href="#issystem" id="id109" name="id109">Системный / IsSystem</a></li>
+<li><a class="reference" href="#events" id="id110" name="id110">События / Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#logevents" id="id111" name="id111">СобытияЖурналаРегистрации / LogEvents</a><ul>
+<li><a class="reference" href="#id32" id="id112" name="id112">Свойства</a><ul>
+<li><a class="reference" href="#id33" id="id113" name="id113">&lt;Событие&gt;</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id34" id="id114" name="id114">Методы</a><ul>
+<li><a class="reference" href="#id35" id="id115" name="id115">Количество / Count</a></li>
+<li><a class="reference" href="#id36" id="id116" name="id116">Получить / Get</a></li>
+<li><a class="reference" href="#id37" id="id117" name="id117">Индекс / IndexOf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#logevent" id="id118" name="id118">СобытиеЖурналаРегистрации / LogEvent</a><ul>
+<li><a class="reference" href="#id39" id="id119" name="id119">Свойства</a><ul>
+<li><a class="reference" href="#id40" id="id120" name="id120">Индекс / Index</a></li>
+<li><a class="reference" href="#id41" id="id121" name="id121">Идентификатор / Identifier</a></li>
+<li><a class="reference" href="#id42" id="id122" name="id122">Описание / Description</a></li>
+<li><a class="reference" href="#id43" id="id123" name="id123">Системное / IsSystem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#id44" id="id124" name="id124">Отбор / Filter</a><ul>
+<li><a class="reference" href="#id46" id="id125" name="id125">Свойства</a><ul>
+<li><a class="reference" href="#id47" id="id126" name="id126">&lt;ЭлементОтбора&gt;</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id48" id="id127" name="id127">Методы</a><ul>
+<li><a class="reference" href="#id49" id="id128" name="id128">Количество / Count</a></li>
+<li><a class="reference" href="#id50" id="id129" name="id129">Получить / Get</a></li>
+<li><a class="reference" href="#id51" id="id130" name="id130">Индекс / IndexOf</a></li>
+<li><a class="reference" href="#add" id="id131" name="id131">Добавить / Add</a></li>
+<li><a class="reference" href="#remove" id="id132" name="id132">Удалить / Remove</a></li>
+<li><a class="reference" href="#clear" id="id133" name="id133">Очистить / Clear</a></li>
+<li><a class="reference" href="#set" id="id134" name="id134">Установить / Set</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#filteritem" id="id135" name="id135">ЭлементОтбора / FilterItem</a><ul>
+<li><a class="reference" href="#id54" id="id136" name="id136">Свойства</a><ul>
+<li><a class="reference" href="#type" id="id137" name="id137">Тип / Type</a></li>
+<li><a class="reference" href="#value" id="id138" name="id138">Значение / Value</a><ul>
+<li><a class="reference" href="#id59" id="id139" name="id139">Тип элемента отбора и возможное значение элемента отбора</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#name" id="id140" name="id140">Имя / Name</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id61" id="id141" name="id141">Методы</a><ul>
+<li><a class="reference" href="#settypeandvalue" id="id142" name="id142">УстановитьТипИЗначение / SetTypeAndValue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Служит для доступа к журналу регистрации 1С и может использоваться в двух режимах:</p>
+<blockquote>
+<ul class="simple">
+<li>в качестве поставщика данных для <a class="reference" href="alink">табличного поля|_1cpp_table_field_</a>;</li>
+<li>как самостоятельный объект для работы с журналом регистрации.</li>
+</ul>
+</blockquote>
+<p>Свойство <a class="reference" href="alink">ТекущаяСтрока|_table_field_current_row_</a> табличного поля имеет тип число и определяет:</p>
+<blockquote>
+<ul class="simple">
+<li>при чтении смещение в байтах от начала файла до начала текущей записи журнала регистрации;</li>
+<li>при записи производится установка на запись, содержащую указанное смещение, если отбор не установлен,
+или установка на первую запись со смещением большим указанного, удовлетворяющей отбору, если отбор установлен.</li>
+</ul>
+</blockquote>
+<div class="section" id="logprovider">
+<h1><a name="logprovider">ПоставщикДанныхЖурналРегистрации / LogProvider</a></h1>
+<div class="section" id="id3">
+<h2><a name="id3">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="position">
+<h3><a name="position">Позиция / Position</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Число.</p>
+<p><strong>Описание:</strong> Смещение в байтах от начала файла до начала текущей записи журнала регистрации.
+Если значение отрицательное, то запись находится во временном файле, полученном путем извлечения из
+архивов, если просмотр архивов установлен (см. свойство <a class="reference" href="#id8">ПросмотрАрхивов</a>).</p>
+</blockquote>
+</div>
+<div class="section" id="date">
+<h3><a name="date">Дата / Date</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Дата.</p>
+<p><strong>Описание:</strong> Дата записи журнала регистрации.</p>
+</blockquote>
+</div>
+<div class="section" id="time">
+<h3><a name="time">Время / Time</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка в формате &quot;ЧЧ:ММ:СС&quot;.</p>
+<p><strong>Описание:</strong> Время записи журнала регистрации.</p>
+</blockquote>
+</div>
+<div class="section" id="user">
+<h3><a name="user">Пользователь / User</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка или <em>пустое значение</em>.</p>
+<p><strong>Описание:</strong> Пользователь, вызвавший определенное событие.</p>
+</blockquote>
+</div>
+<div class="section" id="mode">
+<h3><a name="mode">Режим / Mode</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка &quot;E&quot;, &quot;C&quot;, &quot;M&quot;, или &quot;D&quot;.</p>
+<p><strong>Описание:</strong> Режим работы 1С: Предприятия, в котором произошло определенное событие.</p>
+</blockquote>
+</div>
+<div class="section" id="eventtype">
+<h3><a name="eventtype">ТипСобытия / EventType</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка или <a class="reference" href="#id28">ТипСобытияЖурналаРегистрации</a>.</p>
+<p><strong>Описание:</strong> Тип события. Тип значения этого свойства зависит от того, присутствует
+данный тип события в коллекции типов событий поставщика данных (см. свойство <a class="reference" href="#id9">ТипыСобытий</a>).</p>
+</blockquote>
+</div>
+<div class="section" id="event">
+<h3><a name="event">Событие / Event</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка или <a class="reference" href="#id38">СобытиеЖурналаРегистрации</a>.</p>
+<p><strong>Описание:</strong> Событие. Тип значения этого свойства зависит от того, присутствует
+данное событие в коллекции событий (см. свойство <a class="reference" href="#id30">События</a>) одного из типов событий
+поставщика данных (см. свойство <a class="reference" href="#id9">ТипыСобытий</a>).</p>
+</blockquote>
+</div>
+<div class="section" id="category">
+<h3><a name="category">Категория / Category</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Число 0, 1, 2, 3, 4 или 5.</p>
+<p><strong>Описание:</strong> Категория события: 0 - сеанс, 1 - административное, 2 - изменение данных, 3 - информация, 4 - предупреждение, 5 - ошибка.</p>
+</blockquote>
+</div>
+<div class="section" id="comment">
+<h3><a name="comment">Комментарий / Comment</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка или <em>пустое значение</em>.</p>
+<p><strong>Описание:</strong> Комментарий к событию.</p>
+</blockquote>
+</div>
+<div class="section" id="object">
+<h3><a name="object">Объект / Object</a></h3>
+<blockquote id="id4">
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> <a class="reference" href="#id15">Агрегатный</a> или пустое значение.</p>
+<p><strong>Описание:</strong> Объект.</p>
+</blockquote>
+</div>
+<div class="section" id="objectpresent">
+<h3><a name="objectpresent">ПредставлениеОбъекта / ObjectPresent</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка или <em>пустое значение</em>.</p>
+<p><strong>Описание:</strong> Представление объекта.</p>
+</blockquote>
+</div>
+<div class="section" id="beginofperiod">
+<h3><a name="beginofperiod">НачалоПериода / BeginOfPeriod</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Дата.</p>
+<p><strong>Описание:</strong> Дата начала периода при установленном периоде просмотра
+методами <a class="reference" href="#id11">УстановитьПериод</a> или <a class="reference" href="#id12">УстановитьПериодРасш</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="periodbeginingtime">
+<h3><a name="periodbeginingtime">ВремяНачалаПериода / PeriodBeginingTime</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка в формате &quot;ЧЧ:ММ:СС&quot;.</p>
+<p><strong>Описание:</strong> Время начала периода при установленном периоде просмотра
+методами <a class="reference" href="#id11">УстановитьПериод</a> или <a class="reference" href="#id12">УстановитьПериодРасш</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="endofperiod">
+<h3><a name="endofperiod">КонецПериода / EndOfPeriod</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Дата.</p>
+<p><strong>Описание:</strong> Дата конца периода при установленном периоде просмотра
+методами <a class="reference" href="#id11">УстановитьПериод</a> или <a class="reference" href="#id12">УстановитьПериодРасш</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="periodendingtime">
+<h3><a name="periodendingtime">ВремяОкончанияПериода / PeriodEndingTime</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка в формате &quot;ЧЧ:ММ:СС&quot;.</p>
+<p><strong>Описание:</strong> Время окончания периода при установленном периоде просмотра
+методами <a class="reference" href="#id11">УстановитьПериод</a> или <a class="reference" href="#id12">УстановитьПериодРасш</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="scandeep">
+<h3><a name="scandeep">ГлубинаПросмотра / ScanDeep</a></h3>
+<blockquote id="id6">
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Неотрицательное число.</p>
+<p><strong>Описание:</strong> Количество попыток поиска строки, удовлетворяющей отбору.</p>
+<p>Имеет действие только при установленном отборе. Если 0, то количество попыток
+ограничено только размеров файла журнала регистрации, т.е. будет анализироваться весь файл.</p>
+<p><strong>Примечание:</strong> По умолчанию равно 0.</p>
+</blockquote>
+</div>
+<div class="section" id="lastscandate">
+<h3><a name="lastscandate">ПоследняяПросмотреннаяДата / LastScanDate</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Дата.</p>
+<p><strong>Описание:</strong> Дата последней записи журнала регистрации, после которой поиск строк
+был прекращен.</p>
+<p>Поиск мог быть прекращен из-за ограничения, наложенного свойством <a class="reference" href="#id6">ГлубинаПросмотра</a>,
+или при нажатии клавиши &lt;ESC&gt;. Имеет смысл только при установленном отборе.</p>
+</blockquote>
+</div>
+<div class="section" id="usingbuffer">
+<h3><a name="usingbuffer">ИспользованиеБуфера / UsingBuffer</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Число 0 или 1.</p>
+<p><strong>Описание:</strong> Определяет, используется или нет буфер при отборе записей.</p>
+</blockquote>
+</div>
+<div class="section" id="filename">
+<h3><a name="filename">ИмяФайла / FileName</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> чтение и запись.</p>
+<p><strong>Тип:</strong> строка.</p>
+<p><strong>Описание:</strong> Содержит полное имя файла журнала регистрации, который провайдер использует в качестве
+источника данных.</p>
+<p><strong>Примечание:</strong> По умолчанию используется журнал регистрации текущей информационной базы. В случае использования
+провайдера в качестве поставщика данных <a class="reference" href="alink">табличного поля|_1cpp_table_field_</a> при изменении данного свойства
+табличное поле сразу начинает отображать указанный журнал регистрации. Если провайдер используется как
+самостоятельный объект, то для доступа к указанному файлу журнала регистрации необходимо
+закрыть ранее используемый файл методом <a class="reference" href="#id21">ЗакрытьФайл</a> и открыть новый файл методом <a class="reference" href="#id20">ОткрытьФайл</a>.
+Если используется журнал регистрации не текущей информационной базы, то свойство <a class="reference" href="#id4">Объект</a> неопределено.</p>
+</blockquote>
+</div>
+<div class="section" id="archivesview">
+<h3><a name="archivesview">ПросмотрАрхивов / ArchivesView</a></h3>
+<blockquote id="id8">
+<p><strong>Доступ:</strong> чтение и запись.</p>
+<p><strong>Тип:</strong> Число 0 или 1.</p>
+<p><strong>Описание:</strong> Определяет, будет или нет осуществляться просмотр архивов при установке периода просмотра
+методами <a class="reference" href="#id11">УстановитьПериод</a> или <a class="reference" href="#id12">УстановитьПериодРасш</a>. Поиск архивов осуществляется в том же каталоге, где
+находится журнал регистрации. Архивы должны быть получены путем выполнения архивирования журнала регистрации
+из <strong>Монитора</strong>. Извлечение данных из архива зависит от того, установлен отбор с использованием буфера или нет.
+Если отбор с использованием буфера не установлен, то данные извлекаются по мере необходимости.</p>
+</blockquote>
+</div>
+<div class="section" id="eventtypes">
+<h3><a name="eventtypes">ТипыСобытий / EventTypes</a></h3>
+<blockquote id="id9">
+<p><strong>Доступ:</strong> чтение.</p>
+<p><strong>Тип:</strong> <a class="reference" href="#id24">ТипыСобытийЖурналаРегистрации</a>.</p>
+<p><strong>Описание:</strong> Фиксированная коллекция типов событий в журнале регистрации. Содержит как системные типы событий,
+так и пользовательские, определенные в файле <em>1cv7evt.txt</em>. Поиск данного файла осуществляется в том же каталоге,
+где находится журнал регистрации.</p>
+</blockquote>
+</div>
+<div class="section" id="filter">
+<h3><a name="filter">Отбор / Filter</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> чтение.</p>
+<p><strong>Тип:</strong> <a class="reference" href="#id45">Отбор</a>.</p>
+<p><strong>Описание:</strong> Коллекция содержит элементы отбора, соответствующие установленному отбору методами
+<a class="reference" href="#id14">ИзменитьФильтр</a> и <a class="reference" href="#id19">УстановитьФильтр</a>.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><a name="id10">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="setperiod">
+<h3><a name="setperiod">УстановитьПериод / SetPeriod</a></h3>
+<blockquote id="id11">
+<p><strong>Синтаксис:</strong> УстановитьПериод([ДатаНачала],[ДатаКонца])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ДатаНачала - тип: Дата. Определяет дату начала периода, с которой будут отображаться
+записи журнала регистрации. Необязателен, по умолчанию пустая дата. Если не указан, то
+началом периода считается начало журнала;</li>
+<li>ДатаКонца - тип: Дата. Определяет дату конца периода, по которую будут отображаться
+записи журнала регистрации. Необязателен, по умолчанию пустая дата. Если не указан, то
+концом периода считается конец журнала журнала.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - вызов метода закончился успешно, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Устанавливает период просмотра записей журнала регистрации.</p>
+<p>Если оба параметра не указаны, то отображается весь журнал. Алгоритм поиска границ предполагает, что записи в журнале
+расположены в порядке возрастания дат. Если это условие не выполняется, то данный метод <em>может</em> работать некорректно.</p>
+<p>Если до изменения периода были установлен отбор с сохранением позиций отобранных записей в буфере (см. метод <a class="reference" href="#id19">УстановитьФильтр</a>),
+то в случае увеличения периода происходит дополнительный отбор записей. При его прерывании клавишей &lt;ESC&gt; формируется исключение.</p>
+</blockquote>
+</div>
+<div class="section" id="setperiodex">
+<h3><a name="setperiodex">УстановитьПериодРасш / SetPeriodEx</a></h3>
+<blockquote id="id12">
+<p><strong>Синтаксис:</strong> УстановитьПериодРасш([ДатаНачала],[ВремяНачала],[ДатаКонца],[ВремяКонца])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ДатаНачала - тип: Дата. Определяет дату начала периода, с которой будут отображаться
+записи журнала регистрации. Необязателен, по умолчанию пустая дата. Если не указан, то
+началом периода считается начало журнала;</li>
+<li>ВремяНачала - тип: Строка в формате &quot;ЧЧ:ММ:СС&quot;. Определяет время начала периода, с которого
+будут отображаться записи журнала регистрации. Необязателен, по умолчанию &quot;00:00:00&quot;.</li>
+<li>ДатаКонца - тип: Дата. Определяет дату конца периода, по которую будут отображаться
+записи журнала регистрации. Необязателен, по умолчанию пустая дата. Если не указан, то
+концом периода считается конец журнала журнала.</li>
+<li>ВремяКонца - тип: Строка в формате &quot;ЧЧ:ММ:СС&quot;. Определяет время окончания периода, по которое
+будут отображаться записи журнала регистрации. Необязателен, по умолчанию &quot;23:59:59&quot;.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - вызов метода закончился успешно, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Устанавливает период просмотра записей журнала регистрации.</p>
+<p>Метод служит для тех же целей, что и метод <a class="reference" href="#id11">УстановитьПериод</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="setscandeep">
+<h3><a name="setscandeep">УстановитьГлубину / SetScanDeep</a></h3>
+<blockquote id="id13">
+<p><strong>Синтаксис:</strong> УстановитьГлубину([Глубина],[ОбновитьТП])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Глубина - тип: Число. Количество попыток поиска строки, удовлетворяющей отбору.
+Необязателен, по умолчанию 0;</li>
+<li>ОбновитьТП - тип: Число 0 или 1. Необходимость начать поиск строк сразу после изменения глубины просмотра.
+Необязателен, по умолчанию 1.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - вызов метода закончился успешно, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Устанавливает количество попыток поиска строки, удовлетворяющей отбору.</p>
+<p>Данный метод рекомендуется использовать совместно с установленным отбором в случае поиска заведомо редких событий.</p>
+</blockquote>
+</div>
+<div class="section" id="changefilter">
+<h3><a name="changefilter">ИзменитьФильтр / ChangeFilter</a></h3>
+<chminfo autokw="0"></chminfo>
+<blockquote id="id14">
+<p><strong>Синтаксис:</strong> ИзменитьФильтр([ВариантОтбора],[ЗначениеОтбора])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ВариантОтбора - тип: Число согласно таблице <a class="reference" href="alink">Варианты отборов и возможные значения|_log_data_provider_filter_types_</a>.
+При этом если число положительное, то данный вариант отбора устанавливается, если отрицательное, то сбрасывается.
+При значении параметра равным нулю отбор полностью сбрасывается. Необязателен, по умолчанию 0;</li>
+<li>ЗначениеОтбора - тип: пустое значение, строка, объект агрегатного типа или список значений из них. Значение устанавливаемого
+отбора в зависимости от первого параметра. Необязателен, по умолчанию пустое значение.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - вызов метода закончился успешно, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Добавляет или удаляет элемент отбора для просмотра записей журнала регистрации.</p>
+<p>Все значения типа строка являются регистронезависимыми за исключением значений отбора по пользователю.</p>
+</blockquote>
+<blockquote id="id15">
+<p>Типом объекта могут быть:</p>
+<ul class="simple">
+<li>Перечисление;</li>
+<li>Справочник;</li>
+<li>Документ;</li>
+<li>Календарь;</li>
+<li>Вид расчета;</li>
+<li>Счет;</li>
+<li>Вид субконто;</li>
+<li>План счетов.</li>
+</ul>
+</blockquote>
+<p>Примеры использования метода:</p>
+<pre class="literal-block">
+ТабличноеПоле.ПоставщикДанных.ИзменитьФильтр(2, &quot;ЕM&quot;); // добавить фильтр по режиму &quot;Предприятие&quot; и &quot;Монитор&quot;
+ТабличноеПоле.ПоставщикДанных.ИзменитьФильтр(22);      // добавить фильтр по событию &quot;Документ записан&quot;
+ТабличноеПоле.ПоставщикДанных.ИзменитьФильтр(-62);     // удалить фильтр по событию &quot;Изменена точка актуальности&quot;
+ТабличноеПоле.ПоставщикДанных.ИзменитьФильтр();        // сбросить все фильтры
+</pre>
+<span id="id16"></span><div class="section" id="id17">
+<h4><a name="id17">Варианты отборов и возможные значения</a></h4>
+<chminfo>
+        <alinks>_log_data_provider_filter_types_</alinks>
+</chminfo>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="11%" />
+<col width="14%" />
+<col width="4%" />
+<col width="7%" />
+<col width="20%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head" rowspan="2">Вариант
+отбора</th>
+<th class="head" rowspan="2">Фильтруемое поле
+записи журнала</th>
+<th class="head" rowspan="2">Значение поля</th>
+<th class="head" rowspan="2">Режим</th>
+<th class="head" rowspan="2">Категория</th>
+<th class="head" rowspan="2">Описание</th>
+<th class="head" colspan="2">Возможное значение</th>
+</tr>
+<tr><th class="head">Добавление</th>
+<th class="head">Удаление</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td><strong>Пользователь</strong></td>
+<td>&nbsp;</td>
+<td>ECMD</td>
+<td>012345</td>
+<td>&nbsp;</td>
+<td>Строка с идентификатором
+пользователя или список
+значений из них. Для
+указания пустого
+пользователя использовать
+строку &quot;&lt;&gt;&quot;.</td>
+<td>Аналогично добавлению, или
+пустое значение, если
+полностью сбросить данный
+вариант отбора.</td>
+</tr>
+<tr><td>2</td>
+<td><strong>Режим</strong></td>
+<td>&nbsp;</td>
+<td>ECMD</td>
+<td>012345</td>
+<td>&nbsp;</td>
+<td>Строка из символов 'E', 'C',
+'M', 'D'.</td>
+<td>Аналогично добавлению, или
+пустое значение, если
+полностью сбросить данный
+вариант отбора.</td>
+</tr>
+<tr><td>3</td>
+<td><strong>Категория</strong></td>
+<td>&nbsp;</td>
+<td>ECMD</td>
+<td>012345</td>
+<td>&nbsp;</td>
+<td>Строка из символов '0', '1',
+'2', '3', '4', '5'.</td>
+<td>Аналогично добавлению, или
+пустое значение, если
+полностью сбросить данный
+вариант отбора.</td>
+</tr>
+<tr><td>4</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Sys</strong></td>
+<td>ECMD</td>
+<td>0</td>
+<td><strong>Сеанс</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>5</td>
+<td><strong>Событие</strong></td>
+<td>OpenSession</td>
+<td>ECMD</td>
+<td>0</td>
+<td>Подключение</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>6</td>
+<td>&nbsp;</td>
+<td>CloseSession</td>
+<td>ECMD</td>
+<td>0</td>
+<td>Отключение</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>7</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Consts</strong></td>
+<td>E</td>
+<td>2</td>
+<td><strong>Константы</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>8</td>
+<td><strong>Событие</strong></td>
+<td>ConstWrite</td>
+<td>E</td>
+<td>2</td>
+<td>Значение константы изменено</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>9</td>
+<td>&nbsp;</td>
+<td>ConstDel</td>
+<td>E</td>
+<td>2</td>
+<td>Значение константы удалено</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>10</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Refs</strong></td>
+<td>E</td>
+<td>2</td>
+<td><strong>Справочники</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>11</td>
+<td><strong>Событие</strong></td>
+<td>RefNew</td>
+<td>E</td>
+<td>2</td>
+<td>Записан новый элемент справочника</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>12</td>
+<td>&nbsp;</td>
+<td>RefWrite</td>
+<td>E</td>
+<td>2</td>
+<td>Элемент справочника записан</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>13</td>
+<td>&nbsp;</td>
+<td>RefUnmarkDel</td>
+<td>E</td>
+<td>2</td>
+<td>С элемента справочника снята
+пометка на удаление</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>14</td>
+<td>&nbsp;</td>
+<td>RefDel</td>
+<td>E</td>
+<td>2</td>
+<td>Элемент справочника удален</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>15</td>
+<td>&nbsp;</td>
+<td>RefMarkDel</td>
+<td>E</td>
+<td>2</td>
+<td>Элемент справочника помечен на
+удаление</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>16</td>
+<td>&nbsp;</td>
+<td>RefGrpMove</td>
+<td>E</td>
+<td>2</td>
+<td>Элемент справочника перенесен
+в другую группу</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>17</td>
+<td>&nbsp;</td>
+<td>RefAttrWrite</td>
+<td>E</td>
+<td>2</td>
+<td>Значение реквизита справочника
+изменено</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>18</td>
+<td>&nbsp;</td>
+<td>RefAttrDel</td>
+<td>E</td>
+<td>2</td>
+<td>Значение реквизита справочника
+удалено</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>19</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Docs</strong></td>
+<td>E</td>
+<td>23</td>
+<td><strong>Документы</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>20</td>
+<td><strong>Событие</strong></td>
+<td>DocNew</td>
+<td>E</td>
+<td>3</td>
+<td>Документ создан</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>21</td>
+<td>&nbsp;</td>
+<td>DocOpen</td>
+<td>E</td>
+<td>3</td>
+<td>Документ открыт</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>22</td>
+<td>&nbsp;</td>
+<td>DocWrite</td>
+<td>E</td>
+<td>2</td>
+<td>Документ записан</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>23</td>
+<td>&nbsp;</td>
+<td>DocWriteNew</td>
+<td>E</td>
+<td>2</td>
+<td>Записан новый документ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>24</td>
+<td>&nbsp;</td>
+<td>DocNotWrite</td>
+<td>E</td>
+<td>3</td>
+<td>Документ не записан</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>25</td>
+<td>&nbsp;</td>
+<td>DocPassed</td>
+<td>E</td>
+<td>2</td>
+<td>Документ проведен</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>26</td>
+<td>&nbsp;</td>
+<td>DocBackPassed</td>
+<td>E</td>
+<td>2</td>
+<td>Документ проведен задним числом</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>27</td>
+<td>&nbsp;</td>
+<td>DocNotPassed</td>
+<td>E</td>
+<td>2</td>
+<td>Документ не проведен</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>28</td>
+<td>&nbsp;</td>
+<td>DocMakeNotPassed</td>
+<td>E</td>
+<td>2</td>
+<td>Документ сделан непроведенным</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>29</td>
+<td>&nbsp;</td>
+<td>DocWriteAndRepassed</td>
+<td>E</td>
+<td>2</td>
+<td>Документ записан и проведен</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>30</td>
+<td>&nbsp;</td>
+<td>DocWriteAndPostBfAP</td>
+<td>E</td>
+<td>2</td>
+<td>Документ записан и проведен
+задним числом</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>31</td>
+<td>&nbsp;</td>
+<td>DocTimeChanged</td>
+<td>E</td>
+<td>2</td>
+<td>Изменено время документа</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>32</td>
+<td>&nbsp;</td>
+<td>DocOperWrite</td>
+<td>E</td>
+<td>2</td>
+<td>Операция документа изменена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>33</td>
+<td>&nbsp;</td>
+<td>DocOperOn</td>
+<td>E</td>
+<td>2</td>
+<td>Проводки включены</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>34</td>
+<td>&nbsp;</td>
+<td>DocOperOff</td>
+<td>E</td>
+<td>2</td>
+<td>Проводки выключены</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>35</td>
+<td>&nbsp;</td>
+<td>DocMarkDel</td>
+<td>E</td>
+<td>2</td>
+<td>Документ помечен на удаление</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>36</td>
+<td>&nbsp;</td>
+<td>DocUnmarkDel</td>
+<td>E</td>
+<td>2</td>
+<td>Пометка на удаление документа
+снята</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>37</td>
+<td>&nbsp;</td>
+<td>DocDel</td>
+<td>E</td>
+<td>2</td>
+<td>Документ удален</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>38</td>
+<td><strong>Тип события</strong></td>
+<td><strong>CJ</strong></td>
+<td>E</td>
+<td>2</td>
+<td><strong>Журнал расчетов</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>39</td>
+<td><strong>Событие</strong></td>
+<td>CJPerChng</td>
+<td>E</td>
+<td>2</td>
+<td>Изменен текущий расчетный период
+в журнале расчетов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>40</td>
+<td>&nbsp;</td>
+<td>CJPerBackChng</td>
+<td>E</td>
+<td>2</td>
+<td>Откат назад текущего расчетного
+периода в журнале расчетов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>41</td>
+<td>&nbsp;</td>
+<td>CJPerNotChng</td>
+<td>E</td>
+<td>2</td>
+<td>Неудачная попытка изменения
+текущего расчетного периода
+в журнале расчетов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>42</td>
+<td>&nbsp;</td>
+<td>CJUneditRec</td>
+<td>E</td>
+<td>2</td>
+<td>Отмена ручного редактирования
+результата расчета в журнале
+расчетов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>43</td>
+<td>&nbsp;</td>
+<td>CJEditRec</td>
+<td>E</td>
+<td>2</td>
+<td>Отредактирован результат расчета
+в журнале расчетов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>44</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Accs</strong></td>
+<td>E</td>
+<td>23</td>
+<td><strong>Счета</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>45</td>
+<td><strong>Событие</strong></td>
+<td>AccNew</td>
+<td>E</td>
+<td>3</td>
+<td>Записан новый счет</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>46</td>
+<td>&nbsp;</td>
+<td>AccWrite</td>
+<td>E</td>
+<td>2</td>
+<td>Счет записан</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>47</td>
+<td>&nbsp;</td>
+<td>AccDel</td>
+<td>E</td>
+<td>2</td>
+<td>Счет удален</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>48</td>
+<td>&nbsp;</td>
+<td>AccMarkDel</td>
+<td>E</td>
+<td>2</td>
+<td>Счет помечен на удаление</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>49</td>
+<td>&nbsp;</td>
+<td>AccUnmarkDel</td>
+<td>E</td>
+<td>2</td>
+<td>Со счета снята пометка на
+удаление</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>50</td>
+<td>&nbsp;</td>
+<td>AccAttrWrite</td>
+<td>E</td>
+<td>2</td>
+<td>Значение реквизита счета записано</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>51</td>
+<td>&nbsp;</td>
+<td>AccAttrDel</td>
+<td>E</td>
+<td>2</td>
+<td>Значение реквизита счета удалено</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>52</td>
+<td><strong>Тип события</strong></td>
+<td><strong>CorrProvs</strong></td>
+<td>E</td>
+<td>2</td>
+<td><strong>Корректные проводки</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>53</td>
+<td><strong>Событие</strong></td>
+<td>CorrProvNew</td>
+<td>E</td>
+<td>2</td>
+<td>Записана новая корректная
+проводка</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>54</td>
+<td>&nbsp;</td>
+<td>CorrProvEdit</td>
+<td>E</td>
+<td>2</td>
+<td>Корректная проводка изменена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>55</td>
+<td>&nbsp;</td>
+<td>CorrProvDel</td>
+<td>E</td>
+<td>2</td>
+<td>Корректная проводка удалена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>56</td>
+<td><strong>Тип события</strong></td>
+<td><strong>TmplOpers</strong></td>
+<td>E</td>
+<td>2</td>
+<td><strong>Типовые операции</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>57</td>
+<td><strong>Событие</strong></td>
+<td>TmplOperNew</td>
+<td>E</td>
+<td>2</td>
+<td>Записана новая типовая операция</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>58</td>
+<td>&nbsp;</td>
+<td>TmplOperWrite</td>
+<td>E</td>
+<td>2</td>
+<td>Типовая операция записана</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>59</td>
+<td>&nbsp;</td>
+<td>TmplOperDel</td>
+<td>E</td>
+<td>2</td>
+<td>Типовая операция удалена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>60</td>
+<td>&nbsp;</td>
+<td>TmplOperGrpMove</td>
+<td>E</td>
+<td>2</td>
+<td>Типовая операция перенесена в
+другую группу</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>61</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Grbgs</strong></td>
+<td>EM</td>
+<td>125</td>
+<td><strong>Общие события</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>62</td>
+<td><strong>Событие</strong></td>
+<td>GrbgTAChng</td>
+<td>E</td>
+<td>2</td>
+<td>Изменена точка актуальности</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>63</td>
+<td>&nbsp;</td>
+<td>GrbgSnapChng</td>
+<td>E</td>
+<td>2</td>
+<td>Изменен период сохранения итогов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>64</td>
+<td>&nbsp;</td>
+<td>GrbgRclcDocs</td>
+<td>E</td>
+<td>2</td>
+<td>Групповое проведение документов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>65</td>
+<td>&nbsp;</td>
+<td>GrbgNewPerBuhTot</td>
+<td>E</td>
+<td>2</td>
+<td>Бухгалтерские итоги рассчитаны</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>66</td>
+<td>&nbsp;</td>
+<td>GrbgRclcAllBuhTot</td>
+<td>E</td>
+<td>2</td>
+<td>Полный пересчет бухгалтерских
+итогов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>67</td>
+<td>&nbsp;</td>
+<td>GrbgLogArch</td>
+<td>M</td>
+<td>1</td>
+<td>Архивирование журнала регистрации</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>68</td>
+<td>&nbsp;</td>
+<td>GrbgSyntaxErr</td>
+<td>E</td>
+<td>5</td>
+<td>Синтаксическая ошибка</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>69</td>
+<td>&nbsp;</td>
+<td>GrbgRuntimeErr</td>
+<td>E</td>
+<td>5</td>
+<td>Ошибка времени выполнения</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>70</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Restruct</strong></td>
+<td>C</td>
+<td>1345</td>
+<td><strong>Конфигурация</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>71</td>
+<td><strong>Событие</strong></td>
+<td>RestructSaveMD</td>
+<td>C</td>
+<td>3</td>
+<td>Запись измененной конфигурации</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>72</td>
+<td>&nbsp;</td>
+<td>RestructStart</td>
+<td>C</td>
+<td>1</td>
+<td>Начало реструктуризации</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>73</td>
+<td>&nbsp;</td>
+<td>RestructCopy</td>
+<td>C</td>
+<td>1</td>
+<td>Начало копирования результатов
+реструктуризации</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>74</td>
+<td>&nbsp;</td>
+<td>RestructAcptEnd</td>
+<td>C</td>
+<td>1</td>
+<td>Реструктуризация завершена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>75</td>
+<td>&nbsp;</td>
+<td>RestructStatus</td>
+<td>C</td>
+<td>3</td>
+<td>Статус реструктуризации</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>76</td>
+<td>&nbsp;</td>
+<td>RestructAnalys</td>
+<td>C</td>
+<td>3</td>
+<td>Анализ информации</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>77</td>
+<td>&nbsp;</td>
+<td>RestructWarn</td>
+<td>C</td>
+<td>4</td>
+<td>Предупреждение</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>78</td>
+<td>&nbsp;</td>
+<td>RestructErr</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка при реструктуризации</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>79</td>
+<td>&nbsp;</td>
+<td>RestructCritErr</td>
+<td>C</td>
+<td>5</td>
+<td>Критическая ошибка при
+реструктуризации</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>80</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Distr</strong></td>
+<td>C</td>
+<td>15</td>
+<td><strong>Распределенная ИБ</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>81</td>
+<td><strong>Событие</strong></td>
+<td>DistBatchErr</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка автообмена в пакетном
+режиме</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>82</td>
+<td>&nbsp;</td>
+<td>DistDnldBeg</td>
+<td>C</td>
+<td>1</td>
+<td>Начата выгрузка изменений данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>83</td>
+<td>&nbsp;</td>
+<td>DistDnldSuc</td>
+<td>C</td>
+<td>1</td>
+<td>Выгрузка изменений данных успешно
+завершена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>84</td>
+<td>&nbsp;</td>
+<td>DistDnldFail</td>
+<td>C</td>
+<td>1</td>
+<td>Выгрузка изменений данных
+не выполнена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>85</td>
+<td>&nbsp;</td>
+<td>DistDnlErr</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка выгрузки изменений данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>86</td>
+<td>&nbsp;</td>
+<td>DistDnlStatus</td>
+<td>C</td>
+<td>1</td>
+<td>Выгрузка изменений данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>87</td>
+<td>&nbsp;</td>
+<td>DistUplBeg</td>
+<td>C</td>
+<td>1</td>
+<td>Начата загрузка изменений данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>88</td>
+<td>&nbsp;</td>
+<td>DistUplSuc</td>
+<td>C</td>
+<td>1</td>
+<td>Загрузка изменений данных успешно
+завершена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>89</td>
+<td>&nbsp;</td>
+<td>DistUplFail</td>
+<td>C</td>
+<td>1</td>
+<td>Загрузка изменений данных
+не выполнена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>90</td>
+<td>&nbsp;</td>
+<td>DistUplErr</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка загрузки изменений данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>91</td>
+<td>&nbsp;</td>
+<td>DistUplStatus</td>
+<td>C</td>
+<td>1</td>
+<td>Загрузка изменений данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>92</td>
+<td>&nbsp;</td>
+<td>DistDnldPrimBeg</td>
+<td>C</td>
+<td>1</td>
+<td>Первичная выгрузка периферийной
+ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>93</td>
+<td>&nbsp;</td>
+<td>DistDnldPrimSuc</td>
+<td>C</td>
+<td>1</td>
+<td>Первичная выгрузка периферийной
+ИБ успешно завершена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>94</td>
+<td>&nbsp;</td>
+<td>DistDnldPrimFail</td>
+<td>C</td>
+<td>1</td>
+<td>Первичная выгрузка периферийной
+ИБ не выполнена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>95</td>
+<td>&nbsp;</td>
+<td>DistDnldPrimErr</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка первичной выгрузки
+периферийной ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>96</td>
+<td>&nbsp;</td>
+<td>DistInit</td>
+<td>C</td>
+<td>1</td>
+<td>Распределенная ИБ
+инициализирована</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>97</td>
+<td>&nbsp;</td>
+<td>DistPIBCreat</td>
+<td>C</td>
+<td>1</td>
+<td>Создана периферийная ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>98</td>
+<td>&nbsp;</td>
+<td>DistPIBDel</td>
+<td>C</td>
+<td>1</td>
+<td>Удалена периферийная ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>99</td>
+<td>&nbsp;</td>
+<td>DistIBModi</td>
+<td>C</td>
+<td>1</td>
+<td>Изменены параметры ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>100</td>
+<td>&nbsp;</td>
+<td>DistAEParam</td>
+<td>C</td>
+<td>1</td>
+<td>Изменены параметры автообмена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>101</td>
+<td><strong>Тип события</strong></td>
+<td><strong>UpDown</strong></td>
+<td>C</td>
+<td>15</td>
+<td><strong>Выгрузка / загрузка данных</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>103</td>
+<td><strong>Событие</strong></td>
+<td>UpDownDnldToFile</td>
+<td>C</td>
+<td>1</td>
+<td>Выгрузка ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>104</td>
+<td>&nbsp;</td>
+<td>UpDownDnldSuc</td>
+<td>C</td>
+<td>1</td>
+<td>Выгрузка ИБ успешно завершена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>105</td>
+<td>&nbsp;</td>
+<td>UpDownDnldFail</td>
+<td>C</td>
+<td>1</td>
+<td>Выгрузка ИБ не выполнена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>106</td>
+<td>&nbsp;</td>
+<td>UpDownDnldErr</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка выгрузки данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>107</td>
+<td>&nbsp;</td>
+<td>UpDownUplFromFile</td>
+<td>C</td>
+<td>1</td>
+<td>Загрузка ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>108</td>
+<td>&nbsp;</td>
+<td>UpDownUplSuc</td>
+<td>C</td>
+<td>1</td>
+<td>Загрузка ИБ успешно завершена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>109</td>
+<td>&nbsp;</td>
+<td>UpDownUplFail</td>
+<td>C</td>
+<td>1</td>
+<td>Загрузка ИБ не выполнена</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>110</td>
+<td>&nbsp;</td>
+<td>UpDownUplErr</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка загрузки данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>111</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Archive</strong></td>
+<td>C</td>
+<td>15</td>
+<td><strong>Сохранение / восстановление</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>112</td>
+<td><strong>Событие</strong></td>
+<td>ArchiveStart</td>
+<td>C</td>
+<td>1</td>
+<td>Начало сохранения</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>113</td>
+<td>&nbsp;</td>
+<td>ArchiveEnd</td>
+<td>C</td>
+<td>1</td>
+<td>Завершение сохранения</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>114</td>
+<td>&nbsp;</td>
+<td>DearchiveStart</td>
+<td>C</td>
+<td>1</td>
+<td>Начало восстановления</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>115</td>
+<td>&nbsp;</td>
+<td>DearchiveEnd</td>
+<td>C</td>
+<td>1</td>
+<td>Завершение восстановления</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>116</td>
+<td>&nbsp;</td>
+<td>ArchiveError</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка при
+сохранении / восстановлении</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>118</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Batch</strong></td>
+<td>ECMD</td>
+<td>15</td>
+<td><strong>Пакетный режим</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>121</td>
+<td><strong>Событие</strong></td>
+<td>BatchErr</td>
+<td>ECMD</td>
+<td>5</td>
+<td>Ошибка при работе в пакетном
+режиме</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>122</td>
+<td><strong>Тип события</strong></td>
+<td><strong>UsrDef</strong></td>
+<td>C</td>
+<td>1</td>
+<td><strong>Пользователи</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>123</td>
+<td><strong>Тип события</strong></td>
+<td><strong>Doctor</strong></td>
+<td>C</td>
+<td>15</td>
+<td><strong>Тестирование и исправление ИБ</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>124</td>
+<td><strong>Событие</strong></td>
+<td>dctTRBeg</td>
+<td>C</td>
+<td>1</td>
+<td>Начало тестирования и исправления</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>125</td>
+<td>&nbsp;</td>
+<td>dctTBeg</td>
+<td>C</td>
+<td>1</td>
+<td>Начало тестирования</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>126</td>
+<td>&nbsp;</td>
+<td>dctPhInt</td>
+<td>C</td>
+<td>1</td>
+<td>Контроль физической целостности</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>127</td>
+<td>&nbsp;</td>
+<td>dctReind</td>
+<td>C</td>
+<td>1</td>
+<td>Реиндексация таблиц ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>128</td>
+<td>&nbsp;</td>
+<td>dctLgInt</td>
+<td>C</td>
+<td>1</td>
+<td>Контроль логической целостности</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>129</td>
+<td>&nbsp;</td>
+<td>dctRcST</td>
+<td>C</td>
+<td>1</td>
+<td>Пересчет служебных данных</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>130</td>
+<td>&nbsp;</td>
+<td>dctRcT</td>
+<td>C</td>
+<td>1</td>
+<td>Пересчет итогов</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>131</td>
+<td>&nbsp;</td>
+<td>dctTREnd</td>
+<td>C</td>
+<td>1</td>
+<td>Окончание тестирования и
+исправления</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>132</td>
+<td>&nbsp;</td>
+<td>dctTEnd</td>
+<td>C</td>
+<td>1</td>
+<td>Окончание тестирования</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>133</td>
+<td>&nbsp;</td>
+<td>dctErr</td>
+<td>C</td>
+<td>5</td>
+<td>Ошибка ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>134</td>
+<td>&nbsp;</td>
+<td>dctPck</td>
+<td>C</td>
+<td>1</td>
+<td>Упаковка таблиц ИБ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>135</td>
+<td><strong>Тип события</strong></td>
+<td><strong>User</strong></td>
+<td>E</td>
+<td>012345</td>
+<td><strong>Другие события</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>136</td>
+<td><strong>Событие</strong></td>
+<td>UserMsg</td>
+<td>E</td>
+<td>012345</td>
+<td>Дополнительное событие</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>137</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>E</td>
+<td>012345</td>
+<td>Любое событие пользователя</td>
+<td>Строка с идентификатором
+события или список значений
+из них.</td>
+<td>Аналогично добавлению, или
+пустое значение, если
+полностью сбросить данный
+вариант отбора.</td>
+</tr>
+<tr><td>138</td>
+<td><strong>Тип события</strong></td>
+<td>&nbsp;</td>
+<td>E</td>
+<td>012345</td>
+<td>Любой тип события пользователя</td>
+<td>Строка с идентификатором типа
+события или список значений
+из них.</td>
+<td>Аналогично добавлению, или
+пустое значение, если
+полностью сбросить данный
+вариант отбора.</td>
+</tr>
+<tr><td>139</td>
+<td><strong>Комментарий</strong></td>
+<td>&nbsp;</td>
+<td>ECMD</td>
+<td>012345</td>
+<td>&nbsp;</td>
+<td>Подстрока для поиска
+в комментарии</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>140</td>
+<td><strong>Объект</strong></td>
+<td>&nbsp;</td>
+<td>E</td>
+<td>012345</td>
+<td>Вид объекта</td>
+<td>Строка с идентификатором вида
+объекта или список значений
+из них.</td>
+<td>Аналогично добавлению, или
+пустое значение, если
+полностью сбросить данный
+вариант отбора.</td>
+</tr>
+<tr><td>141</td>
+<td><strong>Объект</strong></td>
+<td>&nbsp;</td>
+<td>E</td>
+<td>012345</td>
+<td>Объект</td>
+<td>Объект <a class="reference" href="#id15">агрегатного типа</a>
+или список значений из них.</td>
+<td>Аналогично добавлению, или
+пустое значение, если
+полностью сбросить данный
+вариант отбора.</td>
+</tr>
+<tr><td>142</td>
+<td><strong>Представление</strong></td>
+<td>&nbsp;</td>
+<td>E</td>
+<td>012345</td>
+<td>&nbsp;</td>
+<td>Подстрока для поиска
+в представлении</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="setfilter">
+<h3><a name="setfilter">УстановитьФильтр / SetFilter</a></h3>
+<blockquote id="id19">
+<p><strong>Синтаксис:</strong> УстановитьФильтр([ИспользоватьБуфер])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ИспользоватьБуфер - тип: Число. 0 - буфер не используется (осуществляется динамический отбор), 1 - позиции отобранных записей
+сохраняются в буфере. Необязателен, по умолчанию 0.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - изменения отбора корректны и начат отбор записей, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Проверяет на корректность изменения отбора методом <a class="reference" href="#id14">ИзменитьФильтр</a> и начинает отбор записей. Если используется буфер,
+то при прерывании отбора клавишей &lt;ESC&gt; формируется исключение. Если провайдер является поставщиком данных
+табличного поля, то выполнение процесса отбора в процентах отображается в строке состояния.</p>
+</blockquote>
+</div>
+<div class="section" id="openfile">
+<h3><a name="openfile">ОткрытьФайл / OpenFile</a></h3>
+<blockquote id="id20">
+<p><strong>Синтаксис:</strong> ОткрытьФайл()</p>
+<p><strong>Возвращает:</strong> тип: Число. 1 - файл журнала регистрации открыт, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Открывает файл журнала регистрации для последующей выборки записей методом <a class="reference" href="#id22">ВыбратьСтроки</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="closefile">
+<h3><a name="closefile">ЗакрытьФайл / CloseFile</a></h3>
+<blockquote id="id21">
+<p><strong>Синтаксис:</strong> ЗакрытьФайл()</p>
+<p><strong>Описание:</strong> Закрывает открытый файл журнала регистрации.</p>
+</blockquote>
+</div>
+<div class="section" id="selectlines">
+<h3><a name="selectlines">ВыбратьСтроки / SelectLines</a></h3>
+<blockquote id="id22">
+<p><strong>Синтаксис:</strong> ВыбратьСтроки([Смещение])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Смещение - тип: Число. Определяет, с какого смещения в байтах от начала журнала регистрации производить выборку записей
+журнала регистрации. Необязателен, по умолчанию 0. Для выборки записей с начала временного файла параметр должен
+быть равен -1.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - выборка начата, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Метод определяет, на какую запись указывает переданное смещение, и устанавливает выборку с этой записи.</p>
+</blockquote>
+</div>
+<div class="section" id="getline">
+<h3><a name="getline">ПолучитьСтроку / GetLine</a></h3>
+<blockquote id="id23">
+<p><strong>Синтаксис:</strong> ПолучитьСтроку()</p>
+<p><strong>Возвращает:</strong> тип: Число. 1 - строка получена, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Выполняет позиционирование на очередную запись из выборки. Если перед получением строки установлен период и (или) отбор,
+то получение записи осуществляется с учетом периода и отбора. При прерывании данной операции клавишей &lt;ESC&gt; формируется исключение.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="logeventtypes">
+<h1><a name="logeventtypes">ТипыСобытийЖурналаРегистрации / LogEventTypes</a></h1>
+<p id="id24">Фиксированная коллекция типов событий в журнале регистрации.
+Элементы коллекции - объекты типа <a class="reference" href="#id28">ТипСобытияЖурналаРегистрации</a>.
+Индексы типов событий - от нуля до количества типов событий минус один.</p>
+<div class="section" id="id25">
+<h2><a name="id25">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="id26">
+<h3><a name="id26">&lt;ТипСобытия&gt;</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> <a class="reference" href="#id28">ТипСобытияЖурналаРегистрации</a>.</p>
+<p><strong>Описание:</strong> Набор свойств содержит идентификаторы типов событий журнала регистрации.
+Доступ к значению осуществляется по идентификатору типа события.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id27">
+<h2><a name="id27">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="count">
+<h3><a name="count">Количество / Count</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Количество()</p>
+<p><strong>Возвращает:</strong> тип: Число, количество типов событий.</p>
+<p><strong>Описание:</strong> Получить количество типов событий.</p>
+</blockquote>
+</div>
+<div class="section" id="get">
+<h3><a name="get">Получить / Get</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Получить(ТипСобытия)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТипСобытия - тип: Число, Строка. Индекс или идентификатор типа события.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: <a class="reference" href="#id28">ТипСобытияЖурналаРегистрации</a>.</p>
+<p><strong>Описание:</strong> Получить тип события журнала регистрации.</p>
+</blockquote>
+</div>
+<div class="section" id="indexof">
+<h3><a name="indexof">Индекс / IndexOf</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Индекс(ТипСобытия)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТипСобытия - тип: <a class="reference" href="#id28">ТипСобытияЖурналаРегистрации</a>. Тип события, индекс которого требуется получить.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число - индекс типа события, или -1, если тип события не принадлежит коллекции.</p>
+<p><strong>Описание:</strong> Получить индекс типа события.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="logeventtype">
+<h1><a name="logeventtype">ТипСобытияЖурналаРегистрации / LogEventType</a></h1>
+<p id="id28">Объект для получения информации о типе события журнала регистрации.</p>
+<div class="section" id="id29">
+<h2><a name="id29">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="index">
+<h3><a name="index">Индекс / Index</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Число.</p>
+<p><strong>Описание:</strong> Значение данного свойства соответствует варианту отбора, используемому в методе <a class="reference" href="#id14">ИзменитьФильтр</a>
+(см. <a class="reference" href="alink">Варианты отборов и возможные значения|_log_data_provider_filter_types_</a>).</p>
+</blockquote>
+</div>
+<div class="section" id="identifier">
+<h3><a name="identifier">Идентификатор / Identifier</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка.</p>
+<p><strong>Описание:</strong> Идентификатор типа события.</p>
+</blockquote>
+</div>
+<div class="section" id="description">
+<h3><a name="description">Описание / Description</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка.</p>
+<p><strong>Описание:</strong> Описание типа события.</p>
+</blockquote>
+</div>
+<div class="section" id="issystem">
+<h3><a name="issystem">Системный / IsSystem</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Число: 0 или 1.</p>
+<p><strong>Описание:</strong> Является данный тип события системным или пользовательским.</p>
+</blockquote>
+</div>
+<div class="section" id="events">
+<h3><a name="events">События / Events</a></h3>
+<blockquote id="id30">
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Фиксированная коллекция <a class="reference" href="#id31">СобытияЖурналаРегистрации</a>.</p>
+<p><strong>Описание:</strong> Содержит события, принадлежащие данному типу.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="logevents">
+<h1><a name="logevents">СобытияЖурналаРегистрации / LogEvents</a></h1>
+<p id="id31">Фиксированная коллекция событий в журнале регистрации, принадлежащих определенному типу.
+Элементы коллекции - объекты типа <a class="reference" href="#id38">СобытиеЖурналаРегистрации</a>.
+Индексы событий - от нуля до количества событий минус один.</p>
+<div class="section" id="id32">
+<h2><a name="id32">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="id33">
+<h3><a name="id33">&lt;Событие&gt;</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> <a class="reference" href="#id38">СобытиеЖурналаРегистрации</a>.</p>
+<p><strong>Описание:</strong> Набор свойств содержит идентификаторы событий журнала регистрации.
+Доступ к значению осуществляется по идентификатору события.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id34">
+<h2><a name="id34">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="id35">
+<h3><a name="id35">Количество / Count</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Количество()</p>
+<p><strong>Возвращает:</strong> тип: Число, количество событий.</p>
+<p><strong>Описание:</strong> Получить количество событий.</p>
+</blockquote>
+</div>
+<div class="section" id="id36">
+<h3><a name="id36">Получить / Get</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Получить(Событие)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Событие - тип: Число, Строка. Индекс или идентификатор события.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: <a class="reference" href="#id38">СобытиеЖурналаРегистрации</a>.</p>
+<p><strong>Описание:</strong> Получить событие журнала регистрации.</p>
+</blockquote>
+</div>
+<div class="section" id="id37">
+<h3><a name="id37">Индекс / IndexOf</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Индекс(Событие)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Событие - тип: <a class="reference" href="#id38">СобытиеЖурналаРегистрации</a>. Событие, индекс которого требуется получить.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число - индекс события, или -1, если событие не принадлежит коллекции.</p>
+<p><strong>Описание:</strong> Получить индекс события.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="logevent">
+<h1><a name="logevent">СобытиеЖурналаРегистрации / LogEvent</a></h1>
+<p id="id38">Объект для получения информации о событии журнала регистрации.</p>
+<div class="section" id="id39">
+<h2><a name="id39">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="id40">
+<h3><a name="id40">Индекс / Index</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Число.</p>
+<p><strong>Описание:</strong> Значение данного свойства соответствует варианту отбора, используемому в методе <a class="reference" href="#id14">ИзменитьФильтр</a>
+(см. <a class="reference" href="alink">Варианты отборов и возможные значения|_log_data_provider_filter_types_</a>).</p>
+</blockquote>
+</div>
+<div class="section" id="id41">
+<h3><a name="id41">Идентификатор / Identifier</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка.</p>
+<p><strong>Описание:</strong> Идентификатор события.</p>
+</blockquote>
+</div>
+<div class="section" id="id42">
+<h3><a name="id42">Описание / Description</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка.</p>
+<p><strong>Описание:</strong> Описание события.</p>
+</blockquote>
+</div>
+<div class="section" id="id43">
+<h3><a name="id43">Системное / IsSystem</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Число: 0 или 1.</p>
+<p><strong>Описание:</strong> Является данное событие системным или пользовательским.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="id44">
+<h1><a name="id44">Отбор / Filter</a></h1>
+<p id="id45">Коллекция содержит элементы отбора, соответствующие установленному отбору
+методами <a class="reference" href="#id14">ИзменитьФильтр</a> и <a class="reference" href="#id19">УстановитьФильтр</a>.</p>
+<div class="section" id="id46">
+<h2><a name="id46">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="id47">
+<h3><a name="id47">&lt;ЭлементОтбора&gt;</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> <a class="reference" href="#id53">ЭлементОтбора</a>.</p>
+<p><strong>Описание:</strong> Набор свойств содержит элементы отбора.
+Доступ к значению осуществляется по имени элемента.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id48">
+<h2><a name="id48">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="id49">
+<h3><a name="id49">Количество / Count</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Количество()</p>
+<p><strong>Возвращает:</strong> тип: Число, количество элементов отбора.</p>
+<p><strong>Описание:</strong> Получить количество элементов отбора.</p>
+</blockquote>
+</div>
+<div class="section" id="id50">
+<h3><a name="id50">Получить / Get</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Получить(ЭлементОтбора)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ЭлементОтбора - тип: Число, Строка. Индекс или имя элемента отбора.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: <a class="reference" href="#id53">ЭлементОтбора</a>.</p>
+<p><strong>Описание:</strong> Получить элемента отбора.</p>
+</blockquote>
+</div>
+<div class="section" id="id51">
+<h3><a name="id51">Индекс / IndexOf</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Индекс(ЭлементОтбора)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ЭлементОтбора - тип: <a class="reference" href="#id53">ЭлементОтбора</a>. Элемент отбора, индекс которого требуется получить.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число - индекс элемента отбора, или -1, если элемент отбора не принадлежит коллекции.</p>
+<p><strong>Описание:</strong> Получить индекс элемента отбора.</p>
+</blockquote>
+</div>
+<div class="section" id="add">
+<h3><a name="add">Добавить / Add</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Добавить(Имя)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Имя - тип: Строка. Имя добавляемого элемента отбора.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: <a class="reference" href="#id53">ЭлементОтбора</a> - созданный элемента отбора.</p>
+<p><strong>Описание:</strong> Добавляет новый элемент отбора в журнале регистрации, если элемента отбора с данным именем не существует,
+или возвращает существующий элемент отбора по имени.</p>
+</blockquote>
+</div>
+<div class="section" id="remove">
+<h3><a name="remove">Удалить / Remove</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Удалить(Индекс)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Индекс - тип: Число. Индекс элемента отбора.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> Удаляет элемент отбора в журнале регистрации.</p>
+</blockquote>
+</div>
+<div class="section" id="clear">
+<h3><a name="clear">Очистить / Clear</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Очистить()</p>
+<p><strong>Описание:</strong> Удаляет все элементы отбора в журнале регистрации.</p>
+</blockquote>
+</div>
+<div class="section" id="set">
+<h3><a name="set">Установить / Set</a></h3>
+<blockquote id="id52">
+<p><strong>Синтаксис:</strong> Установить([ИспользоватьБуфер])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ИспользоватьБуфер - тип: Число. 0 - буфер не используется (осуществляется динамический отбор),
+1 - позиции отобранных записей сохраняются в буфере. Необязателен, по умолчанию 0.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - изменения отбора корректны и начат отбор записей, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Выполняются действия аналогичные действиями при использовании метода <a class="reference" href="#id19">УстановитьФильтр</a>. Состав отбора
+определяется элементами коллекции.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="filteritem">
+<h1><a name="filteritem">ЭлементОтбора / FilterItem</a></h1>
+<p id="id53">Объект для управления отбором в журнале регистрации.</p>
+<div class="section" id="id54">
+<h2><a name="id54">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="type">
+<h3><a name="type">Тип / Type</a></h3>
+<blockquote id="id55">
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Число.</p>
+<p><strong>Описание:</strong> Тип элемента отбора.</p>
+</blockquote>
+<blockquote id="id56">
+<p>Типом элемента отбора могут быть:</p>
+<ul class="simple">
+<li>0 - не определен;</li>
+<li>3 - пользователь;</li>
+<li>4 - режим;</li>
+<li>5 - тип события;</li>
+<li>6 - событие;</li>
+<li>7 - категория;</li>
+<li>8 - комментарий;</li>
+<li>9 - объект;</li>
+<li>10 - представление;</li>
+<li>11 - вид объекта.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="value">
+<h3><a name="value">Значение / Value</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Зависит от <a class="reference" href="#id56">типа отбора</a>.</p>
+<p><strong>Описание:</strong> Значение элемента отбора.</p>
+</blockquote>
+<span id="id58"></span><div class="section" id="id59">
+<h4><a name="id59">Тип элемента отбора и возможное значение элемента отбора</a></h4>
+<chminfo>
+        <alinks>_log_data_provider_filter_items_</alinks>
+</chminfo>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Тип
+элемента
+отбора</th>
+<th class="head">Тип значения отбора</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>3</td>
+<td>Строка</td>
+</tr>
+<tr><td>4</td>
+<td>Символ 'C', 'D', 'M' или 'E'.</td>
+</tr>
+<tr><td>5</td>
+<td><a class="reference" href="#id28">ТипСобытияЖурналаРегистрации</a> или строка с идентификатором типа события.</td>
+</tr>
+<tr><td>6</td>
+<td><a class="reference" href="#id38">СобытиеЖурналаРегистрации</a>  или строка с идентификатором события.</td>
+</tr>
+<tr><td>7</td>
+<td>Число 0, 1, 2, 3, 4, или 5.</td>
+</tr>
+<tr><td>8</td>
+<td>Строка.</td>
+</tr>
+<tr><td>9</td>
+<td>Объект <a class="reference" href="#id15">агрегатного типа</a>.</td>
+</tr>
+<tr><td>10</td>
+<td>Строка.</td>
+</tr>
+<tr><td>11</td>
+<td>Строка.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="name">
+<h3><a name="name">Имя / Name</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Строка.</p>
+<p><strong>Описание:</strong> Имя элемента отбора. Может быть произвольным.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id61">
+<h2><a name="id61">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="settypeandvalue">
+<h3><a name="settypeandvalue">УстановитьТипИЗначение / SetTypeAndValue</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьТипИЗначение([ТипОтбора],[ЗначениеОтбора])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТипОтбора - тип: Число. См. описание свойства <a class="reference" href="#id55">ТипОтбора</a>.
+Необязателен, по умолчанию 0.</li>
+<li>ЗначениеОтбора - тип: зависит от типа отбора (см. <a class="reference" href="alink">Тип и значение элемента отбора|_log_data_provider_filter_items_</a>)
+Необязателен, по умолчанию пустое значение.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число: 1 - тип и значение установлены, 0 - в противном случае.</p>
+<p><strong>Описание:</strong> Установить тип и значение для элемента отбора.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>УправлениеНастройками</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">УправлениеНастройками</h1>
+<!-- Автор: Артур Аюханов aka artbear, mailto: artbear@inbox.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_settings_manager</alinks>
+        <klinks>
+                УправлениеНастройками
+                SettingsManager
+        </klinks>
+</chminfo>
+<div class="contents topic" id="id2">
+<p class="topic-title first"><a name="id2">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id5" id="id10" name="id10">Методы</a><ul>
+<li><a class="reference" href="#get" id="id11" name="id11">Получить / Get</a></li>
+<li><a class="reference" href="#set" id="id12" name="id12">Установить / Set</a></li>
+<li><a class="reference" href="#setup" id="id13" name="id13">Включить / Setup</a></li>
+<li><a class="reference" href="#clear" id="id14" name="id14">Сбросить / Clear</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Класс &quot;УправлениеНастройками&quot; / &quot;SettingsManager&quot;.</strong></p>
+<p>Удобный сервисный класс, управляющий настройками ВК 1С++.</p>
+<p><strong>Версия: релиз 3.2</strong></p>
+<p id="id3">Список настроек:</p>
+<p>1. Существует несколько вариантов настроек.
+У каждой настройки есть английское имя и русский псевдоним</p>
+<ol class="arabic simple" start="2">
+<li>Все настройки:</li>
+</ol>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>EnableOptimization / Оптимизация</strong></dt>
+<dd><p class="first last">Оптимизация представляет собой метод отложенных вычислений,
+который реализован в следующем виде:
+если в системе не разу не инстанцировался (создавался экземпляр КОП) класс,
+то его реализация (модуль КОП) не считывается с диска и не компилируется в P-код.
+При первом создании объекта КОП происходит считывание с диска модуля и его компиляция,
+далее откомпилированный модуль сохраняется в репозитории модулей КОП
+и в последующих созданиях объектов, этапы по считыванию с диска и компиляции не производятся.
+Данная оптимизация позволяет существенно уменьшить время создания объектов КОП
+за счет увеличения используемой памяти компьютера, что не существенно для данного вида оптимизации.
+Это режим рекомендуется включать в финальной версии продукта.
+При отключенной оптимизации при каждом создании объекта происходит считывание с диска
+и компиляция модуля КОП, что позволяет вносить изменения в модуль без закрытияоткрытия 1С
+в режиме 1С:Предприятие. По аналогии с #LoadFromFile для модулей 1С.&quot;</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>EnableCheckType / Проверка типов</strong></dt>
+<dd><p class="first last">Проверка типов включает, строгую проверку типов во время выполнения кода,
+при этом несколько увеличивается время вызова метода,
+в финальной версии программного продукта рекомендуется отключать;</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>EnableDebugging / Отладка</strong></dt>
+<dd><p class="first last">Позволяет отлаживать пользовательские классы 1С++ с помощью
+отладчика 1С. Подробнее см. общее описание 1С++.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>EnableTableSourceTable / ТаблицаИсходнаяТаблица</strong></dt>
+<dd><p class="first last">Отвечает за расширенный функционал типового метода
+&quot;ИсходнаяТаблица&quot; для любых объектов типа &quot;Таблица&quot;.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>EnableTurboBL / ТурбоБЛ</strong></dt>
+<dd><p class="first last">Допустим псевдоним &quot;TurboBL&quot;.
+Отвечает за работу  TurboBL.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>EnableHookEventsGroupContext / ПерехватитьСобытияГК</strong></dt>
+<dd><p class="first last">При включенной настройке возможно использовать перехват
+предопределенных событий 1С и FormEx открытых форм и глобального модуля.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>3. При изменении настройки данные об этом сохраняются в реестре Windows.
+[HKEY_CURRENT_USER\Software\1C\1Cv7\7.7\%DB%\V7\%USERNAME%\1C++ options]</p>
+<p>При следующей загрузке 1С++ все настройки будут автоматически загружены.</p>
+<p id="id4">4. Отключение настроек &quot;ТаблицаИсходнаяТаблица&quot;, &quot;ТурбоБЛ&quot;,
+&quot;ПерехватитьСобытияГК&quot; будет выполнено только после перезагрузки 1С, хотя
+изменения в реестр будут записаны сразу же.</p>
+<p>5. Все настройки автоматически загружаются и соответственно
+выполняются все необходимые действия при загрузке 1С++.
+Например, при включенной настройке &quot;EnableTurboBL&quot; будет включена
+поддержка TurboBL в 1С++.</p>
+<div class="section" id="id5">
+<h1><a name="id5">Методы</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<span id="id6"></span><div class="section" id="get">
+<h2><a name="get">Получить / Get</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> Получить(ИмяНастройки)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяНастройки</strong> - тип: Строка. См. <a class="reference" href="#id3">Список настроек</a></li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Состояние настройки - 0 (выключена) или 1 (включена).</p>
+<blockquote>
+<strong>Описание:</strong> Получает состояние настройки.</blockquote>
+<p>В случае, если настройки с таким именем не существует, выдается исключение.
+В случае, если переданный параметр не является строкой, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id7"></span><div class="section" id="set">
+<h2><a name="set">Установить / Set</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> Установить(ИмяНастройки, ФлагВключенияНастройки)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяНастройки</strong> - тип: Строка. См. <a class="reference" href="#id3">Список настроек</a></li>
+<li><strong>ФлагВключенияНастройки</strong> - тип: Число. 0 (выключить) или 1 (включить).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Устанавливает новое значение настройки, если новое
+значение не совпадает с существующим значением.</p>
+</blockquote>
+<p>В случае, если настройки с таким именем не существует, выдается исключение.
+В случае, если переданный параметр не является строкой, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id8"></span><div class="section" id="setup">
+<h2><a name="setup">Включить / Setup</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> Включить(ИмяНастройки)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяНастройки</strong> - тип: Строка. См. <a class="reference" href="#id3">Список настроек</a></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Включает настройку, если она была выключена. Действует
+сразу не для всех настроек. См. <a class="reference" href="#id4">Действие настроек</a></p>
+</blockquote>
+<p>В случае, если настройки с таким именем не существует, выдается исключение.
+В случае, если переданный параметр не является строкой, выдается исключение.</p>
+</blockquote>
+</div>
+<span id="id9"></span><div class="section" id="clear">
+<h2><a name="clear">Сбросить / Clear</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> Сбросить(ИмяНастройки)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ИмяНастройки</strong> - тип: Строка. См. <a class="reference" href="#id3">Список настроек</a></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Описание:</strong> Выключает настройку, если она была включена.</p>
+</blockquote>
+<p>В случае, если настройки с таким именем не существует, выдается исключение.
+В случае, если переданный параметр не является строкой, выдается исключение.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:13 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

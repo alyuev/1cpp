@@ -1,0 +1,8 @@
+/.cvsignore////
+/README////
+/__init__.py////
+/binnum.py////
+/dbf.py////
+/dbfload.py////
+/dbfnew.py////
+/strutil.py////

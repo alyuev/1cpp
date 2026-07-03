@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Информатор</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">Информатор</h1>
+<!-- Автор: Артур Аюханов aka artbear, mailto: artbear@inbox.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_informer_</alinks>
+        <klinks>
+                Информатор
+                Informer
+        </klinks>
+</chminfo>
+<div class="contents topic" id="id2">
+<p class="topic-title first"><a name="id2">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id3" id="id4" name="id4">Методы</a><ul>
+<li><a class="reference" href="#getmethodstable" id="id5" name="id5">ПолучитьТаблицуМетодов / GetMethodsTable</a></li>
+<li><a class="reference" href="#getpropstable" id="id6" name="id6">ПолучитьТаблицуСвойств / GetPropsTable</a></li>
+<li><a class="reference" href="#methodexists" id="id7" name="id7">МетодСуществует / MethodExists</a></li>
+<li><a class="reference" href="#propexists" id="id8" name="id8">СвойствоСуществует / PropExists</a></li>
+<li><a class="reference" href="#theobjectis" id="id9" name="id9">ЯвляетсяОбъектом / TheObjectIs</a></li>
+<li><a class="reference" href="#isfunction" id="id10" name="id10">ЯвляетсяФункцией / IsFunction</a></li>
+<li><a class="reference" href="#commandline" id="id11" name="id11">КоманднаяСтрока / CommandLine</a></li>
+<li><a class="reference" href="#getapppath" id="id12" name="id12">ПутьПриложения1С / GetAppPath</a></li>
+<li><a class="reference" href="#getinternaltypename" id="id13" name="id13">ТипЗначенияСтрВнутр / GetInternalTypeName</a></li>
+<li><a class="reference" href="#getidletimeofsystem" id="id14" name="id14">ПолучитьВремяПростояСистемы / GetIdleTimeOfSystem</a></li>
+<li><a class="reference" href="#getaddindlltable" id="id15" name="id15">ПолучитьТаблицуЗагруженныхВК / GetAddInDllTable</a></li>
+<li><a class="reference" href="#getcurrentmoduletext" id="id16" name="id16">ПолучитьТекстТекущегоМодуля / GetCurrentModuleText</a></li>
+<li><a class="reference" href="#getmoduletext" id="id17" name="id17">ПолучитьТекстМодуля / GetModuleText</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Класс &quot;Информатор&quot; / &quot;Informer&quot;.</strong></p>
+<p>Удобный сервисный класс, показывающий различную информацию.</p>
+<p><strong>Версия: релиз 2.5 и выше.</strong></p>
+<div class="section" id="id3">
+<h1><a name="id3">Методы</a></h1>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="getmethodstable">
+<h2><a name="getmethodstable">ПолучитьТаблицуМетодов / GetMethodsTable</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьТаблицуМетодов(ПроверяемыйОбъект)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ПроверяемыйОбъект</strong> - тип: Агрегатный.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: ТаблицаЗначений. Полученная таблица методов для данного объекта.</p>
+<p><strong>Описание:</strong> Получает таблицу методов для переданного объекта.</p>
+</blockquote>
+<dl class="docutils">
+<dt>В случае, если проверяемый объект не является агрегатным типом (Строка, Число и т.п.),</dt>
+<dd>выдается исключение.</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="getpropstable">
+<h2><a name="getpropstable">ПолучитьТаблицуСвойств / GetPropsTable</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьТаблицуСвойств(ПроверяемыйОбъект)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ПроверяемыйОбъект</strong> - тип: Агрегатный.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: ТаблицаЗначений. Полученная таблица свойств для данного объекта.</p>
+<blockquote>
+<strong>Описание:</strong> Получает таблицу свойств для переданного объекта.</blockquote>
+<dl class="docutils">
+<dt>В случае, если проверяемый объект не является агрегатным типом (Строка, Число и т.п.),</dt>
+<dd>выдается исключение.</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="methodexists">
+<h2><a name="methodexists">МетодСуществует / MethodExists</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> МетодСуществует(ПроверяемыйОбъект, ИмяМетода)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ПроверяемыйОбъект</strong> - тип: Агрегатный.</li>
+<li><strong>ИмяМетода</strong> - тип: Строка. Имя метода, существование которого проверяем.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1, если метод существует. 0, если нет.</p>
+<blockquote>
+<p><strong>Описание:</strong> Проверяет существование указанного метода у переданного объекта.</p>
+<p>В случае, если проверяемый объект не является агрегатным типом (Строка, Число и т.п.),
+выдается исключение.
+В случае, если второй параметр не является строкой, выдается исключение.</p>
+</blockquote>
+</blockquote>
+</div>
+<div class="section" id="propexists">
+<h2><a name="propexists">СвойствоСуществует / PropExists</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> СвойствоСуществует(ПроверяемыйОбъект, ИмяСвойства)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ПроверяемыйОбъект</strong> - тип: Агрегатный.</li>
+<li><strong>ИмяСвойства</strong> - тип: Строка. Имя свойства, существование которого проверяем.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1, если свойство существует. 0, если нет.</p>
+<blockquote>
+<p><strong>Описание:</strong> Проверяет существование указанного свойства у переданного объекта.</p>
+<p>В случае, если проверяемый объект не является агрегатным типом (Строка, Число и т.п.),
+выдается исключение.
+В случае, если второй параметр не является строкой, выдается исключение.</p>
+</blockquote>
+</blockquote>
+</div>
+<div class="section" id="theobjectis">
+<h2><a name="theobjectis">ЯвляетсяОбъектом / TheObjectIs</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЯвляетсяОбъектом(ПроверяемыйОбъектИлиНаименованиеТипа, НаименованиеТипаНаКоторыйПроверяем)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ПроверяемыйОбъектИлиНаименованиеТипа</strong> - тип: Агрегатный или Строка.</li>
+<li><strong>НаименованиеТипаНаКоторыйПроверяем</strong> - тип: Строка.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1, если указанный объект или тип является данным типом
+или унаследован от него. 0, если нет.</p>
+<p><strong>Описание:</strong> Если первым параметром передан объект,  проверяет, является ли переданный объект объектом
+указанного во втором параметре типа или наследует от него.
+Если первым параметром передана строка с наименованием типа, проверяет,
+является ли переданный тип указанным во втором параметре типом или наследует от него.</p>
+<p>В случае, если проверяемый объект не является агрегатным типом или строкой, выдается исключение.
+В случае, если второй параметр не является строкой, выдается исключение.</p>
+</blockquote>
+</div>
+<div class="section" id="isfunction">
+<h2><a name="isfunction">ЯвляетсяФункцией / IsFunction</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> СвойствоСуществует(ПроверяемыйОбъект, ИмяМетода)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ПроверяемыйОбъект</strong> - тип: Агрегатный.</li>
+<li><strong>ИмяМетода</strong> - тип: Строка. Имя метода, который проверяем.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1, если метод существует и является функцией.
+0, если не существует или является процедурой.</p>
+<blockquote>
+<p><strong>Описание:</strong> Проверяет, является ли указанный метод функцией.</p>
+<p>В случае, если проверяемый объект не является агрегатным типом (Строка, Число и т.п.),
+выдается исключение.
+В случае, если второй параметр не является строкой, выдается исключение.</p>
+</blockquote>
+</blockquote>
+</div>
+<div class="section" id="commandline">
+<h2><a name="commandline">КоманднаяСтрока / CommandLine</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> КоманднаяСтрока()</p>
+<p><strong>Параметры:</strong></p>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Командная строка запуска 1С-Предприятия.</p>
+<blockquote>
+<strong>Описание:</strong> Возвращает командную строку запуска 1С-Предприятия.</blockquote>
+</blockquote>
+</div>
+<div class="section" id="getapppath">
+<h2><a name="getapppath">ПутьПриложения1С / GetAppPath</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПутьПриложения1С()</p>
+<p><strong>Параметры:</strong></p>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Путь к исполняемому файлу 1С-Предприятия.</p>
+<blockquote>
+<strong>Описание:</strong> Возвращает путь к исполняемому файлу 1С-Предприятия.</blockquote>
+</blockquote>
+</div>
+<div class="section" id="getinternaltypename">
+<h2><a name="getinternaltypename">ТипЗначенияСтрВнутр / GetInternalTypeName</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ТипЗначенияСтрВнутр(ПроверяемыйОбъект)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>ПроверяемыйОбъект</strong> - тип: Агрегатный.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Возвращает:</strong> тип: Строка. Внутренний тип объекта.</p>
+<dl class="docutils">
+<dt><strong>Описание:</strong> Возвращает внутренний тип объекта.</dt>
+<dd>Например, для класса КОП будет возвращено &quot;CComponentClass&quot;.</dd>
+</dl>
+<p>В случае, если проверяемый объект не является агрегатным типом (Строка, Число и т.п.),
+выдается исключение.</p>
+</blockquote>
+</div>
+<div class="section" id="getidletimeofsystem">
+<h2><a name="getidletimeofsystem">ПолучитьВремяПростояСистемы / GetIdleTimeOfSystem</a></h2>
+<blockquote>
+<blockquote>
+<strong>Синтаксис:</strong> ПолучитьВремяПростояСистемы()</blockquote>
+<p><strong>Возвращает:</strong> тип: Время простоя в миллисекундах.</p>
+<p><strong>Важно:</strong> Метод работает только на Windows ME/2000/XP и выше.</p>
+<blockquote>
+<dl class="docutils">
+<dt><strong>Описание:</strong> Возвращает время простоя сеанса работы пользователя в Windows.</dt>
+<dd>Используется соответствующие системные функции из WinAPI.</dd>
+</dl>
+</blockquote>
+<p>Удобно использовать внутри таймеров/обработки ожидания для проверки бездействия пользователя.
+Например, в целях завершения работы, если это задано административной политикой.</p>
+<p><strong>Пример:</strong>
+Создайте внешнюю обработку со следующим модулем и нажмите Сформировать
+Потом какое-то время ничего не нажимайте клавиатуру и не трогайте мышь
+и вы увидете, как увеличивается время простоя.
+А если тронуть мышь или нажать клавишу, время простоя сбросится к нулю!</p>
+</blockquote>
+<pre class="literal-block">
+Перем РасширениеФормы;
+Перем Информатор;
+Процедура Таймер() Экспорт
+        ПрошлоВремени = Информатор.ПолучитьВремяПростояСистемы();
+        Сообщить(&quot;ПрошлоВремени = &lt;&quot;+ПрошлоВремени+&quot;&gt;&quot;);
+КонецПроцедуры
+//*******************************************
+Процедура Сформировать()
+        РасширениеФормы = СоздатьОбъект(&quot;РасширениеФормы&quot;);
+        РасширениеФормы.ОбработкаОжидания(&quot;Таймер&quot;, 50);
+        Информатор = СоздатьОбъект(&quot;Информатор&quot;);
+КонецПроцедуры
+</pre>
+</div>
+<div class="section" id="getaddindlltable">
+<h2><a name="getaddindlltable">ПолучитьТаблицуЗагруженныхВК / GetAddInDllTable</a></h2>
+<blockquote>
+<blockquote>
+<strong>Синтаксис:</strong> ПолучитьТаблицуЗагруженныхВК()</blockquote>
+<p><strong>Возвращает:</strong> тип: ТаблицаЗначений. Полученная таблица с информацией по всем загруженным ВК.</p>
+<blockquote>
+<strong>Описание:</strong> Получает таблицу свойств с информацией по всем загруженным ВК.
+Порядок следования файлов в таблице совпадает с порядком загрузки ВК.</blockquote>
+</blockquote>
+</div>
+<div class="section" id="getcurrentmoduletext">
+<h2><a name="getcurrentmoduletext">ПолучитьТекстТекущегоМодуля / GetCurrentModuleText</a></h2>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьТекстТекущегоМодуля()</p>
+<p><strong>Возвращает:</strong> тип: Строка. Полученная строка с текстом текущего модуля.</p>
+<p><strong>Описание:</strong> Получает текст текущего модуля, в котором вызван данный 
+метод. Работает как для модулей классов 1С++, так и для любых штатных модулей 1С</p>
+<p>Важно: метод работает только для одного уровня вложенности!
+Если в обработке вызвать метод, будет показан ее текст.
+Если в обработке вызвать метод класса, который вызывает этот метод, будет показан текст класса !!</p>
+</blockquote>
+</div>
+<div class="section" id="getmoduletext">
+<h2><a name="getmoduletext">ПолучитьТекстМодуля / GetModuleText</a></h2>
+<blockquote>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьТекстМодуля(КонтФормыИлиКласса)</p>
+<dl class="docutils">
+<dt><strong>Параметры:</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>КонтФормыИлиКласса</strong> - тип: Агрегатный. Контекст формы или контекст пользовательского класса.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Полученная строка с текстом модуля формы или класса.</p>
+<blockquote>
+<strong>Описание:</strong> Получает текст модуля для указанного контекста.</blockquote>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

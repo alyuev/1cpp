@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>TurboBL</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="turbobl">
+<h1 class="title">TurboBL</h1>
+<!-- Автор: Александр Орефков -->
+<!-- Автор: Александр Клабуков -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_TurboBL_</alinks>
+</chminfo>
+<div class="contents topic" id="id1">
+<p class="topic-title first"><a name="id1">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id2" id="id11" name="id11">Назначение</a></li>
+<li><a class="reference" href="#id3" id="id12" name="id12">Краткий экскурс в механизм вызова методов</a><ul>
+<li><a class="reference" href="#id4" id="id13" name="id13">Для всех</a></li>
+<li><a class="reference" href="#rainbow" id="id14" name="id14">Для знакомых с &quot;Rainbow&quot;</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id5" id="id15" name="id15">Цель компоненты</a><ul>
+<li><a class="reference" href="#id6" id="id16" name="id16">Как использовать</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id7" id="id17" name="id17">Вызов методов модулей групповых контекстов</a><ul>
+<li><a class="reference" href="#id8" id="id18" name="id18">Дополнительные методы групповых контекстов</a><ul>
+<li><a class="reference" href="#callmethodsasevents" id="id19" name="id19">__ВызыватьМетодыКакСобытия / __CallMethodsAsEvents</a></li>
+<li><a class="reference" href="#addcontext" id="id20" name="id20">__ДобавитьКонтекст / __AddContext</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1><a name="id2">Назначение</a></h1>
+<chminfo split="0">
+</chminfo>
+<ul class="simple">
+<li>Ускорение вызова методов и обращения к свойствам объектов 1С-Предприятия 7.7</li>
+<li>Обращение к методам и переменным модулей через Контекст</li>
+<li>Добавление пользовательских контекстов (методов/свойств) к контексту формы через Контекст</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1><a name="id3">Краткий экскурс в механизм вызова методов</a></h1>
+<chminfo splitchild="0">
+</chminfo>
+<div class="section" id="id4">
+<h2><a name="id4">Для всех</a></h2>
+<p>Что происходит внутри 1С, когда мы пишем спр.ТекущийЭлемент()?</p>
+<p>1С преобразует имя метода ТекущийЭлемент в соответствующий ему номер, и вызывает метод объекта
+по номеру. НО, клинические исследования показали, что для ЛЮБОГО объекта 1С используется один
+алгоритм такого преобразования, реализованный &quot;В ЛОБ&quot;, и котрый заключатся в простом
+последовательном переборе всех имен методов объекта и сравнении их с искомым. Соответственно,
+чем больше номер метода, тем большее время занимает такой поиск. Например, для того же
+&quot;ТекущийЭлемент&quot; перед реальным вызовом функции происходит перебор 88 названий методов.</p>
+<p>Аналогично и для свойств объектов.</p>
+</div>
+<div class="section" id="rainbow">
+<h2><a name="rainbow">Для знакомых с &quot;Rainbow&quot;</a></h2>
+<p>Как известно, для поиска номера метода применяется</p>
+<pre class="literal-block">
+virtual int CBLContext::FindMethod(const char* name);
+</pre>
+<p>Как оказалось, НИ В ОДНОМ из объектов 1С данный метод не переопределен. Перехват вызова
+функций различных объектов показал лень и мягко говоря, не вполне компетентность людей,
+писавших этот код.</p>
+<p>Вобщем, когда вызывается <tt class="docutils literal"><span class="pre">FindMethod</span></tt>, из него вызываются: <tt class="docutils literal"><span class="pre">GetNMethods(),</span>
+<span class="pre">GetMethodName(i,0),</span> <span class="pre">GetMethodName(i,1)</span></tt> т.е. <tt class="docutils literal"><span class="pre">FindMethod</span></tt> работает примерно так:</p>
+<pre class="literal-block">
+for(int i=0;i&lt;GetNMethods();i++)
+{
+    if(!stricmp(name,GetMethodName(i,0))
+        return i;
+    if(!stricmp(name,GetMethodName(i,1))
+        return i;
+}
+return -1;
+</pre>
+<p>Понятно, хотелось добиться универсальности и простоты, что и достигнуто. Но при этом:
+- Некомпетентность: GetNMethods можно вынести из цикла.
+- Лень: не зря же FindMethod виртуальная, почему же она не переопределена ни в одном из наследуемых классов для более оптимального поиска?</p>
+<p>Аналогичная ситуация и с FindProp.</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h1><a name="id5">Цель компоненты</a></h1>
+<chminfo splitchild="0">
+</chminfo>
+<p>Дабы устранить досадную оплошность разработчиков 1С в отношении поиска методов и свойств
+была создана ВК <strong>TurboBL</strong>, которая включена в 1С++. Суть ее работы в следующем: оптимизация 
+алгоритма преобразования имен методов/свойств в их номера.</p>
+<p>Попутно сделана возможность обращаться к методам и переменным модулей ГрупповыхКонтекстов.</p>
+<div class="section" id="id6">
+<h2><a name="id6">Как использовать</a></h2>
+<pre class="literal-block">
+ЗагрузитьВнешнююКомпоненту(&quot;1cpp.dll&quot;);
+</pre>
+<p>Вот практически и все.</p>
+<p>Более никаких изменений в существующем коде конфигурации не требуется. При загрузке компонента берет на себя всю работу по поиску номеров методов и свойств объектов 1С.</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h1><a name="id7">Вызов методов модулей групповых контекстов</a></h1>
+<chminfo splitchild="0">
+</chminfo>
+<p><strong>Да!!! Свершилось!!!</strong></p>
+<p>Теперь можно через контекст обратится к методам и переменным модуля контекста.</p>
+<p>Например:</p>
+<pre class="literal-block">
+конт=0;
+ОткрытьФорму(&quot;Справочник.Товары&quot;,конт);
+конт.Печать();
+//где Печать() - процедура в модуле     ФормыСписка справочника.
+
+или например:
+// в модуле проведения дока
+Процедура ЭтоДокСТоваром()
+    возврат 1;
+КонецПроцедуры;
+Процедура ОбработкаПроведения(парам)
+    глНекаяГлобФункция(Контекст);
+    ....
+        
+// В ГМ:
+Процедура глНекаяГлобФункция(Конт)
+    Если Конт.ЭтоДокСТоваром()=1
+    .......
+</pre>
+<div class="section" id="id8">
+<h2><a name="id8">Дополнительные методы групповых контекстов</a></h2>
+<div class="section" id="callmethodsasevents">
+<h3><a name="callmethodsasevents">__ВызыватьМетодыКакСобытия / __CallMethodsAsEvents</a></h3>
+<chminfo split="1">
+</chminfo>
+<!--  -->
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">__ВызыватьМетодыКакСобытия(&lt;Флаг&gt;)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметр:</th><td class="field-body">Флаг - необязательный параметр. Число: 0 - отключает, 1 - включает вызов методов как событий.</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body">Предыдущее установленное значение.</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><p class="first">Вызов методов как событий влияет на установку номера строки для таблиц, расположенных
+на форме контекста, а также на подключение таблиц-шаблонов для объектов типа
+&quot;<strong>Таблица</strong>&quot;, используемых в этом контексте (метод <tt class="docutils literal"><span class="pre">Таблица.ИсходнаяТаблица()</span></tt>).</p>
+<p class="last">Вызов метода влияет только на тот контекст, для которого он вызван. До вызова этого
+метода соответствующий ему флаг установлен в &lt;<strong>1</strong>&gt;.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Вызов метода (процедуры или функции) контекста может иметь разный результат
+в зависимости от того, был ли этот метод вызван из другого метода контекста,
+либо этот же метод вызван извне, например, по нажатию кнопки на форме.
+Например, для метода <tt class="docutils literal"><span class="pre">СообщитьНомерСтроки()</span></tt>:</p>
+<pre class="literal-block">
+Процедура СообщитьНомерСтроки()
+        Сообщить(тзНаФорме.НомерСтроки());
+КонецПроцедуры
+
+Процедура СменитьИСообщить()
+        тзНаФорме.ПолучитьСтрокуПоНомеру(1);
+        СообщитьНомерСтроки();
+КонецПроцедуры
+</pre>
+<p>Вызов же того же метода контекста извне может иметь даже более непредсказуемый результат:</p>
+<pre class="literal-block">
+Процедура СменитьИСообщитьДляКонтекста(Конт)
+        Конт.тзНаФорме.ТекущаяСтрока(2);
+        Конт.тзНаФорме.ПолучитьСтрокуПоНомеру(1);
+        Конт.СообщитьНомерСтроки();
+КонецПроцедуры
+</pre>
+<p>В результате вызова данной процедуры может вывестись как <strong>1</strong>, так и <strong>2</strong>. В зависимости
+от версии <strong>TurboBL</strong> (или <strong>1С++</strong>), которую вы используете.</p>
+<p>Для устранения данной неоднозначности и был добавлен метод групповых контекстов
+<tt class="docutils literal"><span class="pre">__ВызыватьМетодыКакСобытия()</span></tt>. Результатом вызова</p>
+<pre class="literal-block">
+Конт.__ВызыватьМетодыКакСобытия(0);
+СменитьИСообщитьДляКонтекста(Конт);
+Конт.__ВызыватьМетодыКакСобытия(1);
+СменитьИСообщитьДляКонтекста(Конт);
+</pre>
+<p>будет</p>
+<pre class="literal-block">
+1
+2
+</pre>
+</div>
+<div class="section" id="addcontext">
+<h3><a name="addcontext">__ДобавитьКонтекст / __AddContext</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Синтаксис:</th><td class="field-body">__ДобавитьКонтекст(Конт)</td>
+</tr>
+<tr class="field"><th class="field-name">Параметры:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt>Конт, тип: Контекст</dt>
+<dd><p class="first last">Контекст, который необходимо добавить к групповому контексту,
+для которого вызван метод</p>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Возвращает:</th><td class="field-body">Нет</td>
+</tr>
+<tr class="field"><th class="field-name">Описание:</th><td class="field-body"><div class="first last line-block">
+<div class="line">Добавляет свойства и методы контекста к групповому контексту.</div>
+<div class="line">Данные методы и свойства становятся доступными в этом групповом контексте.</div>
+<div class="line">Конфликты имен разрешаются в пользу свойства или метода с меньшим порядковым номером.</div>
+<div class="line">Свойства можно только добавить, удалить нельзя.</div>
+<div class="line"><strong>Необходимо помнить</strong>, что добавление свойства к исходному контексту <strong>уже после</strong> добавления этого контекста к контексту формы</div>
+<div class="line">не добавит данное свойство к контексту формы, см. <a class="reference" href="#id9">ОшибкаДобавленияСвойств</a> !</div>
+<div class="line">Если необходимо добавлять/удалять свойства динамически, проще всего добавить какую-нибудь коллекцию в качестве свойства, см. <a class="reference" href="#id10">ДобавлениеДинамическихСвойств</a> .</div>
+<div class="line"><br /></div>
+<div class="line">Время жизни добавленного контекста привязано ко времени жизни формы.</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Примеры использования:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p><em>Добавление простого свойства к контексту формы</em></p>
+<pre class="literal-block">
+Структура = СоздатьОбъект(&quot;Структура&quot;);
+Структура.Вставить(&quot;ДопСвойство&quot;, &quot;ПростоСтрока&quot;);
+
+КонтФормы.__ДобавитьКонтекст(Структура);
+
+Сообщить(&quot;Новое свойство = &quot;+КонтФормы.ДопСвойство);
+</pre>
+<p>результат выполнения</p>
+<pre class="literal-block">
+Новое свойство = ПростоСтрока
+</pre>
+<p id="id9"><em>Добавление свойства к исходному контексту уже после его добавления к контексту формы</em> - <strong>Это пример ошибки</strong></p>
+<p>для правильного использования см. <a class="reference" href="#id10">ДобавлениеДинамическихСвойств</a></p>
+<pre class="literal-block">
+Структура = СоздатьОбъект(&quot;Структура&quot;);
+Структура.Вставить(&quot;ДопСвойство&quot;, &quot;ПростоСтрока&quot;);
+
+КонтФормы.__ДобавитьКонтекст(Структура);
+
+Структура.Вставить(&quot;ДопСвойство2&quot;, &quot;ПростоСтрока&quot;);
+
+Сообщить(&quot;Новое свойство = &quot;+КонтФормы.ДопСвойство);
+Сообщить(&quot;Новое свойство = &quot;+КонтФормы.ДопСвойство2);
+</pre>
+<p>результат выполнения</p>
+<pre class="literal-block">
+Новое свойство = ПростоСтрока
+Ошибка: Поле агрегатного объекта не обнаружено - КонтФормы.ДопСвойство2
+</pre>
+<p id="id10"><em>Работа с динамическими свойствами контекста</em></p>
+<pre class="literal-block">
+Структура = СоздатьОбъект(&quot;Структура&quot;);
+Коллекция = СоздатьОбъект(&quot;АссоциативныйВектор&quot;);
+Структура.Вставить(&quot;ДопСвойство&quot;, Коллекция);
+
+КонтФормы.__ДобавитьКонтекст(Структура);
+
+КонтФормы.ДопСвойство.Добавить(1, &quot;Один&quot;);
+Коллекция.Добавить(2, &quot;Два&quot;); // можно и так юзать, т.к. Коллекция = КонтФормы.ДопСвойство
+Сообщить(&quot;Количество = &quot;+КонтФормы.ДопСвойство.Количество());
+КонтФормы.ДопСвойство.Удалить(&quot;Два&quot;);
+Сообщить(&quot;Количество = &quot;+Коллекция.Количество());
+</pre>
+<p>результат выполнения</p>
+<pre class="literal-block">
+Количество = 2
+Количество = 1
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:13 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

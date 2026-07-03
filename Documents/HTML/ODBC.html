@@ -1,0 +1,3184 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Прямой доступ через ODBC</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="odbc">
+<h1 class="title">Прямой доступ через ODBC</h1>
+<!-- Автор: Дмитрий Ощепков aka DmitrO, mailto: dmitro@russian.ru -->
+<!-- Этот файл содержит общее описание коллекции chm-файлов,
+а также фрагменты кусков chm-разметки, которые можно вставить
+в свои chminfo с помощью <insert>. -->
+<xml><common>
+        <!--
+        Описание файлов, входящих в коллекцию.
+        Нужно для заполнения секции [MERGE FILES] при сборке каждого файла.
+        Ссылка на TOC master-файла будет прописана файлом содержания
+        для каждого файла"
+        -->
+
+        <collection master="1cpp" title="1С++: Внешняя компонента">
+                <file name="1cpp"/>
+                <file name="classes"/>
+                <file name="MetaInfoClasses"/>
+                <file name="DataProviderSDK"/>
+                <file name="IndexedTable"/>
+                <file name="LogDataProvider"/>
+                <file name="ODBC"/>
+                <file name="TableField"/>
+                <file name="oledb"/>
+                <file name="extobjs"/>
+                <file name="guid"/>
+                <file name="BinaryData"/>
+                <file name="ActiveX"/>
+                <file name="TurboBL"/>
+                <file name="TSQLInV7FirstSteps"/>
+                <file name="Math"/>
+                <file name="Informer"/>
+                <file name="Hooker"/>
+                <file name="SettingsManager"/>
+                <file name="chmcreate"/>
+                <file name="DocumentsRules"/>
+        </collection>
+
+        <!-- Основная разметка для топиков. Вставить в первый топик через insert-->
+        <maininfo>
+                <decoration>
+                        <!-- Основная разметка обрамления топиков. Создаем таблицу -->
+                        <table width="100%" border="0" cellpadding="2"
+                                style="background-color:#99ccff;color=black;font-family:verdana,arial;border-bottom: 1px solid #999999;">
+                                <!-- Первая строка - навигация -->
+                                <tr style="font-size:8pt">
+                                        <td>
+                                                <!--
+                                                Предоставим возможность для топика сделать кнопку "Смотри также"
+                                                Для этого достаточно будет в разметке топика вставить элемент
+                                                <seealso>Имена alink'ов<seealso>
+                                                Если <seealso> нет, то значка "Смотри также" не будет
+                                                -->
+                                                <chmlink type="ALink">
+                                                        <keys>
+                                                                <subst nodes="chminfo//seealso/text()"/>
+                                                        </keys>
+                                                        <a href="click"><img align="absmiddle" border="0" title="Смотри также..." src="img/seealso.png"/></a>
+                                                </chmlink>
+                                                <!--
+                                                В первой ячейке пропишем alink на основную страницу коллекции
+                                                и ссылку на первую страницу chm-файла
+                                                -->
+                                                <em>
+                                                        <a class="toc-backref" href="1cpp.chm::/1cpp0.html" title="Перейти на заглавную страницу 1C++">1C++</a>
+                                                        ::
+                                                        <a class="toc-backref" href="home" title="Перейти к описанию раздела"><title to="home"/></a>
+                                                </em>
+                                        </td>
+                                        <td style="text-align: right;">
+                                                <!--
+                                                Во второй ячейке пропишем ссылки на следующий/предыдущий топики
+                                                и оставим возможность в каждом топике добавить свои линки,
+                                                разместив их в otherlinks. По умолчанию otherlinks отсутствует.
+                                                -->
+                                                <subst nodes="chminfo/otherlinks/node()"/>
+                                                | Ранее: <a href="prev" title="Перейти к предыдущей статье"><title to="prev"/></a> |
+                                                Далее: <a href="next" title="Перейти к следующей статье"><title to="next"/></a>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <!--
+                                        Вторая строка таблицы будет заголовок топика.
+                                        Чтобы каждый топик мог при необходимости изменить правило
+                                        составления заголовка, сделаем здесь subst, а само правило пропишем
+                                        ниже. Будем брать его из <topictitle>
+                                        -->
+                                        <td colspan="2" style="font-size:11pt;font-weight:bold">
+                                                <subst nodes="chminfo/topictitle/node()"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!-- А сюда собственно, вставим топик -->
+                        <topic/>
+                </decoration>
+
+                <!-- Основной стиль формирования ссылок на вынесенные топики -->
+                <href>
+                        <a href="self"><title to="self"/></a>
+                </href>
+
+                <!-- Основной принцип объединения ссылок на вынесенные топики -->
+                <hrefcombine>
+                        <ul>
+                                <foreach>
+                                        <li><item/></li>
+                                </foreach>
+                        </ul>
+                </hrefcombine>
+
+                <!--
+                Содержимое данного тега подставляется в основной decoration через
+                subst в каждом топике, для формирования заголовка топика.
+                Его можно переопредеделить в топике, для задания другого правила составления
+                заголовка.
+                По умолчанию просто вставляется текст заголовка топика, а сам заголовок
+                удаляется
+                -->
+                <topictitle>
+                        <title to="selfremove"/>
+                </topictitle>
+        </maininfo>
+
+        <!--
+        Основная разметка для секций "Свойства", "Методы", "События"
+        Задаем другие правила формирования ссылок на вынесенные топики,
+        и объединения ссылок, а также формирования заголовка в дочерних
+        секциях.
+        -->
+        <propsmethods>
+                <!-- Ссылки на вынесенные топики объединим в таблицу -->
+                <hrefcombine>
+                        <table border="1" cellspacing="0" cellpadding="3">
+                                <foreach>
+                                        <tr><item/></tr>
+                                </foreach>
+                        </table>
+                </hrefcombine>
+                <!-- Зададим разметку потомков, чтобы не писать ее в каждом топике -->
+                <childs>
+                        <!--
+                        Формирование ссылки на себя в родительском топике.
+                        Сформируем строку таблицы, где первая ячейка - ссылка на топик,
+                        а вторая - копия абзаца, в котором есть жирное слово "Описание",
+                        но без самого слова "Описание"
+                        -->
+                        <href>
+                                <td style="vertical-align:top"><a class="toc-backref" href="self"><title to="self"/></a></td>
+                                <td><subst nodes=".//p[strong='Описание:'][1]/node()[not(name()='strong' and .='Описание:')]"/></td>
+                        </href>
+
+                        <!--
+                        Зададим другое правило составления заголовка.
+                        Пусть будет "Ссылка на описание объекта::ИмяМетода/Свойства"
+                        -->
+                        <topictitle>
+                                <a class="toc-backref" href="parent[1]" title="Перейти к описанию объекта"><title to="parent[1]"/></a> :: <title to="selfremove"/>
+                        </topictitle>
+
+                        <!--
+                        Зададим другой способ задания <html><title> в формируемом файле.
+                        Он будет появлятся как имя топика во всех "founded topics"
+                        -->
+                        <chmtitle>
+                                <title to="parent[1]"/>::<title to="self"/>
+                        </chmtitle>
+
+                        <!--
+                        Заставим дочерние секции добавлять слова из заголовка в индекс
+                        -->
+                        <autokw mode="2"/>
+
+                        <!--
+                        На случай, если в описания метода есть еще подсекции,
+                        восстановим для них старые правила.
+                        -->
+                        <insert nodes="//common/maininfo/*[name()='hrefcombine']"/>
+                        <childs>
+                                <insert nodes="//common/maininfo/*[name()='href']"/>
+                                <insert nodes="//common/maininfo/*[name()='topictitle']"/>
+                                <chmtitle/>
+                                <autokw/>
+                        </childs>
+                </childs>
+        </propsmethods>
+</common></xml><chminfo>
+        <insert nodes="//common/maininfo/*"/>
+        <alinks>_1cpp_odbc_</alinks>
+</chminfo>
+<div class="contents topic" id="id1">
+<p class="topic-title first"><a name="id1">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#odbcdatabase" id="id43" name="id43">ODBCDataBase</a><ul>
+<li><a class="reference" href="#id2" id="id44" name="id44">Методы</a><ul>
+<li><a class="reference" href="#close" id="id45" name="id45">Закрыть / Close</a></li>
+<li><a class="reference" href="#driverconnect" id="id46" name="id46">Соединение / DriverConnect</a></li>
+<li><a class="reference" href="#getconnectiontimeout" id="id47" name="id47">ПолучитьЗначениеТаймаута / GetConnectionTimeout</a></li>
+<li><a class="reference" href="#getlasterror" id="id48" name="id48">ПолучитьОписаниеОшибки / GetLastError</a></li>
+<li><a class="reference" href="#isconnected" id="id49" name="id49">ЕстьСоединение / IsConnected</a></li>
+<li><a class="reference" href="#open" id="id50" name="id50">Открыть / Open</a></li>
+<li><a class="reference" href="#setconnectiontimeout" id="id51" name="id51">УстЗначениеТаймаута / SetConnectionTimeout</a></li>
+<li><a class="reference" href="#id4" id="id52" name="id52">УстЗначениеТаймаутаЛогина / SetConnectionTimeout</a></li>
+<li><a class="reference" href="#setreadonly" id="id53" name="id53">УстТолькоЧтение / SetReadOnly</a></li>
+<li><a class="reference" href="#attach1c" id="id54" name="id54">Присоединить1С / Attach1C</a></li>
+<li><a class="reference" href="#configdatasource" id="id55" name="id55">КонфигурироватьИсточник / ConfigDataSource</a></li>
+<li><a class="reference" href="#getdriverver" id="id56" name="id56">ПолучитьВерсиюДрайвера / GetDriverVer</a></li>
+<li><a class="reference" href="#odbc-getodbcver" id="id57" name="id57">ПолучитьВерсиюODBC / GetODBCVer</a></li>
+<li><a class="reference" href="#reconnectnative-reconnectnative" id="id58" name="id58">ReconnectNative / ReconnectNative</a></li>
+<li><a class="reference" href="#attachib" id="id59" name="id59">ПрисоединитьИБ / AttachIB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#odbcrecordset" id="id60" name="id60">ODBCRecordSet</a><ul>
+<li><a class="reference" href="#id7" id="id61" name="id61">Формат типизирующего псевдонима</a></li>
+<li><a class="reference" href="#id8" id="id62" name="id62">Свойства</a><ul>
+<li><a class="reference" href="#md" id="id63" name="id63">мд / md</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id9" id="id64" name="id64">Методы</a><ul>
+<li><a class="reference" href="#debug" id="id65" name="id65">Отладка / Debug</a></li>
+<li><a class="reference" href="#setdatabase" id="id66" name="id66">УстБД / SetDatabase</a></li>
+<li><a class="reference" href="#setdatabase1c" id="id67" name="id67">УстБД1С / SetDatabase1C</a></li>
+<li><a class="reference" href="#id12" id="id68" name="id68">Закрыть / Close</a></li>
+<li><a class="reference" href="#execute" id="id69" name="id69">Выполнить / Execute</a></li>
+<li><a class="reference" href="#id13" id="id70" name="id70">ПолучитьОписаниеОшибки / GetLastError</a></li>
+<li><a class="reference" href="#setpropertycursor" id="id71" name="id71">УстСвойстваКурсора / SetPropertyCursor</a></li>
+<li><a class="reference" href="#setrowsetsize" id="id72" name="id72">УстРазмерМножестваСтрок / SetRowsetSize</a></li>
+<li><a class="reference" href="#prepare" id="id73" name="id73">Подготовить / Prepare</a></li>
+<li><a class="reference" href="#buildparams" id="id74" name="id74">ПостроитьПараметры / BuildParams</a></li>
+<li><a class="reference" href="#addparam" id="id75" name="id75">ДобПараметр / AddParam</a></li>
+<li><a class="reference" href="#paramcount" id="id76" name="id76">КолвоПараметров / ParamCount</a></li>
+<li><a class="reference" href="#setparam" id="id77" name="id77">УстПараметр / SetParam</a></li>
+<li><a class="reference" href="#getparam" id="id78" name="id78">ПолучПараметр / GetParam</a></li>
+<li><a class="reference" href="#sql-exesql-fromtv" id="id79" name="id79">ВыполнитьSQL_ИзТЗ / ExeSQL_FromTV</a></li>
+<li><a class="reference" href="#clearparams" id="id80" name="id80">УдалитьПараметры / ClearParams</a></li>
+<li><a class="reference" href="#deleteparam" id="id81" name="id81">УдалитьПараметр / DeleteParam</a></li>
+<li><a class="reference" href="#id16" id="id82" name="id82">Открыть / Open</a></li>
+<li><a class="reference" href="#settypecolumn1c" id="id83" name="id83">УстТипыКолонок1С / SetTypeColumn1C</a></li>
+<li><a class="reference" href="#isopen" id="id84" name="id84">ВыборкаОткрыта / IsOpen</a></li>
+<li><a class="reference" href="#movenext" id="id85" name="id85">След / MoveNext</a></li>
+<li><a class="reference" href="#moveprevious" id="id86" name="id86">Пред / MovePrevious</a></li>
+<li><a class="reference" href="#movefirst" id="id87" name="id87">ВНачало / MoveFirst</a></li>
+<li><a class="reference" href="#movelast" id="id88" name="id88">ВКонец / MoveLast</a></li>
+<li><a class="reference" href="#getfieldcount" id="id89" name="id89">КолвоПолей / GetFieldCount</a></li>
+<li><a class="reference" href="#isbof" id="id90" name="id90">Начало / IsBOF</a></li>
+<li><a class="reference" href="#iseof" id="id91" name="id91">Конец / IsEOF</a></li>
+<li><a class="reference" href="#getfieldindex" id="id92" name="id92">ИндексПоля / GetFieldIndex</a></li>
+<li><a class="reference" href="#getrowsaffected" id="id93" name="id93">СтрокОбработанно / GetRowsAffected</a></li>
+<li><a class="reference" href="#getvalue" id="id94" name="id94">ПолучитьЗначение / GetValue</a></li>
+<li><a class="reference" href="#getvalues" id="id95" name="id95">ПолучитьЗначения / GetValues</a></li>
+<li><a class="reference" href="#getvaluesinsv" id="id96" name="id96">ПолучитьЗначенияСЗ / GetValuesInSV</a></li>
+<li><a class="reference" href="#getresultsinvt" id="id97" name="id97">ПолучитьРезультатыВ_ТЗ / GetResultsInVT</a></li>
+<li><a class="reference" href="#settextparam" id="id98" name="id98">УстановитьТекстовыйПараметр / SetTextParam</a></li>
+<li><a class="reference" href="#getfielddefs" id="id99" name="id99">ПолучитьПараметрыПоля / GetFieldDefs</a></li>
+<li><a class="reference" href="#autotypification" id="id100" name="id100">АвтоТипизация / AutoTypification</a></li>
+<li><a class="reference" href="#putobjectlist" id="id101" name="id101">УложитьСписокОбъектов / PutObjectList</a></li>
+<li><a class="reference" href="#setquerytimeout" id="id102" name="id102">УстТаймаутЗапроса / SetQueryTimeout</a></li>
+<li><a class="reference" href="#isquerytimeoutexpired" id="id103" name="id103">ИстекТаймаут / IsQueryTimeoutExpired</a></li>
+<li><a class="reference" href="#backfromtaenabled" id="id104" name="id104">ОбратныйРасчетОтТА / BackFromTAEnabled</a></li>
+<li><a class="reference" href="#executestatement" id="id105" name="id105">ВыполнитьИнструкцию / ExecuteStatement</a></li>
+<li><a class="reference" href="#executescalar" id="id106" name="id106">ВыполнитьСкалярный / ExecuteScalar</a></li>
+<li><a class="reference" href="#xml-executexml" id="id107" name="id107">ВыполнитьXML / ExecuteXML</a></li>
+<li><a class="reference" href="#rpc-rpcmode" id="id108" name="id108">РежимRPC / RPCMode</a></li>
+<li><a class="reference" href="#putobjectlist13" id="id109" name="id109">УложитьСписокОбъектов13 / PutObjectList13</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#metadatawork" id="id110" name="id110">MetaDataWork</a><ul>
+<li><a class="reference" href="#id20" id="id111" name="id111">Свойства</a><ul>
+<li><a class="reference" href="#metadata" id="id112" name="id112">Метаданные / Metadata</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id21" id="id113" name="id113">Методы</a><ul>
+<li><a class="reference" href="#getconstid" id="id114" name="id114">ИДКонстанты / GetConstID</a></li>
+<li><a class="reference" href="#getrefid" id="id115" name="id115">ИДСправочника / GetRefID</a></li>
+<li><a class="reference" href="#getreffieldid" id="id116" name="id116">ИДРеквизитаСправочника / GetRefFieldID</a></li>
+<li><a class="reference" href="#getreftablename" id="id117" name="id117">ИмяТаблицыСправочника / GetRefTableName</a></li>
+<li><a class="reference" href="#getdocid" id="id118" name="id118">ИДДокумента / GetDocID</a></li>
+<li><a class="reference" href="#getdocheadfieldid" id="id119" name="id119">ИДРеквизитаШапки / GetDocHeadFieldID</a></li>
+<li><a class="reference" href="#getdocheadtablename" id="id120" name="id120">ИмяТаблицыШапки / GetDocHeadTableName</a></li>
+<li><a class="reference" href="#getdoctblfieldid" id="id121" name="id121">ИДРеквизитаТабличнойЧасти / GetDocTblFieldID</a></li>
+<li><a class="reference" href="#getdoctbltablename" id="id122" name="id122">ИмяТаблицыТабличнойЧасти / GetDocTblTableName</a></li>
+<li><a class="reference" href="#getcjid" id="id123" name="id123">ИДЖурналаРасчетов / GetCJID</a></li>
+<li><a class="reference" href="#getcjfieldid" id="id124" name="id124">ИДРеквизитаЖР / GetCJFieldID</a></li>
+<li><a class="reference" href="#getcjtablename" id="id125" name="id125">ИмяТаблицыЖР / GetCJTableName</a></li>
+<li><a class="reference" href="#getregid" id="id126" name="id126">ИДРегистра / GetRegID</a></li>
+<li><a class="reference" href="#getregdimensionid" id="id127" name="id127">ИДИзмеренияРегистра / GetRegDimensionID</a></li>
+<li><a class="reference" href="#getregresourceid" id="id128" name="id128">ИДРесурсаРегистра / GetRegResourceID</a></li>
+<li><a class="reference" href="#getregattributeid" id="id129" name="id129">ИДРеквизитаРегистра / GetRegAttributeID</a></li>
+<li><a class="reference" href="#getregactstablename" id="id130" name="id130">ИмяТаблицыДвижений / GetRegActsTableName</a></li>
+<li><a class="reference" href="#getregtotalstablename" id="id131" name="id131">ИмяТаблицыИтогов / GetRegTotalsTableName</a></li>
+<li><a class="reference" href="#getmetadataid" id="id132" name="id132">ИДОбъекта / GetMetadataID</a></li>
+<li><a class="reference" href="#inttobase" id="id133" name="id133">ЧислоВСтроку / IntToBase</a></li>
+<li><a class="reference" href="#basetoint" id="id134" name="id134">СтрокаВЧисло / BaseToInt</a></li>
+<li><a class="reference" href="#valuetodbstring" id="id135" name="id135">ЗначениеВСтрокуБД / ValueToDBString</a></li>
+<li><a class="reference" href="#valuetolongdbstring" id="id136" name="id136">ЗначениеВДлиннуюСтрокуБД / ValueToLongDBString</a></li>
+<li><a class="reference" href="#id22" id="id137" name="id137">ЗначениеВДлиннуюСтрокуБД / ValueToLongDBString</a></li>
+<li><a class="reference" href="#valuefromdbstring" id="id138" name="id138">ЗначениеИзСтрокиБД / ValueFromDBString</a></li>
+<li><a class="reference" href="#valuefromlongdbstring" id="id139" name="id139">ЗначениеИзДлиннойСтрокиБД / ValueFromLongDBString</a></li>
+<li><a class="reference" href="#getendofperiod" id="id140" name="id140">ПолучитьКонПериода / GetEndOfPeriod</a></li>
+<li><a class="reference" href="#getbegofperiod" id="id141" name="id141">ПолучитьНачПериода / GetBegOfPeriod</a></li>
+<li><a class="reference" href="#getendofperiodforreg" id="id142" name="id142">ПолучитьКонПериодаДляРег / GetEndOfPeriodForReg</a></li>
+<li><a class="reference" href="#getbegofperiodforreg" id="id143" name="id143">ПолучитьНачПериодаДляРег / GetBegOfPeriodForReg</a></li>
+<li><a class="reference" href="#getstringinvl" id="id144" name="id144">ПолучитьСтрокуИзСЗ / GetStringInVL</a></li>
+<li><a class="reference" href="#getstrfromdate" id="id145" name="id145">ПолучитьСтрИзДаты / GetStrFromDate</a></li>
+<li><a class="reference" href="#getaddperiod" id="id146" name="id146">ПолучитьДобПериод / GetAddPeriod</a></li>
+<li><a class="reference" href="#getdatetimeiddoc" id="id147" name="id147">ПолучитьДатуВремяИдДок / GetDateTimeIDDOC</a></li>
+<li><a class="reference" href="#processmetasql" id="id148" name="id148">ОбрМетаСКЛ / ProcessMetaSQL</a></li>
+<li><a class="reference" href="#id23" id="id149" name="id149">УстановитьТекстовыйПараметр / SetTextParam</a></li>
+<li><a class="reference" href="#valuetosuperlongdbstring" id="id150" name="id150">ЗначениеВСамуюДлиннуюСтрокуБД / ValueToSuperLongDBString</a></li>
+<li><a class="reference" href="#attachmd" id="id151" name="id151">ПрисоединитьМД / AttachMD</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#sqllock" id="id152" name="id152">SQLLock</a><ul>
+<li><a class="reference" href="#id24" id="id153" name="id153">Методы</a><ul>
+<li><a class="reference" href="#setobjecttype" id="id154" name="id154">УстановитьТипОбъекта / SetObjectType</a></li>
+<li><a class="reference" href="#setparent" id="id155" name="id155">УстановитьРодителя / SetParent</a></li>
+<li><a class="reference" href="#setowner" id="id156" name="id156">УстановитьВладельца / SetOwner</a></li>
+<li><a class="reference" href="#setdatenum" id="id157" name="id157">УстановитьДатуНомера / SetDateNum</a></li>
+<li><a class="reference" href="#setprefix" id="id158" name="id158">УстановитьПрефикс / SetPrefix</a></li>
+<li><a class="reference" href="#getnewid" id="id159" name="id159">НовыйИД / GetNewID</a></li>
+<li><a class="reference" href="#getnewcode" id="id160" name="id160">НовыйКод / GetNewCode</a></li>
+<li><a class="reference" href="#getnewnumber" id="id161" name="id161">НовыйНомер / GetNewNumber</a></li>
+<li><a class="reference" href="#settimeout" id="id162" name="id162">УстановитьТаймаут / SetTimeout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#id25" id="id163" name="id163">Приложение А. Спецификация метаимен и параметров в запросах</a><ul>
+<li><a class="reference" href="#id27" id="id164" name="id164">Описание условных обозначений</a></li>
+<li><a class="reference" href="#id28" id="id165" name="id165">Типизация колонок типами 1С в тексте запроса.</a></li>
+<li><a class="reference" href="#dbf" id="id166" name="id166">Поддержка пользователей DBF формата ИБ.</a></li>
+<li><a class="reference" href="#id29" id="id167" name="id167">Спецификация метаимен</a><ul>
+<li><a class="reference" href="#id30" id="id168" name="id168">Получение имен таблиц</a></li>
+<li><a class="reference" href="#id31" id="id169" name="id169">Получение имен полей</a></li>
+<li><a class="reference" href="#id32" id="id170" name="id170">Получение внутренних идентификаторов</a></li>
+<li><a class="reference" href="#id33" id="id171" name="id171">Описание виртуальных таблиц</a><ul>
+<li><a class="reference" href="#id34" id="id172" name="id172">РегистрОстатки</a></li>
+<li><a class="reference" href="#id35" id="id173" name="id173">РегистрОбороты</a></li>
+<li><a class="reference" href="#id36" id="id174" name="id174">РегистрОстаткиОбороты</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id37" id="id175" name="id175">Описание виртуальных значений</a><ul>
+<li><a class="reference" href="#id38" id="id176" name="id176">ПоследнееЗначение</a></li>
+<li><a class="reference" href="#id39" id="id177" name="id177">НачалоПериода</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#id40" id="id178" name="id178">Спецификация параметров</a><ul>
+<li><a class="reference" href="#id41" id="id179" name="id179">Текстовые параметры</a><ul>
+<li><a class="reference" href="#id42" id="id180" name="id180">Правила обозначения модификаторов</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#sql" id="id181" name="id181">SQL параметры</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Для прямого доступа в <em>родную</em> базу данных а также для доступа к другим источникам данных через драйверы ODBC
+применяются объекты:</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference" href="#odbcdatabase">ODBCDataBase</a> - используется как объект соединения с источником данных;</li>
+<li><a class="reference" href="#odbcrecordset">ODBCRecordSet</a> - используется как объект c помошью которого передаются SQL инструкции и возвращаются
+результаты запросов, в тексте запросов допустимо использовать метаимена (См. <a class="reference" href="#id26">Приложение А</a>);</li>
+<li><a class="reference" href="#metadatawork">MetaDataWork</a> - используется для преобразования объектных типов 1С во внутренние идентификаторы, хранимые
+в БД, а также для доступа к внутренним идентификаторам метаданных;</li>
+<li><a class="reference" href="#sqllock">SQLLock</a> - используется для получения новых идентификаторов объектов данных.</li>
+</ul>
+</blockquote>
+<div class="section" id="odbcdatabase">
+<h1><a name="odbcdatabase">ODBCDataBase</a></h1>
+<chminfo><alinks>_1cpp_odbc_Database</alinks></chminfo>
+<p>Данный класс представляет собой сущность для подключения и настройки некоторых параметров к источникам данных,
+через записи DSN и с использованием драйверов ODBC.</p>
+<blockquote>
+<strong>Замечание:</strong> По умолчанию, в SQL - версии 1С созданный объект подключен к текущему соединению программы
+1С:Предприятие.</blockquote>
+<p>Используется в паре с объектом <a class="reference" href="#odbcrecordset">ODBCRecordSet</a>. К одному объекту ODBCDataBase может быть подключено несколько
+объектов <a class="reference" href="#odbcrecordset">ODBCRecordSet</a>.</p>
+<div class="section" id="id2">
+<h2><a name="id2">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="close">
+<h3><a name="close">Закрыть / Close</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Закрыть()</p>
+<p><strong>Описание:</strong> закрывает установленное ранее соединение.</p>
+</blockquote>
+</div>
+<div class="section" id="driverconnect">
+<h3><a name="driverconnect">Соединение / DriverConnect</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Соединение(СтрокаСоединения)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>СтрокаСоединения - тип: Строка. <a class="reference" href="http://msdn.microsoft.com/library/en-us/odbc/htm/odbcconnection_strings.asp?frame=true">Строка соединения по спецификации ODBC</a>.
+В общем случае содержание строки подключения зависит от драйвера. См. также: <a class="reference" href="http://www.connectionstrings.com/">http://www.connectionstrings.com/</a>.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет соединиться с указанным источником данных по указанной строке подключения.</p>
+</blockquote>
+</div>
+<div class="section" id="getconnectiontimeout">
+<h3><a name="getconnectiontimeout">ПолучитьЗначениеТаймаута / GetConnectionTimeout</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьЗначениеТаймаута()</p>
+<p><strong>Возвращает:</strong> тип: Число. Значение таймаута в секундах.</p>
+<p><strong>Описание:</strong> позволяет получить значение таймаута подключения.</p>
+</blockquote>
+</div>
+<div class="section" id="getlasterror">
+<h3><a name="getlasterror">ПолучитьОписаниеОшибки / GetLastError</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьОписаниеОшибки()</p>
+<p><strong>Возвращает:</strong> тип: Строка. Описание ошибки.</p>
+<p><strong>Описание:</strong> позволяет получить описание последней возникшей ошибки.</p>
+</blockquote>
+</div>
+<div class="section" id="isconnected">
+<h3><a name="isconnected">ЕстьСоединение / IsConnected</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЕстьСоединение()</p>
+<p><strong>Возвращает:</strong> тип: Число. 1 - объект подключен к источнику данных, 0 - не подключен.</p>
+<p><strong>Описание:</strong> проверяет - установлено ли соединение.</p>
+</blockquote>
+</div>
+<div class="section" id="open">
+<h3><a name="open">Открыть / Open</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Открыть(ИмяСоединения, ИмяПользователя, Пароль)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ИмяСоединения - тип: Строка. Строка соединения. См. <a class="reference" href="#driverconnect">Соединение / DriverConnect</a>.;</li>
+<li>ИмяПользователя - тип: Строка. Имя пользователя;</li>
+<li>Пароль - тип: Строка. Пароль пользователя;</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - удалось подключиться, 0 - не удалось.</p>
+<p><strong>Описание:</strong> позволяет соединиться с указанным источником данных по указанной строке подключения.
+В отличии от метода <a class="reference" href="#driverconnect">Соединение / DriverConnect</a> имя пользователя и пароль можно указать отдельными параметрами.</p>
+</blockquote>
+</div>
+<div class="section" id="setconnectiontimeout">
+<h3><a name="setconnectiontimeout">УстЗначениеТаймаута / SetConnectionTimeout</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстЗначениеТаймаута(чЗначение)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>чЗначение - тип: Число. Значение таймаута.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает таймаут подключения.</p>
+</blockquote>
+</div>
+<div class="section" id="id4">
+<h3><a name="id4">УстЗначениеТаймаутаЛогина / SetConnectionTimeout</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстЗначениеТаймаутаЛогина(чЗначение)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>чЗначение - тип: Число. Значение таймаута.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает таймаут логина пользователя.</p>
+</blockquote>
+</div>
+<div class="section" id="setreadonly">
+<h3><a name="setreadonly">УстТолькоЧтение / SetReadOnly</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстТолькоЧтение(чЗначение)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>чЗначение - тип: Число. Признак ограничения доступа только чтением.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет установить соединение в режим &quot;Только чтение&quot;.</p>
+</blockquote>
+</div>
+<div class="section" id="attach1c">
+<h3><a name="attach1c">Присоединить1С / Attach1C</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Присоединить1С()</p>
+<p><strong>Описание:</strong> позволяет установить в качестве текущего соединения - соединение 1С:Предприятия для SQL.</p>
+</blockquote>
+</div>
+<div class="section" id="configdatasource">
+<h3><a name="configdatasource">КонфигурироватьИсточник / ConfigDataSource</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> КонфигурироватьИсточник()</p>
+<p><strong>Описание:</strong> позволяет конфигурировать источник данных.</p>
+</blockquote>
+</div>
+<div class="section" id="getdriverver">
+<h3><a name="getdriverver">ПолучитьВерсиюДрайвера / GetDriverVer</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьВерсиюДрайвера()</p>
+<p><strong>Возвращает:</strong> тип: Строка. Версия драйвера.</p>
+<p><strong>Описание:</strong> позволяет получить версию драйвера ODBC.</p>
+</blockquote>
+</div>
+<div class="section" id="odbc-getodbcver">
+<h3><a name="odbc-getodbcver">ПолучитьВерсиюODBC / GetODBCVer</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьВерсиюODBC()</p>
+<p><strong>Возвращает:</strong> тип: Строка. Версия менеджера драйверов ODBC.</p>
+<p><strong>Описание:</strong> позволяет получить версию менеджера драйверов ODBC.</p>
+</blockquote>
+</div>
+<div class="section" id="reconnectnative-reconnectnative">
+<h3><a name="reconnectnative-reconnectnative">ReconnectNative / ReconnectNative</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ReconnectNative([СтрокаПодключения])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>СтрокаПодключения - тип: Строка. Строка подключениея ODBC драйвера к источнику данных.</li>
+</ul>
+<dl class="docutils">
+<dt>В строке подключения допустимы следующие подстановки параметров подключения:</dt>
+<dd><blockquote class="first">
+<ul class="simple">
+<li>%server% - имя сервера;</li>
+<li>%uid% - пользователя;</li>
+<li>%pwd% - пароль;</li>
+<li>%db% - имя БД;</li>
+</ul>
+</blockquote>
+<p class="last">Строка подключения по умолчанию: &quot;Driver={SQL Server};Server=%server%;App=1CV7;UID=%uid%;PWD=%pwd%;&quot;</p>
+</dd>
+</dl>
+</blockquote>
+<p><strong>Описание:</strong> специальный метод для решения проблемы с MSSQL 2000
+(<a class="reference" href="http://support.microsoft.com/?scid=kb;en-us;891553&amp;spid=2852">Bug #: 472280</a>)
+Выполняет отключение и подключение родного соединения программы с сервером. При этом не должно быть открытых
+форм списков, форм объектов, прочих объектов языка на основе курсора, подготовленных или перебираемых
+объектов <a class="reference" href="#odbcrecordset">ODBCRecordset</a> (через родное соединение, разумеется). Не допускается вызывать этот метод
+в транзакции явной или неявной.</p>
+</blockquote>
+</div>
+<div class="section" id="attachib">
+<h3><a name="attachib">ПрисоединитьИБ / AttachIB</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПрисоединитьИБ(КаталогИБ, [ИмяПользователя], [Пароль], [СтрокаСоединения])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul>
+<li><p class="first">КаталогИБ - тип: Строка. Путь к каталогу информационной базы. Должен заканчиваться &quot;\&quot;.</p>
+</li>
+<li><p class="first">ИмяПользователя - тип: Строка. Имя пользователя информационной базы как оно задано в конфигураторе. Значение по умолчанию - имя текущего пользователя.</p>
+</li>
+<li><p class="first">Пароль - тип: Строка. Пароль на имя пользователя информационной базы как он задан в конфигураторе. Значение по умолчанию - пароль текущего пользователя.</p>
+</li>
+<li><dl class="first docutils">
+<dt>СтрокаСоединения - тип: Строка. Строка соединения по спецификации ODBC. Значения по умолчанию:</dt>
+<dd><ul class="first last simple">
+<li>для ИБ sql-формата: &quot;Driver={SQL Server};Server=%1;Database=%2;Uid=%3;Pwd=%4;&quot;,где %1 - имя sql-сервера, %2 - имя базы данных, %3 - имя пользователя БД, %4 - пароль, взятые из параметров, сохраненных в каталоге ИБ.</li>
+<li>для ИБ dbf-формата: &quot;DRIVER={Microsoft Visual FoxPro Driver};Deleted=No;Null=Yes;Collate=RUSSIAN;Exclusive=No;SourceType=DBF;SourceDB=%1&quot;, где %1 - переданный КаталогИБ;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет загрузить метаданные из указанного каталога ИБ и соединиться с источником данных
+по строке соединения.
+В дальнейшем, после установки соединения для объекта ODBCRecordset методом <a class="reference" href="#id10">УстБД</a>, при выполнении запросов,
+парсер будет разрешать метаимена по подключенным метаданным.</p>
+<p><strong>Примечание:</strong> имя пользователя и пароль проходят проверку только при подключении к ИБ sql-формата. (При подключении к ИБ dbf-формата значения не имеют.)</p>
+<p>Пример:</p>
+<pre class="literal-block">
+ИБ=СоздатьОбъект(&quot;ODBCDataBase&quot;);
+ИБ.ПрисоединитьИБ(&quot;\\server\КаталогИБ\&quot;);
+рс=СоздатьОбъект(&quot;ODBCRecordset&quot;);
+рс.УстБД(ИБ);
+Результат=рс.ВыполнитьИнструкцию(ТекстЗапроса);
+</pre>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="odbcrecordset">
+<h1><a name="odbcrecordset">ODBCRecordSet</a></h1>
+<chminfo><alinks>_1cpp_odbc_Recordset</alinks></chminfo>
+<p>Данный класс предназначен для получения данных из внешних источников, таких как различные БД, имеющие в своем
+распоряжении драйвера ODBC, файлы данных (*.txt, *.csv и т.д.).</p>
+<blockquote>
+<strong>Замечание:</strong> По умолчанию, в SQL - версии 1С созданный объект подключен к текущему соединению программы
+1С:Предприятие и пригоден к работе без установки соединения (<a class="reference" href="#odbcdatabase">ODBCDatabase</a>). В остальных случаях для перевода
+объекта в рабочее состояние требуется воспользоваться методом <a class="reference" href="#id10">УстБД</a> или <a class="reference" href="#id11">УстБД1С</a>.</blockquote>
+<p>В тексте запросов, допускается  использование метаимен, которые транслируются (заменяются прямо в тексте запроса)
+в следующие виды имен:</p>
+<blockquote>
+<ul class="simple">
+<li>реальные имена таблиц 1С:Предприятия для SQL;</li>
+<li>реальные имена полей таблиц 1С:Предприятия для SQL;</li>
+<li>параметры запроса;</li>
+<li>виртуальные таблицы (подзапросы, имена предварительно подготовленных временных таблиц);</li>
+<li>виртуальные значения (корреляционные подзапросы, выражения MS T-SQL).</li>
+</ul>
+</blockquote>
+<p>Спецификация метаимен приводится в <a class="reference" href="#id26">Приложении А</a>.</p>
+<p>Набор данных результата запроса (выборка) будет типизирован по умолчанию соответствующими типами 1С.</p>
+<blockquote>
+<dl class="docutils">
+<dt><strong>Замечание:</strong> Существует ряд неочевидных соответствий типов ODBC и типов 1С:</dt>
+<dd><ul class="first last simple">
+<li>SQL_BINARY(16) - объект типа GUID.</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<p>Существует возможность явно типизировать типами 1С колонки набора данных. Эта задача решается применением
+специальных, <a class="reference" href="#id7">типизирующих псевдонимов</a> полей результирующего набора данных.</p>
+<p>Пример запроса который получает наименование, и ряд реквизитов справочника Номенклатура:</p>
+<pre class="literal-block">
+select
+        Номенклатура.descr as Наименование,
+        $Номенклатура.ВидНоменклатуры as [ВидНоменклатуры $Перечисление.ВидыНоменклатуры],
+        $Номенклатура.ОсновнойПоставщик as [Поставщик $Справочник.Контрагенты],
+        $Номенклатура.Цена as Цена
+from $Справочник.Номенклатура as Номенклатура (nolock)
+where Номенклатура.isfolder = 2
+</pre>
+<div class="section" id="id7">
+<h2><a name="id7">Формат типизирующего псевдонима</a></h2>
+<chminfo split="0">     </chminfo>
+<p>Формат (в данном случае квадратные скобки являются элементом формата, а не признаком неоязательности
+заключенной в них конструкции):</p>
+<pre class="literal-block">
+[&lt;ИмяПоля&gt; $&lt;Тип1С&gt;]
+&lt;ИмяПоля&gt; ::= &lt;имя, которое будет доступно для обращения к полю методами этого класса&gt;
+&lt;Тип1С&gt; ::= &lt;строка, представляющая тип 1С&gt;
+</pre>
+<p>Тип1С - будет назначен полю, в формате применяющемся в методе <a class="reference" href="#id17">УстТипыКолонок1С</a>.</p>
+</div>
+<div class="section" id="id8">
+<h2><a name="id8">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="md">
+<h3><a name="md">мд / md</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> <a class="reference" href="#metadatawork">MetaDataWork</a>.</p>
+<p><strong>Описание:</strong> свойство содержит статический объект типа <a class="reference" href="#metadatawork">MetaDataWork</a>.</p>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a name="id9">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="debug">
+<h3><a name="debug">Отладка / Debug</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Отладка([бВклВыкл])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>бВклВыкл - тип: Число. 1 - вкл. Отладку; 0 - откл. отладку. По умолчанию - 1.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> включает/отключает отладочный режим, в котором проверяются на допустимость параметры методов.
+По умолчанию класс находится в рабочем, а не отладочном режиме, включить отладку можно просто - вызвав
+данный метод, без передачи в него аргумента.</p>
+</blockquote>
+</div>
+<div class="section" id="setdatabase">
+<h3><a name="setdatabase">УстБД / SetDatabase</a></h3>
+<blockquote id="id10">
+<p><strong>Синтаксис:</strong> УстБД(БазаДанных)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>БазаДанных - тип: <a class="reference" href="#odbcdatabase">ODBCDataBase</a>. Cоединение, объект соединения.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> Устанавливает соединение для объекта ODBCRecordset.</p>
+</blockquote>
+</div>
+<div class="section" id="setdatabase1c">
+<h3><a name="setdatabase1c">УстБД1С / SetDatabase1C</a></h3>
+<blockquote id="id11">
+<p><strong>Синтаксис:</strong> УстБД1С()</p>
+<p><strong>Описание:</strong> для SQL версии устанавливает <em>родное</em> соединение 1С:Предприятия.</p>
+</blockquote>
+</div>
+<div class="section" id="id12">
+<h3><a name="id12">Закрыть / Close</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстБД1С()</p>
+<p><strong>Описание:</strong> позволяет закрыть текущую открытую выборку.</p>
+</blockquote>
+</div>
+<div class="section" id="execute">
+<h3><a name="execute">Выполнить / Execute</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Выполнить(ТекстSQL)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТекстSQL - тип: Строка. SQL запрос не возвращающий результат <em>набор данных</em>.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - запрос выполнился успешно, 0 - безуспешно, описание ошибки можно получить,
+вызвав метод <a class="reference" href="#id14">ПолучитьОписаниеОшибки</a>.</p>
+<p><strong>Описание:</strong> позволяет выполнить SQL запрос, без возврата результата выборки. Метод в основном предназначен для
+выполнения запросов вставки, обновления, вызова процедур.</p>
+</blockquote>
+</div>
+<div class="section" id="id13">
+<h3><a name="id13">ПолучитьОписаниеОшибки / GetLastError</a></h3>
+<blockquote id="id14">
+<p><strong>Синтаксис:</strong> ПолучитьОписаниеОшибки()</p>
+<p><strong>Возвращает:</strong> тип: Строка. Описание ошибки.</p>
+<p><strong>Описание:</strong> позволяет получить описание последней ошибки в виде строки.</p>
+</blockquote>
+</div>
+<div class="section" id="setpropertycursor">
+<h3><a name="setpropertycursor">УстСвойстваКурсора / SetPropertyCursor</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстСвойстваКурсора(CURSOR_TYPE, CURSOR_SCROLLABLE, CURSOR_SENSITIVITY, CONCURRENCY)</p>
+<p><strong>Параметры:</strong> если передается значение = 0 - соотв атрибут объекта запроса не меняется.
+Приводится только соответствие числовых значений параметров константам ODBC. Для изучения функционального
+назначения соответствующих этим константам установок, следует обратиться к
+<a class="reference" href="http://msdn.microsoft.com/library/en-us/odbc/htm/odbcsqlsetstmtattr.asp?frame=true">MSDN</a>.</p>
+<blockquote>
+<ul>
+<li><p class="first">CURSOR_TYPE - тип: Число. SQL_ATTR_CURSOR_TYPE - константа ODBC.</p>
+<blockquote>
+<ul class="simple">
+<li>1 - SQL_CURSOR_FORWARD_ONLY;</li>
+<li>2 - SQL_CURSOR_STATIC;</li>
+<li>3 - SQL_CURSOR_KEYSET_DRIVEN;</li>
+<li>4 - SQL_CURSOR_DYNAMIC.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">CURSOR_SCROLLABLE - тип: Число. SQL_ATTR_CURSOR_SCROLLABLE - константа ODBC.</p>
+<blockquote>
+<ul class="simple">
+<li>1 - SQL_NONSCROLLABLE;</li>
+<li>2 - SQL_SCROLLABLE.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">CURSOR_SENSITIVITY - тип: Число. SQL_ATTR_CURSOR_SENSITIVITY - константа ODBC.</p>
+<blockquote>
+<ul class="simple">
+<li>1 - SQL_UNSPECIFIED;</li>
+<li>2 - SQL_INSENSITIVE;</li>
+<li>3 - SQL_SENSITIVE.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">CONCURRENCY - тип: Число. SQL_ATTR_CONCURRENCY - константа ODBC.</p>
+<blockquote>
+<ul class="simple">
+<li>1 - SQL_CONCUR_READ_ONLY;</li>
+<li>2 - SQL_CONCUR_LOCK;</li>
+<li>3 - SQL_CONCUR_ROWVER;</li>
+<li>4 - SQL_CONCUR_VALUES.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет установить/изменить свойства курсора.</p>
+</blockquote>
+</div>
+<div class="section" id="setrowsetsize">
+<h3><a name="setrowsetsize">УстРазмерМножестваСтрок / SetRowsetSize</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстРазмерМножестваСтрок(чРазмер)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>чРазмер - тип: Число. Размер множества строк.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает размер блока выборки (в виде количества строк), который будет получен драйвером
+ODBC за одно обращение в к источнику данных. Уменьшает количество обращений к источнику, за счет получение получения
+больших порций данных. Использовать данный метод имеет смысл только до вызова метода <a class="reference" href="#odbcrecordsetopen">Открыть</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="prepare">
+<h3><a name="prepare">Подготовить / Prepare</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Подготовить(ТекстЗапроса)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТекстЗапроса - тип: Строка. Текст запроса.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - подготовка запрос проведена успешно; 0 - безуспешно. Текст ошибки можно
+получить вызвав метод <a class="reference" href="#id14">ПолучитьОписаниеОшибки</a>.</p>
+<p><strong>Описание:</strong> позволяет <em>подготовить</em> SQL запрос. Примняется в основном для параметризированных запросов.
+Параметризированный запрос может иметь параметры (скалярные значения некоторых констант в запросе заменяют
+символами подстановки &quot;?&quot; (<em>SQL параметры</em>)). В последствии предварительно изменяя значения параметров
+подготовленный запрос можно выполнить несколько раз. Так обеспечивается наиболее оптимальное выполнение
+нескольких запрсов отличающихся скалярными характеристиками.</p>
+</blockquote>
+</div>
+<div class="section" id="buildparams">
+<h3><a name="buildparams">ПостроитьПараметры / BuildParams</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПостроитьПараметры()</p>
+<p><strong>Возвращает:</strong> тип: Число. 1 - подготовка запрос проведена успешно; 0 - безуспешно.</p>
+<p><strong>Описание:</strong> формирует SQL параметры на основе подготовленного методом Prepare параметризированного запроса,
+где места вставки параметров указываются знаком &quot;?&quot;. Этот метод позволяет автоматически определить типы SQL
+параметров.</p>
+<blockquote>
+<strong>Примечание:</strong> это альтернатива методу ДобПараметр;
+не каждый запрос и не на каждый драйвер сможет построить параметры автоматически; как
+правило только самые простые запросы. Кроме того применение этого метода приводит к лишней обработке
+текста запроса сервером и/или драйвером.</blockquote>
+<p>Например:</p>
+<pre class="literal-block">
+rc.Prepare(&quot;INSERT INTO MyTable (NAME, AGE, SALARY, DATEOFBIRTH) VALUES(?, ?, ?, ?)&quot;);
+if rc.BuildParams() = 1 then
+        rc.SetParam(1, &quot;Авраам Козлевич&quot;);
+        rc.SetParam(2, 28);
+        rc.SetParam(3, 1250.25);
+        rc.SetParam(4, '17.11.1974');
+        rc.Execute();
+endif;
+</pre>
+</blockquote>
+</div>
+<div class="section" id="addparam">
+<h3><a name="addparam">ДобПараметр / AddParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ДобПараметр(IOType, nSQLType, nLen, nDec, [pname])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul>
+<li><p class="first">IOType - тип: Число. Тип направления параметра:</p>
+<blockquote>
+<ul class="simple">
+<li>1 - SQL_PARAM_INPUT;</li>
+<li>2 - SQL_PARAM_OUTPUT;</li>
+<li>3 - SQL_PARAM_INPUT_OUTPUT.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">nSQLType - тип: Число. SQL тип параметра:</p>
+<blockquote>
+<ul class="simple">
+<li>1  - SQL_BIT</li>
+<li>2  - SQL_TINYINT</li>
+<li>3  - SQL_SMALLINT</li>
+<li>4  - SQL_INTEGER</li>
+<li>5  - SQL_REAL</li>
+<li>6  - SQL_FLOAT</li>
+<li>7  - SQL_DOUBLE</li>
+<li>8  - SQL_TYPE_DATE</li>
+<li>9  - SQL_TYPE_TIME</li>
+<li>10 - SQL_TYPE_TIMESTAMP</li>
+<li>11 - SQL_NUMERIC</li>
+<li>12 - SQL_DECIMAL</li>
+<li>13 - SQL_BIGINT</li>
+<li>14 - SQL_CHAR</li>
+<li>15 - SQL_VARCHAR</li>
+<li>16 - SQL_LONGVARCHAR</li>
+<li>17 - SQL_BINARY</li>
+<li>18 - SQL_VARBINARY</li>
+<li>19 - SQL_LONGVARBINARY</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">nLen - тип Число. Длина;</p>
+</li>
+<li><p class="first">nDec - тип Число. Точность;</p>
+</li>
+<li><p class="first">pname - тип Число. - именованный параметр вида &quot;&#64;Par1&quot;. Необязательный параметр, по умолчанию &quot;&quot;.</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> добавляет описание SQL параметра для параметризированного запроса.</p>
+</blockquote>
+</div>
+<div class="section" id="paramcount">
+<h3><a name="paramcount">КолвоПараметров / ParamCount</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> КолвоПараметров()</p>
+<p><strong>Возвращает:</strong> количество построенных и/или добавленных SQL параметров.</p>
+<p><strong>Описание:</strong> позволяет получить количество добавленных параметров.</p>
+</blockquote>
+</div>
+<div class="section" id="setparam">
+<h3><a name="setparam">УстПараметр / SetParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстПараметр(НомерПараметра, Значение)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>НомерПараметра - тип: Число. Номер параметра, отсчет идет от 1.</li>
+<li>Значение - тип: Любой. Значение параметра.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> установить значение SQL параметра.</p>
+</blockquote>
+</div>
+<div class="section" id="getparam">
+<h3><a name="getparam">ПолучПараметр / GetParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучПараметр(Параметр, Тип1С)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul>
+<li><p class="first">НомерПараметра - тип: Число. Номер параметра, отсчет идет от 1.</p>
+</li>
+<li><p class="first">Тип1С - тип: Строка. Тип получаемого параметра. Допустимые значения:</p>
+<blockquote>
+<ul class="simple">
+<li>&quot;Справочник/Reference&quot; - полученное значение параметра преобразуется из длинного формата
+представления элементов справочников: [Kind(4)][ID(6)][Sign(3)] = 13 символов, в конкретный
+элемент справочника.</li>
+<li>&quot;Справочник/Reference.*&quot; - где &quot;*&quot; - любой вид справочника, как он определен в конфигураторе
+(Идентификатор), существующий в ИБ 1С. Преобразует короткую строку, полученную из параметра в
+конкретный элемент: [ID(6)][Sign(3)] = 9 символов.</li>
+<li>&quot;Документ/Document&quot; - преобразование длинной (13) строки в конкретный элемент документа.</li>
+<li>&quot;Документ/Document.*&quot; - где &quot;*&quot; - любой вид документа, как он определен в конфигураторе (Идентификатор).
+Строка, полученная из параметра, преобразуется в конкретный элемент документа.</li>
+<li>&quot;Перечисление/Enum&quot; - преобразование длинной строки (13) в конкретный элемент перечисления.</li>
+<li>&quot;Перечисление/Enum.*&quot; - преобразование короткой строки (9) в конкретный элемент перечисления.</li>
+<li>&quot;Неопределенный/Undefine&quot; - преобразование строки [Type(2)][Kind(4)][ID(6)][Sign(3)] = 15 символов
+в конкретный тип и конкретный элемент представленный в ней для реквизитов, тип у которых не определен.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Любой. Значение параметра.</p>
+<p><strong>Описание:</strong> позволяет получить значение SQL параметра, если вторым параметром метода указан тип, то происходит
+типизация значения агрегатным типом 1С.</p>
+</blockquote>
+</div>
+<div class="section" id="sql-exesql-fromtv">
+<h3><a name="sql-exesql-fromtv">ВыполнитьSQL_ИзТЗ / ExeSQL_FromTV</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьSQL_ИзТЗ(Таблица, КоличествоСтрок)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Таблица - тип: ТаблицаЗначений. Источник данных для параметров подготовленного запроса. Имена колонок
+не имеют значения, берется в расчет позиция колонки, т.е. значения первой колонки подставляются в качестве
+первого параметра запроса, вторая колонка соответствует второму параметру и т.д.;</li>
+<li>КоличествоСтрок - тип: Число. Необязателен, по умолчанию равен 0. Данный параметр определяет размер блока,
+который будет заполняется параметрами из таблицы, без пересылки на сервер базы, как только количество строк
+в блоке достигнет указанного - в параметре производится пересылка данных на сервер с последующем
+очищением буфера. Если передано нулевое значение данного параметра, то расчет размера блока производится
+по следующей формуле: всего общее количество строк переданной таблицы умножается на 0.1
+( т.е. 10% от общего числа строк).</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> выполняет подготовленный запрос для каждой строки из переданной таблицы. При этом значения параметров
+запроса устанавливаются из строки переданной таблицы.</p>
+<p>Параметры могут быть добавлены методом <a class="reference" href="#addparam">ДобПараметр / AddParam</a> или построены <a class="reference" href="#buildparams">ПостроитьПараметры / BuildParams</a>.
+В случае если количество параметров равно нулю, происходит попытка построить параметры автоматически.</p>
+<p>Допустимо чтобы значения параметров были агрегатного типа, при этом происходит их преобразование к идентификаторам
+соответственно типам SQL параметров.</p>
+<p>Пример:</p>
+<pre class="literal-block">
+rc = СоздатьОбъект(&quot;ODBCRecordSet&quot;);
+rc.Execute(&quot;DELETE FROM [TestSQL].[dbo].[MyTable]&quot;);
+rc.Close();
+
+rc.Prepare(&quot;INSERT INTO MyTable (NAME, AGE, SALARY, DATEOFBIRTH) VALUES(?, ?, ?, ?)&quot;);
+тз = СоздатьОбъект(&quot;ТаблицаЗначений&quot;);
+
+тз.НоваяКолонка(&quot;NAME&quot;,&quot;Строка&quot;);
+тз.НоваяКолонка(&quot;AGE&quot;,&quot;Число&quot;,4);
+тз.НоваяКолонка(&quot;SALARY&quot;,&quot;Число&quot;,18,2);
+тз.НоваяКолонка(&quot;DATEOFBIRTH&quot;,&quot;Дата&quot;);
+
+for i = 1 to 10 do
+тз.НоваяСтрока();
+        тз.NAME        = &quot;Панферов Вартан&quot;;
+        тз.AGE         = 28;
+        тз.SALARY      = 1453.12;
+        тз.DATEOFBIRTH = '17.11.1974';
+        тз.НоваяСтрока();
+        тз.NAME        = &quot;Гусев Дмитрий&quot;;
+        тз.AGE         = 23;
+        тз.SALARY      = 1233.99;
+        тз.DATEOFBIRTH = '09.03.1980';
+enddo;
+rc.ExeSQL_FromTV(тз);
+</pre>
+</blockquote>
+</div>
+<div class="section" id="clearparams">
+<h3><a name="clearparams">УдалитьПараметры / ClearParams</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УдалитьПараметры()</p>
+<p><strong>Описание:</strong> удаляет ранее установленные SQL параметры.</p>
+</blockquote>
+</div>
+<div class="section" id="deleteparam">
+<h3><a name="deleteparam">УдалитьПараметр / DeleteParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УдалитьПараметр(НомерПараметра)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>НомерПараметра - тип: Число. Номер параметра, отсчет идет от 1.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> удаляет ранее установленный SQL параметр по номеру.</p>
+</blockquote>
+</div>
+<div class="section" id="id16">
+<h3><a name="id16">Открыть / Open</a></h3>
+<blockquote id="odbcrecordsetopen">
+<p><strong>Синтаксис:</strong> Открыть([ТекстЗапроса], [ИспКурсор], [Подготовлен])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТекстЗапроса - тип: Строка. Текст SQL запроса. Если строка пустая, то выборка открывается для
+подготовленного ранее запроса методом <a class="reference" href="#prepare">Подготовить / Prepare</a>. Необязателен, по умолчанию - пустая строка;</li>
+<li>ИспКурсор - тип: Число. 1 - открыть курсор, только для запроса указанного в первом параметре метода
+(если запрос подготавливался ранее командой &quot;Prepare&quot;, тогда разрешить использовать курсор уже нельзя,
+для установки курсора и его типа воспользуйтесь методом <a class="reference" href="#setpropertycursor">УстСвойстваКурсора / SetPropertyCursor</a>),
+0 - не открывать курсор. Если ранее был использован метод SetPropertyCursor, то значение данного
+параметра игнорируется. Необязателен, по умолчанию равен 0;</li>
+<li>Подготовлен - тип: Число. 1 - открыть ранее подготовленный методом <a class="reference" href="#prepare">Подготовить / Prepare</a> запрос. 0 - использовать
+первый параметр как запрос на выполнение. Необязателен, по умолчанию равен 0, если в первом параметре
+есть текст запроса и равен 1, если передан пустой текст запроса.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. 1 - запрос выполнен успешно, и выборка была открыта. 0 - произошла ошибка.</p>
+<p><strong>Описание:</strong> выполняет запрос и открывает выборку - результат переданного SQL запроса. Метод только открывает
+выборку: после успешного вызова метода, в памяти нет всей выборки, она будет получаться с сервера по мере
+перебора результата запроса. Основное применение метода: <strong>при работе с курсорами</strong>.</p>
+<p><strong>Замечание:</strong> если запрос выполнен успешно, но при этом не получено ни одной записи (результат запроса не
+содержит записей) - это считается ошибкой, т.к. в таком случае выборка не может быть открыта.</p>
+</blockquote>
+</div>
+<div class="section" id="settypecolumn1c">
+<h3><a name="settypecolumn1c">УстТипыКолонок1С / SetTypeColumn1C</a></h3>
+<blockquote id="id17">
+<p><strong>Синтаксис:</strong> УстТипыКолонок1С(ТипыКолонок)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТипыКолонок - тип: Строка. Типы, разделенными запятыми. Каждый тип соответствует номеру колонки,
+начиная с первой и заканчивая количеством полей. Все типы, которые превышают номер последнего
+столбца - игнорируются.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> метод используется только после открытия выборки, методом <a class="reference" href="#odbcrecordsetopen">Открыть</a>. Устанавливает эквивалентные
+типы для значений колонок полученной выборки, для успешного преобразования в типы 1С языка при получении результатов.</p>
+</blockquote>
+<blockquote>
+<p>Синтаксис строки типов:</p>
+<pre class="literal-block">
+type_string ::= empty-string[,] | type[,] | type, type_string
+empty-string ::=&quot;&quot;
+type ::=
+ | Строка
+ | Дата
+ | Число
+ | Справочник[.*] | Reference[.*]
+ | Документ[.*] | Document[.*]
+ | Перечисление[.*] | Enum[.*]
+ | Счет[.*] | Account[.*]
+ | Неопределенный | Undefine
+</pre>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">Справочник</span> <span class="pre">|</span> <span class="pre">Reference</span></tt> - полученное значение параметра преобразуется из длинного формата представления</div>
+<div class="line-block">
+<div class="line">элементов справочников: [Kind(4)][ID(6)][Sign(3)] = 13 символов, в конкретный элемент справочника;</div>
+</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Справочник.*</span> <span class="pre">|</span> <span class="pre">Reference.*</span></tt> - где &quot;*&quot; - любой вид справочника, как он определен в конфигураторе (Идентификатор),</div>
+<div class="line-block">
+<div class="line">существующий в ИБ 1С. Преобразует короткую строку, полученную из параметра в конкретный элемент:</div>
+<div class="line">[ID(6)][Sign(3)] = 9 символов.</div>
+</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Документ</span> <span class="pre">|</span> <span class="pre">Document</span></tt> - преобразование длинной (13) строки в конкретный элемент документа.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Документ.*</span> <span class="pre">|</span> <span class="pre">Document.*</span></tt> - где &quot;*&quot; - любой вид документа, как он определен в конфигураторе (Идентификатор).</div>
+<div class="line-block">
+<div class="line">Строка, полученная из параметра, преобразуется в конкретный элемент документа.</div>
+</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Перечисление</span> <span class="pre">|</span> <span class="pre">Enum</span></tt> - преобразование длинной строки (13) в конкретный элемент перечисления.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Перечисление.*</span> <span class="pre">|</span> <span class="pre">Enum.*</span></tt> - преобразование короткой строки (9) в конкретный элемент перечисления.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Счет</span> <span class="pre">|</span> <span class="pre">Account</span></tt> - преобразование длинной строки (13) в конкретный счет.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Счет.*</span> <span class="pre">|</span> <span class="pre">Account.*</span></tt> - преобразование короткой строки (9) в конкретный счет.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Неопределенный</span> <span class="pre">|</span> <span class="pre">Undefine</span></tt> - преобразование строки [Type(2)][Kind(4)][ID(6)][Sign(3)] = 23 символов</div>
+<div class="line-block">
+<div class="line">в конкретный тип и конкретный элемент, представленный в ней для реквизитов, тип у которых не определен.</div>
+</div>
+</div>
+<p>Пример:</p>
+<pre class="literal-block">
+rc.SetTypeColumn1C(&quot;Строка, Число, Дата, Справочник.Тест_2, Справочник,
+|Перечисление._ТестПакеты, Документ, Документ.Док_2&quot;);
+</pre>
+</blockquote>
+</div>
+<div class="section" id="isopen">
+<h3><a name="isopen">ВыборкаОткрыта / IsOpen</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыборкаОткрыта()</p>
+<p><strong>Возвращает:</strong> тип: Число. 1 - если выборка открыта, иначе 0.</p>
+<p><strong>Описание:</strong> позволяет проверить открыта выборка или нет.</p>
+</blockquote>
+</div>
+<div class="section" id="movenext">
+<h3><a name="movenext">След / MoveNext</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> След()</p>
+<p><strong>Возвращает:</strong> тип: Число. Если достигнут конец выборки возвращает 0, иначе 1.</p>
+<p><strong>Описание:</strong> продвигает курсор на следующую позицию.</p>
+</blockquote>
+</div>
+<div class="section" id="moveprevious">
+<h3><a name="moveprevious">Пред / MovePrevious</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Пред()</p>
+<p><strong>Возвращает:</strong> тип: Число. Если текущая строка была первая на момент выполнения метода, то метод вернет 0, иначе 1.</p>
+<p><strong>Описание:</strong> продвигает курсор на предыдущую позицию.</p>
+</blockquote>
+</div>
+<div class="section" id="movefirst">
+<h3><a name="movefirst">ВНачало / MoveFirst</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВНачало()</p>
+<p><strong>Описание:</strong> двигает курсор в начало выборки.</p>
+</blockquote>
+</div>
+<div class="section" id="movelast">
+<h3><a name="movelast">ВКонец / MoveLast</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВКонец()</p>
+<p><strong>Описание:</strong> двигает курсор в конец выборки.</p>
+</blockquote>
+</div>
+<div class="section" id="getfieldcount">
+<h3><a name="getfieldcount">КолвоПолей / GetFieldCount</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> КолвоПолей()</p>
+<p><strong>Возвращает:</strong> тип: Число. Количество полей.</p>
+<p><strong>Описание:</strong> позволяет получить количество столбцов (полей) в выборке.</p>
+</blockquote>
+</div>
+<div class="section" id="isbof">
+<h3><a name="isbof">Начало / IsBOF</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Начало()</p>
+<p><strong>Возвращает:</strong> тип: Число. 1, когда курсор перешел за начало выборки, иначе 0.</p>
+<p><strong>Описание:</strong> позволяет проверить положение курсора.</p>
+</blockquote>
+</div>
+<div class="section" id="iseof">
+<h3><a name="iseof">Конец / IsEOF</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> Начало()</p>
+<p><strong>Возвращает:</strong> тип: Число. 0, пока курсор не пройдет последнюю строку выборки, 1 - курсор находится за последней
+строкой выборки.</p>
+<p><strong>Описание:</strong> позволяет проверить положение курсора.</p>
+</blockquote>
+</div>
+<div class="section" id="getfieldindex">
+<h3><a name="getfieldindex">ИндексПоля / GetFieldIndex</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИндексПоля(ИмяПоля)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ИмяПоля - тип: Строка. Имя поля.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Индекс поля (от нуля). Если такого поля не существует возвращается -1.</p>
+<p><strong>Описание:</strong> позволяет получить позицию столбца выборки по его имени.</p>
+</blockquote>
+</div>
+<div class="section" id="getrowsaffected">
+<h3><a name="getrowsaffected">СтрокОбработанно / GetRowsAffected</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> СтрокОбработанно()</p>
+<p><strong>Возвращает:</strong> тип: Число. Количество строк, обработанных SQL инструкцией.</p>
+<p><strong>Описание:</strong> позволяет получить результат запроса - количество обработанных строк (результат запроса типа rowcount).</p>
+</blockquote>
+</div>
+<div class="section" id="getvalue">
+<h3><a name="getvalue">ПолучитьЗначение / GetValue</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьЗначение(Поле)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Поле - тип: Число, Строка. Номер поля (от 1) или имя поля.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Любой. Значение поля в текущей строке.</p>
+<p><strong>Описание:</strong> позволяет получить значение поля.</p>
+</blockquote>
+</div>
+<div class="section" id="getvalues">
+<h3><a name="getvalues">ПолучитьЗначения / GetValues</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьЗначение(...)</p>
+<p><strong>Параметры:</strong> переменные для приема значений полей.</p>
+<p><strong>Описание:</strong> возвращает значения колонок по текущей строке выборки. Количество параметров неограниченно,
+но будут заполнены значениями из выборки только те параметры, которые окажутся в диапазоне от 1 до количества полей.</p>
+</blockquote>
+</div>
+<div class="section" id="getvaluesinsv">
+<h3><a name="getvaluesinsv">ПолучитьЗначенияСЗ / GetValuesInSV</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьЗначенияСЗ(Колонки)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Колонки - тип: Число, Строка. Номер поля (от 1) или названия колонки или колонок, разделенные запятыми.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: СписокЗначений, Структура. Объект со значениями полей.</p>
+<p><strong>Описание:</strong> позволяет получить значения поля. Если в парметр передается число, возвращается список значений,
+со значениями переданного поля каждой строки. Структура возвращается всегда, когда в качестве параметра метода
+передавалась строка с названием или названиями колонок. В структуре определяются свойства с именами колонок,
+полученных из строки и существующих в выборке, далее в эти свойства записываются списки значений, содержащие
+значения колонок из всех строк текущей выборки.</p>
+</blockquote>
+</div>
+<div class="section" id="getresultsinvt">
+<h3><a name="getresultsinvt">ПолучитьРезультатыВ_ТЗ / GetResultsInVT</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьРезультатыВ_ТЗ(Таблица, Очищать)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Таблица - тип: ТаблицаЗначений, наследник объекта ТаблицаЗначений. Таблица значений для приема данных выборки.</li>
+<li>Очищать - тип: Число. 1 - очистить таблицу и создать колонки автоматически, 0 - не очищать таблицу,
+а использовать существующие колонки, соответствие между колонками таблицы и колонками выборки проводится по
+порядковым номерам, т.е. первая колонка таблицы заполняется значениями из первой колонки выборки и так далее.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> загружает результаты выборки в переданную таблицу значений или в класс производный от класса
+ТаблицаЗначений.</p>
+<p><strong>Замечание:</strong> метод является устаревшим, вместо него рекомендуется использовать <a class="reference" href="#executestatement">ВыполнитьИнструкцию / ExecuteStatement</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="settextparam">
+<h3><a name="settextparam">УстановитьТекстовыйПараметр / SetTextParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьТекстовыйПараметр(ИмяПараметра, ЗначениеПараметра)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ИмяПараметра - тип: Строка. Имя параметра;</li>
+<li>ЗначениеПараметра - тип: Любой. Значение параметра.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает текстовый параметр. Необходимо вызывать до передачи текста запроса.</p>
+</blockquote>
+</div>
+<div class="section" id="getfielddefs">
+<h3><a name="getfielddefs">ПолучитьПараметрыПоля / GetFieldDefs</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьПараметрыПоля(Поле, [Тип1С], [Длина1С], [Точность1С], [ТипSQL], [ДлинаSQL], [ТочностьSQL], [МожетБытьNULL])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Поле - тип: Число, Строка. Номер или имя поля;</li>
+<li>Тип1С - тип: Строка. Обозначение типа в 1С;</li>
+<li>Длина1С - тип: Число. Обозначение длины в 1С;</li>
+<li>Точность1С - тип: Число. Обозначение точности в 1С;</li>
+<li>ТипSQL - тип: Число. Номер типа в ODBC;</li>
+<li>ДлинаSQL - тип: Число. Длина типа в ODBC;</li>
+<li>ТочностьSQL - тип: Число. Точность типа в ODBC;</li>
+<li>МожетБытьNULL - тип: Число. Допустимость значений NULL в ODBC. 1 - допустимы, 0 - не допустимы.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число, Строка. Если первым параметром передан номер поля - возвращается его имя, если
+передано имя - возвращается номер поля.</p>
+<p><strong>Описание:</strong> позволяет получить параметры поля.</p>
+</blockquote>
+</div>
+<div class="section" id="autotypification">
+<h3><a name="autotypification">АвтоТипизация / AutoTypification</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> АвтоТипизация(Включить)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Включить - тип: Число. Признак включения режима автотипизации. 1 - включить, 0 -выключить.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает или снимает режим работы объекта, в котором происходит происходят автоматическая
+типизация и именование полей полученной выборки на основании исходных имен полей типа spXXX. Происходит именование
+поля идентификатором 1С (как он задан в конфигураторе), а также назначение полю типа 1С по метаданным. Сразу после
+создания объекта (по умолчанию) режим выключен для обратной совместимости.</p>
+</blockquote>
+</div>
+<div class="section" id="putobjectlist">
+<h3><a name="putobjectlist">УложитьСписокОбъектов / PutObjectList</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УложитьСписокОбъектов(Список, ИмяТаблицы, [ВидЭлементов])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Список - тип: СписокЗначений, Справочник, Счет. Объект, содержание которого будет отправляться на сервер.
+Если передан список значений, во врем. таблицу попадает содержимое списка.
+Допустимо также передавать группу справочника, элемент справочника, группу счетов, счет - в этом случае
+во временную таблицу поступает переданное значение, однако если указан ВидЭлементов (вид справочника,
+или план счетов), то будет попытка включить в таблицу все подчененные элементы.</li>
+<li>ИмяТаблицы - тип: Строка. Имя временной таблицы.</li>
+<li>ВидЭлементов - тип: Строка. Вид справочника для иерархического включения элементов или вид плана счетов
+для иерархического включения счетов. Если параметр не указан, иерархического включения не происходит.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> сохраняет список внутренних идентификаторов объектов во временной таблице MS SQL. Идентификаторы
+объектов из списка сохраняются во временной таблице в поле val char(9). Имя таблицы должно начинаться
+с символа &quot;#&quot;.</p>
+<p>Если указан вид ВидЭлементов - идентификатор иерархического справочника, то таблица будет содержать элементы,
+иерархически принадлежащие группам переданным в списке. (Подобно оператору &quot;в&quot; стандартного языка запросов 1С.)</p>
+<p><strong>Замечание:</strong> метод допустимо применять только для источника данных Microsoft SQL Server.</p>
+</blockquote>
+</div>
+<div class="section" id="setquerytimeout">
+<h3><a name="setquerytimeout">УстТаймаутЗапроса / SetQueryTimeout</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстТаймаутЗапроса(Таймаут)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Таймаут - тип: Число. Таймаут запроса в секундах.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает таймаут выполнения запроса в секундах. Если выполнение запроса не заканчивается
+до истечения таймаута - выполнение всех методов выполнения запросов заканчивается с соответствующей ошибкой
+(SQLSTATE = HYT00).
+Значение таймаута в 0 секунд означает, что нет никакого таймаута выполнения запроса, и запрос будет выполняться
+бесконечно. Это значение действует по умолчанию.</p>
+</blockquote>
+</div>
+<div class="section" id="isquerytimeoutexpired">
+<h3><a name="isquerytimeoutexpired">ИстекТаймаут / IsQueryTimeoutExpired</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИстекТаймаут()</p>
+<p><strong>Возвращает:</strong> тип: Число. 1 - было завершение по таймауту, иначе 0.</p>
+<p><strong>Описание:</strong> позволяет проверить - является ли последняя ошибка выполнения запроса ошибкой завершения
+по таймауту. Метод допустимо вызывать только после вызова метода <a class="reference" href="#id14">ПолучитьОписаниеОшибки</a>.</p>
+</blockquote>
+</div>
+<div class="section" id="backfromtaenabled">
+<h3><a name="backfromtaenabled">ОбратныйРасчетОтТА / BackFromTAEnabled</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ОбратныйРасчетОтТА()</p>
+<p><strong>Возвращает:</strong> тип: Число. 1 - разрешено, иначе 0.</p>
+<p><strong>Описание:</strong> разрешает оптимизацию расчета остатков от ТА. По умолчанию такая оптимизация запрещена,
+т.к. запросы ВТ выполняются грязным чтением. Ее полезно включать, имея гарантию того, что остатки на ТА
+досчитаны до конца, например - в модуле проведения.</p>
+</blockquote>
+</div>
+<div class="section" id="executestatement">
+<h3><a name="executestatement">ВыполнитьИнструкцию / ExecuteStatement</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьИнструкцию([ТекстЗапроса], [ОбъектРезультатов], [Очищать])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТекстЗапроса - тип: Строка. Текст запроса, если пустая строка - запрос считается параметризированным.
+Необязателен, по умолчанию - пустая строка.</li>
+<li>ОбъектРезультатов - тип: любой из ТаблицаЗначений, СписокЗначений, ИндексированнаяТаблица или наследник от любого из них.
+(Это должен быть объект какого-либо из перечисленных типов, а не объект, реализующий их интерфейс.) Если параметр передан,
+то он и будет возвращаемым значением.
+Необязателен, по умолчанию пустое значение, в этом случае будет возвращен объект типа ТаблицаЗначений.</li>
+<li>Очищать - тип: Число. 1 - очистить переданный ОбъектРезультатов и создать колонки если его тип ТаблицаЗначений или ИндексированнаяТаблица.
+0 - не очищать. Необязателен, по умолчанию - 1.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: ТаблицаЗначений, СписокЗначений, ИндексированнаяТаблица или наследник от любого из них, Число.
+Объект с результатом запроса, или число - количество обработанных строк.</p>
+<p><strong>Описание:</strong> Выполняет SQL запрос, при ошибке парсинга или при ошибке на ODBC драйвере формируется исключение.
+Если запрос возвращает набор строк, метод возвращает объект с результатом запроса, если запрос не возвращает
+набор строк (не select, а DML или прочий) - возвращается количество обработанных строк.
+Если запрос содержит несколько SQL инструкций (multistatement batch), результаты возвращаются только от первой
+инструкции. Однако, на драйвер уходит весь текст запроса (По спецификации ODBC, будут ли выполнены остальные
+инструкции в пакете - зависит от драйвера. Для драйвера SQL Server они выполняются), остальные результаты
+игнорируются. Если запрос возвращает набор данных, и в наборе данных нет ни одной строки - это не является ошибкой.
+Если запрос не параметризированный - метод гарантированно закрывает курсор.
+Если передан ОбъектРезультатов типа ТаблицаЗначений или ИндексированнаяТаблица или наследник и параметр Очишать = 0,
+то колонки объекта и поля результата совмещаются по порядку.
+Если передан ОбъектРезультатов типа СписокЗначений, то значения из первого поля результата помещаются в значения списка.
+Если существует второе поле результата и оно типа Строка, то значения этого поля помещается в представление списка.
+Если существует третье поле результата и оно типа Число, то значения этого поля помещается в признак пометки значений.</p>
+</blockquote>
+</div>
+<div class="section" id="executescalar">
+<h3><a name="executescalar">ВыполнитьСкалярный / ExecuteScalar</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьСкалярный([ТекстЗапроса])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТекстЗапроса - тип: Строка. Текст запроса, если пустая строка-запрос считается параметризированным.
+Необязателен, по умолчанию - пустая строка.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Любой, Структура. Если значение поля результата запроса, или зачения полей результата запроса.</p>
+<p><strong>Описание:</strong> Выполняет SQL запрос, при ошибке парсинга или при ошибке на ODBC драйвере формируется исключение.
+Запрос может возвращать количество обработанных строк: в этом случае возвращается это значение. Запрос может
+возвращать набор данных, состоящий из одной строки, при этом если в наборе данных одна колонка - возвращается
+значение из нее, если запрос возвращает несколько колонок - возвращается объект Структура, заполненный полями
+и именами ключей, соответствующими именам колонок и значениями из этих колонок.
+Если запрос возвращает набор данных, и в наборе данных нет ни одной строки - это не является ошибкой,
+в этом случае возвращается пустое значение типа, определенного в первой колонке, или объект Структура,
+заполненный соответствующим образом.
+Если запрос не параметризированный - метод гарантированно закрывает курсор.</p>
+</blockquote>
+</div>
+<div class="section" id="xml-executexml">
+<h3><a name="xml-executexml">ВыполнитьXML / ExecuteXML</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ВыполнитьXML([ТекстЗапроса], [ОбъектПриемник])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТекстЗапроса - тип: Строка. Текст запроса, если пустая строка-запрос считается параметризированным.
+Необязателен, по умолчанию - пустая строка.</li>
+<li>ОбъектПриемник - тип: BinaryData. Объект для получения результата запроса.
+Необязателен, по умолчанию - пустое значение.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка, ПустоеЗначение. Результат запроса или, если передан объект приемник - возвращается
+ПустоеЗначение.</p>
+<p><strong>Описание:</strong> выполняет запрос и получает результат как XML данные. Если вторым параметром передан объект BinaryData,
+то результат записывается в этот объект (с учетом текущей кодировки и текущей позиции в файле), при этом возвращаемое
+значение метода не определено, если второй параметр - пустое значение, метод возвращает строку - результат запроса.</p>
+</blockquote>
+</div>
+<div class="section" id="rpc-rpcmode">
+<h3><a name="rpc-rpcmode">РежимRPC / RPCMode</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> РежимRPC(Режим)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Режим - тип: Число. 1 - включить режим, 0 - выключить режим.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> переводит объект в специальный режим выполнения запросов. Когда этот режим включен, выполнение
+запроса происходит с помощью RPC вызова хранимой процедуры sp_executesql. (Подробнее о назначении этой ХП  можно
+прочитать в BOL (Books Online)). В сущности это - режим парсера, а не режим этого объекта. Не применимо для
+параметризированных запросов. По умолчанию этот режим выключен.</p>
+<p>Смысл этого метода в том, что текстовые параметры в тексте запроса заменяются не на их значение,
+а на T-SQL переменные. Кроме того, на T-SQL переменные заменяются метаимена, разрешающиеся в идентификаторы.
+В результирующих запросах виртуальных таблиц все параметры также будут заменены на T-SQL переменные.
+Таким образом, при выполнении различных запросов, отличающихся только значениями текстовых параметров,
+текст запроса, который уходит на сервер, остается одинаковым (если, конечно, он не изменяется качественно
+вследствие разрешения какой-либо виртуальной таблицы) и будет происходить эффективное использование кэша планов
+выполнения запросов (сервер будет выполнять меньше компиляций).</p>
+<p><strong>Рекомендации по использованию:</strong> В общем-то, его лучше ставить всегда, или в таких случаях, где неудобно использовать
+параметризированные запросы (они все же быстрее), особенно в потенциально частых запросах
+(применяющихся в модуле проведения, например).</p>
+<p><strong>Ограничения:</strong> метод допустимо применять только для источника данных Microsoft SQL Server; так как выполнение
+происходит по средствам вызова хранимой процедуры, в силе все особенности выполнения в теле хранимой процедуры.
+Например, если создавать временную таблицу, то запрос отработает, но таблица будет удалена сервером сразу после
+выполнения запроса (батча).</p>
+</blockquote>
+</div>
+<div class="section" id="putobjectlist13">
+<h3><a name="putobjectlist13">УложитьСписокОбъектов13 / PutObjectList13</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УложитьСписокОбъектов13(Список, ИмяТаблицы)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Список - тип: СписокЗначений, Справочник, Счет. Объект, содержание которого будет отправляться на сервер.
+Если передан список значений, во врем. таблицу попадает содержимое списка.</li>
+<li>ИмяТаблицы - тип: Строка. Имя временной таблицы.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> сохраняет список объектов во временной таблице MS SQL. Идентификаторы объектов из списка сохраняются
+во временной таблице. Таблица имеет единственное поле val char(13). Имя таблицы должно начинаться с символа &quot;#&quot;.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="metadatawork">
+<h1><a name="metadatawork">MetaDataWork</a></h1>
+<p>Данный класс предназначен для конвертирования метаданных 1С во внутреннее представление, для возможного использования
+в SQL запросах.</p>
+<p>В описании этого класса часто применяются термин <cite>номер</cite> объектов метаданных - под ним следует понимать номер
+соответствующего объекта от 1 в порядке объявления их в конфигураторе. В описании этого класса часто применяются
+термин <cite>имя</cite> объектов метаданных - под ним следует понимать строковый идентификатор объекта метаданных.</p>
+<div class="section" id="id20">
+<h2><a name="id20">Свойства</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="metadata">
+<h3><a name="metadata">Метаданные / Metadata</a></h3>
+<blockquote>
+<p><strong>Доступ:</strong> только чтение.</p>
+<p><strong>Тип:</strong> Метаданные.</p>
+<p><strong>Описание:</strong> свойство содержит ссылку на объект Метаданные.
+Для  присоединенного  md-файла  будет  выдаваться  ссылка   на   объект
+Метаданные для этого файла/конфигурации.</p>
+<dl class="docutils">
+<dt><strong>Важно:</strong>  Время жизни свойства совпадает со временем жизни объекта MetaDataWork.</dt>
+<dd><dl class="first last docutils">
+<dt>Пример</dt>
+<dd><p class="first">MetaDataWork = СоздатьОбъект(&quot;MetaDataWork&quot;);
+MetaDataWork.ПрисоединитьМД(&quot;c:1sbase1cv7.md&quot;);</p>
+<p>МД = MetaDataWork.Метаданные; // сохраняю ссылку
+MetaDataWork=&quot;&quot;; // сбрасываю родителя</p>
+<p class="last">и теперь ТипЗначения(МД) равен нулю, т.е. пустому значению.
+Использователь подобный объект МД уже бесполезно.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id21">
+<h2><a name="id21">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="getconstid">
+<h3><a name="getconstid">ИДКонстанты / GetConstID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДКонстанты(Константа)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Константа - тип: Число, Строка. Номер константы или имя константы.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор константы.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор константы.</p>
+</blockquote>
+</div>
+<div class="section" id="getrefid">
+<h3><a name="getrefid">ИДСправочника / GetRefID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДСправочника(Справочник)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Справочник - тип: Число, Строка. Номер справочника или имя справочника (вид).</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор справочника.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор справочника.</p>
+</blockquote>
+</div>
+<div class="section" id="getreffieldid">
+<h3><a name="getreffieldid">ИДРеквизитаСправочника / GetRefFieldID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДРеквизитаСправочника(Справочник, Реквизит)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Справочник - тип: Число, Строка. Номер справочника или имя справочника (вид).</li>
+<li>Реквизит - тип: Число, Строка. Номер реквизита справочника или имя реквизита справочника.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор рекувизита справочника.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор рекувизита справочника.</p>
+</blockquote>
+</div>
+<div class="section" id="getreftablename">
+<h3><a name="getreftablename">ИмяТаблицыСправочника / GetRefTableName</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИмяТаблицыСправочника(Справочник, Реквизит)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Справочник - тип: Число, Строка. Номер справочника или имя справочника (вид).</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Имя таблицы справочника в базе данных.</p>
+<p><strong>Описание:</strong> позволяет получить имя таблицы справочника в базе данных.</p>
+</blockquote>
+</div>
+<div class="section" id="getdocid">
+<h3><a name="getdocid">ИДДокумента / GetDocID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДДокумента(Документ)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Документ - тип: Число, Строка. Номер документа или имя документа (вид).</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор документа.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор документа.</p>
+</blockquote>
+</div>
+<div class="section" id="getdocheadfieldid">
+<h3><a name="getdocheadfieldid">ИДРеквизитаШапки / GetDocHeadFieldID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДРеквизитаШапки(Документ, Реквизит)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Документ - тип: Число, Строка. Номер документа или имя документа (вид).</li>
+<li>Реквизит - тип: Число, Строка. Номер реквизита шапки документа или имя реквизита шапки документа.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор реквизита шапки документа.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор реквизита шапки документа.</p>
+</blockquote>
+</div>
+<div class="section" id="getdocheadtablename">
+<h3><a name="getdocheadtablename">ИмяТаблицыШапки / GetDocHeadTableName</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИмяТаблицыШапки(Документ)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Документ - тип: Число, Строка. Номер документа или имя документа (вид).</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Имя таблицы шапки документа в базе данных.</p>
+<p><strong>Описание:</strong> позволяет получить имя таблицы шапки документа в базе данных.</p>
+</blockquote>
+</div>
+<div class="section" id="getdoctblfieldid">
+<h3><a name="getdoctblfieldid">ИДРеквизитаТабличнойЧасти / GetDocTblFieldID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДРеквизитаТабличнойЧасти(Документ, Реквизит)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Документ - тип: Число, Строка. Номер документа или имя документа (вид).</li>
+<li>Реквизит - тип: Число, Строка. Номер реквизита табличной части документа или имя реквизита табличной части
+документа.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор реквизита табличной части документа.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор реквизита табличной части документа.</p>
+</blockquote>
+</div>
+<div class="section" id="getdoctbltablename">
+<h3><a name="getdoctbltablename">ИмяТаблицыТабличнойЧасти / GetDocTblTableName</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИмяТаблицыТабличнойЧасти(Документ)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Документ - тип: Число, Строка. Номер документа или имя документа (вид).</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Имя таблицы табличной части документа в базе данных.</p>
+<p><strong>Описание:</strong> позволяет получить имя таблицы табличной части документа в базе данных.</p>
+</blockquote>
+</div>
+<div class="section" id="getcjid">
+<h3><a name="getcjid">ИДЖурналаРасчетов / GetCJID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДЖурналаРасчетов(Журнал)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Журнал - тип: Число, Строка. Номер журнала расчетов или имя журнала расчетов.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор журнала расчетов.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор журнала расчетов.</p>
+</blockquote>
+</div>
+<div class="section" id="getcjfieldid">
+<h3><a name="getcjfieldid">ИДРеквизитаЖР / GetCJFieldID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДРеквизитаЖР(Журнал, Реквизит)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Журнал - тип: Число, Строка. Номер журнала расчетов или имя журнала расчетов.</li>
+<li>Реквизит - тип: Число, Строка. Номер реквизита журнала расчетов или имя реквизита журнала расчетов.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор реквизита журнала расчетов.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор реквизита журнала расчетов.</p>
+</blockquote>
+</div>
+<div class="section" id="getcjtablename">
+<h3><a name="getcjtablename">ИмяТаблицыЖР / GetCJTableName</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИмяТаблицыЖР(Журнал)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Журнал - тип: Число, Строка. Номер журнала расчетов или имя журнала расчетов.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Имя таблицы журнала расчетов в базе данных.</p>
+<p><strong>Описание:</strong> позволяет получить имя таблицы журнала расчетов в базе данных.</p>
+</blockquote>
+</div>
+<div class="section" id="getregid">
+<h3><a name="getregid">ИДРегистра / GetRegID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДРегистра(Регистр)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Регистр - тип: Число, Строка. Номер регистра или имя регистра.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор регистра.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор регистра.</p>
+</blockquote>
+</div>
+<div class="section" id="getregdimensionid">
+<h3><a name="getregdimensionid">ИДИзмеренияРегистра / GetRegDimensionID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДИзмеренияРегистра(Регистр, Измерение)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Регистр - тип: Число, Строка. Номер регистра или имя регистра.</li>
+<li>Измерение - тип: Число, Строка. Номер измерения регистра или имя измерения регистра.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор измерения регистра.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор измерения регистра.</p>
+</blockquote>
+</div>
+<div class="section" id="getregresourceid">
+<h3><a name="getregresourceid">ИДРесурсаРегистра / GetRegResourceID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДИзмеренияРегистра(Регистр, Ресурс)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Регистр - тип: Число, Строка. Номер регистра или имя регистра.</li>
+<li>Ресурс - тип: Число, Строка. Номер ресурса регистра или имя ресурса регистра.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор ресурса регистра.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор ресурса регистра.</p>
+</blockquote>
+</div>
+<div class="section" id="getregattributeid">
+<h3><a name="getregattributeid">ИДРеквизитаРегистра / GetRegAttributeID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДРеквизитаРегистра(Регистр, Реквизит)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Регистр - тип: Число, Строка. Номер регистра или имя регистра.</li>
+<li>Реквизит - тип: Число, Строка. Номер реквизита регистра или имя реквизита регистра.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор реквизита регистра.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор реквизита регистра.</p>
+</blockquote>
+</div>
+<div class="section" id="getregactstablename">
+<h3><a name="getregactstablename">ИмяТаблицыДвижений / GetRegActsTableName</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИмяТаблицыДвижений(Регистр)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Регистр - тип: Число, Строка. Номер регистра или имя регистра.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Имя таблицы движений регистра в базе данных.</p>
+<p><strong>Описание:</strong> позволяет получить имя таблицы движений регистра в базе данных.</p>
+</blockquote>
+</div>
+<div class="section" id="getregtotalstablename">
+<h3><a name="getregtotalstablename">ИмяТаблицыИтогов / GetRegTotalsTableName</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИмяТаблицыИтогов(Регистр)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Регистр - тип: Число, Строка. Номер регистра или имя регистра.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Имя таблицы итогов регистра в базе данных.</p>
+<p><strong>Описание:</strong> позволяет получить имя таблицы итогов регистра в базе данных.</p>
+</blockquote>
+</div>
+<div class="section" id="getmetadataid">
+<h3><a name="getmetadataid">ИДОбъекта / GetMetadataID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ИДОбъекта(ОбъектМетаданных)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ОбъектМетаданных - тип: Метаданные. Объект метаданных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Внутренний идентификатор объекта метаданных.</p>
+<p><strong>Описание:</strong> позволяет получить внутренний идентификатор объекта метаданных.</p>
+</blockquote>
+</div>
+<div class="section" id="inttobase">
+<h3><a name="inttobase">ЧислоВСтроку / IntToBase</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЧислоВСтроку(ПреобразуемоеЧисло, Основание)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ПреобразуемоеЧисло - тип: Число. Число для преобразования.</li>
+<li>Основание - тип: Число. Основание результата.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Результат преобразования.</p>
+<p><strong>Описание:</strong> преобразует целое число в строку с заданным основанием.</p>
+</blockquote>
+</div>
+<div class="section" id="basetoint">
+<h3><a name="basetoint">СтрокаВЧисло / BaseToInt</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> СтрокаВЧисло(ПреобразуемаяСтрока, Основание)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ПреобразуемаяСтрока - тип: Строка. Строка для преобразования.</li>
+<li>Основание - тип: Число. Основание результата.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Число. Результат преобразования.</p>
+<p><strong>Описание:</strong> преобразует строку с заданным основанием в целое число.</p>
+</blockquote>
+</div>
+<div class="section" id="valuetodbstring">
+<h3><a name="valuetodbstring">ЗначениеВСтрокуБД / ValueToDBString</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗначениеВСтрокуБД(ОбъектХранимыйВБД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ОбъектХранимыйВБД - тип: Перечисление, Справочник, Документ, Календарь, ВидРасчета, Счет, ВидСубконто,
+ПланСчетов. Объект для преобразования.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Результат преобразования.</p>
+<p><strong>Описание:</strong> преобразует ссылочный объект в строку (внутренний идентификатор данных) [ID(6)][Sign(3)] = 9 символов.</p>
+</blockquote>
+</div>
+<div class="section" id="valuetolongdbstring">
+<h3><a name="valuetolongdbstring">ЗначениеВДлиннуюСтрокуБД / ValueToLongDBString</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗначениеВДлиннуюСтрокуБД(ОбъектХранимыйВБД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ОбъектХранимыйВБД - тип: Перечисление, Справочник, Документ, Счет, ВидСубконто,
+ПланСчетов. Объект для преобразования.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Результат преобразования.</p>
+<p><strong>Описание:</strong> преобразует ссылочный объект в строку (внутренний идентификатор данных)
+[Kind(4)][ID(6)][Sign(3)] = 9 символов.</p>
+</blockquote>
+</div>
+<div class="section" id="id22">
+<h3><a name="id22">ЗначениеВДлиннуюСтрокуБД / ValueToLongDBString</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗначениеВДлиннуюСтрокуБД(ОбъектХранимыйВБД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ОбъектХранимыйВБД - тип: Перечисление, Справочник, Документ, Календарь, ВидРасчета, Счет.
+Объект для преобразования.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Результат преобразования.</p>
+<p><strong>Описание:</strong> преобразует ссылочный объект в строку (внутренний идентификатор данных)
+[Kind(4)][ID(6)][Sign(3)] = 13 символов.</p>
+</blockquote>
+</div>
+<div class="section" id="valuefromdbstring">
+<h3><a name="valuefromdbstring">ЗначениеИзСтрокиБД / ValueFromDBString</a></h3>
+<blockquote>
+<p><strong>Синтаксис 1:</strong> ЗначениеИзСтрокиБД(Тип, Вид, ВнутреннийИД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Тип - тип: Число. Номер типа. (10, 11, 12, 15, 16, 17);</li>
+<li>Вид - тип: Число. Внутренний идентификатор вида объекта;</li>
+<li>ВнутреннийИД - тип: Строка. Внутренний идентификатор объекта данных.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Перечисление, Справочник, Документ, Счет, ВидСубконто, ПланСчетов. Результат преобразования.</p>
+<p><strong>Синтаксис 2:</strong> ЗначениеИзСтрокиБД(ТипИВид, ВнутреннийИД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Тип - тип: Строка. Полный тип объекта. Напимер: <tt class="docutils literal"><span class="pre">Справочник.Контрагенты</span></tt>;</li>
+<li>ВнутреннийИД - тип: Строка. Внутренний идентификатор объекта данных. 9 символов.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Перечисление, Справочник, Документ, Счет, ВидСубконто, ПланСчетов. Результат преобразования.</p>
+<p><strong>Синтаксис 3:</strong> ЗначениеИзСтрокиБД(Тип, Вид, ВнутреннийИД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Тип - тип: Число. Номер типа. (10, 11, 12, 15, 16, 17);</li>
+<li>Вид - тип: Строка. Идентификатор метаданных. Напимер: <tt class="docutils literal"><span class="pre">Контрагенты</span></tt>;</li>
+<li>ВнутреннийИД - тип: Строка. Внутренний идентификатор объекта данных. 9 символов.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Перечисление, Справочник, Документ, Счет, ВидСубконто, ПланСчетов. Результат преобразования.</p>
+<p><strong>Синтаксис 4:</strong> ЗначениеИзСтрокиБД(Тип, Вид, ВнутреннийИД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Тип - тип: Строка. Тип объекта. Напимер: <tt class="docutils literal"><span class="pre">Справочник</span></tt>;</li>
+<li>Вид - тип: Строка. Идентификатор метаданных. Напимер: <tt class="docutils literal"><span class="pre">Контрагенты</span></tt>;</li>
+<li>ВнутреннийИД - тип: Строка. Внутренний идентификатор объекта данных. 9 символов.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Перечисление, Справочник, Документ, Счет, ВидСубконто, ПланСчетов. Результат преобразования.</p>
+<p><strong>Описание:</strong> преобразует внутренний идентификатор объекта данных в объект ссылочного типа. Дополнительно,
+этим методом можно воспользоваться для получения значения типа ЗаписьЖурналаРасчетов. Для этого
+в первом параметре необходимо передать строку &quot;ЗаписьЖурналаРасчетов&quot; или &quot;CalcJournalRecord&quot;,
+во втором параметре указать идентификатор журнала, в третьем параметре идентификатор записи в виде строки
+длиной 9 символов.</p>
+<p><strong>Внимание!:</strong> Следите за длиной передаваемой строки, т.к. метод в целях оптимизации не проверяет строку
+внутреннего представления на допустимую длину, равную 9 символам!</p>
+</blockquote>
+</div>
+<div class="section" id="valuefromlongdbstring">
+<h3><a name="valuefromlongdbstring">ЗначениеИзДлиннойСтрокиБД / ValueFromLongDBString</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗначениеИзДлиннойСтрокиБД(Тип, ВнутреннийИД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Тип - тип: Число, Строка. Номер типа или строковое представление типа;</li>
+<li>ВнутреннийИД - тип: Строка. Внутренний идентификатор объекта данных. 13 символов.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Перечисление, Справочник, Документ, Календарь, ВидРасчета, Счет. Результат преобразования.</p>
+<p><strong>Описание:</strong> преобразует внутренний идентификатор объекта данных в объект ссылочного типа.</p>
+<p><strong>Внимание!</strong> Следите за длиной передаваемой строки, т.к. метод в целях оптимизации не проверяет строку
+внутреннего представления на допустимую длину, равную 13 символам!</p>
+</blockquote>
+</div>
+<div class="section" id="getendofperiod">
+<h3><a name="getendofperiod">ПолучитьКонПериода / GetEndOfPeriod</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьКонПериода([ДатаИзПериода])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ДатаИзПериода - тип: Дата. Дата, от которой рассчитывается период. Необязателен, по умолчанию
+- дата точки актуальности.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Дата. Дата конца периода расчета остатков.</p>
+<p><strong>Описание:</strong> позволяет получить дата конца периода расчета остатков.</p>
+</blockquote>
+</div>
+<div class="section" id="getbegofperiod">
+<h3><a name="getbegofperiod">ПолучитьНачПериода / GetBegOfPeriod</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьНачПериода([ДатаИзПериода])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ДатаИзПериода - тип: Дата. Дата, от которой рассчитывается период. Необязателен, по умолчанию
+- дата точки актуальности.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Дата. Дата начала периода расчета остатков.</p>
+<p><strong>Описание:</strong> позволяет получить дата начала периода расчета остатков.</p>
+</blockquote>
+</div>
+<div class="section" id="getendofperiodforreg">
+<h3><a name="getendofperiodforreg">ПолучитьКонПериодаДляРег / GetEndOfPeriodForReg</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьКонПериодаДляРег(ОбРегистр, [ДатаИзПериода])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ОбРегистр - тип: Число, Строка. Номер или имя оборотного регистра.</li>
+<li>ДатаИзПериода - тип: Дата. Дата, от которой рассчитывается период. Необязателен, по умолчанию
+- дата точки актуальности.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Дата. Дата конца периода расчета оборотов.</p>
+<p><strong>Описание:</strong> позволяет получить дата конца периода расчета оборотов для оборотного регистра.</p>
+</blockquote>
+</div>
+<div class="section" id="getbegofperiodforreg">
+<h3><a name="getbegofperiodforreg">ПолучитьНачПериодаДляРег / GetBegOfPeriodForReg</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьНачПериодаДляРег(ОбРегистр, [ДатаИзПериода])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ОбРегистр - тип: Число, Строка. Номер или имя оборотного регистра.</li>
+<li>ДатаИзПериода - тип: Дата. Дата, от которой рассчитывается период. Необязателен, по умолчанию
+- дата точки актуальности.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Дата. Дата начала периода расчета оборотов.</p>
+<p><strong>Описание:</strong> позволяет получить дата начала периода расчета оборотов для оборотного регистра.</p>
+</blockquote>
+</div>
+<div class="section" id="getstringinvl">
+<h3><a name="getstringinvl">ПолучитьСтрокуИзСЗ / GetStringInVL</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьСтрокуИзСЗ(Список, [Режим])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Список - тип: СписокЗначений. Список элементов.</li>
+<li>Режим - тип: Число. Параметр имеет смысл только для значений элементов документов, справочников и перечислений,
+содержащихся в списке. 1 - преобразовывать элементы списка в короткое представление (9 символов),
+2 - преобразовывать в длинное представление (13 символов). Необязателен, по умолчанию 1.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Список идентификаторов объектов данных в виде строки.</p>
+<p><strong>Описание:</strong> позволяет получить строку, состоящую из строковых представлений значений 1С, преобразованных
+во внутреннее представление и разделенных запятыми. В основном используется в SQL выражениях типа:
+<tt class="docutils literal"><span class="pre">[</span> <span class="pre">NOT</span> <span class="pre">]</span> <span class="pre">IN</span> <span class="pre">(</span> <span class="pre">expression</span> <span class="pre">[</span> <span class="pre">,...n</span> <span class="pre">]</span> <span class="pre">)</span></tt>. Значения, содержащиеся в списке, обязаны быть одного типа, тип проверяется
+по первому значению в списке.</p>
+</blockquote>
+</div>
+<div class="section" id="getstrfromdate">
+<h3><a name="getstrfromdate">ПолучитьСтрИзДаты / GetStrFromDate</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьСтрИзДаты(ПреобразуемаяДата)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ПреобразуемаяДата - тип: Дата. Дата для преобразования.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Дата в виде строки.</p>
+<p><strong>Описание:</strong> позволяет получить строковое представление даты в каноническом виде: &quot;ГГГГММДД&quot;.</p>
+</blockquote>
+</div>
+<div class="section" id="getaddperiod">
+<h3><a name="getaddperiod">ПолучитьДобПериод / GetAddPeriod</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьДобПериод(РасчетнаяДата, Количество, [Регистр])</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>РасчетнаяДата - тип: Дата. Дата начала отсчета периода;</li>
+<li>Количество - тип: Число. Положительное значение - прибавляем период, отрицательное значение - отнимаем период;</li>
+<li>Регистр - тип: Число, Строка. Имя или номер регистра. Необязателен, указывается только в случае расчета
+периода для конкретного оборотного регистра.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Дата. Дата начала вычисленного периода.</p>
+<p><strong>Описание:</strong> Добавляет/вычитает период из указанной даты. Значение периода может быть получено как для регистров
+остатков в целом, так и для указанного оборотного регистра в отдельности.</p>
+</blockquote>
+</div>
+<div class="section" id="getdatetimeiddoc">
+<h3><a name="getdatetimeiddoc">ПолучитьДатуВремяИдДок / GetDateTimeIDDOC</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПолучитьДатуВремяИдДок(ПозицияДокумента)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ПозицияДокумента - тип: Строка. Позиция документа в формате 1С (GetPosition()/ПолучитьПозицию() объекта Document/Документ).</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Позиция во внутреннем формате базы данных.</p>
+<p><strong>Описание:</strong> позволяет преобразовать позицию документа из внешнего формата во внутренний (как оня хранится в БД).</p>
+<p><strong>Примечание:</strong> в таком формате позиция хранится только в SQL формате БД.</p>
+</blockquote>
+</div>
+<div class="section" id="processmetasql">
+<h3><a name="processmetasql">ОбрМетаСКЛ / ProcessMetaSQL</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ОбрМетаСКЛ(ТекстЗапроса)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ТекстЗапроса - тип: Строка. Текст SQL запроса с метаименами.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Текст запроса в котором метаимена преобразованы в код SQL.</p>
+<p><strong>Описание:</strong> метод осуществляет преобразование метаимен (cм. <a class="reference" href="#id26">Приложение А</a>) в SQL запросе в чистый SQL запрос.</p>
+</blockquote>
+</div>
+<div class="section" id="id23">
+<h3><a name="id23">УстановитьТекстовыйПараметр / SetTextParam</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьТекстовыйПараметр(ИмяПараметра, ЗначениеПараметра)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ИмяПараметра - тип: Строка. Имя текстового параметра.</li>
+<li>ЗначениеПараметра - тип: Любой. Значение текстового параметра.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает текстовый параметр. Необходимо вызывать до передачи текста запроса.</p>
+</blockquote>
+</div>
+<div class="section" id="valuetosuperlongdbstring">
+<h3><a name="valuetosuperlongdbstring">ЗначениеВСамуюДлиннуюСтрокуБД / ValueToSuperLongDBString</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ЗначениеВСамуюДлиннуюСтрокуБД(Значение)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Значение - тип: Любой. Значение любого типа, который может хранится в базе.</li>
+</ul>
+</blockquote>
+<p><strong>Возвращает:</strong> тип: Строка. Внутреннее представление длиной 23 символа.</p>
+<p><strong>Описание:</strong> преобразует ссылочный тип данных 1С, а также простые типы во внутреннее представление системы,
+строку для хранения в реквизите типа Неопределенный.</p>
+</blockquote>
+</div>
+<div class="section" id="attachmd">
+<h3><a name="attachmd">ПрисоединитьМД / AttachMD</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> ПрисоединитьМД(ПутьМД)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ПутьМД - тип: Строка. Путь к файлу 1cv7.md</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет загрузить метаданные из указанного файла.
+В дальнейшем получение всех внутренних идентификаторов объектов метаданных будет выполняться
+по подключенным метаданным.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="sqllock">
+<h1><a name="sqllock">SQLLock</a></h1>
+<p>Предназначен для получения новых идентификаторов, кодов справочников, номеров документов.</p>
+<p>Для получения нового идентификатора достаточно перед методом <a class="reference" href="#getnewid">НовыйИД / GetNewID</a> установить тип объекта.
+Получение новых кодов справочника и номеров документов идет по всем правилам, учитывая метаданные, и значение префикса.
+Если тип кода справочника или номера документа - число, методами <a class="reference" href="#getnewcode">НовыйКод / GetNewCode</a> и <a class="reference" href="#getnewnumber">НовыйНомер / GetNewNumber</a>
+возвращается строка, что и соответствует типу хранения в ИБ. В этом случае не учитывается значение установленного префикса.
+При первом вызове метода <a class="reference" href="#getnewid">НовыйИД / GetNewID</a> происходит обращение к информационной базе для определения последнего
+назначенного идентификатора, при этом устанавливается блокировка обновления на таблицу справочника или _1sjourn
+для документов, при следующих вызовах обращения к ИБ не происходит. Полученные идентификаторы допустимо использовать
+для образования новых объектов только внутри транзакции. Методы <a class="reference" href="#getnewcode">НовыйКод / GetNewCode</a> и <a class="reference" href="#getnewnumber">НовыйНомер / GetNewNumber</a>
+работают аналогично.</p>
+<p>В распределенных базах программист должен сам позаботиться о правилах миграции.</p>
+<p>Для блокирования используется таймаут. В случае истечения таймаута возбуждается исключение со строкой ошибки
+&quot;LockTimeoutExpired&quot;. Значение таймаута по умолчанию 5 секунд.</p>
+<p>Если после получения кодов или номеров установить какое-нибудь свойство,  от которого зависит номер или код,
+объект переходит в инициализированное состояние и следующий вызов <cite>GetNewCode</cite> или <cite>GetNewNumber</cite>
+повлечет обращение к базе данных.</p>
+<p>Пример создания элементов справочника:</p>
+<pre class="literal-block">
+Процедура ВыполнитьЗапрос(Запрос,Текст = &quot;&quot;)
+        Перем Рез;
+        Если ПустаяСтрока(Текст)=1 Тогда
+                Рез=Запрос.Выполнить();
+        Иначе
+                Рез=Запрос.Выполнить(Текст);
+        КонецЕсли;
+        Если Рез=0 Тогда
+                ВыполняемыйМодуль=СоздатьОбъект(&quot;ВыполняемыйМодуль&quot;);
+                ВыполняемыйМодуль.СформироватьОшибку(Запрос.ПолучитьОписаниеОшибки());
+        КонецЕсли;
+КонецПроцедуры
+
+Процедура ПодготовитьЗапрос(Запрос,Текст)
+        Если Запрос.Подготовить(Текст)=0 Тогда
+                ВыполняемыйМодуль=СоздатьОбъект(&quot;ВыполняемыйМодуль&quot;);
+                ВыполняемыйМодуль.СформироватьОшибку(Запрос.ПолучитьОписаниеОшибки());
+        КонецЕсли;
+КонецПроцедуры
+
+Процедура ДобавитьПараметр(Запрос,Тип,Длина,Точность)
+        Если Запрос.ДобПараметр(1,Тип,Длина,Точность)=0 Тогда
+                ВыполняемыйМодуль=СоздатьОбъект(&quot;ВыполняемыйМодуль&quot;);
+                ВыполняемыйМодуль.СформироватьОшибку(Запрос.ПолучитьОписаниеОшибки());
+        КонецЕсли;
+КонецПроцедуры
+
+Процедура СозданиеЭлементовПоНовому()
+        СпрТовары=СоздатьОбъект(&quot;Справочник.Товары&quot;);
+        Запрос=СоздатьОбъект(&quot;ODBCRecordset&quot;);
+        БлокировкаТовары=СоздатьОбъект(&quot;SQLLock&quot;);
+        БлокировкаТовары.УстановитьТипОбъекта(&quot;Справочник&quot;,&quot;Товары&quot;);
+        БлокировкаТовары.УстановитьТаймаут(10);
+
+        ФлагУдачи=0;
+        Пока ФлагУдачи=0 Цикл
+                Попытка
+                        ВыполнитьЗапрос(Запрос,&quot;begin tran&quot;);
+                        ПодготовитьЗапрос(Запрос,&quot;insert $Справочник.Товары values(?ID, '     0   ', ?Код, ?Наименование, 2, 0, 0, '')&quot;);
+                        ДобавитьПараметр(Запрос, 14, 9, 0);
+                        ДобавитьПараметр(Запрос, 14, 6, 0);
+                        ДобавитьПараметр(Запрос, 14, 100, 0);
+                        Для Тек=1 По 10 Цикл
+                                Запрос.УстПараметр(&quot;ID&quot;,БлокировкаТовары.НовыйИД());
+                                Запрос.УстПараметр(&quot;Код&quot;,БлокировкаТовары.НовыйКод());
+                                Запрос.УстПараметр(&quot;Наименование&quot;,&quot;Сгенерированный в SQL транзакции &quot;+Тек);
+                                ВыполнитьЗапрос(Запрос);
+                        КонецЦикла;
+                        ВыполнитьЗапрос(Запрос,&quot;if &#64;&#64;trancount &gt; 0 commit tran&quot;);
+                        ФлагУдачи=1;
+                Исключение
+                        Запрос.Выполнить(&quot;if &#64;&#64;trancount &gt; 0 rollback tran&quot;);
+                        Если ОписаниеОшибки()=&quot;LockTimeoutExpired&quot; Тогда
+                                Если Вопрос(&quot;Неудалось заблокировать справочник Товары.
+                                        |Повторить попытку?&quot;,&quot;ОК+Отмена&quot;)=&quot;Отмена&quot; Тогда
+                                        ФлагУдачи=2;
+                                КонецЕсли;
+                        Иначе
+                                ВызватьИсключение;
+                        КонецЕсли;
+                КонецПопытки;
+        КонецЦикла;
+КонецПроцедуры
+</pre>
+<div class="section" id="id24">
+<h2><a name="id24">Методы</a></h2>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<div class="section" id="setobjecttype">
+<h3><a name="setobjecttype">УстановитьТипОбъекта / SetObjectType</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьТипОбъекта(Тип, Вид)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Тип - тип: Строка. Тип объекта, допустимые типы: &quot;Справочник&quot;, &quot;Документ&quot;;</li>
+<li>Вид - тип: Строка. Вид объекта.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает тип объекта для получения идентификатора, кода справочника, номера документа.</p>
+</blockquote>
+</div>
+<div class="section" id="setparent">
+<h3><a name="setparent">УстановитьРодителя / SetParent</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьРодителя(Родитель)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Родитель - тип: Справочник. Группа справочника.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает родителя для получения нового кода справочника.</p>
+</blockquote>
+</div>
+<div class="section" id="setowner">
+<h3><a name="setowner">УстановитьВладельца / SetOwner</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьВладельца(Владелец)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Владелец - тип: Справочник. Элемент справочника-владельца.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает владельца для получения нового кода справочника.</p>
+</blockquote>
+</div>
+<div class="section" id="setdatenum">
+<h3><a name="setdatenum">УстановитьДатуНомера / SetDateNum</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьДатуНомера(ДатаПериода)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ДатаПериода - тип: Дата. Дата из периода номеров документа.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает дату для определения периода номеров.</p>
+</blockquote>
+</div>
+<div class="section" id="setprefix">
+<h3><a name="setprefix">УстановитьПрефикс / SetPrefix</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьПрефикс(Префикс)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Префикс - тип: Дата. строка префикс.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает префикс для получения новых кодов справочника или номеров документа.
+Имеет смысл только если код или номер текстовый.</p>
+</blockquote>
+</div>
+<div class="section" id="getnewid">
+<h3><a name="getnewid">НовыйИД / GetNewID</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> НовыйИД()</p>
+<p><strong>Возвращает:</strong> тип: Строка. Новый идентификатор (строка 9 символов).</p>
+<p><strong>Описание:</strong> позволяет получить новый идентификатор объекта.</p>
+</blockquote>
+</div>
+<div class="section" id="getnewcode">
+<h3><a name="getnewcode">НовыйКод / GetNewCode</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> НовыйКод()</p>
+<p><strong>Возвращает:</strong> тип: Число, Строка. Новый код справочника.</p>
+<p><strong>Описание:</strong> позволяет получить новый код справочника. В зависимости от настроек справочника в метаданных,
+может быть учтен владелец, родитель.</p>
+</blockquote>
+</div>
+<div class="section" id="getnewnumber">
+<h3><a name="getnewnumber">НовыйНомер / GetNewNumber</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> НовыйКод()</p>
+<p><strong>Возвращает:</strong> тип: Число, Строка. Новый номер документа, следующий по порядку.</p>
+<p><strong>Описание:</strong> позволяет получить новый номер документа. В зависимости от настроек документа может быть учтена
+дата периода номеров.</p>
+</blockquote>
+</div>
+<div class="section" id="settimeout">
+<h3><a name="settimeout">УстановитьТаймаут / SetTimeout</a></h3>
+<blockquote>
+<p><strong>Синтаксис:</strong> УстановитьТаймаут(Таймаут)</p>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>Таймаут - тип: Число. Таймаут в секундах.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> устанавливает таймаут для установки блокировки.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="id25">
+<h1><a name="id25">Приложение А. Спецификация метаимен и параметров в запросах</a></h1>
+<span class="target" id="id26"></span><chminfo><alinks>_1cpp_SQLQuery_Metanames</alinks></chminfo>
+<div class="section" id="id27">
+<h2><a name="id27">Описание условных обозначений</a></h2>
+<p>Идентификаторы 1С, как они заданы в конфигураторе:</p>
+<blockquote>
+<ul class="simple">
+<li><cite>Константа</cite> - идентификатор константы;</li>
+<li><cite>Справочник</cite> - идентификатор справочника;</li>
+<li><cite>Документ</cite> - идентификатор документа;</li>
+<li><cite>ВидПеречисления</cite> - идентификатор вида перечисления;</li>
+<li><cite>Регистр</cite> - идентификатор регистра;</li>
+<li><cite>ЖурналДокументов</cite> - идентификатор журнала документов;</li>
+<li><cite>Последовательность</cite> - идентификатор последовательности документов;</li>
+<li><cite>ЖурналРасчетов</cite> - идентификатор журнала расчетов;</li>
+<li><cite>ГрафаОтбора</cite> - идентификатор графы отбора;</li>
+<li><cite>Реквизит</cite> - идентификатор реквизита справочника, регистра или журнала расчетов;</li>
+<li><cite>РеквизитШапки</cite> - идентификатор реквизита шапки документа;</li>
+<li><cite>РеквизитТабличнойЧасти</cite> - идентификатор реквизита табличной части документа;</li>
+<li><cite>Измерение</cite> - идентификатор измерения регистра;</li>
+<li><cite>Ресурс</cite> - идентификатор ресурса регистра;</li>
+<li><cite>ПериодическийРеквизит</cite> - идентификатор периодического реквизита;</li>
+<li><cite>ОбщийРеквизит</cite> - идентификатор общего реквизита;</li>
+<li><cite>ВидРасчета</cite> - идентификатор вида расчета;</li>
+<li><cite>ГрафаОтбораЖР</cite> - идентификатор графы отбора журнала расчетов;</li>
+<li><cite>Календарь</cite> - идентификатор календаря;</li>
+</ul>
+</blockquote>
+<p>Специальные обозначения:</p>
+<blockquote>
+<ul class="simple">
+<li><cite>ХХХХ</cite> - внутренний идентификатор объекта метаданных (десятичное представление);</li>
+<li><cite>ZZZZ</cite> - внутренний идентификатор объекта метаданных (тридцатишестиричное представление);</li>
+<li><cite>Alias</cite> - псевдоним таблицы в SQL запросе;</li>
+<li><cite>ИмяПараметра</cite> - имя параметра.</li>
+</ul>
+</blockquote>
+<p>Для обозначения начала метаимени в тексте запроса используется символ &quot;$&quot;.</p>
+<p>Для обозначения начала имени текстового параметра в тексте запроса используется символ &quot;:&quot;.</p>
+<p>Для обозначения начала имени SQL параметра в тексте запроса используется символ &quot;?&quot;.</p>
+<p>Метаимена транслируются только в теле запроса, т.е. не транслируются в комментариях, текстовых литералах.
+Метаимена также не транслируются в квадратных скобках [ … ] (расширенных идентификаторах).</p>
+<p><strong>Замечание!</strong> На текст запроса накладывается дополнительное ограничение: псевдонимы таблиц,
+имена которых транслируются из метаимен, не должны повторяться, иначе трансляция метаимени полей через псевдоним
+таблицы может быть неверной.</p>
+</div>
+<div class="section" id="id28">
+<h2><a name="id28">Типизация колонок типами 1С в тексте запроса.</a></h2>
+<p>Для получения в наборе данных агрегатных типов 1С, возможна типизация колонок в тексте запроса. Для этого необходимо
+использовать специальный типизирующий псевдоним (алиас) колонки.</p>
+<p>Формат типизирующего псевдонима:</p>
+<pre class="literal-block">
+[&lt;ИмяПоля&gt; $&lt;Тип1С&gt;]
+</pre>
+<p><tt class="docutils literal"><span class="pre">ИмяПоля</span></tt> - имя, которое будет доступно для обращения к полю методами этого класса.
+<tt class="docutils literal"><span class="pre">Тип1С</span></tt> - строка, представляющая тип 1С, который будет назначен полю, в формате применяющемся в методе <a class="reference" href="#id17">УстТипыКолонок1С</a>.</p>
+<p>Спецификация типизирующих имен</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Типизирующее имя</th>
+<th class="head">Допустимые SQL типы в наборе данных</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Строка</td>
+<td>Любой</td>
+</tr>
+<tr><td>Дата</td>
+<td>Любой</td>
+</tr>
+<tr><td>Число</td>
+<td>Любой</td>
+</tr>
+<tr><td>{Справочник|Reference}</td>
+<td>char(13)</td>
+</tr>
+<tr><td>{Справочник|Reference}.&lt;Справочник&gt;</td>
+<td>char(9)</td>
+</tr>
+<tr><td>{Документ|Document}</td>
+<td><ul class="first last simple">
+<li>Char(13);</li>
+<li>Char(9) - Идентификатор объекта, кроме того, в наборе
+данных должна находиться колонка с именем составленным из
+имени этой колонки и суффикса {_вид|_kind} (чувствительно
+к регистру), в которой должны содержаться идентификаторы
+видов документов. Тип колонки SQL: int, DBF: char(4).</li>
+</ul>
+</td>
+</tr>
+<tr><td>{Документ|Document}.&lt;Документ&gt;</td>
+<td>char(9)</td>
+</tr>
+<tr><td>{Перечисление|Enum}</td>
+<td>char(13)</td>
+</tr>
+<tr><td>{Перечисление|Enum}.&lt;ВидПеречисления&gt;</td>
+<td>char(9)</td>
+</tr>
+<tr><td>{Неопределенный|Undefine}</td>
+<td>char(23)</td>
+</tr>
+<tr><td>{ВидРасчета|CalculationKind}</td>
+<td><ul class="first last simple">
+<li>int - идентификатор в журнале расчетов SQL формат;</li>
+<li>char(4) - идентификатор в журнале расчетов DBF формат;</li>
+<li>char(13) - в остальных таблицах, где вид расчета содержится
+как реквизит.</li>
+</ul>
+</td>
+</tr>
+<tr><td>{Календарь|Calendar}</td>
+<td>char(13)</td>
+</tr>
+<tr><td>{Субконто|Subconto}</td>
+<td>char(13) - идентификатор значения субконто (с видом или без
+вида). Типизируется в значение субконто, кроме того в наборе
+данных должна находиться колонка с именем составленным из
+имени этой колонки и суффикса {_вид|_kind} (чувствительно к
+регистру), в которой должны содержаться идентификаторы видов
+субконто. Тип колонки SQL: int, DBF: char(4). Типизация
+субконто простых типов (число, строка, дата) не поддерживается.</td>
+</tr>
+<tr><td>{ВидДокумента|KindDocument}</td>
+<td><ul class="first last simple">
+<li>int - вид документа SQL формат</li>
+<li>char(4) - вид документа SQL формат (база 36)</li>
+</ul>
+</td>
+</tr>
+<tr><td>{ВидДокументаПредставление|KindDocumentPresent}</td>
+<td><ul class="first last simple">
+<li>int - вид документа SQL формат</li>
+<li>char(4) - вид документа SQL формат (база 36)</li>
+</ul>
+</td>
+</tr>
+<tr><td>{ВидСправочника|KindReference}</td>
+<td><ul class="first last simple">
+<li>int - вид справочника SQL формат</li>
+<li>char(4) - вид справочника SQL формат (база 36)</li>
+</ul>
+</td>
+</tr>
+<tr><td>{ВидСправочникаПредставление|KindReferencePresent}</td>
+<td><ul class="first last simple">
+<li>int - вид справочника SQL формат</li>
+<li>char(4) - вид справочника SQL формат (база 36)</li>
+</ul>
+</td>
+</tr>
+<tr><td>{Класс|Class}.&lt;ТипКОП&gt;</td>
+<td>Любой SQL тип. Создается объект типа ТипКОП. Значение поля
+будет преобразовано в значение которое может хранить 1С,
+и передано в процедуру КОП _SQLCreate().</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dbf">
+<h2><a name="dbf">Поддержка пользователей DBF формата ИБ.</a></h2>
+<p>Для пользователей DBF формата ИБ, рекомендуется использовать следующую строку подключения:</p>
+<pre class="literal-block">
+DRIVER = {Microsoft Visual FoxPro Driver};
+Deleted = Yes; Null = Yes; Collate = RUSSIAN; Exclusive = No; SourceType = DBF;
+SourceDB = &lt;КаталогИБ&gt;
+</pre>
+<p>В запросах допустимы комментарии типа -- и /* */, при DBF формате ИБ они будут вырезаны парсером перед передачей текста на драйвер.
+В запросах допустима типизация колонок набора данных по общим правилам.</p>
+</div>
+<div class="section" id="id29">
+<h2><a name="id29">Спецификация метаимен</a></h2>
+<chminfo split="0" splitchild="1">
+</chminfo>
+<div class="section" id="id30">
+<h3><a name="id30">Получение имен таблиц</a></h3>
+<blockquote>
+<ul>
+<li><p class="first">таблица справочника:</p>
+<pre class="literal-block">
+${Справочник|Reference}.&lt;Справочник&gt; = scXXXX
+</pre>
+</li>
+<li><p class="first">таблица шапок документов:</p>
+<pre class="literal-block">
+${Документ|Document}.&lt;Документ&gt; = dhXXXX
+</pre>
+</li>
+<li><p class="first">таблица строк документов:</p>
+<pre class="literal-block">
+${ДокументСтроки|DocumentStrings}.&lt;Документ&gt; = dtXXXX
+</pre>
+</li>
+<li><p class="first">таблица движений регистра:</p>
+<pre class="literal-block">
+${Регистр|Register}.&lt;Регистр&gt; = raXXXX
+</pre>
+</li>
+<li><p class="first">таблица итогов (остатков/оборотов) регистра:</p>
+<pre class="literal-block">
+${РегистрИтоги|RegisterTotals}.&lt;Регистр&gt; = rgXXXX
+</pre>
+</li>
+<li><p class="first">таблица журнала расчетов:</p>
+<pre class="literal-block">
+${ЖурналРасчетов|CalcJournal}.&lt;ЖурналРасчетов&gt; = cjXXXX
+</pre>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="id31">
+<h3><a name="id31">Получение имен полей</a></h3>
+<blockquote>
+<ul>
+<li><p class="first">имя поля таблицы справочника:</p>
+<pre class="literal-block">
+${Справочник|Reference}.&lt;Справочник&gt;.&lt;Реквизит&gt; = spХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля таблицы шапок документов:</p>
+<pre class="literal-block">
+${Документ|Document}.&lt;Документ&gt;.&lt;РеквизитШапки&gt; = spХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля таблицы строк документов:</p>
+<pre class="literal-block">
+${ДокументСтроки|DocumentStrings}.&lt;Документ&gt;.&lt;РеквизитТабличнойЧасти&gt; = spХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля таблицы движений регистра:</p>
+<pre class="literal-block">
+${Регистр|Register}.&lt;Регистр&gt;.&lt;Измерение | Ресурс | Реквизит&gt; = spХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля таблицы итогов (остатков/оборотов) регистра:</p>
+<pre class="literal-block">
+${РегистрИтоги|RegisterTotals}.&lt;Регистр&gt;.&lt;Измерение | Ресурс&gt; = spХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля по псевдониму таблицы:</p>
+<pre class="literal-block">
+$&lt;Alias&gt;.&lt;Реквизит | РеквизитШапки | РеквизитТабличнойЧасти | Измерение | Ресурс&gt; = &lt;Alias&gt;.spХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля общего реквизита:</p>
+<pre class="literal-block">
+${ОбщийРеквизит|CommonProperty}.&lt;ОбщийРеквизит&gt; = spХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля флага движений по регистру:</p>
+<pre class="literal-block">
+${ФлагРегистра|RegisterFlag}.&lt;Регистр&gt; = rfХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля последовательности:</p>
+<pre class="literal-block">
+${Последовательность|Sequence}.&lt;Последовательность&gt; = dsХХХХ
+</pre>
+</li>
+<li><p class="first">имя поля реквизита журнала расчетов:</p>
+<pre class="literal-block">
+${ЖурналРасчетов|CalcJournal}.&lt;ЖурналРасчетов&gt;.&lt;Реквизит&gt; = spXXXX
+</pre>
+</li>
+<li><p class="first">имя поля графы отбора журнала расчетов:</p>
+<pre class="literal-block">
+${ГрафаЖурналаРасчетов|ColumnCalcJournal}.&lt;ЖурналРасчетов&gt;.&lt;ГрафаОтбораЖР&gt; = ffXXXX
+</pre>
+</li>
+<li><p class="first">имя поля реквизита проводки:</p>
+<pre class="literal-block">
+${Проводка|Entry}.&lt;Реквизит&gt; = spXXXX
+</pre>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="id32">
+<h3><a name="id32">Получение внутренних идентификаторов</a></h3>
+<blockquote>
+<ul>
+<li><p class="first">идентификатор константы:</p>
+<pre class="literal-block">
+${Константа|Constant}.&lt;Константа&gt; = XXXX
+</pre>
+</li>
+<li><p class="first">идентификатор вида справочника:</p>
+<pre class="literal-block">
+${ВидСправочника|ReferenceKind}.&lt;Справочник&gt; = ХХХХ
+${ВидСправочника36|ReferenceKind36}.&lt;Справочник&gt; = 'ZZZZ'
+</pre>
+</li>
+<li><p class="first">идентификатор вида документа, зависит от формата ИБ: SQL - литерал типа int; DBF - литерал типа char(4):</p>
+<pre class="literal-block">
+${ВидДокумента|DocumentKind}.&lt;Документ&gt; = {XXXX | 'ZZZZ'}
+${ВидДокумента36|DocumentKind36}.&lt;Документ&gt; = 'ZZZZ'
+</pre>
+</li>
+<li><p class="first">идентификатор вида перечисления char(4):</p>
+<pre class="literal-block">
+${ВидПеречисления36|EnumKind36}.&lt;ВидПеречисления&gt; = 'ZZZZ'
+</pre>
+</li>
+<li><p class="first">идентификатор периодического реквизита:</p>
+<pre class="literal-block">
+${ИсторияРеквизита|PropertyHistory}.&lt;Справочник&gt;.&lt;ПериодическийРеквизит&gt; = ХХХХ
+</pre>
+</li>
+<li><p class="first">идентификатор журнала документов:</p>
+<pre class="literal-block">
+${ЖурналДокументов|DocsJournal}.&lt;ЖурналДокументов&gt; = ХХХХ
+</pre>
+</li>
+<li><p class="first">идентификатор графы отбора:</p>
+<pre class="literal-block">
+${ГрафаОтбора|SelectionColumn}.&lt;ГрафыОтбора&gt; = ХХХХ
+</pre>
+</li>
+<li><p class="first">идентификатор календаря:</p>
+<pre class="literal-block">
+${Календарь|Calendar}.&lt;Календарь&gt; = ХХХХ
+</pre>
+</li>
+<li><p class="first">идентификатор праздников:</p>
+<pre class="literal-block">
+${Праздники|Holidays} = ХХХХ
+</pre>
+</li>
+<li><p class="first">идентификатор журнала расчетов:</p>
+<pre class="literal-block">
+${ВидЖурналаРасчетов|CalcJournalKind}.&lt;ЖурналРасчетов&gt; = XXXX
+</pre>
+</li>
+<li><p class="first">идентификатор вида расчета, зависит от формата ИБ: SQL - литерал типа int; DBF - литерал типа char(4):</p>
+<pre class="literal-block">
+${ВидРасчета|Algorithm}.&lt;ВидРасчета&gt; = {XXXX | 'ZZZZ'}
+</pre>
+</li>
+<li><p class="first">идентификаторы пустых значений:</p>
+<pre class="literal-block">
+${ПустойИД|EmptyID} = '     0   '
+${ПустойИД13|EmptyID13} = '   0     0   '
+</pre>
+</li>
+<li><p class="first">идентификатор значения перечисления:</p>
+<pre class="literal-block">
+${Перечисление|Enumeration}.&lt;Перечисление&gt;.&lt;ЗначениеПеречисления&gt; : char(9)
+${Перечисление23|Enumeration23}.&lt;Перечисление&gt;.&lt;ЗначениеПеречисления&gt; : char(23)
+</pre>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="id33">
+<h3><a name="id33">Описание виртуальных таблиц</a></h3>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p>Виртуальные таблицы поддерживаются только для SQL формата ИБ.</p>
+<p><strong>Замечание!</strong> Порядок следования записей во всех виртуальных таблицах никак не определяется настоящей спецификацией,
+настоятельно рекомендуется не использовать существующий порядок записей, а всегда в запросе использовать предложение
+для упорядочивания (order by).</p>
+<div class="section" id="id34">
+<h4><a name="id34">РегистрОстатки</a></h4>
+<blockquote>
+<p><strong>Виртуальная таблица остатков</strong></p>
+<p><strong>Синтаксис:</strong></p>
+<pre class="literal-block">
+$РегистрОстатки.&lt;ИмяРегистра&gt;([&lt;ГраницаРасчета&gt;][,
+        &lt;Соединение&gt;][,
+        &lt;Условие&gt;][,
+        &lt;Измерение&gt;][,&lt;Ресурс&gt;]
+) [as &lt;Алиас&gt;]
+</pre>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li><strong>ГраницаРасчета</strong> - тип: значение. Строка, представляющая период или момент времени во внутреннем формате 1С.
+Если передан период времени (дата или позиция документа), остатки рассчитываются на
+начало периода. Для того чтобы рассчитать остатки на конец периода, необходимо передавать момент времени.
+Для этого можно воспользоваться вторым модификатором типа Дата, что соответствует моменту времени конца
+этой даты. Для формирования моментов времени также можно воспользоваться позицией документа: процедурой
+<em>СформироватьПозициюДокумента()</em> синтаксис 1, указывая не нулевой <em>ФлагСмещения</em>; или
+<em>СформироватьПозициюДокумента()</em> синтаксис 2. Если граница расчета больше ТА, то будут получены остатки по ТА;
+По умолчанию остатки на точку актуальности.</li>
+<li><strong>Соединение</strong> - тип: конструкция типа join. На языке SQL можно описать дополнительные соединения с таблицами,
+которые могут быть необходимы для формирования условий в следующем параметре. Можно оперировать полями
+измерений регистра, обращаясь к ним по идентификатору 1С. По умолчанию отсутствует.</li>
+<li><strong>Условие</strong> - тип: конструкция типа where. На языке SQL можно описать условие для ограничения выборки.
+Можно оперировать полями измерений регистра, обращаясь к ним по идентификатору 1С, а также полями таблиц,
+соединения с которыми были описаны в предыдущем параметре. По умолчанию отсутствует.</li>
+<li><strong>Измерение</strong> - тип: конструкция типа список идентификаторов. Указывается список измерений, по которым нужно
+рассчитать остатки. По умолчанию по всем.</li>
+<li><strong>Ресурс</strong> - тип: конструкция типа список идентификаторов. Указывается список ресурсов, которые нужно рассчитать.
+По умолчанию по всем.</li>
+</ul>
+</blockquote>
+<p><strong>Поля:</strong></p>
+<blockquote>
+<ul class="simple">
+<li><strong>&lt;ИмяИзмерения&gt;</strong> - имена измерений, указанных к расчету;</li>
+<li><strong>&lt;ИмяРесурса&gt;Остаток</strong> - имена ресурсов с добавлением слова Остаток, указанных к расчету.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> Используется для получения остатков. Определена только для регистров остатков.</p>
+<p><strong>Оптимизация расчета:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>при получении остатков по ТА, используется только таблица итогов;</li>
+<li>при получении остатков по дату конца периода сохранения остатков - используется только таблица итогов;</li>
+<li>при получении остатков на дату начала периода сохранения остатков - используется только таблица итогов;</li>
+<li>при получении остатков на дату начала или конца периода сохранения остатков, и расчет идет по всем измерениям -
+используется только таблица итогов без группирования (без предложения group by в запросе);</li>
+<li>при получении остатков на или по дату, близкую к концу текущего периода - сохранения остатков, используются остатки
+на конец текущего периода и обороты от границы расчета до конца текущего периода (обратный расчет);</li>
+<li>при получении остатков на или по дату в актуальном периоде сохранения остатков, близкую к дате ТА, используются
+актуальные остатки и обороты от границы расчета по ТА (обратный расчет).</li>
+</ul>
+</blockquote>
+<p><strong>Пример:</strong></p>
+<blockquote>
+<div class="line-block">
+<div class="line">Имеем регистр:</div>
+<div class="line-block">
+<div class="line">Имя: Взаиморасчеты</div>
+<div class="line">Измерения: Фирма, Контрагент, Договор, РасчДокумент</div>
+<div class="line">Ресурсы: Сумма, НДС, НП, Себестоимость</div>
+</div>
+</div>
+</blockquote>
+<p>Задача: рассчитать остатки по измерениям Контрагент, РасчДокумент в ресурсе Сумма, при условии, что вид контрагента
+- Поставщик, и только по фирмам, которые платят НДС.</p>
+<p>Текст запроса для решения:</p>
+<pre class="literal-block">
+select
+        ОстаткиПоРасчетам.Контрагент [Контрагент $Справочник.Контрагенты],
+        ОстаткиПоРасчетам.РасчДокумент [РасчДокумент $Документ],
+        ОстаткиПоРасчетам.СуммаОстаток
+from $РегистрОстатки.Взаиморасчеты(:ДатаРасчета,
+        inner join $Справочник.Контрагенты as СпрКонтрагенты (nolock) on СпрКонтрагенты.id = Контрагент
+        inner join $Справочник.Фирмы as СпрФирмы (nolock) on СпрФирмы.id = Фирма,
+        $СпрКонтрагенты.ВидКонтрагента = :ВидПоставщик and $СпрФирмы.ВидФирмы = :ВидПлатитНДС,
+        (Контрагент, РасчДокумент), Сумма
+) as ОстаткиПоРасчетам
+</pre>
+</blockquote>
+</div>
+<div class="section" id="id35">
+<h4><a name="id35">РегистрОбороты</a></h4>
+<blockquote>
+<p><strong>Виртуальная таблица оборотов</strong></p>
+<p><strong>Синтаксис:</strong></p>
+<pre class="literal-block">
+$РегистрОбороты.&lt;ИмяРегистра&gt;([&lt;НачалоПериода&gt;][, &lt;КонецПериода&gt;][,&lt;Периодичность&gt;][,
+        &lt;Соединение&gt;][,
+        &lt;Условие&gt;][,
+        &lt;Измерение&gt;][,&lt;Ресурс&gt;]
+) [as &lt;Алиас&gt;]
+</pre>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul>
+<li><p class="first"><strong>НачалоПериода</strong> - тип: значение. Строка, представляющая период или момент времени во внутреннем формате 1С.
+По умолчанию начало ведения учета.</p>
+</li>
+<li><p class="first"><strong>КонецПериода</strong> - тип: значение. Строка, представляющая период или момент времени во внутреннем формате 1С.
+Если передан период времени (дата, позиция документа), он в расчет не включается. Для того, чтобы он включался
+в расчет, нужно воспользоваться модификатором, или предварительно сформировать момент времени
+(См. <em>СформироватьПозициюДокумента()</em>). По умолчанию точка актуальности.</p>
+</li>
+<li><p class="first"><strong>Периодичность</strong> - тип: конструкция типа ключевое слово. Указывается дополнительный разворот итогов по периодичности.
+Задается один из следующих вариантов:</p>
+<blockquote>
+<ul class="simple">
+<li>Период | Period - только за период (не разворачивать);</li>
+<li>Документ | Document - разворачивать по документу;</li>
+<li>День | Day - разворачивать по дням;</li>
+<li>Неделя | Week - разворачивать по неделям;</li>
+<li>Декада | TenDays - разворачивать по декадам;</li>
+<li>Месяц | Month - разворачивать по месяцам;</li>
+<li>Квартал | Quarter - разворачивать по кварталам;</li>
+<li>Год | Year - разворачивать по годам.</li>
+</ul>
+</blockquote>
+<p>По умолчанию Период.</p>
+</li>
+<li><p class="first"><strong>Соединение</strong> - тип: конструкция типа join. На языке SQL можно описать дополнительные соединения с таблицами,
+которые могут быть необходимы для формирования условий в следующем параметре. Можно оперировать полями измерений
+и реквизитов регистра, обращаясь к ним по идентификатору 1С. По умолчанию отсутствует.</p>
+</li>
+<li><p class="first"><strong>Условие</strong> - тип: конструкция типа where. На языке SQL можно описать условие для ограничения выборки.
+Можно оперировать полями измерений  и реквизитов регистра, обращаясь к ним по идентификатору 1С, а также полями
+таблиц, соединения с которыми были описаны в предыдущем параметре. По умолчанию отсутствует.</p>
+</li>
+<li><p class="first"><strong>Измерение</strong> - тип: конструкция типа список идентификаторов. Указывается список измерений,
+по которым нужно рассчитать обороты. По умолчанию по всем.</p>
+</li>
+<li><p class="first"><strong>Ресурс</strong> - тип: конструкция типа список идентификаторов. Указывается список ресурсов, которые нужно рассчитать.
+По умолчанию по всем.</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>Поля:</strong></p>
+<blockquote>
+<ul class="simple">
+<li><strong>&lt;ИмяИзмерения&gt;</strong> - имена измерений указанных к расчету; тип определяется типом измерения регистра;</li>
+<li><strong>&lt;ИмяРесурса&gt;Приход</strong> - имена ресурсов с добавлением слова Приход, указанных к расчету; тип определяется
+типом ресурса регистра; существует только для регистра остатков;</li>
+<li><strong>&lt;ИмяРесурса&gt;Расход</strong> - имена ресурсов с добавлением слова Расход, указанных к расчету; тип определяется
+типом ресурса регистра; существует только для регистра остатков;</li>
+<li><strong>&lt;ИмяРесурса&gt;Оборот</strong> - имена ресурсов с добавлением слова Оборот, указанных к расчету; тип определяется
+типом ресурса регистра; существует только для регистра оборотов;</li>
+<li><strong>Период</strong> - тип datetime; дата начала периода, по которому происходит разворот оборотов; существует только
+в том случае, если указана периодичность День, Неделя, Декада, Месяц, Квартал, Год;</li>
+<li><strong>ПозицияДокумента</strong> - тип char(23); строка в формате date_time_iddoc (8+6+9); существует только в том случае,
+если указана периодичность Документ;</li>
+<li><strong>ВидДокумента</strong> - тип int; идентификатор вида документа; существует только в том случае, если указана
+периодичность Документ.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> Используется для получения оборотов.</p>
+<p><strong>Оптимизация расчета:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>существует только для оборотного регистра;</li>
+<li>при получении оборотов за период, в который входят один или несколько периодов сохранения оборотов -
+используется таблица итогов;</li>
+<li>если период получения оборотов состоит только из периодов сохранения оборотов - используется только таблица
+итогов;</li>
+<li>если заданная периодичность расчета позволяет использовать таблицу итоговм - она используется;</li>
+<li>если в соединении или условии были использованы реквизиты регистра - оптимизация невозможна.</li>
+</ul>
+</blockquote>
+</blockquote>
+</div>
+<div class="section" id="id36">
+<h4><a name="id36">РегистрОстаткиОбороты</a></h4>
+<blockquote>
+<p><strong>Виртуальная таблица остатков и оборотов</strong></p>
+<p><strong>Синтаксис:</strong></p>
+<pre class="literal-block">
+$РегистрОстаткиОбороты.&lt;ИмяРегистра&gt;([&lt;НачалоПериода&gt;][, &lt;КонецПериода&gt;][, &lt;Периодичность&gt;][,&lt;МетодДополнения&gt;][,
+        &lt;Соединение&gt;][,
+        &lt;Условие&gt;][,
+        &lt;Измерение&gt;][,&lt;Ресурс&gt;]
+) [as &lt;Алиас&gt;]
+</pre>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul>
+<li><p class="first"><strong>НачалоПериода</strong> - тип: значение. Строка, представляющая период или момент времени во внутреннем формате 1С.
+По умолчанию начало ведения учета.</p>
+</li>
+<li><p class="first"><strong>КонецПериода</strong> - тип: значение. Строка, представляющая период или момент времени во внутреннем формате 1С.
+Если передан период времени (дата, позиция документа), он в расчет не включается. Для того чтобы он включался
+в расчет нужно воспользоваться модификатором, или предварительно сформировать момент времени
+(См. <em>СформироватьПозициюДокумента()</em>). По умолчанию точка актуальности.</p>
+</li>
+<li><p class="first"><strong>Периодичность</strong> - тип: конструкция типа ключевое слово. Указывается дополнительный разворот итогов
+по периодичности. Задается один из следующих вариантов:</p>
+<blockquote>
+<ul class="simple">
+<li>Период | Period - только за период (не разворачивать);</li>
+<li>Документ | Document - разворачивать по документу;</li>
+<li>День | Day - разворачивать по дням;</li>
+<li>Неделя | Week - разворачивать по неделям;</li>
+<li>Декада | TenDays - разворачивать по декадам;</li>
+<li>Месяц | Month - разворачивать по месяцам;</li>
+<li>Квартал | Quarter - разворачивать по кварталам;</li>
+<li>Год | Year - разворачивать по годам.</li>
+</ul>
+</blockquote>
+<p>По умолчанию Период.</p>
+</li>
+<li><p class="first"><strong>МетодДополнения</strong> - тип: конструкция типа ключевое слово. Имеет смысл, только когда используется разворот
+по периодам. Задается один из следующих вариантов:</p>
+<blockquote>
+<ul class="simple">
+<li>Движения (Actions) - в таблицу включаются обороты по каждому периоду движений, и текущие остатки только
+по тем комбинациям измерений, по которым были движения в период расчета;</li>
+<li>ДвиженияИГраницыПериода (ActionsAndPeriodBoundaries) - в таблицу включаются обороты по каждому периоду
+движений и текущие остатки; также таблица дополняется записями о ненулевых остатках на начало и/или конец
+на границы периода расчета.</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first"><strong>Соединение</strong> - тип: конструкция типа join. На языке SQL можно описать дополнительные соединения с таблицами,
+которые могут быть необходимы для формирования условий в следующем параметре. Можно оперировать полями измерений
+регистра, обращаясь к ним по идентификатору 1С. По умолчанию отсутствует.</p>
+</li>
+<li><p class="first"><strong>Условие</strong> - тип: конструкция типа where. На языке SQL можно описать условие для ограничения выборки.
+Можно оперировать полями измерений регистра, обращаясь к ним по идентификатору 1С, а также полями таблиц,
+соединения с которыми были описаны в предыдущем параметре. По умолчанию отсутствует.</p>
+</li>
+<li><p class="first"><strong>Измерение</strong> - тип: конструкция типа список идентификаторов. Указывается список измерений, по которым нужно
+рассчитать остатки и обороты. По умолчанию по всем.</p>
+</li>
+<li><p class="first"><strong>Ресурс</strong> - тип: конструкция типа список идентификаторов. Указывается список ресурсов, которые нужно
+рассчитать. По умолчанию по всем.</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>Поля:</strong></p>
+<blockquote>
+<ul class="simple">
+<li><strong>&lt;ИмяИзмерения&gt;</strong> - имена измерений указанных к расчету; тип определяется типом измерения регистра;</li>
+<li><strong>&lt;ИмяРесурса&gt;НачальныйОстаток</strong> - имена ресурсов с добавлением слова НачальныйОстаток, указанных к расчету;
+тип определяется типом ресурса регистра;</li>
+<li><strong>&lt;ИмяРесурса&gt;Приход</strong> - имена ресурсов с добавлением слова Приход, указанных к расчету; тип определяется
+типом ресурса регистра;</li>
+<li><strong>&lt;ИмяРесурса&gt;Расход</strong> - имена ресурсов с добавлением слова Расход, указанных к расчету; тип определяется
+типом ресурса регистра;</li>
+<li><strong>&lt;ИмяРесурса&gt;КонечныйОстаток</strong> - имена ресурсов с добавлением слова НачальныйОстаток, указанных к расчету;
+тип определяется типом ресурса регистра;</li>
+<li><strong>Период</strong> - тип datetime; дата начала периода, по которому происходит разворот оборотов; существует только
+в том случае, если указана периодичность День, Неделя, Декада, Месяц, Квартал, Год;</li>
+<li>ПозицияДокумента - тип char(23); строка в формате date_time_iddoc (8+6+9); существует только в том случае,
+если указана периодичность Документ;</li>
+<li>ВидДокумента - тип int; идентификатор вида документа; существует только в том случае, если указана
+периодичность Документ.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> Используется для получения остатков и оборотов. Определена только для регистра остатков.</p>
+<dl class="docutils">
+<dt><strong>Оптимизация расчета:</strong></dt>
+<dd><ul class="first last simple">
+<li>по таблицам итогов и движений рассчитывается всегда только один из остатков, другой вычисляется из оборотов
+при агрегировании;</li>
+<li>рассчитывается тот остаток (начальный/конечный), который получить легче, исходя из оптимизации расчета
+остатков, См. выше описание виртуальной таблицы остатков;</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id37">
+<h3><a name="id37">Описание виртуальных значений</a></h3>
+<chminfo split="0" splitchild="1">
+        <insert nodes="//common/propsmethods/*"/>
+</chminfo>
+<p>Виртуальные значения поддерживаются только для SQL формата ИБ.</p>
+<div class="section" id="id38">
+<h4><a name="id38">ПоследнееЗначение</a></h4>
+<blockquote>
+<p><strong>Получение наиболее позднего периодического значения</strong></p>
+<p><strong>Синтаксис:</strong></p>
+<pre class="literal-block">
+$ПоследнееЗначение.{&lt;ИмяСправочника&gt; | Константа}.{&lt;ИмяРеквизита | ИмяКонстанты&gt;}(
+        &lt;ИдОбъекта&gt;, &lt;Дата&gt;[, &lt;Время&gt;[, &lt;ИДДокумента&gt;]]
+)
+</pre>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>ИдОбъекта - тип: конструкция типа выражение MS T-SQL; внутренний идентификатор элемента справочника, или 0
+для константы;</li>
+<li>Дата - тип: конструкция типа выражение MS T-SQL; дата, на которую нужно получить последнее значение;</li>
+<li>Время - тип: конструкция типа выражение MS T-SQL; время, на которое нужно получить последнее значение;</li>
+<li>ИДДокумента - тип: конструкция типа выражение MS T-SQL; идентификатор документа, на позицию которого нужно
+получить последнее значение.</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет получить последнее значение на указанную дату.</p>
+</blockquote>
+</div>
+<div class="section" id="id39">
+<h4><a name="id39">НачалоПериода</a></h4>
+<blockquote>
+<p><strong>Получение начала периода</strong></p>
+<p><strong>Синтаксис:</strong></p>
+<pre class="literal-block">
+$НачалоПериода.&lt;Период&gt;(&lt;ИсходнаяДата&gt;[,&lt;ТипПредставления&gt;])
+</pre>
+<p>&lt;Период&gt; - ключевое слово:</p>
+<blockquote>
+<ul class="simple">
+<li>День | Day;</li>
+<li>Неделя | Week;</li>
+<li>Декада | TenDays;</li>
+<li>Месяц | Month;</li>
+<li>Квартал | Quarter;</li>
+<li>Год | Year.</li>
+</ul>
+</blockquote>
+<p><strong>Параметры:</strong></p>
+<blockquote>
+<ul>
+<li><p class="first">ИсходнаяДата - тип: конструкция типа выражение MS T-SQL; дата по которой определять период;</p>
+</li>
+<li><p class="first">ТипПредставления - тип: конструкция типа ключевое слово; представление даты в первом параметре:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Строка</span></tt> - char(8);</li>
+<li><tt class="docutils literal"><span class="pre">Дата</span></tt> - datetime.</li>
+</ul>
+</blockquote>
+<p>По умолчанию Строка.</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>Описание:</strong> позволяет получить значение типа datetime, соответствующее началу периода &lt;Период&gt;.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="id40">
+<h2><a name="id40">Спецификация параметров</a></h2>
+<chminfo split="0">
+</chminfo>
+<div class="section" id="id41">
+<h3><a name="id41">Текстовые параметры</a></h3>
+<p>Текстовые параметры преобразуются в литералы (константы MS SQL). Текстовые параметры  могут повторяться в тексте запроса
+(т.е. будет использовано одно и то же значение), причем они могут быть использованы в разных местах запроса с разными
+модификаторами типа.</p>
+<p>Синтаксис:</p>
+<pre class="literal-block">
+:&lt;ИмяПараметра&gt; [&lt;Модификатор&gt;]
+</pre>
+<p>&lt;Модификатор&gt;
+В общем случае тип значения параметра определяется типом значения 1С, переданного при установке параметра,
+и в общем же случае этого недостаточно, поэтому существует возможность указать модификатор типа 1С.
+Для краткости: модификатор.</p>
+<div class="section" id="id42">
+<h4><a name="id42">Правила обозначения модификаторов</a></h4>
+<chminfo split="1">
+</chminfo>
+<p>В тексте запроса модификаторы обозначаются символами &quot;~&quot; или &quot;*&quot; после имени параметра.
+Количество символов &quot;~&quot; после имени параметра определяет номер модификатора. Если после имени параметра не указан
+модификатор, то номер модификатора равен 0. Так как типом &quot;Неопределенный&quot; (char(23)) можно выразить любой тип 1С,
+для этого существует специальный модификатор, обозначаемый символом &quot;*&quot;, который определен для любого передаваемого
+типа 1С. Его номер 20.</p>
+<p>Модификаторы определены для следующих типов 1С:</p>
+<blockquote>
+<p><strong>Строка:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>0: char() - строка как есть;</li>
+<li>1: char(23) - должна быть передана позиция документа, из которой будет сформирована строка в формате date_time_iddoc.</li>
+</ul>
+</blockquote>
+<p><strong>Дата:</strong></p>
+<blockquote>
+<ul class="simple">
+<li>0: char(8) - каноническое представление даты;</li>
+<li>1: char(9) - каноническое представление даты + символ &quot;Z&quot; (используется для обозначения момента времени конца этой даты);</li>
+<li>2: datetime.</li>
+</ul>
+</blockquote>
+<p><strong>Агрегатные типы (Перечисление, Справочник, Документ, Счет):</strong></p>
+<blockquote>
+<ul class="simple">
+<li>0: char(9) - внутренний идентификатор объекта (короткая строка 6+3);</li>
+<li>1: char(13) - внутренний идентификатор объекта с видом (длинная строка 4+6+3);</li>
+<li>2: char(15) - внутренний идентификатор объекта с видом и типом (2+4+6+3) (на самом деле такой тип нигде в 1С
+не используется, модификатор существует исключительно для обратной совместимости).</li>
+</ul>
+</blockquote>
+<p><strong>ВидРасчета:</strong> кроме 0 и 1, которые работают как для всех агрегатных типов, 2-й определен особо:</p>
+<blockquote>
+<ul class="simple">
+<li>2: Зависит от формата ИБ. SQL: int - идентификатор вида расчета; DBF: char(4) - 36-й идентификатор вида расчета.</li>
+</ul>
+</blockquote>
+<p><strong>ВидСубконто:</strong> кроме 0 и 1, которые работают как для всех агрегатных типов, 2-й определен особо:</p>
+<blockquote>
+<ul class="simple">
+<li>2: Зависит от формата ИБ. SQL: int - идентификатор вида субконто; DBF: char(4) - 36-й идентификатор вида расчета.</li>
+</ul>
+</blockquote>
+<p><strong>Справочник, Документ, Счет</strong></p>
+<blockquote>
+<ul class="simple">
+<li>3: Зависит от формата ИБ. SQL: int - идентификатор вида объекта; DBF: char(4) - 36-й идентификатор вида объекта.</li>
+</ul>
+</blockquote>
+<p><strong>Документ</strong></p>
+<blockquote>
+<ul class="simple">
+<li>4: Позиция переданного объекта в формате date_time_iddoc.</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><strong>Примеры.</strong></p>
+<blockquote>
+<p>Передано значение типа Число:</p>
+<pre class="literal-block">
+:ФлагУчастияВРасчетах   = 1
+:ФлагУчастияВРасчетах * = 'N                     1'
+</pre>
+<p>Передано значение типа Дата:</p>
+<pre class="literal-block">
+:ДатаНачала = '20030613'
+:ДатаКонца ~ = '20030613Z'
+:ДатаКонца ~~ = {d '2003-06-13'}
+</pre>
+<p>Передано значение типа Справочник.Контрагенты:</p>
+<pre class="literal-block">
+:Контрагент   = '    H6   '
+:Контрагент ~ = '  1W    H6   '
+:Контрагент * = 'B1  1W    H6           '
+</pre>
+</blockquote>
+</div>
+</div>
+<div class="section" id="sql">
+<h3><a name="sql">SQL параметры</a></h3>
+<p>SQL параметры это параметры для <em>параметризированного запроса</em>. В тексте запроса обозначаются символом &quot;?&quot;
+(символ подстановки). См. также: <a class="reference" href="#prepare">Подготовить / Prepare</a>, <a class="reference" href="#addparam">ДобПараметр / AddParam</a>, <a class="reference" href="#setparam">УстПараметр / SetParam</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:13 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

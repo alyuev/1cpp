@@ -1,0 +1,22 @@
+/DBPropSet.cpp/1.1/Mon Mar 17 10:18:52 2008//
+/DBPropSet.h/1.1/Mon Mar 17 10:18:52 2008//
+/sp_ConvHlpr.h/1.1/Mon Mar 17 10:18:52 2008//
+/CommandProxy.cpp/1.1/Thu May  1 06:38:10 2008//
+/CommandProxy.h/1.1/Thu May  1 06:38:10 2008//
+/OleDbResult.h/1.1/Thu May  1 06:38:10 2008//
+/ResultProxy.cpp/1.1/Thu May  1 06:38:10 2008//
+/ResultProxy.h/1.1/Thu May  1 06:38:10 2008//
+/Utils.h/1.1/Thu May  1 06:38:10 2008//
+/ValueTo.cpp/1.2/Sun May  4 12:16:47 2008//
+/ValueTo.h/1.2/Sun May  4 12:16:47 2008//
+/sp_cooledb.h/1.2/Sun May  4 12:16:48 2008//
+/sp_oledbparam.cpp/1.2/Sun May  4 12:16:49 2008//
+/sp_oledbparam.h/1.2/Sun May  4 12:16:49 2008//
+/sp_oledbparamhlpr.cpp/1.4/Sun May  4 12:16:49 2008//
+/sp_oledbparamhlpr.h/1.2/Sun May  4 12:16:49 2008//
+/sp_oledb.h/1.3/Fri May 16 08:21:29 2008//
+/sp_cooledb.cpp/1.7/Sat May 24 05:56:38 2008//
+/sp_oledb.cpp/1.4/Sat May 24 05:56:38 2008//
+/OleDbResult.cpp/1.1/Tue Nov 10 14:59:05 2009//
+/Utils.cpp/1.1/Tue Nov 10 14:59:05 2009//
+D

@@ -1,0 +1,1379 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<!DOCTYPE rest [<!ENTITY nbsp "&#160;">]>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>Создание chm файлов</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="chm">
+<h1 class="title">Создание chm файлов</h1>
+<!-- Автор: Александр Орефков -->
+<chminfo>
+    <decoration>
+        <topic/>
+        <a href="#" onclick="mychminfo.style.display=(mychminfo.style.display=='')?'none':''">chminfo данной секции</a>
+        <pre id="mychminfo" style="display:none">
+            <subst node="chminfo" asxml="1"/>
+        </pre>
+    </decoration>
+    <alinks>_1cpp_chm_create_</alinks>
+    <href>
+        <a href="self"><title to="self"/></a>
+    </href>
+    <hrefcombine>
+        <ul>
+            <foreach><li><item/></li></foreach>
+        </ul>
+    </hrefcombine>
+</chminfo>
+<div class="contents topic" id="id1">
+<p class="topic-title first"><a name="id1">Содержание</a></p>
+<ul class="simple">
+<li><a class="reference" href="#id3" id="id62" name="id62">Запуск скрипта и дальнейшая сборка</a></li>
+<li><a class="reference" href="#id4" id="id63" name="id63">Требования к входному файлу</a></li>
+<li><a class="reference" href="#id5" id="id64" name="id64">Дополнительная разметка входного файла</a></li>
+<li><a class="reference" href="#html" id="id65" name="id65">Этапы обработки html-файла скриптом</a><ul>
+<li><a class="reference" href="#id7" id="id66" name="id66">Подготовка входного файла</a></li>
+<li><a class="reference" href="#id9" id="id67" name="id67">Обработка оглавления</a></li>
+<li><a class="reference" href="#id12" id="id68" name="id68">Обработка секций</a></li>
+<li><a class="reference" href="#id20" id="id69" name="id69">Подготовка файлов chm-проекта</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id22" id="id70" name="id70">Работа с chm-разметкой</a><ul>
+<li><a class="reference" href="#id23" id="id71" name="id71">Разбитие на топики</a></li>
+<li><a class="reference" href="#id24" id="id72" name="id72">Вставки общей chm-разметки</a></li>
+<li><a class="reference" href="#id25" id="id73" name="id73">Наследование разметки</a></li>
+<li><a class="reference" href="#id26" id="id74" name="id74">Подстановочные элементы и атрибуты</a></li>
+<li><a class="reference" href="#id27" id="id75" name="id75">Задание ключевых слов и гиперссылок между файлами</a></li>
+<li><a class="reference" href="#id28" id="id76" name="id76">Формирование ссылок на выносимые топики</a></li>
+<li><a class="reference" href="#id29" id="id77" name="id77">Обработка узла оглавления для секции</a></li>
+<li><a class="reference" href="#id30" id="id78" name="id78">Задание html-заголовка топика</a></li>
+<li><a class="reference" href="#id31" id="id79" name="id79">Обрамление топика</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id32" id="id80" name="id80">Работа с коллекциями chm-файлов</a></li>
+<li><a class="reference" href="#id34" id="id81" name="id81">Справка по элементам</a><ul>
+<li><a class="reference" href="#chminfo" id="id82" name="id82">chminfo</a></li>
+<li><a class="reference" href="#autokw" id="id83" name="id83">autokw</a></li>
+<li><a class="reference" href="#alinks" id="id84" name="id84">alinks</a></li>
+<li><a class="reference" href="#klinks" id="id85" name="id85">klinks</a></li>
+<li><a class="reference" href="#decoration" id="id86" name="id86">decoration</a></li>
+<li><a class="reference" href="#topic" id="id87" name="id87">topic</a></li>
+<li><a class="reference" href="#href" id="id88" name="id88">href</a></li>
+<li><a class="reference" href="#hrefcombine" id="id89" name="id89">hrefcombine</a></li>
+<li><a class="reference" href="#foreach" id="id90" name="id90">foreach</a></li>
+<li><a class="reference" href="#item" id="id91" name="id91">item</a></li>
+<li><a class="reference" href="#childs" id="id92" name="id92">childs</a></li>
+<li><a class="reference" href="#nochilds" id="id93" name="id93">nochilds</a></li>
+<li><a class="reference" href="#chmtitle" id="id94" name="id94">chmtitle</a></li>
+<li><a class="reference" href="#cnttitle" id="id95" name="id95">cnttitle</a></li>
+<li><a class="reference" href="#toc" id="id96" name="id96">toc</a></li>
+<li><a class="reference" href="#self" id="id97" name="id97">self</a></li>
+<li><a class="reference" href="#childstoc" id="id98" name="id98">childstoc</a></li>
+<li><a class="reference" href="#folder" id="id99" name="id99">folder</a></li>
+<li><a class="reference" href="#merge" id="id100" name="id100">merge</a></li>
+<li><a class="reference" href="#insert" id="id101" name="id101">insert</a></li>
+<li><a class="reference" href="#subst" id="id102" name="id102">subst</a></li>
+<li><a class="reference" href="#title" id="id103" name="id103">title</a></li>
+<li><a class="reference" href="#a" id="id104" name="id104">a</a></li>
+<li><a class="reference" href="#chmlinks" id="id105" name="id105">chmlinks</a></li>
+<li><a class="reference" href="#keys" id="id106" name="id106">keys</a></li>
+<li><a class="reference" href="#common" id="id107" name="id107">common</a></li>
+<li><a class="reference" href="#collection" id="id108" name="id108">collection</a></li>
+<li><a class="reference" href="#file" id="id109" name="id109">file</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Данный документ содержит информацию о создании chm-файла на основе
+html-файла, сгенерированного reSt'ом. Информация предназначена для
+разработчиков документации к 1С++, и не должна включаться в набор
+пользовательской документации.</p>
+<p>Подготовка сгенерированного reSt'ом html-файла к созданию chm-файла
+выполняется скриптом &quot;html2chm.js&quot;.
+Основная задача скрипта - на основе оглавления документа и с учетом
+<a class="reference" href="#id5">дополнительной разметки</a> разбить один входной файл на несколько
+отдельных файлов - &quot;топиков&quot;, с сохранением ссылок между частями документа,
+и подготовка всех необходимых для работы программы &quot;HTML Help WorkShop&quot; файлов:</p>
+<ul class="simple">
+<li>html-файлы статей справки (<em>топиков</em>), на которые будет разбит основной html-файл</li>
+<li>Файл описания проекта (*.hhp)</li>
+<li>Файл содержания (*.hhc)</li>
+<li>Файл ключевых слов (*.hhk)</li>
+</ul>
+<p>Также скрипт генерирует bat-файл, запуск которого удаляет все созданные
+скриптом промежуточные файлы, кроме самого bat-файла.</p>
+<p>Дальнейшая сборка chm-файла выполняется программой &quot;hhc&quot;, входящей
+в <em>&quot;HTML Help Workshop&quot;</em>.</p>
+<div class="section" id="id3">
+<h1><a name="id3">Запуск скрипта и дальнейшая сборка</a></h1>
+<chminfo>
+    <klinks>
+        Запуск
+        сборка
+    </klinks>
+</chminfo>
+<p>Для сборки chm-файлов в системе должны быть установлены:</p>
+<ul class="simple">
+<li>MSXML парсер версии 4.0</li>
+<li>WSH 5.6</li>
+<li>HTML Help Workshop</li>
+</ul>
+<p>Подготовка файлов chm-проекта выполняется командой:</p>
+<pre class="literal-block">
+cscript &quot;путь к html2chm.js&quot; //nologo &quot;имя входного html-файла&quot; [&quot;каталог получаемого chm-файла&quot;]
+</pre>
+<p>Для создания промежуточных файлов используется каталог входного файла.
+Если каталог получаемого chm-файла не задан, он формируется в каталоге
+входного файла.</p>
+<p>Скрипт сформирует в каталоге входного файла необходимые файлы,
+и файл chm-проекта с именем &quot;Имя входного файла без расширения.hhp&quot;.</p>
+<p><strong>Скрипт НЕ ВЫПОЛНЯЕТ копирования &quot;внешних&quot; файлов (*.css, файлы картинок и тп)
+из каталога входного файла в каталог сборки.</strong></p>
+<p>Далее необходимо запусть программу hhc.exe:</p>
+<pre class="literal-block">
+hhc.exe &quot;Путь к файлу chm проекта (.hhp)&quot;
+</pre>
+<p>Лучший вариант выполнять сборку - поручить ее среде разработки.
+Для этого в дереве файлов правокликните свой текстовый файл и
+выберите в контекстном меню <em>&quot;Settings&quot;</em>. В окне настройки
+выберите конфигурацию &quot;Win32 CHM&quot; и на вкладке <em>&quot;Custom build&quot;</em>
+введите, или просто скопируйте это из настроек соседних файлов:</p>
+<dl class="docutils">
+<dt>Description:</dt>
+<dd>Произвольный текст, который будет выводится при сборке файла</dd>
+<dt>Commands:</dt>
+<dd><pre class="first last literal-block">
+set intname=&quot;$(IntDir)\$(InputName).html&quot;
+set hhpname=&quot;$(IntDir)\$(InputName).hhp&quot;
+set chmname=&quot;$(OutDir)\$(InputName).chm&quot;
+if exist %intname% del %intname%
+rst2html.py --output-encoding=CP1251 &quot;$(InputPath)&quot; %intname%
+if not exist %intname% (
+    echo Error create %intname%
+    exit 1
+)
+cscript &quot;$(ProjDir)\html2chm.js&quot; //nologo //d %intname% &quot;$(OutDir)&quot;
+if not exist %hhpname% (
+    echo Error create %hhpname% and project files
+    exit 1
+)
+if exist %chmname% del %chmname%
+if exist %chmname% (
+    echo Error delete old %chmname%
+    exit 1
+)
+hhc %hhpname% &gt; nul
+if not exist %chmname% (
+    echo Error create %chmname%
+    exit 1
+)
+call &quot;$(IntDir)\$(InputName)del.bat&quot;
+del &quot;$(IntDir)\$(InputName)del.bat&quot;
+exit 0
+</pre>
+</dd>
+<dt>Outputs:</dt>
+<dd>$(OutDir)$(InputName).chm</dd>
+</dl>
+<p>При необходимости отредактируйте опции запуска rst2html.py под
+свои требования.</p>
+<p>Убедитесь, что путь к каталогу расположения hhc.exe (HTML Help WorkShop)
+добавлен в каталоги исполняемых файлов MS VC++:</p>
+<pre class="literal-block">
+Tools -&gt; Options -&gt; Directories -&gt; Show directories for -&gt; Executable Files
+</pre>
+<p>Там же должен быть добавлен и путь к каталогу расположения скрипта
+rst2html.py</p>
+<p>Теперь можно осуществлять сборку chm-файла простой компиляцией исходного
+текстового файла.</p>
+</div>
+<div class="section" id="id4">
+<h1><a name="id4">Требования к входному файлу</a></h1>
+<chminfo>
+    <klinks>
+        Требования
+    </klinks>
+</chminfo>
+<dl class="docutils">
+<dt><strong>ВАЖНО</strong>.</dt>
+<dd>Скрипт определяет структуру секций документа, обрабатывая
+оглавление, созданное reSt'ом.</dd>
+</dl>
+<p>Для определения структуры секций документа входной файл <strong>ОБЯЗАН</strong> иметь
+заголовочную секцию с содержанием, которая станет корневым топиком chm-файла.
+Для этого начало файла должно быть оформлено примерно так:</p>
+<pre class="literal-block">
+*****************************
+Общий заголовок документа
+*****************************
+.. contents:: Содержание
+    :backlinks: none
+
+Опционально некий общий текст о документе.
+
+Тут пошли секции документа
+--------------------------
+</pre>
+<p>Данный заголовок будет использован как заголовок для окна CHM View,
+а также появляться в колонке &quot;Местонахождение&quot; для найденных
+полнотекстовым поиском топиков. Само содержание будет удалено.
+Если вы хотите, чтобы на первой странице все-таки осталось содержание,
+просто вставьте директиву contents два раза.</p>
+</div>
+<div class="section" id="id5">
+<h1><a name="id5">Дополнительная разметка входного файла</a></h1>
+<chminfo>
+    <klinks>
+        Разметка
+    </klinks>
+    <alinks>
+        _split_topics_
+        alink_klink_use
+    </alinks>
+</chminfo>
+<p>Основная цель скрипта - разбитие входного файла на отдельные &quot;топики&quot;,
+на основе структуры секций документа, созданной reSt'ом.</p>
+<p>В каждую секцию может быть включена информация, управляющая
+формированием chm-файла.
+Данная информация представляет из себя xml-разметку, с корнем
+из элемента <a class="reference" href="#chminfo">chminfo</a> <em>(chm-разметка)</em>.
+Если в секции нет chm-разметки, она <a class="reference" href="#id25">наследуется</a> от родительской
+секции, по определенным правилам.
+Разметка вставляется в генерируемый файл как комментарий, чтобы
+не влиять на отображение html-документа.
+Скрипт предварительно выделяет из комментариев эту разметку,
+и обрабатывает ее, ища в каждой секции документа один элемент <a class="reference" href="#chminfo">chminfo</a>.
+Предпочтительно вставлять разметку сразу после заголовка секции.
+Состав элементов chm-разметки в-целом произвольный, но скрипт обрабатывает
+только определенные, известные ему элементы.</p>
+<p>Пример:</p>
+<pre class="literal-block">
+Секция документа
+----------------------
+..  &lt;chminfo&gt;
+    &lt;/chminfo&gt;
+
+Текст секции.....
+</pre>
+<p>Кроме chm-разметки каждой секции, определено одно место для внесения общей
+chm-разметки, служащей для хранения повторяющихся фрагментов разметки,
+подставляемых затем вместо элемента <a class="reference" href="#insert">insert</a>, а также для хранения
+описания коллекции chm-файлов. Такая разметка должна хранится в
+<strong>&lt;xml&gt;&lt;common&gt;</strong>. После обработки файла эта разметка удаляется из документа.
+Рекомендуется для файлов одной коллекции создавать один общий файл с
+общей разметкой, подключая его к каждому файлу директивой include.</p>
+</div>
+<div class="section" id="html">
+<h1><a name="html">Этапы обработки html-файла скриптом</a></h1>
+<chminfo splitchild="0">
+    <toc><self/></toc>
+</chminfo>
+<p>Работу скрипта можно разделить на несколько этапов:</p>
+<div class="section" id="id7">
+<h2><a name="id7">Подготовка входного файла</a></h2>
+<p>Входной файл готовится к загрузке в MSXML парсер.
+При этом в тексте файла производится замена codepage CP1251
+на windows-1251, и убираются комментарии вокруг <a class="reference" href="#chminfo">chminfo</a>.
+Затем файл загружается в MSXML парсер. Вся дальнейшая работа
+с файлом выполняется только через него.
+Из входного файла удаляются все комментарии, и производится
+<a class="reference" href="#id27">обработка переходов по *alink* и *klink*</a>.</p>
+</div>
+<div class="section" id="id9">
+<h2><a name="id9">Обработка оглавления</a></h2>
+<p>Скрипт ищет оглавление документа, и обрабатывает его пункты,
+находя для каждого пункта соответствующую ему секцию. Найденные
+секции запоминаются в списке для дальнейшей обработки. При
+этом выполняются действия:</p>
+<ul class="simple">
+<li>Находится либо создается chm-разметка секции.</li>
+<li>Производится обработка элементов <a class="reference" href="#insert">insert</a> в chm-разметке.</li>
+<li>Выполняется <a class="reference" href="#id25">наследование</a> chm-разметки дочерними секциями
+от их родителей.</li>
+<li>Определяется необходимость <a class="reference" href="#id23">вынесения секции в отдельный топик</a>.</li>
+<li>Определяется имя файла, в котором будет находится секция.</li>
+<li>Исправляются ссылки в документе на содержимое секции с учетом
+нового имени файла, в котором будет находится секция.</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h2><a name="id12">Обработка секций</a></h2>
+<p>После обработки оглавления, скрипт переходит к обработке секций.
+Порядок обхода секций - от потомков к родителям, те сначала
+обрабатываются самые &quot;вложенные&quot; секции, с тем чтобы при их
+вынесении в топики они были удалены из родительской секции, и
+только потом обработана содержащая из секция. Во время прохода
+по секциям производится:</p>
+<ul class="simple">
+<li>Обработка элементов <a class="reference" href="#subst">subst</a> в chm-разметке секции.</li>
+<li>Раскрытие <a class="reference" href="#id26">подстановочных элементов и атрибутов</a> в chm-разметке секции.</li>
+<li>Обработка <a class="reference" href="#id27">ключевых слов</a>, заданных для секции.</li>
+<li>Обработка <a class="reference" href="#id28">ссылок на дочерние секции</a>, вынесенные из этой
+секции в отдельные топики.</li>
+<li>Подготовка <a class="reference" href="#id29">узла оглавления</a> chm-файла для этой секции.</li>
+<li>Если секция выносится в топик:<ul>
+<li>Формирование <a class="reference" href="#id28">ссылки на эту секцию</a>, которая будет вставлена
+в родительскую секцию.</li>
+<li>Определения <a class="reference" href="#id30">html заголовка</a> (title) топика.</li>
+<li>Обработка <a class="reference" href="#id31">обрамления</a> топика.</li>
+<li>Сохранение топика в файл.</li>
+<li>Удаление топика из родительской секции, и замена его на
+сформированную ссылку.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h2><a name="id20">Подготовка файлов chm-проекта</a></h2>
+<p>Когда все секции обработаны, скрипт формирует файлы, необходимые
+программе &quot;HTML Help Workshop&quot; для сборки chm-файла.</p>
+<ul class="simple">
+<li>Файл проекта.</li>
+<li>Файл оглавления.</li>
+<li>Файл ключевых слов.</li>
+<li>Файл зачистки, удаляющий все созданные скриптом файлы.</li>
+</ul>
+<p>Файлы подготавливаются с учетом возможного вхождения данного chm
+в <a class="reference" href="#id32">коллекцию</a>.</p>
+</div>
+</div>
+<div class="section" id="id22">
+<h1><a name="id22">Работа с chm-разметкой</a></h1>
+<div class="section" id="id23">
+<h2><a name="id23">Разбитие на топики</a></h2>
+<p>При обработке файла каждая секция документа является
+кандитатом на вынесение ее в отдельный топик.
+Будет ли она вынесена, определяется следующим образом:</p>
+<ol class="arabic simple">
+<li>В <a class="reference" href="#chminfo">chminfo</a> есть атрибут &quot;split&quot;<ul>
+<li>ДА - п.2</li>
+<li>НЕТ - п.3</li>
+</ul>
+</li>
+<li>атрибут split=&quot;0&quot;<ul>
+<li>ДА - не выносится</li>
+<li>НЕТ - выносится</li>
+</ul>
+</li>
+<li>В родительской секции в <a class="reference" href="#chminfo">chminfo</a> есть атрибут &quot;splitchild&quot;<ul>
+<li>ДА - п.4</li>
+<li>НЕТ - п.5</li>
+</ul>
+</li>
+<li>splitchild=&quot;0&quot;<ul>
+<li>ДА - не выносится</li>
+<li>НЕТ - выносится</li>
+</ul>
+</li>
+<li>Родительская секция вынесена в отдельный топик<ul>
+<li>ДА - выносится</li>
+<li>НЕТ - не выносится</li>
+</ul>
+</li>
+</ol>
+<p>Для корневой секции всегда считается, что она выносится в отдельный топик.</p>
+</div>
+<div class="section" id="id24">
+<h2><a name="id24">Вставки общей chm-разметки</a></h2>
+<chminfo><alinks>collection_processing</alinks></chminfo>
+<p>Для избавления от необходимости прописывать одинаковые фрагменты разметки
+во многих местах, имеется возможность ее подстановки с помощью
+элемента <a class="reference" href="#insert">insert</a>. Целесообразно разместить фрагменты такой разметки
+либо в общий файл в раздел &lt;xml&gt;&lt;<a class="reference" href="#common">common</a>&gt;, либо в разметку корневой секции,
+в элемент  <a class="reference" href="#nochilds">nochilds</a>.</p>
+<p><a class="reference" href="alink">См. также|collection_processing</a></p>
+</div>
+<div class="section" id="id25">
+<h2><a name="id25">Наследование разметки</a></h2>
+<p>При первоначальной обработке chm-разметки секций документа, на этапе обработки
+оглавления, происходит выполнения &quot;наследования&quot; элементов chm-разметки
+дочерней секцией от ее родительской секции. Даже если в самой секции
+не указан <a class="reference" href="#chminfo">chminfo</a>, скрипт все равно создает его, наследуя его от родителя.
+Наследование в данном случае обозначает просто копирование элементов,
+входящих в <a class="reference" href="#chminfo">chminfo</a> родительской секции.</p>
+<p>Наследование выполняется по следующим правилам:</p>
+<ol class="arabic">
+<li><p class="first">Переопределение. От родителя наследуются только элементы,
+не указанные в самой секции.</p>
+<p>Например, если в секции есть элемент <a class="reference" href="#decoration">decoration</a>, то копирование
+этого элемента из родительской секции не произойдет.</p>
+</li>
+<li><p class="first">Наследуются только элементы - непосредственные потомки <a class="reference" href="#chminfo">chminfo</a>.</p>
+<p>Например:</p>
+<pre class="literal-block">
+Секция родитель:
+    &lt;chminfo&gt;
+        &lt;decoration&gt;
+            &lt;title to=&quot;selfremove&quot;/&gt;
+        &lt;/decoration&gt;
+    &lt;/chminfo&gt;
+
+Секция потомок:
+    &lt;chminfo&gt;
+        &lt;decoration&gt;
+        &lt;/decoration&gt;
+    &lt;/chminfo&gt;
+</pre>
+<p>Элемент decoration/title не унаследуется.</p>
+</li>
+<li><p class="first">Исключение из правила 2. В родительской разметке
+может быть определен элемент <a class="reference" href="#childs">childs</a>, непосредственные потомки
+которого участвуют в наследовании, причем в первую очередь,
+копируясь в дочернюю разметку потомком <a class="reference" href="#chminfo">chminfo</a>. Правило 1.
+соблюдается.</p>
+<p>Например:</p>
+<pre class="literal-block">
+Секция родитель:
+    &lt;chminfo&gt;
+        &lt;decoration&gt;
+            &lt;title to=&quot;selfremove&quot;/&gt;
+        &lt;/decoration&gt;
+        &lt;childs&gt;
+            &lt;decoration&gt;
+                &lt;title to=&quot;parent&quot;/&gt;::&lt;title to=&quot;selfremove&quot;/&gt;
+            &lt;/decoration&gt;
+        &lt;/childs&gt;
+    &lt;/chminfo&gt;
+
+Секция потомок до обработки:
+    &lt;chminfo&gt;
+    &lt;/chminfo&gt;
+
+Секция потомок после обработки:
+    &lt;chminfo&gt;
+        &lt;decoration&gt;
+            &lt;title to=&quot;parent&quot;/&gt;::&lt;title to=&quot;selfremove&quot;/&gt;
+        &lt;/decoration&gt;
+    &lt;/chminfo&gt;
+</pre>
+</li>
+<li><p class="first">Не наследуются элементы:</p>
+<ul class="simple">
+<li><a class="reference" href="#alinks">alinks</a></li>
+<li><a class="reference" href="#klinks">klinks</a></li>
+<li><a class="reference" href="#nochilds">nochilds</a></li>
+<li><a class="reference" href="#toc">toc</a></li>
+</ul>
+</li>
+<li><p class="first">Все остальные элементы-потомки <a class="reference" href="#chminfo">chminfo</a> участвуют в наследовании.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id26">
+<h2><a name="id26">Подстановочные элементы и атрибуты</a></h2>
+<chminfo><alinks>subst_processing</alinks></chminfo>
+<p>Во многих местах разметки, задающих формирование html-кода создаваемых
+файлов, можно использовать специальные элементы, которые будут заменяться
+при обработке секции в соответствии с контекстом обрабатываемой секции.</p>
+<p>Это такие элементы как</p>
+<ul class="simple">
+<li><a class="reference" href="#title">title</a></li>
+<li><a class="reference" href="#subst">subst</a></li>
+</ul>
+<p>Кроме того, производится обработка элемента &lt;a&gt; (гиперссылка) с атрибутом
+href, равным предопределенным значениям.</p>
+<p>Например:</p>
+<pre class="literal-block">
+&lt;title to=&quot;parent&quot;/&gt;
+</pre>
+<p>будет заменен на текст заголовка родительской секции, а</p>
+<pre class="literal-block">
+&lt;a href=&quot;next&quot;&gt;Следующий&lt;/a&gt;
+</pre>
+<p>будет заменен на</p>
+<pre class="literal-block">
+&lt;a href=&quot;имя файла со следующим топиком&quot;&gt;Следующий&lt;/a&gt;
+</pre>
+<p><a class="reference" href="alink">См. также|subst_processing</a></p>
+</div>
+<div class="section" id="id27">
+<h2><a name="id27">Задание ключевых слов и гиперссылок между файлами</a></h2>
+<chminfo><alinks>process_keywords</alinks></chminfo>
+<p>В системе chm возможно задание двух видов ключевых слов: klink и alink.</p>
+<p>klink - <strong>ключевые</strong> слова, выносимые в индексный указатель справки,
+и могущие быть привязаны не только к конкретной странице, но и
+местоположению (якорю) не ней. Таким образом, их можно использовать
+и для секций, не выносимых в топики.</p>
+<p>alink - <strong>целевые</strong> слова, невидимые пользователю, и служащие для
+организации разработчиком навигации между топиками. Их можно
+привязать только к странице справке, те к топику в целом.</p>
+<p>С помощью alink и klink можно организовывать навигацию типа
+<em>&quot;Смотри также&quot;</em>, при этом навигация возможна не только в отдельном
+chm-файле, но и между файлами, входящими в коллекцию.</p>
+<p>Работает это так:</p>
+<p>Например, разработчик помечает несколько взаимосвязанных топиков
+одним и тем же <em>целевым</em> словом (alink). Затем он может вставить
+гиперссылку определенного вида, при нажатии на которую chm-просмотрщик
+отберет все топики, содержащие заданные ключевые слова, и предложит
+их пользователю, для перехода в них.
+Если будет найден только один топик, сразу будет совершен переход
+на него. Топики с заданными ключевыми словами ищутся во всех файлах
+коллекции. Таким образом, если вы хотите организовать переход
+из своего топика в топик другого файла, вставьте в другом топике
+уникальный alink, а у себя ссылку на него.</p>
+<p>Ключевые слова для топика задаются элементами <a class="reference" href="#alinks">alinks</a> и <a class="reference" href="#klinks">klinks</a>.
+Также при наличии в <a class="reference" href="#chminfo">chminfo</a> элемента <a class="reference" href="#autokw">autokw</a> возможна
+автоматическая генерация ключевых слов.</p>
+<p>Для организации ссылки, работающей с ключевыми и целевыми словами,
+вставьте ссылку в таком виде:</p>
+<pre class="literal-block">
+для перехода по klink
+`Текст ссылки|Ключевое слово1[|Еще ключевые слова...] &lt;klink&gt;`_
+
+для перехода по alink
+`Текст ссылки|Ключевое слово1[|Еще ключевые слова...] &lt;alink&gt;`_
+</pre>
+<p>Пример организации перехода между разными файлами:</p>
+<pre class="literal-block">
+файл 1...
+
+Очень интересный топик
+-------------------------
+.. &lt;chminfo&gt;
+     &lt;alinks&gt;_the_best_topic_&lt;/alinks&gt;
+   &lt;/chminfo&gt;
+
+Текст топика
+
+Файл 2...
+
+Хотите посмотреть `самый интересный раздел|_the_best_topic_ &lt;alink&gt;`_?
+</pre>
+<p>Кроме того, если вы точно знаете расположение нужного топика
+в другом файле, можно сделать на него обычную гиперссылку,
+указав атрибут адрес в виде:</p>
+<pre class="literal-block">
+&quot;имя файла.chm::/адрес внутри chm&quot;
+
+Например:
+
+`Объект ТабличноеПоле &lt;TableField.chm::/TableField0.html&gt;`_
+</pre>
+<p><a class="reference" href="alink">См. также|process_keywords</a></p>
+</div>
+<div class="section" id="id28">
+<h2><a name="id28">Формирование ссылок на выносимые топики</a></h2>
+<chminfo><alinks>href_processing</alinks></chminfo>
+<p>При вынесении секции документа в отдельный топик существует
+возможность задать в ее chm-разметке правила формирования ссылки
+на нее в родительском топике, как и задать правила объединения
+ссылок в самой секции на вынесенные из нее топики.</p>
+<p>Формированием ссылки на выносимый топик управляет элемент <a class="reference" href="#href">href</a>
+в разметке <strong>выносимой</strong> секции. Он представляет из себя &quot;контейнер&quot;
+html-кода, в котором с помощью подстановочных элементов и атрибутов
+и формируется ссылка. Например:</p>
+<pre class="literal-block">
+&lt;href&gt;
+    &lt;div&gt;Перейти: &lt;a href=&quot;self&quot;&gt;&lt;span style=&quot;color:red&quot;&gt;&lt;title to=&quot;self&quot;/&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/href&gt;
+</pre>
+<p>При обработке секции сформированный внутри <a class="reference" href="#href">href</a> html код будет вставлен
+в родительской секции вместо выносимого топика. Естественно, если <a class="reference" href="#href">href</a>
+пуст, то ссылки не будет.</p>
+<p>Объединением ссылок на вынесенные топики управляет элемент <a class="reference" href="#hrefcombine">hrefcombine</a>
+в секции, в которой производится объединение. Элемент также представляет
+из себя контейнер html кода, в котором должны присутствовать элементы
+<a class="reference" href="#foreach">foreach</a> и <a class="reference" href="#item">item</a>. Скрипт собирает в секции документа блоки ссылок на
+вынесенные топики (ссылки, между которыми более ничего нет), и заменят
+их на содержимое <a class="reference" href="#hrefcombine">hrefcombine</a>, при этом для каждой ссылки в блоке
+&quot;клонируется&quot; элемент <a class="reference" href="#foreach">foreach</a>, в котором элемент <a class="reference" href="#item">item</a> заменяется
+на ссылку. Таким образом можно объединять рядомстоящие ссылки в списки
+и таблицы. Например:</p>
+<pre class="literal-block">
+&lt;hrefcombine&gt;
+    &lt;ul&gt;
+        &lt;foreach&gt;
+            &lt;li&gt;&lt;item/&gt;&lt;/li&gt;
+        &lt;/foreach&gt;
+    &lt;/ul&gt;
+&lt;/hrefcombine&gt;
+</pre>
+<p><a class="reference" href="alink">См. также|href_processing</a></p>
+</div>
+<div class="section" id="id29">
+<h2><a name="id29">Обработка узла оглавления для секции</a></h2>
+<p>За формирование узла оглавления секции отвечают необязательные
+элементы <a class="reference" href="#cnttitle">cnttitle</a> и <a class="reference" href="#toc">toc</a>.</p>
+<p><a class="reference" href="#cnttitle">cnttitle</a> задает правило формирования строки в оглавлении для данной
+секции. Те текст содержимого этого элемента и будет строкой в оглавлении.
+При отсутствии этого элемента в оглавлении будет использоваться заголовок
+секции.</p>
+<p><a class="reference" href="#toc">toc</a> предназначен для формирования структуры оглавления в узле секции.
+Он позволяет создавать дополнительные папки, управлять положением и
+наличием оглавления дочерних секций, а также вставлять ссылки на
+оглавление других файлов коллекции.</p>
+<p>Содержимым элемента <a class="reference" href="#toc">toc</a> могут быть:</p>
+<ul class="simple">
+<li><a class="reference" href="#folder">folder</a>, создают дополнительные папки.</li>
+<li><a class="reference" href="#self">self</a>, указывает место вставки себя в оглавлении.</li>
+<li><a class="reference" href="#childstoc">childstoc</a>, указывает место вставки оглавления дочерних
+секций.</li>
+<li><a class="reference" href="#merge">merge</a>, указывает вставить ссылку на оглавление другого файла.</li>
+</ul>
+<p>Пример 1:</p>
+<pre class="literal-block">
+&lt;toc&gt;
+    &lt;self&gt;
+        &lt;childs/&gt;
+        &lt;folder name=&quot;Дополнительные материалы&quot;&gt;
+            &lt;merge file=&quot;addon1&quot;/&gt;
+            &lt;merge file=&quot;addon2&quot;/&gt;
+        &lt;/folder&gt;
+    &lt;/self&gt;
+&lt;/toc&gt;
+</pre>
+<p>Создаст в оглавлении папку с именем секции, в ней оглавление дочерних
+секций, вслед за ними папку с именем &quot;Дополнительные материалы&quot;,
+в которой будут выведены оглавления файлов addon1.chm и addon2.chm.</p>
+<p>Пример 2:</p>
+<pre class="literal-block">
+&lt;toc&gt;
+    &lt;self/&gt;
+&lt;/toc&gt;
+</pre>
+<p>Подавит вставку оглавления дочерних секций, как например сделано
+в <a class="reference" href="#html">Этапы обработки html-файла скриптом</a></p>
+<p>Пример 3:</p>
+<pre class="literal-block">
+&lt;toc&gt;
+    &lt;self&gt;
+        &lt;childs/&gt;
+    &lt;/self&gt;
+    &lt;merge file=&quot;other&quot;/&gt;
+&lt;/toc&gt;
+</pre>
+<p>Вставит в оглавлении после секции оглавление файла other.chm</p>
+<p>Пример 4:</p>
+<pre class="literal-block">
+&lt;toc&gt;
+    &lt;folder name=&quot;Раздел 4&quot;&gt;
+        &lt;self&gt;
+            &lt;childstoc/&gt;
+        &lt;/self&gt;
+        &lt;folder name=&quot;Раздел 4.2&quot;&gt;
+            &lt;merge file=&quot;volume4_2&quot;/&gt;
+        &lt;/folder&gt;
+    &lt;/folder&gt;
+&lt;/toc&gt;
+</pre>
+</div>
+<div class="section" id="id30">
+<h2><a name="id30">Задание html-заголовка топика</a></h2>
+<p>При вынесении секции в отдельный топик возможно задать для нее
+текст &lt;head&gt;&lt;title&gt;, который будет являтся заголовком топика
+в различных диалоговых окнах chm-просмотрщика, что зачастую
+более информативно, чем простой заголовок секции.</p>
+<p>Выполняется это заданием элемента <a class="reference" href="#chmtitle">chmtitle</a>, текст содержимого
+которого и будет заголовком топика. При отсутствии этого элемента,
+в качестве заголовка топика будет использоваться строка его оглавления.</p>
+</div>
+<div class="section" id="id31">
+<h2><a name="id31">Обрамление топика</a></h2>
+<p>При сохранении секции в файл существует возможность задать обрамление
+топика с помощью элемента <a class="reference" href="#decoration">decoration</a>, который представляет собой
+контейнер html-кода, в котором будут выполнены замены подстановочных
+элементов и атрибутов, а вместо содержащегося в нем элемента <a class="reference" href="#topic">topic</a>
+будет вставлен текст выносимого топика.</p>
+</div>
+</div>
+<div class="section" id="id32">
+<h1><a name="id32">Работа с коллекциями chm-файлов</a></h1>
+<chminfo><alinks>collection_processing</alinks></chminfo>
+<p>Информация о вхождении файла в коллекцию chm-файлов должна располагатся
+в месте расположения общей информации, &lt;xml&gt;&lt;common&gt;.
+Там она представлена элементом <a class="reference" href="#collection">collection</a>.
+В нем указывается мастер-файл коллекции, и перечисляются файлы, входящие
+в нее.</p>
+<p>Оглавление мастер-файла и его начальная страница будут указаны как
+оглавление и начальная страница для всех файлов коллекции.</p>
+<p><a class="reference" href="alink">См. также|collection_processing</a></p>
+</div>
+<div class="section" id="id34">
+<h1><a name="id34">Справка по элементам</a></h1>
+<div class="section" id="chminfo">
+<h2><a name="chminfo">chminfo</a></h2>
+<p>Является корневым элементом chm-разметки секции.
+Обрабатывается один элемент chminfo на каждую секцию.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>[<em>split</em>]</dt>
+<dd>при &quot;0&quot; секция не выделяется в отдельный топик.</dd>
+<dt>[<em>splitchild</em>]</dt>
+<dd>задает значение по умолчанию атрибута split в
+элементах chminfo дочерних секций.</dd>
+</dl>
+</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>один элемент chminfo, непосредственный потомок элемента
+секции документа.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>любые.</dd>
+</dl>
+<p>При отсутствии в секции документа chminfo, считается пустым.
+Для каждого элемента chminfo производится <a class="reference" href="#id25">наследование</a> его
+содержимого от chminfo родительской секции. Атрибуты split и splitchild
+управляют <a class="reference" href="#id23">разбитием</a> документа на отдельные топики.</p>
+</div>
+<div class="section" id="autokw">
+<h2><a name="autokw">autokw</a></h2>
+<chminfo><alinks>process_keywords</alinks></chminfo>
+<p>Позволяет автоматически включить заголовок секции в индексный
+указатель справки.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><dl class="first last docutils">
+<dt><em>mode</em></dt>
+<dd><p class="first">задает режим обработки заголовка секции. Является
+битовой комбинацией следующих значений:</p>
+<ul class="last simple">
+<li>1 - Заголовок секции целиком добавляется в индексный указатель.
+(Из заголовка удаляются символы &quot;,&quot;)</li>
+<li>2 - Заголовок секции разделяется на отдельные слова, каждое
+из которых добавляется в индексный указатель. Разделение происходит
+по символам: <cite>Пробел, &quot;,&quot; &quot;;&quot; &quot;:&quot; &quot;/&quot; &quot;\&quot;</cite></li>
+<li>Другие значения атрибута не вызывают никаких действий.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+<p>Наиболее целесообразно указывать этот элемент в составе элемента <a class="reference" href="#childs">childs</a>
+родительской секции, с тем чтобы этот атрибут был унаследован дочерними
+секциями.</p>
+<p><a class="reference" href="alink">См. также|process_keywords</a></p>
+</div>
+<div class="section" id="alinks">
+<h2><a name="alinks">alinks</a></h2>
+<chminfo><alinks>process_keywords</alinks></chminfo>
+<p>Задает состав <em>целевых</em> слов секции документа.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>Текст ключевых слов.</dd>
+</dl>
+<p>Целевые слова служат для задания строковой &quot;метки&quot; топика,
+с помощью которой можно организовать навигацию между несколькими
+chm-файлами, и ссылки вида &quot;Смотри также&quot;. Данные слова не видны
+пользователю, и не позволяют привязыватся к якорю на странице.
+Поэтому при задании ключевых слов для секции, не выносимой в топик,
+данные слова будут относится к топику, содержащему секцию.</p>
+<p>Допускается указывать несколько ключевых слов, разделитель - перевод
+строки.</p>
+<p><a class="reference" href="alink">См. также|process_keywords</a></p>
+</div>
+<div class="section" id="klinks">
+<h2><a name="klinks">klinks</a></h2>
+<chminfo><alinks>process_keywords</alinks></chminfo>
+<p>Задает состав <em>ключевых</em> слов секции документа.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>Текст ключевых слов.</dd>
+</dl>
+<p>Данные слова будут добавлены в индексный указатель справки.
+Позволяют привязываться к якорю на странице. При задании ключевых
+слов для секции, не выносимой в топик, при переходе по ключевому
+слову будет совершен переход к секции внутри содержащего ее топика.</p>
+<p>Допускается указывать несколько ключевых слов, разделитель - перевод
+строки.</p>
+<p>Возможно создание &quot;многоуровневых&quot; ключевых слов. Каждый уровень
+отделяется от другого запятой. Например:</p>
+<pre class="literal-block">
+&lt;klinks&gt;
+    Элемент
+    Элемент, chminfo
+    Элемент, childs
+&lt;/klinks&gt;
+</pre>
+<p>Создаст в индексе следующую запись:</p>
+<pre class="literal-block">
+Элемент
+    chminfo
+    childs
+</pre>
+<p><a class="reference" href="alink">См. также|process_keywords</a></p>
+</div>
+<div class="section" id="decoration">
+<h2><a name="decoration">decoration</a></h2>
+<p>Задает html-обрамление топика.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>html-разметка, <a class="reference" href="#topic">topic</a>, <a class="reference" href="#subst">subst</a>, <a class="reference" href="#title">title</a>.</dd>
+</dl>
+<p>Данный элемент является &quot;контейнером&quot; html-кода, которым будет
+обрамлен топик при сохранении его в файл, и являтся составом
+тэга &lt;BODY&gt; html-файла. Место вставки топика внутри элементов
+decoration задается элементом <a class="reference" href="#topic">topic</a>. При его отсутствии,
+топик будет добавлен в конце decoration.</p>
+<p>Внутри элемента выполняется обработка <a class="reference" href="#id26">подстановочных элементов
+и атрибутов</a>.</p>
+</div>
+<div class="section" id="topic">
+<h2><a name="topic">topic</a></h2>
+<p>Задает место вставки сохраняемого топика внутри элемента
+<a class="reference" href="#decoration">decoration</a>.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>в любом месте обрабатываемого <a class="reference" href="#decoration">decoration</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+</div>
+<div class="section" id="href">
+<h2><a name="href">href</a></h2>
+<chminfo><alinks>href_processing</alinks></chminfo>
+<p>Задает правило создания ссылок на секцию, выносимую в топик.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>html-разметка, <a class="reference" href="#subst">subst</a>, <a class="reference" href="#title">title</a>.</dd>
+</dl>
+<p>После обработки <a class="reference" href="#id26">подстановочных элементов и атрибутов</a> внутри элемента,
+его содержимое будет вставлено в родительской секции вместо выносимой
+секции.</p>
+<p><a class="reference" href="alink">См. также|href_processing</a></p>
+</div>
+<div class="section" id="hrefcombine">
+<h2><a name="hrefcombine">hrefcombine</a></h2>
+<chminfo><alinks>href_processing</alinks></chminfo>
+<p>Задает правила объединения ссылок на вынесенные секции.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>html-разметка, <a class="reference" href="#subst">subst</a>, <a class="reference" href="#title">title</a>, <a class="reference" href="#foreach">foreach</a>, <a class="reference" href="#item">item</a>.</dd>
+</dl>
+<p>Внутри элемента выполняется обработка <a class="reference" href="#id26">подстановочных элементов
+и атрибутов</a>.</p>
+<p>Ссылки на вынесенные cекции разделяются на &quot;непрерывные&quot; блоки,
+то есть одну или более идущих подряд ссылок. Каждый такой блок
+заменяется содержимым hrefcombine, причем для каждой ссылки
+в блоке будет клонировано содержимое элемента <a class="reference" href="#foreach">foreach</a>,
+в котором элемент <a class="reference" href="#item">item</a> будет заменен на саму ссылку.</p>
+<p><a class="reference" href="alink">См. также|href_processing</a></p>
+</div>
+<div class="section" id="foreach">
+<h2><a name="foreach">foreach</a></h2>
+<p>Задает повторяющийся для каждой ссылки на вынесенный топик
+html-код в содержимом элемента <a class="reference" href="#hrefcombine">hrefcombine</a>.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>в любом месте обрабатываемого <a class="reference" href="#hrefcombine">hrefcombine</a></dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>html-разметка, <a class="reference" href="#subst">subst</a>, <a class="reference" href="#title">title</a>, <a class="reference" href="#item">item</a>.</dd>
+</dl>
+<p>Внутри элемента выполняется обработка <a class="reference" href="#id26">подстановочных элементов
+и атрибутов</a>.</p>
+</div>
+<div class="section" id="item">
+<h2><a name="item">item</a></h2>
+<p>Задает расположение ссылки на вынесенный топик в содержимом
+элемента <a class="reference" href="#foreach">foreach</a>.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>в любом месте обрабатываемого <a class="reference" href="#foreach">foreach</a></dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+</div>
+<div class="section" id="childs">
+<h2><a name="childs">childs</a></h2>
+<p>Содержит элементы, которые должны быть <a class="reference" href="#id25">унаследованы</a> дочерними
+секциями в первую очередь.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>любые.</dd>
+</dl>
+<p>Непосредственные потомки элемента childs будут участвовать
+в наследовании разметки в первую очередь, переносясь в дочерние
+секции непосредственными потомками <a class="reference" href="#chminfo">chminfo</a> этих секций.
+Это позволяет в разметке одной секции задать разное содержимое
+одинаковых элементов для себя и дочерних секций.</p>
+<p>Сам элемент childs не наследуется.</p>
+</div>
+<div class="section" id="nochilds">
+<h2><a name="nochilds">nochilds</a></h2>
+<p>Не наследуемый элемент разметки.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>любые.</dd>
+</dl>
+<p>Элемент является контейнером для элементов, которые вы не
+хотите наследовать дочерними секциями. Наиболее целесообразно
+размещать здесь пользовательские элементы, подставляемые в
+другие места разметки элементами <a class="reference" href="#insert">insert</a> и <a class="reference" href="#subst">subst</a>.</p>
+</div>
+<div class="section" id="chmtitle">
+<h2><a name="chmtitle">chmtitle</a></h2>
+<p>Задает содержимое тэга &lt;head&gt;&lt;title&gt; формируемого файла топика.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>текст, <a class="reference" href="#title">title</a>, <a class="reference" href="#subst">subst</a>.</dd>
+</dl>
+<p>При вынесении секции в топик возможно задать ее заголовок,
+отличный от заголовка секции. После выполнения обработки
+<a class="reference" href="#id26">подстановочных элементов и атрибутов</a> внутри chmtitle,
+текст его содержимого становится заголовком топика.</p>
+<p>Элемент не обязателен. При его отсутствии или если в нем нет текста,
+значением заголовка топика становится строка из оглавления для топика,
+задаваемая элементом <a class="reference" href="#cnttitle">cnttitle</a>.</p>
+</div>
+<div class="section" id="cnttitle">
+<h2><a name="cnttitle">cnttitle</a></h2>
+<p>Задает строку для оглавления данной секции в chm-файле.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>текст, <a class="reference" href="#title">title</a>, <a class="reference" href="#subst">subst</a>.</dd>
+</dl>
+<p>При <a class="reference" href="#id29">создании узла оглавления</a> для секции возможно задать
+строку, служащую названием секции в оглавлении. После выполнения
+обработки <a class="reference" href="#id26">подстановочных элементов и атрибутов</a> внутри cnttitle,
+текст его содержимого становится названием секции в оглавлении.</p>
+<p>Элемент не обязателен. При его отсутствии или если в нем нет текста,
+значением названия секции в оглавлении становится название секции.</p>
+</div>
+<div class="section" id="toc">
+<h2><a name="toc">toc</a></h2>
+<p>(Table Of Contents)</p>
+<p>Задает правила <a class="reference" href="#id29">формирования узла оглавления</a> для данной секции.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd><a class="reference" href="#self">self</a>, <a class="reference" href="#folder">folder</a>, <a class="reference" href="#merge">merge</a>, <a class="reference" href="#childstoc">childstoc</a>.</dd>
+</dl>
+<p>При построении узла оглавления секции элемент toc позволяет
+создавать дополнительные папки, вставлять ссылки на оглавление
+других файлов, управлять положением и наличием ссылки на себя
+и оглавление дочерних секций.</p>
+<p>Элемент не обязателен. При его отсутсвии в оглавление вставляется
+ссылка на секцию и входящие в нее ссылки на дочерние секции.</p>
+</div>
+<div class="section" id="self">
+<h2><a name="self">self</a></h2>
+<p>Создает узел в оглавлении, содержащий ссылку на секцию, с названием,
+задаваемым <a class="reference" href="#cnttitle">cnttitle</a>, при <a class="reference" href="#id29">формировании узла оглавления</a> для
+данной секции.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является потомком <a class="reference" href="#toc">toc</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd><a class="reference" href="#folder">folder</a>, <a class="reference" href="#merge">merge</a>, <a class="reference" href="#childstoc">childstoc</a>.</dd>
+</dl>
+<p>При отсутствии элемента self в элементе <a class="reference" href="#toc">toc</a>, доступ к секции
+из оглавления невозможен.</p>
+</div>
+<div class="section" id="childstoc">
+<h2><a name="childstoc">childstoc</a></h2>
+<p>Вставляет в оглавление узлы оглавлений, сформированные дочерними
+секциями при <a class="reference" href="#id29">формировании узла оглавления</a> для данной секции.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является потомком <a class="reference" href="#toc">toc</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+<p>При отсутствии элемента childstoc в элементе <a class="reference" href="#toc">toc</a>, доступ к дочерним
+секция из оглавления невозможен.</p>
+</div>
+<div class="section" id="folder">
+<h2><a name="folder">folder</a></h2>
+<p>Создает дополнительный узел в оглавления при
+<a class="reference" href="#id29">формировании узла оглавления</a> для данной секции.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><em>name</em> - Задает имя создаваемого узла.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является потомком <a class="reference" href="#toc">toc</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd><a class="reference" href="#self">self</a>, <a class="reference" href="#folder">folder</a>, <a class="reference" href="#merge">merge</a>, <a class="reference" href="#childstoc">childstoc</a>.</dd>
+</dl>
+</div>
+<div class="section" id="merge">
+<h2><a name="merge">merge</a></h2>
+<p>Вставляет ссылку на оглавление другого chm-файла при
+<a class="reference" href="#id29">формировании узла оглавления</a> для данной секции.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><em>file</em> - Задает имя другого chm-файла, оглавление которого
+должно быть вставлено, без расширения chm.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является потомком <a class="reference" href="#toc">toc</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+</div>
+<div class="section" id="insert">
+<h2><a name="insert">insert</a></h2>
+<chminfo><alinks>subst_processing</alinks></chminfo>
+<p>Подстановочный элемент.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><dl class="first last docutils">
+<dt><em>node</em></dt>
+<dd>Содержит выражение на языке XPath, применяемое в методе
+selectSingleNode к элементу <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><em>nodes</em></dt>
+<dd>Содержит выражение на языке XPath, применяемое в методе
+selectNodes к элементу <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><em>asxml</em></dt>
+<dd>При задании равным &quot;1&quot; вместо результата выборки будет
+вставлен текст, равныйй xml-коду выборки.</dd>
+</dl>
+</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>В любом месте <a class="reference" href="#chminfo">chminfo</a></dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+<p>Элемент применяется для вставки на свое место содержимого других
+элементов документа. Целесообразно применять его для вынесенения
+повторяющихся кусков chm-разметки в общее место, с тем чтобы
+потом применять их в разных местах. Например:</p>
+<pre class="literal-block">
+Определим в корневой секции:
+&lt;chminfo&gt;
+    ...
+    &lt;nochilds&gt;
+        &lt;decorformethods&gt;
+            &lt;decoration&gt;
+                ....
+            &lt;/decoration&gt;
+        &lt;/decorformethods&gt;
+    &lt;/nochilds&gt;
+&lt;/chminfo&gt;
+
+Затем в некоторых секциях:
+&lt;chminfo&gt;
+    &lt;insert node=&quot;//decorformethods/*&quot;/&gt;
+&lt;/chminfo&gt;
+</pre>
+<p>Допустимо указывать оба атрибута, <em>node</em> и <em>nodes</em> одновременно.
+Тогда элемент будет заменен результатом двух выборок.</p>
+<p>В отличии от элемента <a class="reference" href="#subst">subst</a>, insert обрабатывается при начале
+обработки <a class="reference" href="#chminfo">chminfo</a>, до выполнения наследования. Таким образом,
+сначала будет обработан insert, заменен результатом выборок, и
+дочерними секциями элемент наследоватся не будет.</p>
+<p>При обработке элемента возможно, что в результате выборки снова
+будут элементы insert. Чтобы избежать зацикливания, вновь появившиеся
+элементы insert, содержащие выражения для выборок, уже использовавшиееся
+в обработке, не обрабатываются.</p>
+<p><a class="reference" href="alink">См. также|subst_processing</a></p>
+</div>
+<div class="section" id="subst">
+<h2><a name="subst">subst</a></h2>
+<chminfo><alinks>subst_processing</alinks></chminfo>
+<p>Подстановочный элемент.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><dl class="first last docutils">
+<dt><em>node</em></dt>
+<dd>Содержит выражение на языке XPath, применяемое в методе
+selectSingleNode к узлу секции.</dd>
+<dt><em>nodes</em></dt>
+<dd>Содержит выражение на языке XPath, применяемое в методе
+selectNodes к узлу секции.</dd>
+<dt><em>asxml</em></dt>
+<dd>При задании равным &quot;1&quot; вместо результата выборки будет
+вставлен текст, равныйй xml-коду выборки.</dd>
+</dl>
+</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>В любом месте секции.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+<p>Элемент применяется для вставки на свое место содержимого других
+элементов документа. Целесообразно применять его для задания в
+разметке родительских секций мест, которые возможно будут
+переопределены в дочерних секциях. Например:</p>
+<pre class="literal-block">
+Определим в корневой секции:
+&lt;chminfo&gt;
+    &lt;decoration&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Секция:&lt;/td&gt;
+                &lt;td&gt;&lt;subst nodes=&quot;topictitle/node()&quot;/&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/decoration&gt;
+    &lt;topictitle&gt;&lt;title to=&quot;self&quot;/&gt;&lt;/topictitle&gt;
+&lt;/chminfo&gt;
+</pre>
+<p>Так как &lt;topictitle&gt; наследуется дочерними секциями,
+в них вместо subst подставится &lt;title to=&quot;self&quot;/&gt;.
+Однако можно в некоторых дочерних секциях переопределить &lt;topictitle&gt;,
+изменив часть унаследованного элемента <a class="reference" href="#decoration">decoration</a>:</p>
+<pre class="literal-block">
+&lt;chminfo&gt;
+    &lt;topictitle&gt;
+        &lt;a href=&quot;parent&quot;&gt;&lt;title to=&quot;parent&quot;/&gt;&lt;/a&gt;::&lt;title to=&quot;self&quot;/&gt;
+    &lt;/topictitle&gt;
+&lt;/chminfo&gt;
+</pre>
+<p>Допустимо указывать оба атрибута, <em>node</em> и <em>nodes</em> одновременно.
+Тогда элемент будет заменен результатом двух выборок.</p>
+<p>В отличии от элемента <a class="reference" href="#insert">insert</a>, subst обрабатывается уже после
+обработки дочерних секций, таким образом, они унаследуют именно
+элемент subst, который далее будет раскрыт именно в их контексте,
+а не результат его обработки в родительской секции.</p>
+<p>Кроме того, применение выражений в <em>node</em> и <em>nodes</em> выполняется
+не к элементу <a class="reference" href="#chminfo">chminfo</a>, а к узлу секции.</p>
+<p>При обработке элемента возможно, что в результате выборки снова
+будут элементы subst. Чтобы избежать зацикливания, вновь появившиеся
+элементы subst, содержащие выражения для выборок, уже использовавшиееся
+в обработке, не обрабатываются.</p>
+<p><a class="reference" href="alink">См. также|subst_processing</a></p>
+</div>
+<div class="section" id="title">
+<h2><a name="title">title</a></h2>
+<chminfo><alinks>subst_processing</alinks></chminfo>
+<p>Подставляет вместо себя заголовок секций.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><dl class="first last docutils">
+<dt><em>to</em></dt>
+<dd><p class="first">указывает, заголовок какой секции подставлять. Допускается:</p>
+<ul class="last simple">
+<li>self - Заголовок самой секции</li>
+<li>selfremove - Заголовок самой секции c его удалением</li>
+<li>next - Заголовок следующего топика</li>
+<li>prev - Заголовок предудущего топика</li>
+<li>home - Заголовок корневой секции</li>
+<li>parent, parent[уровень] - Заголовок родительской секции заданного уровня.
+Нумерация уровней с нуля, те <em>parent</em> == <em>parent[0]</em></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>в любом месте <a class="reference" href="#chminfo">chminfo</a></dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+<p>Служит для задания текста в участках html-кода.
+Если при обработке секции встретился хотя бы один элемент
+title с атрибутом <em>to</em> равным &quot;selfremove&quot;, то сам заголовок
+из секции удаляется.</p>
+<p><a class="reference" href="alink">См. также|subst_processing</a></p>
+</div>
+<div class="section" id="a">
+<h2><a name="a">a</a></h2>
+<chminfo><alinks>subst_processing</alinks></chminfo>
+<p>Здесь рассматривается элемент <em>&quot;a&quot;</em> html-разметки (anchor, гиперссылка),
+появляющийся в элементах-контейнерах html-кода chm-разметки, и
+содержащий атрибут <em>href</em>, равный предопределенным значениям.
+Этот атрибут заменяется на значения, исходя из контекста обрабатываемой
+секции.</p>
+<dl class="docutils">
+<dt>Предопределенные значения атрибута <em>href</em>:</dt>
+<dd><dl class="first last docutils">
+<dt>self</dt>
+<dd>Заменяется на адрес самой секции. Целесообразно применять
+в элементе <a class="reference" href="#href">href</a></dd>
+<dt>next</dt>
+<dd>Заменяется на адрес следующего топика</dd>
+<dt>prev</dt>
+<dd>Заменяется на адрес предыдущего топика</dd>
+<dt>home</dt>
+<dd>Заменяется на адрес корневого топика</dd>
+<dt>parent, parent[уровень]</dt>
+<dd>Заменяется на адрес родительской секции
+заданного уровня. Нумерация уровней с нуля, те <em>parent</em> == <em>parent[0]</em></dd>
+</dl>
+</dd>
+</dl>
+<p>Кроме того, во всем документе допустимо указание атрибута <em>href</em>, равного
+<em>&quot;alink&quot;</em> и <em>&quot;klink&quot;</em>. Для таких элементов будет добавлен объект <em>&quot;HHCtrl&quot;</em>,
+реализующий соответственно, переход по <em>ALink</em> или <em>KLink</em>, для ключевых
+слов, указанных в тексте ссылки.
+См. <a class="reference" href="#id27">Задание ключевых слов и гиперссылок между файлами</a>.</p>
+<p>При обработке элемента <a class="reference" href="#chmlinks">chmlinks</a>, атрибут <em>href</em>, равный <em>&quot;click&quot;</em>,
+заменяется на код активизации объекта <em>&quot;HHCtrl&quot;</em></p>
+<p><a class="reference" href="alink">См. также|subst_processing</a></p>
+</div>
+<div class="section" id="chmlinks">
+<h2><a name="chmlinks">chmlinks</a></h2>
+<p>Создает объект HHCtrl, для организации ALink и KLink.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><dl class="first last docutils">
+<dt><em>type</em></dt>
+<dd>Задает тип объекта. Может принимать два значения:
+- ALink
+- KLink</dd>
+</dl>
+</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>в любом месте <a class="reference" href="#chminfo">chminfo</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>html-разметка, <a class="reference" href="#keys">keys</a>.</dd>
+</dl>
+<p>Элемент создает объект chm-справки HHCtrl, служащий для организации
+перехода по ALinks или KLinks, по заданным ключевым словам.
+Слова задаются в элементе <a class="reference" href="#keys">keys</a>. Если этот элемент отсутствует,
+или пуст, все содержимое chmlinks исключается из разметки.</p>
+<p>В составе html-разметки должен присутствовать элемент 'a' с атрибутом
+<em>href</em>, равным &quot;click&quot;. Именно эта ссылка будет активировать объект.</p>
+</div>
+<div class="section" id="keys">
+<h2><a name="keys">keys</a></h2>
+<p>Перечисляет ключевые слова для <a class="reference" href="#chmlinks">chmlinks</a></p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только внутри обрабатываемого <a class="reference" href="#chmlinks">chmlinks</a></dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>Текст ключевых слов.</dd>
+</dl>
+<p>Ключевые слова разделяются переводом строки.</p>
+</div>
+<div class="section" id="common">
+<h2><a name="common">common</a></h2>
+<chminfo><alinks>collection_processing</alinks></chminfo>
+<p>Задает узел для хранения общей информации.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd>нет.</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только внутри элемента <em>xml</em>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>Любые.</dd>
+</dl>
+<p>При работе с коллекцией chm-файлов, необходимо включить в каждый
+из этих файлов информацию обо всей коллекции. Также иногда полезно
+использовать в нескольких файлах одинаковые куски chm-разметки.</p>
+<p>Достигается это созданием одного файла, следующего содержания:</p>
+<pre class="literal-block">
+.. raw:: html
+    &lt;xml&gt;&lt;common&gt;
+    ...
+    &lt;/common&gt;&lt;/xml&gt;
+</pre>
+<p>и дальнейшим включением этого файла во все файлы коллекции директивой
+include:</p>
+<pre class="literal-block">
+*************************************
+Общий заголовок документа
+*************************************
+.. include:: commonchm.txt
+</pre>
+<p>Директива ..raw применяется для того, чтобы в данном элементе спокойно
+вставлять xml-комментарии, а &lt;xml&gt; - чтобы информация не отображалась
+при тестировании html-файла, без сборки chm.</p>
+<p>При сборке chm узел &lt;xml&gt;, содержащий &lt;common&gt;, будет удален из конечного
+файла.</p>
+<p>Для описания коллекции в common используется элемент <a class="reference" href="#collection">collection</a>.</p>
+<p><a class="reference" href="alink">См. также|collection_processing</a></p>
+</div>
+<div class="section" id="collection">
+<h2><a name="collection">collection</a></h2>
+<chminfo><alinks>collection_processing</alinks></chminfo>
+<p>Содержит информацию о коллекции chm-файлов.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><dl class="first last docutils">
+<dt><em>master</em></dt>
+<dd>Задает основной файл коллекции.</dd>
+<dt><em>title</em></dt>
+<dd>Задает имя коллекции, которое будет заголовком
+окна справки.</dd>
+</dl>
+</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#common">common</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd><a class="reference" href="#file">file</a>.</dd>
+</dl>
+<p>Коллекция chm-файлов - это несколько отдельных файлов, работающих
+как одно целое. У них общее оглавление, общий индексный указатель,
+полнотекстовый поиск и alinks. Один из файлов является основным,
+именно его оглавление и будет общим для всех файлов, и должно
+включать в себя ссылки на оглавления других файлов.</p>
+<p>Входящие в collection элементы <a class="reference" href="#file">file</a> задают состав файлов коллекции.
+При задании имен файлов из следует указывать без расширения, с учетом
+регистра имен.</p>
+<p><a class="reference" href="alink">См. также|collection_processing</a></p>
+</div>
+<div class="section" id="file">
+<h2><a name="file">file</a></h2>
+<chminfo><alinks>collection_processing</alinks></chminfo>
+<p>Задает файл коллекции.</p>
+<dl class="docutils">
+<dt><strong>Атрибуты:</strong></dt>
+<dd><dl class="first last docutils">
+<dt><em>name</em></dt>
+<dd>Указывает имя файла без расширения, с учетом регистра.</dd>
+</dl>
+</dd>
+<dt><strong>Обрабатывается:</strong></dt>
+<dd>только когда является непосредственным потомком <a class="reference" href="#collection">collection</a>.</dd>
+<dt><strong>Дочерние элементы:</strong></dt>
+<dd>нет.</dd>
+</dl>
+<p><a class="reference" href="alink">См. также|collection_processing</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2011-11-17 07:12 UTC.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

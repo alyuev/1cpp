@@ -1,0 +1,5362 @@
+2010-12-08	kms
+	* Source/1CPP.rc 1.73:
+	* Source/CtrlEvents.cpp 1.5:
+	* Source/CtrlEvents.h 1.3:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.54:
+	* Source/CursorGrid/CursorGridCtrl.h 1.37:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.60:
+		[+] EV: событие ПриОтменеРедактированияЗначения
+		[*] EV: ФСО в собыии ПриРедактированииЗначения
+		[bug 4517]
+		[bug 4518]
+
+2010-12-02	kms
+	* Source/1CPP.rc 1.72:
+		[*] Отмена UpdateLock для события ПриКонтекстномМеню
+		[bug 4514]
+
+2010-12-01	kms
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.59:
+		[*] Отмена UpdateLock для события ПриКонтекстномМеню
+		[bug 4514]
+
+2010-11-18	kms
+	* Source/1CPP.rc 1.71:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.53:
+		[-] ТП: потеря значений шапки и подвала при изменении видимости колонки
+		[bug 4512]
+
+2010-11-16	trad
+	* Source/1CPP.rc 1.70:
+	* Source/CursorGrid/TableFieldGetCtrl.cpp 1.2:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.58:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.39:
+		[-] По "Ctrl+Alt+F" вылезает окошко поиска
+		http://www.1cpp.ru/forum/YaBB.pl?num=1288774760/36#36
+		[bug 4511]
+
+2010-11-11	kms
+	* Source/1CPP.rc 1.69:
+		[-] 1cpp.icproj 1.41 и 1cpp.vcproj 1.40 восстанавливают класс 1cpp.Delegate
+		[bug 4497]
+
+2010-11-10	trad
+	* Source/1CPP.icproj 1.41:
+	* Source/1CPP.vcproj 1.40:
+		возвращены прежние параметры проекта
+
+2010-11-03	trad
+	* Documents/ODBC.rst 1.7:
+	* Documents/TableField.rst 1.27:
+	* Source/1CPP.icproj 1.40:
+	* Source/1CPP.rc 1.68:
+	* Source/1CPP.vcproj 1.39:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.52:
+	* Source/CursorGrid/CursorGridCtrl.h 1.36:
+	* Source/CursorGrid/DataProvider.cpp 1.1:
+	* Source/CursorGrid/GlobalFindSupport.h 1.1:
+	* Source/CursorGrid/RowFormat.cpp 1.1:
+	* Source/CursorGrid/RowFormat.h 1.1:
+	* Source/CursorGrid/TableFieldGetCtrl.cpp 1.1:
+	* Source/CursorGrid/TableFieldGetCtrl.h 1.1:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.57:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.38:
+		Реализован глобальный поиск в ТП
+		[bug 4487]
+
+2010-10-26	trad
+	* Source/1CPP.rc 1.67:
+	* Source/ODBC/1CPP_ODBCDatabase.cpp 1.6:
+		[+] добавлен параметр метода ODBCDatabase::ReconnectNative - СтрокаПодключения
+		
+		[bug 4508]
+
+2010-10-14	trad
+	* Source/1CHEADERS/basic.h 1.13:
+	* Source/1CHEADERS/bkend.h 1.7:
+	* Source/1CHEADERS/br32.h 1.3:
+	* Source/1CHEADERS/editr.h 1.2:
+	* Source/1CHEADERS/ext_header.h 1.5:
+	* Source/1CHEADERS/frame.h 1.4:
+	* Source/1CHEADERS/seven.h 1.8:
+	* Source/1CHEADERS/types.h 1.6:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.55:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.36:
+	* Source/System/GlobalMethods.cpp 1.18:
+	* Source/System/GlobalMethods.h 1.21:
+		обновление заголовков 1С
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.51:
+	* Source/CursorGrid/CursorGridCtrl.h 1.35:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.56:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.37:
+		подготовка к загрузке реализации поиска
+		(CDataRow*  -> CDataRowPtr)
+
+2010-09-26	artbear
+	* Source/PicService.cpp 1.4:
+		[bug 4504]
+		- исключена утечка GDI-ресурсов при использовании метода Система::ПолучитьOLEКартинку
+
+	* Documents/Hooker.rst 1.12:
+		[bug 4498]
+		* соответствующие исправления в документации
+
+	* Source/1CPP.rc 1.66:
+		+ 3.2.2.7
+
+	* Source/System/GroupContextWrap.cpp 1.28:
+		[bug 4238]
+		- если при выполнении оригинальных событий глобальных контекстов, глобального модуля и модулей проведения документов
+		возникают исключения, могли быть падения всей системы 1С
+
+2010-09-25	artbear
+	* Source/System/GroupContextWrap.cpp 1.27:
+		[bug 4238]
+		+ учитываются исключения, возникающие при выполнении оригинальных событий глобальных контекстов, глобального модуля и модулей проведения документов
+
+2010-09-24	trad
+	* Source/1CPP.rc 1.65:
+	* Source/PicService.cpp 1.3:
+		[-] утечка CPictureHolder7 в CPicService
+
+2010-08-25	kms
+	* Source/1CPP.rc 1.64:
+	* Source/System/GroupContextWrap.cpp 1.26:
+	* Source/System/GroupContextWrap.h 1.18:
+	* Source/System/Hooker.cpp 1.14:
+		[+] (artbear) Возможность подключения произвольных контекстов (наследников CBLContext) в качестве обработчика перехвата событий
+		[bug 4498]
+
+2010-08-24	kms
+	* Source/1CPP.rc 1.63:
+	* Source/ADDIN.CPP 1.25:
+	* Source/APP.CPP 1.3:
+		[-] Падение при использовании "ПерехватитьСобытияПроведенияДокумента"
+		[bug 4492]
+
+2010-08-22	kms
+	* Documents/extobjs.rst 1.18:
+	* Source/1CPP.rc 1.62:
+	* Source/SimpleDelegate.cpp 1.2:
+	* Source/SimpleDelegate.h 1.2:
+		[*] Названия методов согласованы с существующими классами
+		[bug 4497]
+
+2010-08-21	kms
+	* Source/1CPP.rc 1.60:
+	* Source/TurboBL/docrefboost.h 1.6:
+		[!] Ошибка в логике сравнения строк в функции-члене CVTBoost::FindProp()
+		[bug 4495]
+
+	* Documents/extobjs.rst 1.17:
+	* Source/1CPP.icproj 1.39:
+	* Source/1CPP.rc 1.61:
+	* Source/1CPP.vcproj 1.38:
+	* Source/SimpleDelegate.cpp 1.1:
+	* Source/SimpleDelegate.h 1.1:
+		[+] Добавлен простой делегат 1cpp.Делегат
+		[bug 4497]
+
+2010-08-13	trad
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.54:
+		Восстановлено поведение: "В событии ПриКонтекстномМеню СЗ.Выбрать
+		Значение открывается под ячейкой."
+
+2010-08-13	kms
+	* Source/1CPP.rc 1.59:
+		сборка 3.2.2.0
+
+2010-08-06	trad
+	* Documents/TableField.rst 1.26:
+	* Source/1CPP.rc 1.57:
+	* Source/BLCollection.h 1.4:
+		У BL-коллекций метод индекс принимает не только итем но Имя итема
+		[bug 4488]
+
+	* Source/1CPP.rc 1.58:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.53:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.35:
+		ошибка отрисовки картинок строк при указанной высоте большей чем 
+		высота картинки
+
+	* Documents/TableField.rst 1.25:
+	* Ints/TableField/ТабличноеПоле.ints 1.9:
+	* Source/1CPP.rc 1.56:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.50:
+	* Source/CursorGrid/CursorGridCtrl.h 1.34:
+	* Source/CursorGrid/DataProvider.h 1.3:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.52:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.34:
+		[+] ТабличноеПоле::ПрозрачностьФонаЯчеекВыделения
+		[+] ТабличноеПоле::ПрозрачностьФонаЯчеекВыделения2
+		[+] ТабличноеПоле::ПрозрачностьФонаЯчеекЧередованияСтрок
+		[bug 4477]
+
+2010-08-05	trad
+	* Source/1CPP.rc 1.54:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.49:
+	* Source/CursorGrid/CursorGridCtrl.h 1.33:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.50:
+		[bug  4486]
+
+	* Source/1CPP.rc 1.55:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.51:
+		[bug 4485]
+
+	* Documents/TableField.rst 1.24:
+	* Ints/TableField/КолонкаТабличногоПоля.ints 1.6:
+	* Ints/TableField/ОформлениеСтроки.ints 1.2:
+	* Ints/TableField/ОформлениеЯчейки.ints 1.5:
+	* Ints/TableField/ТабличноеПоле.ints 1.8:
+	* Ints/TableField/ФиксированныеСтроки.ints 1.2:
+	* Source/1CPP.icproj 1.38:
+	* Source/1CPP.rc 1.53:
+	* Source/1CPP.vcproj 1.37:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.48:
+	* Source/CursorGrid/CursorGridCtrl.h 1.32:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.49:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.33:
+		[+] ТабличноеПоле::УстановитьФоновуюКартинку()
+		[+] ТабличноеПоле::СброситьФоновуюКартинку()
+		[+] ТабличноеПоле::УстановитьФоновыйТекст()
+		[+] ТабличноеПоле::СброситьФоновыйТекст()
+		[+] ТабличноеПоле::ПрозрачностьФонаЯчеек
+		[+] КолонкаТабличногоПоля::ПрозрачностьФона
+		[+] ОформлениеСтроки::ПрозрачностьФона
+		[+] ОформлениеЯчейки::ПрозрачностьФона
+		[+] ФиксированныеСтроки::ПрозрачностьФона
+		[bug 4477]
+
+2010-07-30	trad
+	* Documents/TableField.rst 1.23:
+	* Ints/TableField/ТабличноеПоле.ints 1.7:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.47:
+	* Source/CursorGrid/CursorGridCtrl.h 1.31:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.47:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.32:
+		[bug 4479]
+
+	* Source/1CPP.rc 1.52:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.48:
+		[bug 4251]
+
+	* Documents/TableField.rst 1.22:
+	* Ints/TableField/ТабличноеПоле.ints 1.6:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.46:
+	* Source/CursorGrid/CursorGridCtrl.h 1.30:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.46:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.31:
+		[bug 4480]
+
+2010-07-29	trad
+	* Documents/TableField.rst 1.21:
+	* Ints/TableField/КолонкаТабличногоПоля.ints 1.5:
+	* Ints/TableField/ОформлениеЯчейки.ints 1.4:
+	* Ints/TableField/ТабличноеПоле.ints 1.5:
+	* Source/1CPP.rc 1.51:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.45:
+	* Source/CursorGrid/CursorGridCtrl.h 1.29:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.45:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.30:
+		[+] ТабличноеПоле::УстановитьСистемныеКартинки()
+		[+] ТабличноеПоле::ДобавитьСистемныеКартинки()
+		[+] ТабличноеПоле::СброситьСистемныеКартинки()
+		[+] ТабличноеПоле::ПриВыбореСистемнойКартинки()
+		[+] КолонкаТабличногоПоля::ДобавитьКартинкиСтрок()
+		[+] КолонкаТабличногоПоля::СброситьКартинкиСтрок()
+		[+] ОформлениеЯчейки::ОтображатьСистемнуюКартинку
+		[+] ОформлениеЯчейки::ИндексСистемнойКартинки
+		[+] ОформлениеЯчейки::СистемныеКартинки
+		[+] ОформлениеЯчейки::УстановитьСистемнуюКартинку()
+		[+] ТипыОбластейЯчейки:: 3 - область системной картинки
+		[bug  4481]
+
+2010-07-28	trad
+	* Source/1CHEADERS/1cheaders.h 1.5:
+	* Source/1CHEADERS/basic.h 1.12:
+	* Source/1CHEADERS/ext_header.h 1.4:
+	* Source/1CHEADERS/frame.h 1.3:
+	* Source/1CHEADERS/seven.h 1.7:
+	* Source/1CHEADERS/types.h 1.5:
+	* Source/1CHEADERS/userdef.h 1.2:
+		рефакторинг заголовков 1с
+
+	* Source/1CPP.rc 1.50:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.44:
+	* Source/CursorGrid/CursorGridCtrl.h 1.28:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.44:
+		[bug 4482]
+
+2010-07-27	trad
+	* Documents/TableField.rst 1.20:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.43:
+	* Source/CursorGrid/CursorGridCtrl.h 1.27:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.43:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.29:
+		[+] метод ФиксированныеСтроки::ПерерисоватьСтроки()
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.42:
+		[bug 4483]
+
+2010-07-23	trad
+	* Documents/TableField.rst 1.19:
+	* Ints/TableField/ОформлениеЯчейки.ints 1.3:
+	* Source/1CPP.rc 1.49:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.42:
+	* Source/CursorGrid/CursorGridCtrl.h 1.26:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.41:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.28:
+		[+] событие ТабличноеПоле::ПриВыводеПодсказки
+		[+] свойство ОформлениеЯчейки::ОтображатьПодсказку
+		[+] свойство ОформлениеЯчейки::Подсказка
+		[+] метод ОформлениеЯчейки::УстановитьПодсказку
+		[bug 4003]
+
+2010-07-22	trad
+	* Source/1CPP.rc 1.48:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.41:
+		[bug 4478]
+
+2010-07-21	trad
+	* Source/1CPP.rc 1.47:
+	* Source/CursorGrid/VTExtProvider.cpp 1.8:
+		[-][bug 4472]
+
+	* Documents/ODBC.rst 1.6:
+	* Source/1CPP.rc 1.46:
+	* Source/ODBC/MetaNameParser.cpp 1.9:
+	* Source/ODBC/MetaNameParser.h 1.6:
+		[+] Периодичность ВТ РегистрОбороты - Декада | TenDays
+		[+] Периодичность ВТ РегистрОстаткиОбороты - Декада | TenDays
+		[+] ВЗ НачалоПериода.Декада | TenDays
+		[-] метапарсер. регистрозависимость алиасов
+		[bug 4473]
+
+2010-07-20	trad
+	* Documents/TableField.rst 1.18:
+	* Ints/TableField/КолонкаТабличногоПоля.ints 1.4:
+	* Ints/TableField/ТабличноеПоле.ints 1.4:
+	* Source/1CPP.rc 1.45:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.40:
+	* Source/CursorGrid/CursorGridCtrl.h 1.25:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.40:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.27:
+		[-] удалено свойство ТП::ВыделятьОтрицательные
+		[+] добавлено свойство КолонкаТП::ВыделятьОтрицательные
+		[bug 4476]
+
+	* Source/1CPP.rc 1.44:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.14:
+	* Source/ODBC/MetaNameParser.cpp 1.8:
+		[*] при создании веремнных таблиц - collate database_default.
+		[bug 4459]
+
+	* Documents/ODBC.rst 1.5:
+	* Source/1CPP.rc 1.43:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.13:
+	* Source/ODBC/MetaNameParser.cpp 1.7:
+	* Source/ODBC/MetaNameParser.h 1.5:
+	* Source/ODBC/Odbccore.cpp 1.8:
+	* Source/ODBC/Odbccore.h 1.3:
+	* Source/SQL/MetaDataWork.cpp 1.8:
+		[+] ODBC. типизирующее имея ВидСправочника/KindReference
+		[+] ODBC. типизирующие имея ВидСправочникаПредставление/KindReferencePresent
+		[+] ODBC. типизирующие имея ВидСправочникаПредставление/KindReferencePresent
+		[+] ODBC. идентификатор вида справочника ${ВидСправочника|ReferenceKind}
+		[bug 4474]
+
+	* Source/ADDIN.CPP 1.23:
+	* Source/System/DllHooker.cpp 1.22:
+		[-] AV при выходе
+		более точное исправление.
+		[bug 4241]
+
+	* Source/System/DllHooker.cpp 1.23:
+		[bug 4475]
+
+	* Source/ADDIN.CPP 1.24:
+		[-] AV при выходе
+		более точное исправление.
+		[bug 4475]
+
+2010-07-19	trad
+	* Documents/TableField.rst 1.17:
+	* Ints/TableField/ТабличноеПоле.ints 1.3:
+	* Source/1CPP.rc 1.42:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.39:
+	* Source/CursorGrid/CursorGridCtrl.h 1.24:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.39:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.26:
+		[+] ТП::ЦветОтрицательных
+		[+] ТП::ВыделятьОтрицательные
+		3.2.1.7
+
+2010-07-15	trad
+	* Documents/TableField.rst 1.16:
+	* Source/1CPP.rc 1.40:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.38:
+	* Source/CursorGrid/CursorGridCtrl.h 1.23:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.38:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.25:
+		ТП
+		Изменена логика вызова события ПриВыбореКартинки
+		и события Выбор при выборе картинки
+		+ параметр события Выбор(, , , ТипОбластиЯчейки)
+		+ параметр события ПриВыбореФлажка(, , , ФлагВыбора)
+		+ параметр события ПриВыбореКартинки(, , , , ФлагВыбора)
+
+	* Source/1CPP.rc 1.41:
+	* Source/CursorGrid/VTProvider.cpp 1.5:
+		- bag
+		http://www.1cpp.ru/forum/YaBB.pl?num=1278692296/12#12
+
+2010-07-14	trad
+	* Source/1CPP.rc 1.39:
+		версия 3.2.1.4
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.37:
+		событие ТП::ПриВыбореКартинки
+		параметром ИндексКартинки передается не номер картинки в ячейке, а индекс из ОформлениеЯчейки :: ИндексКартинки
+
+2010-07-13	trad
+	* Documents/BinaryData.rst 1.2:
+	* Ints/BinaryData.ints 1.3:
+	* Source/1CHEADERS/bkend.h 1.6:
+	* Source/1CHEADERS/blang.h 1.3:
+	* Source/1CHEADERS/ext_header.h 1.3:
+	* Source/BinaryData.cpp 1.5:
+	* Source/System/GlobalMethods.cpp 1.17:
+	* Source/System/GlobalMethods.h 1.20:
+		[+] BinaryData методы
+		pkCompress()
+		pkDecompress()
+		pkAppendFile()
+		pkReadFile()
+		pkReadEntry()
+		[+] BinaryData синонимы методов
+		Zip - pkZip
+		Unzip - pkUnzip
+
+	* Documents/TableField.rst 1.15:
+	* Source/1CPP.rc 1.38:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.36:
+	* Source/CursorGrid/CursorGridCtrl.h 1.22:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.37:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.24:
+		+ Событие ТП::ПриВыбореКартинки
+
+	* Source/1CPP.rc 1.37:
+		версия 3.2.1.2
+
+2010-07-09	kms
+	* Source/VTExt/VTExtended.cpp 1.48:
+		[-] AV при выполнении методов Пересечение/Разность с флагом 1
+		[bug 4471]
+
+2010-07-01	trad
+	* Documents/TableField.rst 1.14:
+	* Ints/TableField/КолонкаТабличногоПоля.ints 1.3:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.35:
+	* Source/CursorGrid/CursorGridCtrl.h 1.21:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.36:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.23:
+	* Source/CursorGrid/VTProvider.cpp 1.4:
+		+КолонкаТабличногоПоля::Формат
+
+2010-06-29	trad
+	* Documents/TableField.rst 1.13:
+	* Ints/TableField/КолонкаТабличногоПоля.ints 1.2:
+	* Ints/TableField/ОформлениеЯчейки.ints 1.2:
+	* Ints/TableField/ТабличноеПоле.ints 1.2:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.34:
+	* Source/CursorGrid/CursorGridCtrl.h 1.20:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.35:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.22:
+		ТП. Управление положением колонок.
+		Свойства:
+		КолонкаТабличногоПоля::Положение,ПереноситьПоСловам
+		ТабличноеПоле::ЦветЛинийНеактивныхСтрок
+		ОформлениеЯчейки::ПереноситьПоСловам
+
+2010-06-17	kms
+	* Source/AXControl.cpp 1.21:
+		[-] AV при разрушении контрола VB
+		[bug 4467]
+
+2010-06-15	kms
+	* Documents/Compatibility.rst 1.9:
+	* Documents/SettingsManager.rst 1.2:
+		[!] Корректное сохранение данных пользователя в реестре
+		[bug 4465]
+
+	* Source/1CPP.rc 1.36:
+		сборка 3.2.1.0
+
+	* Source/1CHEADERS/seven.h 1.6:
+		[*] минорные изменения
+
+	* Source/1CPP.RGS 1.2:
+	* Source/1CPP.icproj 1.37:
+	* Source/1CPP.idl 1.2:
+	* Source/1CPP.rc 1.35:
+	* Source/1CPP.vcproj 1.36:
+	* Source/ADDIN.CPP 1.22:
+	* Source/ADDIN.H 1.8:
+	* Source/APP.CPP 1.2:
+	* Source/CreateMetaInfoClasses.cpp 1.13:
+	* Source/DML.cpp 1.2:
+	* Source/DML.h 1.3:
+	* Source/SetOfHierarchy.cpp 1.23:
+	* Source/SetOfHierarchy.h 1.14:
+	* Source/System/DllHooker.cpp 1.21:
+	* Source/System/DllHooker.h 1.7:
+	* Source/System/GlobalMethods.cpp 1.16:
+	* Source/System/GlobalMethods.h 1.19:
+	* Source/System/MyAboutWindowManager.cpp 1.5:
+	* Source/System/WrapAboutDlg.cpp 1.3:
+	* Source/TurboBL/gcboost.cpp 1.13:
+	* Source/TurboBL/gcboost.h 1.9:
+	* Source/res/1CPP.rc2 1.1:
+	* Source/resource.h 1.4:
+		[!] FR: Поддержка W7 / SVR2008(R2)
+		[bug 4463]
+		[!] FR: Загрузка компоненты без регистрации в реестре
+		[bug 4464]
+		[!] Корректное сохранение данных пользователя в реестре
+		[bug 4465]
+
+2010-06-12	kms
+	* Source/Interfaces/VLResultLoader.h 1.15:
+	* Source/System/VLResultLoader.cpp 1.7:
+		[-] AV при выгрузке в неспозиционированный контекст документа
+		[bug 4460]
+
+	* Source/1CPP.rc 1.34:
+		сборка 3.0.1.29
+
+	* Source/AXControl.cpp 1.20:
+	* Source/AXControl.h 1.11:
+	* Source/STDAFX.CPP 1.4:
+	* Source/StdAfx.h 1.15:
+	* Source/System/GlobalMethods.cpp 1.15:
+	* Source/System/GlobalMethods.h 1.18:
+	* Source/System/System.cpp 1.10:
+		[-] ActiveX: MLK при подключении событий объекта
+		[bug 4462]
+
+2010-05-05	kms
+	* Source/1CPP.rc 1.33:
+		сборка 3.0.1.28
+
+2010-04-29	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.33:
+		[-] AV при изменении видимости колонки из события
+		[bug 4453]
+
+2010-04-06	kms
+	* Source/1CPP.rc 1.32:
+		сборка 3.0.1.27
+
+2010-03-07	kms
+	* Documents/extobjs.rst 1.16:
+	* Source/AssocCollection.h 1.8:
+	* Source/SimpleCollection.h 1.22:
+		[+] добавлена возможность обращения к последнему элементу коллекции по специальному индексу (-1)
+		[bug 4429]
+
+2010-02-06	kms
+	* Source/VTExt/VTExtGrouping.cpp 1.3:
+		[-] Зависание текущей строки после выполнения метода "Группировать"
+		[bug 4428]
+
+2010-01-29	kms
+	* Documents/Compatibility.rst 1.8:
+	* Source/ADDIN.CPP 1.21:
+	* Source/ADDIN.H 1.7:
+		[!] Изменение механизма восстановления настроек из реестра
+		[bug 4427]
+
+	* Source/1CPP.rc 1.31:
+		сборка 3.0.1.26
+
+2009-12-30	kms
+	* Source/1CPP.rc 1.30:
+		сборка 3.0.1.25
+
+2009-12-21	fez
+	* Documents/txt2site.bat 1.3:
+		немного дополнил описание пререквизитов, необходимых для работы с
+		крипта
+
+	* Documents/txt2site.bat 1.2:
+		Отвяжем докутилс от переменной Path
+
+2009-12-20	kms
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.34:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.21:
+		[+] Добавлен метод ТП "ЗавершитьРедактированиеЗначения"
+		[+] Добавлен метод ТП "ОтменитьРедактированиеЗначения"
+		[bug 4047]
+
+2009-12-19	kms
+	* Documents/TableField.rst 1.12:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.33:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.20:
+		[+] Добавлено свойство "Параметр" колонки ТП
+		[bug 4265]
+
+	* Source/1CHEADERS/br32.h 1.2:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.32:
+		[-] AV при вводе некорректной даты при редактировании значения ТП
+		[bug 4425]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.32:
+		[-] некорректная обработка двойного щелчка мышью при активном EV
+		[bug 4426]
+
+	* Source/1CPP.rc 1.29:
+		сборка 3.0.1.24
+
+2009-11-11	trad
+	* Source/ODBC/MetaNameParser.cpp 1.6:
+		Оптимизатор партсера не верно делал выбор способа расчета остатков (прямой/обратный) если периодичность хранения итогов отличается от "Месяц".
+		Например если периодичность "Декада", то во 2 и 3 декадах месяца всегда работает обратный рассчет.
+		На правильность результата это не влияет.
+		Просто немного не оптимально.
+
+2009-11-10	trad
+	* Source/ODBC/MetaNameParser.cpp 1.5:
+	* Source/ODBC/MetaNameParser.h 1.4:
+		исправление ошибки определения периода остатков в ВТ Остатки и Ос
+		таткиОбороты при работе с присоединенной ИБ в которой периодичнос
+		ть сохранения итогов отличается от текущей ИБ
+
+2009-10-21	adirks
+	* Source/VTExt/VTExtended.cpp 1.47:
+		[bug 4420]
+		[-] Memory Exception при попытке загрузить из пустой строки
+
+2009-08-03	trad
+	* Source/1CPP.rc 1.28:
+		увеличен номер сборки до 23
+
+2009-07-31	trad
+	* Documents/TableField.rst 1.11:
+	* Source/1CPP.icproj 1.36:
+	* Source/1CPP.vcproj 1.35:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.31:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.31:
+	* Source/Keyboard/V7Keyboard.cpp 1.1:
+	* Source/Keyboard/V7Keyboard.h 1.1:
+	* Source/Keyboard/VKeys.h 1.1:
+		ТП: Изменены параметры события ПриНажатииКлавиши. Добавлены прочие события
+		Добавлен объект 1cpp.Клавиатура
+
+2009-07-17	trad
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.12:
+	* Source/ODBC/MetaNameParser.h 1.3:
+		исправление работы ВТ ОстаткиОбороты в присоединенной ИБ http://
+		www.1cpp.ru/forum/YaBB.pl?num=1219408471
+
+2009-04-08	kms
+	* Documents/TableField.rst 1.10:
+		[*] Примечание к свойству ДанныеКартинки
+		[bug 4271]
+
+2009-01-11	adirks
+	* Source/AXControl.cpp 1.19:
+		[*] при создании ActiveX проверяется возможность вызова 
+		IConnectionPoint::Advise(). Почему-то он не всегда успешно отраба
+		тывает.
+
+	* Source/1CPP.rc 1.27:
+		[*] версия 3.0.1.22
+
+2008-12-19	trad
+	* Source/ODBC/Odbccore.cpp 1.7:
+		Исправлено форматирование значения типа SQL_C_TIMESTAMP в STRING_TYPE_1C
+		Запрос select GetDate() [date_time $Строка] выдавал 2008-12-19 13:15:18.470000000
+		А должен 2008-12-19 13:15:18.470
+
+2008-12-11	fez
+	* Documents/site_html.bat 1.1:
+	* Documents/txt2site.bat 1.1:
+	* nightbuild.bat 1.8:
+		Дока для оперы 9.5 в 1с++ 3.0
+
+	* Documents/site_html.bat 1.2:
+		Исправил ошибку в расширении обрабатываемых файлов
+
+2008-12-04	kms
+	* Source/1CPP.rc 1.26:
+		сборка 3.0.1.21
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.30:
+		[*] Редакция сдвига
+		[bug 4249]
+
+2008-11-25	kms
+	* Documents/extobjs.rst 1.15:
+		[+] документировано событие ПослеЗаписи
+		[bug 4247]
+
+	* Source/1CHEADERS/basic.h 1.11:
+	* Source/Form/V7Form.cpp 1.8:
+	* Source/Form/V7Form.h 1.3:
+		[+] FR: Добавить событие "ПослеЗаписи" для форм документов
+		[bug 4247]
+
+	* Source/1CPP.rc 1.25:
+		сборка 3.0.1.20
+
+	* Source/System/Hooker.cpp 1.13:
+		[*] совместимость с vs2008
+		[bug 3848]
+
+2008-10-17	artbear
+	* Documents/classes.rst 1.13:
+	* Documents/classes.rst 1.14:
+		[+] доп. описание по динамическим атрибутам
+
+	* Source/UserClassesImpl.cpp 1.48:
+		[bug 4227]
+		[*] закомментированный код с попыткой решения бага - пока неудачная попытка :)
+
+	* Source/AXControl.cpp 1.18:
+		[*] полезная функция на будущее TraceSafeArray
+
+	* Source/RuntimeException.cpp 1.3:
+	* Source/RuntimeException.h 1.3:
+		[*] рефакторинг
+
+	* Source/System/Informer.cpp 1.14:
+		[*] закомментированный код на будущее
+
+2008-10-15	artbear
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.29:
+		[bug 4225]
+		[-] Исправлено ТП: событие "ПриНажатииКлавиши" не всегда верно работало
+
+	* Source/1CPP.rc 1.24:
+		[+] ver. 3.0.1.19
+
+	* Source/System/DllHooker.cpp 1.20:
+	* Source/System/DocTransactWrap.cpp 1.2:
+	* Source/System/DocTransactWrap.h 1.2:
+		[bug 4226]
+		[-] Перехватчик: Исправлено - неверная работа перехвата события проведения документа в случае использования дополнительного параметра проведения валила 1С
+
+2008-10-14	artbear
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.30:
+		[bug 4223]
+		[-] пропускались нажатия некоторых клавиш
+
+	* Documents/TableField.rst 1.7:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.29:
+	* Source/CursorGrid/CursorGridCtrl.h 1.19:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.28:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.19:
+		[bug 4223]
+		[+] ТП: Добавлено событие "ПриНажатииКлавиши". Событие вызывается при нажатии клавиши клавиатуры.
+
+	* Source/System/DocTransactWrap.cpp 1.1:
+	* Source/System/DocTransactWrap.h 1.1:
+		[bug 4213]
+		[+] были пропущены файлы по Перехватчику
+
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.21:
+		[bug 4222]
+		[*] Исправленный тест метода "_ПолучитьКод/_GetCode"
+
+	* Source/UserClassesImpl.cpp 1.47:
+		[bug 4222]
+		[-] Неверно работал пользовательский метод "_ПолучитьКод/_GetCode"
+
+	* Source/1CPP.icproj 1.35:
+	* Source/1CPP.vcproj 1.34:
+		[bug 4213]
+		[*] файлы по Перехватчику объединены в одну логическую группу
+
+	* Documents/TableField.rst 1.8:
+	* Documents/TableField.rst 1.9:
+		[bug 4223]
+		[+] дополнения к доке
+
+2008-10-10	artbear
+	* Testing/UnitTests/OOP/КлассыСДинамическимиСвойствами.txt 1.3:
+	* Testing/UnitTests/OOP/ООП_ДинамическиеКлассыТесты.txt 1.2:
+		[bug 4219]
+		[+] соответствующий тест.
+
+	* Source/UserClassesImpl.cpp 1.46:
+		[bug 4219]
+		[-] Исправлено: повторное добавление динамического свойства валит 1С
+
+2008-10-07	artbear
+	* Source/UserClassesImpl.cpp 1.45:
+		[bug 4216]
+		[-] Исправлено: при загрузке 1С++ и создании объектов КОП в теле глобальника,
+		а не в ПриНачалеРаботыСистемы, из класса-обработчика не работал
+		доступ к переменным/методам глобального модуля
+
+2008-10-03	artbear
+	* Source/System/DllHooker.cpp 1.19:
+		[bug 4213]
+		[-] Баг - ошибочное удвоенное проведение документа
+
+	* Ints/Перехватчик.ints 1.2:
+		[bug 4213]
+		[+] добавлены новые методы
+
+	* Documents/Hooker.rst 1.11:
+		[bug 4213]
+		[+] дополнения к доке
+
+2008-10-02	fez
+	* nightbuild.bat 1.3:
+	* nightbuild.bat 1.4:
+	* nightbuild.bat 1.5:
+	* nightbuild.bat 1.6:
+	* nightbuild.bat 1.7:
+		[bug 4213]
+		тестовый коммит
+
+2008-10-02	artbear
+	* Source/System/DllHooker.cpp 1.18:
+	* Source/System/Hooker.cpp 1.11:
+	* Source/System/Hooker.h 1.6:
+		[bug 4213]
+		[+] реализация по возможности перехвата событий проведения и отмены проведения документа
+
+	* Documents/Hooker.rst 1.8:
+		[bug 4213]
+		[+] новая фича документирована
+
+	* Documents/Hooker.rst 1.9:
+		[bug 4213]
+		[*] более удобное расположение доки по разделам работы Перехватчика
+
+	* Testing/Config/Документы/Новый1/МодульПроведения.1s 1.2:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК/МодульФормы.1s 1.2:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.11:
+		[bug 4213]
+		[+] соответствующие юнит-тесты
+
+	* Source/System/Hooker.cpp 1.12:
+		[bug 4213]
+		[-] исправил неточные английские наименования методов
+
+	* Source/System/GroupContextWrap.cpp 1.25:
+	* Source/System/GroupContextWrap.h 1.17:
+		[bug 4213]
+		[*] рефакторинги для улучшения кода
+
+	* Documents/Hooker.rst 1.10:
+		[bug 4213]
+		[+] дополнения к доке
+
+	* Source/1CHEADERS/basic.h 1.10:
+		[bug 4213]
+		[+] точное определение класса CDocActModule
+
+2008-10-01	artbear
+	* Source/CreateMetaInfoClasses.cpp 1.12:
+		[bug 4208]
+		[-] Исправлено: Для объекта типа "MetaInfoClasses" возвращался неверный тип функцией
+		"ТипЗначенияСтр()": "CreateMetaInfoClasses"
+
+2008-09-29	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.28:
+	* Source/CursorGrid/CursorGridCtrl.h 1.18:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.27:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.18:
+		[*] ТП: Использовать шрифт формы по умолчанию
+
+2008-09-26	trad
+	* Source/CursorGrid/ProxyDataProvider.cpp 1.3:
+	* Source/CursorGrid/ProxyDataProvider.h 1.2:
+		Класс BaseDataProvider, базовый для КОП-поставщика ТП.
+		Дополняет интерфейс взаимодействия поставщика и ТП методами
+		OnFieldsChanged()
+		SetCurrentRow(Row)
+		ResetData(Row)
+
+2008-09-26	artbear
+	* Source/1CPP.rc 1.23:
+		сборка 3.0.1.18
+
+	* Documents/DocumentsRules.rst 1.2:
+	* Documents/chm_all.bat 1.2:
+	* Documents/kb2chm.bat 1.1:
+	* Documents/kb2chm_all.bat 1.1:
+		[bug 3991]
+		[+] добавлена возможность добавления произвольных html-файлов в общую сборку 1С++ в режиме командной строки
+
+	* Documents/Documents.vcproj 1.2:
+		[bug 3991]
+		[-] в проекте ВизуалС++ для документов забыты файлы
+		Compatibility.rst
+		MetaInfoClasses.rst
+
+	* Source/System/DllHooker.cpp 1.17:
+		[bug 4194]
+		[-] Перехватчик: Исправлено - событие "Событие_СозданиеКонтекста" вызывается не только только для групповых контекстов
+
+2008-09-25	artbear
+	* Documents/Hooker.rst 1.7:
+		[bug 4190]
+		[-] Перехватчик: событие "Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации" описано более точно
+
+	* Source/ADDIN.CPP 1.20:
+		[bug 4186]
+		[*] Перехватчик: название класса Hooker необходимо сохранить для совместимости
+
+	* Testing/UnitTests/OOP/defcls.prm 1.16:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.19:
+	* Testing/UnitTests/OOP/Предок.txt 1.10:
+		[bug 4187]
+		[+] тесты на регистронезависимость определения void в прм-файле
+
+	* Testing/Config/ГлобальныйМодуль.1s 1.2:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.10:
+		[bug 4190]
+		[+] тесты события "Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации"
+
+	* Source/System/DllHooker.cpp 1.16:
+		[bug 4190]
+		[-] Перехватчик: событие "Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации" - исправлена неверная работа
+
+	* Documents/Hooker.rst 1.6:
+	* Source/System/DllHooker.cpp 1.15:
+		[bug 4128]
+		[+] Перехватчик: Событие_ЗаписьЖурналаРегистрации() - в 5 параметре передается ссылка на реальный объект из базы данных
+
+	* Documents/Compatibility.rst 1.7:
+		[bug 4190]
+		[+] Перехватчик: событие "Событие_ЗаписьПользовательскогоСобытияЖурналаРегистрации" описано более точно
+
+	* Source/System/GroupContextWrap.cpp 1.24:
+		[*] совместимость с VC++ 2008
+
+	* Source/System/Hooker.cpp 1.10:
+		[bug 4185]
+		[-] дано точное английской название Interceptor
+
+	* Source/SetOfHierarchy.cpp 1.22:
+		[*] мелкая опечатка
+
+	* Source/SetOfHierarchy.cpp 1.21:
+		[bug 4187]
+		[+] Исправлено регистронезависимое определение void в прм-файле
+
+2008-09-24	kms
+	* Source/1CPP.rc 1.22:
+		сборка 3.0.1.17
+
+2008-09-16	adirks
+	* Source/VTExt/VTExtended.cpp 1.45:
+		[bug 4031]
+		[-] в CSV-формат неправильно сериализовались строки, начинающиеся с кавычки (").
+
+	* Source/VTExt/VTExtended.cpp 1.46:
+		[bug 4031]
+		[-] ошибка загрузки из CSV строк вида '"text" some other text'
+
+2008-09-05	artbear
+	* Testing/UnitTests/OOP/defcls.prm 1.15:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_ert/МодульФормы.1s 1.2:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_txt.txt 1.2:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.18:
+	* Testing/UnitTests/OOP/Предок.txt 1.9:
+	* Testing/UnitTests/OOP/СинтаксисТесты.txt 1.2:
+		[bug 3712]
+		[+] тесты бага
+		[+] исправление тестов для исключение бага в других тестах
+
+	* Testing/ExtForms/ОтчетБезЭлементовФормы/gcomp.ini 1.1:
+	* Testing/ExtForms/ОтчетБезЭлементовФормы/gcomp.ver 1.1:
+	* Testing/ExtForms/ОтчетБезЭлементовФормы/МодульФормы.1s 1.1:
+	* Testing/ExtForms/ОтчетБезЭлементовФормы/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/ОтчетБезЭлементовФормы/Структура.mdp 1.1:
+	* Testing/ExtForms/ОтчетБезЭлементовФормы/Форма.frm 1.1:
+	* Testing/UnitTests/OOP/Тесты_КомпиляцияКласса/МодульФормы.1s 1.2:
+	* Testing/UnitTests/TurboBL/TurboBLТесты.txt 1.7:
+		[bug 3702]
+		[+] доп.тесты обработок и классов в файлах-обработках без элементов формы
+
+	* Documents/classes.rst 1.11:
+		[bug 4132]
+		[+] добавлено описание
+		[+] более удобное и подробное содержание
+
+	* Source/SetOfHierarchy.cpp 1.20:
+	* Source/UserClassesImpl.cpp 1.44:
+		[bug 3712]
+		[-] баг исправлен
+		[+] добавлена доп. диагностика для случаев ошибочного описания параметров методов класса
+
+	* Documents/classes.rst 1.12:
+		[bug 4132]
+		[+] более удобное и подробное содержание
+
+2008-09-04	artbear
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.17:
+		[bug 4106]
+		[+] более точный тест для параметров, передаваемых по значению
+
+	* Source/ComponentClassAdd.cpp 1.26:
+	* Source/UserClassesImpl.cpp 1.43:
+	* Source/UserClassesImpl.h 1.20:
+		[bug 4117]
+		[-] Метод КОП::ПолучитьСписокПараметров теперь возвращает список значений, не зависящий от исходного списка параметров внутри 1С++ - чистая копия
+
+	* Source/ComponentClassAdd.cpp 1.27:
+		[bug 3702]
+		[-] При попытке отладки классов в файле обработки без элементов формы выдается внятное сообщение
+
+	* Source/System/GlobalMethods.h 1.17:
+		[+] полезный класс CBLContext_deleter - используется для создания
+		 shared_ptr для работы с контекстами
+
+	* Source/ComponentClassAdd.cpp 1.25:
+	* Source/MetaDataOfClasses.cpp 1.10:
+	* Source/MetaDataOfClasses.h 1.12:
+	* Source/SetOfHierarchy.cpp 1.19:
+	* Source/UserClassesImpl.cpp 1.42:
+		[bug 4106]
+		[-] Баг исправлен.
+
+	* Source/SafeContext.h 1.8:
+	* Source/blptr.h 1.8:
+		[+] полезный метод get_shared_ptr
+		для классов CBLPtr и CSafeContextPtr
+
+2008-08-29	artbear
+	* Testing/UnitTests/LoaderUnitTests/DEFCLS.PRM 1.3:
+		[bug 3712]
+		[-] ошибочное определение методов ДелегатФормы::ОткрытьФорму и ОткрытьФормуМодально
+
+	* Testing/UnitTests/OOP/defcls.prm 1.13:
+	* Testing/UnitTests/OOP/Тесты_ПарамПоУмолчаниюC_3ТочкамиВнутри.txt 1.7:
+		[bug 4117]
+		[+] тесты бага
+
+	* Testing/UnitTests/OOP/defcls.prm 1.14:
+	* Testing/UnitTests/OOP/Тесты_ПарамПоУмолчаниюC_3ТочкамиВнутри.txt 1.8:
+		[bug 3712]
+		[+] доп.тесты для методов, которые по-разному описаны в prm-файле и модуле класса - процедура или функция
+
+	* Source/Interfaces/VLResultLoader.h 1.14:
+	* Source/System/VLResultLoader.cpp 1.6:
+		[bug 4117]
+		[+] CVLResultPublisher научился также выгружать представления для списка значений
+
+2008-08-28	artbear
+	* Source/System/Hooker.cpp 1.8:
+	* Source/System/Hooker.h 1.5:
+		[bug 4105]
+		[*] рефакторинг имени класса CHooker на CInterceptor
+
+	* Source/ComponentClassAdd.cpp 1.24:
+	* Source/UserClassesImpl.cpp 1.41:
+		[bug 3658]
+		[-] для методов классов КОП все-таки не работали параметры по значению ( Знач )
+
+	* Documents/Compatibility.rst 1.6:
+	* Documents/Hooker.rst 1.5:
+	* Source/System/Hooker.cpp 1.9:
+		[bug 4105]
+		[+] англоязычное имя класса Перехватчик изменено на "Interceptor"
+
+	* Testing/UnitTests/OOP/defcls.prm 1.12:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.16:
+	* Testing/UnitTests/OOP/Предок.txt 1.8:
+		[bug 3658]
+		[+] более точные тесты для параметров, передаваемых по значению
+
+	* Testing/UnitTests/TurboBL/TurboBLТесты.txt 1.6:
+		[bug 4099]
+		[+] доп. тест метода __ДобавитьКонтекст - работа со значениями свойствами
+
+	* Source/TurboBL/gcboost.cpp 1.12:
+		[*] доп.проверка
+
+	* Source/1CPP.rc 1.21:
+		[+] сборка 3.0.1.16
+
+2008-08-27	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.27:
+		[-] Некорректное отображение скроллбара для 1 строки
+		[bug 4103]
+
+2008-08-27	artbear
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.9:
+		[bug 4096]
+		[+] тест, демонстрирующий баг
+
+	* Source/TurboBL/gcboost.cpp 1.11:
+		[bug 4099]
+		[-] Исправлена реализация CGCBoost::RefreshGroupContextData - переделано на простой вызов CGroupContext::Accept
+
+	* Testing/UnitTests/TurboBL/TurboBLТесты.txt 1.3:
+		[bug 4099]
+		[+] доп. тесты метода __ДобавитьКонтекст - работа со свойствами контекстов
+
+	* Source/System/DllHooker.cpp 1.13:
+	* Source/System/DllHooker.h 1.6:
+	* Source/System/GroupContextWrap.cpp 1.23:
+		[bug 4096]
+		[-] Исправлен баг - при перехвате формы, открытой через ОткрытьФорму при вызове изнутри метода класса, не работали перехваты некоторых событий, например, СобытиеГМ_ПослеОткрытия
+		[*] рефакторинг
+
+	* Testing/UnitTests/OOP/Тесты_ПарамПоУмолчаниюC_3ТочкамиВнутри.txt 1.5:
+		[bug 4101]
+		[+] тест, показывающий баг с деструктором
+
+	* Source/SafeContext.h 1.7:
+		[+] новые методы класса CSafeContextPtr<T> - get, reset и swap
+
+	* Documents/TurboBL.rst 1.5:
+		[bug 4099]
+		[+] более полное описание + примеры использования метода __ДобавитьКонтекст
+
+	* Source/ComponentClassAdd.cpp 1.23:
+		[+] пара assert-ов для показа логики работы
+
+	* Source/AXControl.cpp 1.17:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.26:
+	* Source/Factory.cpp 1.13:
+	* Source/Form/V7Form.cpp 1.7:
+	* Source/System/GroupContextWrap.cpp 1.22:
+	* Source/System/GroupContextWrap.h 1.16:
+	* Source/System/Hooker.cpp 1.7:
+	* Source/VTExt/VTExtended.cpp 1.44:
+		[*] рефакторинг - избавился от использования класса 
+		CComponentClass, заменив его на полиморфный IUserContext
+
+	* Source/TurboBL/gcboost.cpp [TurboBL_AddProps] 1.8.2.3:
+	* Source/TurboBL/gcboost.h [TurboBL_AddProps] 1.4.2.3:
+		[bug 4093]
+		[+] перенос последнего функционала из основного ствола в эту ветку
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.16:
+		[*] тест тестСохранениеИтератора пропускается, т.к. выдается стра
+		нная ошибка
+
+	* Source/ComponentClassAdd.cpp 1.22:
+	* Source/UserClassesImpl.cpp 1.40:
+	* Source/UserClassesImpl.h 1.19:
+		[bug 4101]
+		[-] Баг исправлен.
+
+	* Documents/TurboBL.rst 1.6:
+		[bug 4099]
+		[*] правка примера использования метода __ДобавитьКонтекст
+
+	* Testing/UnitTests/TurboBL/TurboBLТесты.txt 1.4:
+		[bug 4099]
+		[+] доп. тесты метода __ДобавитьКонтекст - работа со методами контекстов
+
+	* Source/TurboBL/gcboost.h 1.7:
+		[bug 4099]
+		[-] Исправлено падение 1С при вызове методов контекстов с параметрами по умолчанию
+
+	* Documents/TurboBL.rst 1.4:
+		[bug 4099]
+		[*] мелкий коммент
+
+	* Source/TurboBL/gcboost.h 1.8:
+		[bug 4099]
+		[*] рефакторинг - более универсальная работа со спец.методами контекста
+		протестировано на юнит-тестах
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.17:
+		[-] синтакс-ошибка в тестСохранениеИтератора
+
+2008-08-26	kms
+	* Source/TurboBL/gcboost.cpp 1.10:
+	* Source/TurboBL/gcboost.h 1.6:
+		[+] Первичный вариант добавления контекстов к ГК
+		[bug 4099]
+
+	* Documents/TurboBL.rst 1.3:
+		[+] документирован вариант добавления контекстов к ГК
+		[bug 4099]
+
+2008-08-26	artbear
+	* Documents/Hooker.rst 1.4:
+	* Source/System/DllHooker.cpp 1.11:
+	* Source/System/DllHooker.h 1.5:
+	* Source/TurboBL/gcboost.cpp 1.9:
+	* Source/TurboBL/gcboost.h 1.5:
+		[bug 4097]
+		[+] новое событие глобального модуля СобытиеГМ_СозданиеКонтекста(КонтФормы)
+
+	* Source/blptr.h 1.7:
+		[-] баг - не работал оператор присваивания для двух объектов CBLPtr<T>
+		[-] баг - не компилировался оператор присваивания для объектов CBLPtr<T> и CBLPtr<Y>
+		[+] новые методы reset и swap
+
+	* Testing/UnitTests/SpecialClasses/КлассПерехватчикГлобальногоМодуля.txt 1.5:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.8:
+		[bug 4097]
+		[+] тесты на новое событие глобального модуля СобытиеГМ_СозданиеКонтекста(КонтФормы)
+
+2008-08-25	kms
+	* Source/blptr.h 1.6:
+		[!] Устранено неверное копирование CBLPtr
+
+	* Source/SimpleCMN.h 1.9:
+		[*] Уберем ненужный комментарий
+
+2008-08-25	artbear
+	* Source/SimpleCMN.h 1.8:
+	* Source/TurboBL/gcboost.cpp [TurboBL_AddProps] 1.8.2.1:
+	* Source/TurboBL/gcboost.h [TurboBL_AddProps] 1.4.2.1:
+		[-] пред.коммит 1.7 был неверным - задвоение вызовов ldrDone и 
+		pubDone
+
+	* Documents/TurboBL.rst 1.2:
+		[bug 4091]
+		[+] более подробное и точное описание функционала TurBoBL из 2.0.3
+		+ описание метода __ВызыватьМетодыКакСобытия
+
+	* Documents/TurboBL.rst [TurboBL_AddProps] 1.2.2.1:
+		[bug 4093]
+		[+] описание свойства _ДопСвойства
+
+	* Source/TurboBL/gcboost.cpp [TurboBL_AddProps] 1.8.2.2:
+	* Source/TurboBL/gcboost.h [TurboBL_AddProps] 1.4.2.2:
+		[+] добавление к групповым контекстам доп.свойства _ДопСвойства
+		пред.коммит был описан неверно
+
+2008-08-22	adirks
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.15:
+		[+] тест записи/чтения файлов в формате csv
+
+2008-08-21	artbear
+	* Source/SimpleCMN.h 1.7:
+		[-] у коллекций при выгрузке/загрузке по ошибке не вызывались мет
+		оды ldrDone/pubDone
+
+2008-08-19	artbear
+	* Source/1CPP.rc 1.20:
+		сборка 3.0.1.15
+
+2008-08-18	artbear
+	* Documents/extobjs.rst 1.14:
+		[*] слегка поправлено описание МенеджерСобытий::ПослатьСобытие.
+
+2008-08-15	kms
+	* Source/System/Math.cpp 1.3:
+		[-] Деление на 0 не обрабатывалось в функции LDIV
+		[bug 3269]
+
+	* Source/1CHEADERS/basic.h 1.9:
+	* Source/CursorGrid/V7LogProvider.cpp 1.5:
+	* Source/Delegate.cpp 1.6:
+	* Source/Interfaces/VLResultLoader.h 1.13:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.11:
+	* Source/SimpleCMN.h 1.6:
+	* Source/System/GlobalMethods.cpp 1.14:
+	* Source/System/GlobalMethods.h 1.15:
+	* Source/System/VLResultLoader.cpp 1.5:
+	* Source/VTExt/VTExtended.cpp 1.43:
+	* Source/VTExt/VTExtended.h 1.25:
+	* Source/VTExt/VTIndex.cpp 1.6:
+		[-] Memory leak в методе ВыполнитьИнструкцию в случае выгрузки в СЗ
+		[bug 3758]
+
+	* Source/DynaValue.cpp 1.7:
+		[-] Dynavalue не очищает старое значение при присваивании пустого значения
+		[bug 2932]
+
+	* Documents/Compatibility.rst 1.5:
+		[*] Оставляем описание версий icpp
+		[bug 4066]
+
+	* Source/StdAfx.h 1.14:
+		[*] шаблон предназначен для указателей
+
+2008-08-15	artbear
+	* Source/System/DllHooker.cpp 1.10:
+		[bug 4075]
+		[+] Исправлен баг - 1С зависала после непойманного исключения в обработчике события формы или глобальника
+
+2008-08-14	kms
+	* Documents/Compatibility.rst 1.2:
+		[*] Начнем с версии 3.0.1.1
+		[bug 4066]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.26:
+		[*] ТП не будет обрабатывать CTRL-UP/DOWN как UP/DOWN
+		[bug 4061]
+
+	* Documents/Compatibility.rst 1.1:
+		[+] Добавлено описание изменений, повлиявших на обратную совместимость
+		[bug 4066]
+
+	* Documents/Compatibility.rst 1.4:
+		[*] Начнем с версии 3.0.1.14 в сравнении с 2.5.0.7
+		[bug 4066]
+
+2008-08-14	artbear
+	* Documents/MetaInfoClasses.rst 1.4:
+		[-] исправлено описание для ЗагрузитьОписаниеКлассов
+
+	* Documents/Compatibility.rst 1.3:
+		[bug 4066]
+		[+] изменения, влияющие на совместимость для 3.0 и 2.5.0.7
+
+2008-08-13	kms
+	* Source/1CHEADERS/basic.h 1.8:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.25:
+	* Source/CursorGrid/CursorGridCtrl.h 1.17:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.25:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.17:
+		[*] Безопасная редакция определения параметров сдвига
+		[*] Разделение функционала по классам (рефакторинг)
+		[bug 4048]
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.24:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.16:
+		[*] Универсальная редакция определения параметров сдвига
+		[bug 4048]
+
+2008-08-12	kms
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.23:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.15:
+		[*] рефакторинг
+		[bug 4048]
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.22:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.14:
+		[!] Нарушение логики выполнения модуля при добавлении атрибута формы
+		[bug 4048]
+
+	* Source/1CPP.rc 1.19:
+		сборка 3.0.1.14
+
+2008-08-11	artbear
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/ПомощникСозданияКласса.txt 1.2:
+		[+] строку наследников можно передавать пустой
+
+	* Source/System/VLResultLoader.cpp 1.4:
+		[bug 4030]
+		[-] баг выгрузки в список значений на форме
+
+	* Testing/Config/Документы/Новый1/МодульФормы.1s 1.3:
+	* Testing/Config/Документы/Новый2/МодульФормы.1s 1.2:
+		[bug 4040]
+		[*] забыл занести
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.14:
+		[-] не работали тесты
+
+	* Source/System/DllHooker.cpp 1.9:
+	* Testing/UnitTests/SpecialClasses/КлассПерехватчикГлобальногоМодуля.txt 1.4:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.7:
+		[bug 4040]
+		[*] Исправление - у событий перехватчика глобального модуля СобытиеГМ_ (ПриОткрытии, ВводНового, ВводНаОсновании) количество параметров задано по максимуму
+		Т.е. для событий формы отчета, также как и для формы документа, можно указать СобытиеГМ_ВводНового(КонтФормы, ФлагКопирования, ОбъектКопирования)
+		только для документа это будет правильные значения системного события, а для отчета пустые значения-заглушки
+
+	* Documents/Hooker.rst 1.3:
+		[bug 4040]
+		[*] более подробная и четкая документация по спец.событиям глобального модуля в перехватчиках - СобытиеГМ_ПриОткрытии, _ВводНового, _ВводНаОсновании
+
+2008-08-09	kms
+	* Source/1CHEADERS/basic.h 1.7:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.24:
+	* Source/CursorGrid/CursorGridCtrl.h 1.16:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.21:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.13:
+		[+] Поддержка выбора счетов (и т.п.) в TF/EV
+		[bug 4046]
+
+2008-08-08	artbear
+	* Documents/classes.rst 1.10:
+		[+] объяснение по поводу глобальных объектов, созданных в режиме 
+		включенной отладки
+
+2008-08-07	artbear
+	* Source/1CPP.rc 1.18:
+		[+] сборка 3.0.1.13
+
+	* Source/ComponentClass.h 1.30:
+	* Source/System/GlobalMethods.cpp 1.13:
+		[+] новые универсальные шаблонные функции
+		CValue2AfxType<Type>
+		CBLContext2AfxType<Type>
+
+	* Documents/classes.rst 1.9:
+		[bug 4022]
+		[+] документировано
+
+	* Source/ODBC/Odbccore.cpp 1.6:
+		[*] исправил одну из функций IUserContext::GetBaseClass - ускорен
+		ие + упрощение
+
+2008-08-01	kms
+	* Source/1CPP.rc 1.17:
+		сборка 3.0.1.12
+
+2008-07-31	kms
+	* Source/TurboBL/docrefboost.h 1.5:
+		[-] Неверный поиск свойств и методов  для невыбранных метаданных
+		[bug 4026]
+
+2008-07-30	artbear
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.11:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.16:
+		[+] тесты для проверки удаления объектов и вызова их деструкторов
+		
+
+	* Source/System/GlobalMethods.cpp 1.12:
+	* Source/VTExt/VTExtended.cpp 1.42:
+		[*] исправил ::CValue2Ext на базе универсального преобразования
+
+	* Source/ComponentClass.cpp 1.21:
+	* Source/ComponentClass.h 1.29:
+	* Source/UserClassesImpl.cpp 1.39:
+	* Source/UserClassesImpl.h 1.18:
+		[*] исправил одну из функций IUserContext::GetBaseClass - ускорен
+		ие + упрощение
+
+	* Source/System/Informer.cpp 1.13:
+	* Source/System/VLResultLoader.cpp 1.3:
+		[*] рефакторинг
+
+2008-07-29	kms
+	* Source/1CPP.icproj 1.33:
+	* Source/1CPP.vcproj 1.32:
+		[*] добавлен SimpleCMN.h
+		[bug 3985]
+
+	* Source/SQLITE1C/resultloader.h 1.7:
+	* Source/SimpleCMN.h 1.4:
+		[*] Уточнения к описанию интерфейсов (Done сделан обязательным)
+		[bug 3979]
+
+	* Source/SimpleCMN.h 1.5:
+		[*] Убраны отладочные сообщения
+		[bug 3979]
+
+2008-07-29	artbear
+	* Source/1CPP.icproj 1.34:
+	* Source/1CPP.vcproj 1.33:
+	* Source/Interfaces/VLResultLoader.h 1.12:
+	* Source/System/VLResultLoader.cpp 1.1:
+	* Source/VTExt/VTExtended.cpp 1.41:
+		[bug 3979]
+		[*] рефакторинг - реализация прокси-объектов, реализующих универсальные интерфейсы обмена данными, перенесен из хедера в cpp-файл
+
+	* Source/SimpleCollection.h 1.21:
+	* Source/VTExt/VTExtended.cpp 1.40:
+		[bug 3979]
+		[+] поддержка объектов, реализующих универсальный интерфейс источника данных
+
+	* Source/VTExt/VTExtended.cpp 1.39:
+		[bug 3979]
+		[*] исправления к реализации универсального интерфейса загрузки - ldrDone сделан обязательным
+
+	* Source/blptr.h 1.5:
+		[+] полезный метод get()
+
+	* Source/System/VLResultLoader.cpp 1.2:
+		[bug 3979]
+		[-] баг - прокси-объект для ТаблицаЗначений неверно выгружал данные
+
+	* Testing/UnitTests/LoaderUnitTests/ТестовыйСлучайСДанными.txt 1.3:
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.10:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.14:
+		[bug 4021]
+		[+] поправлены тесты для правильной работы
+
+	* Testing/UnitTests/OOP/defcls.prm 1.11:
+	* Testing/UnitTests/OOP/Класс_ResultLoader.txt 1.1:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.14:
+		[bug 4022]
+		[+] соответствующий тест универсальной загрузки в КОП, поддерживающий спец.интерфейс загрузки
+
+	* Source/SQLITE1C/resultloader.h 1.8:
+		[bug 3979]
+		[*] мелкий коммент к интерфейсу источника
+
+	* Source/1CHEADERS/basic.h 1.6:
+		[bug 3979]
+		[*] рефакторинг типа поля для класса CValueListContext
+
+	* Source/MapDefMethod.h 1.8:
+	* Source/UserClassesImpl.cpp 1.38:
+		[bug 4022]
+		[-] мелкая ошибка
+
+	* Testing/UnitTests/OOP/Класс_ResultLoader.txt 1.2:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.15:
+		[bug 4022]
+		[+] доработаны тесты универсальной загрузки в КОП, поддерживающий спец.интерфейс загрузки
+
+	* Source/ComponentClass.h 1.27:
+	* Source/VTExt/VTExtended.cpp 1.38:
+		[bug 4022]
+		[*] поддержка спец.интерфейса IQueryInterface_Loader_Publisher для возможности динамического указания поддержки интерфейсов загрузки/выгрузки,
+		например, для КОП
+
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.15:
+		[bug 3979]
+		[+] тесты метода Вектор::Загрузить() - для загрузки из Вектора, СЗ и ТЗ
+
+	* Source/ComponentClass.cpp 1.20:
+	* Source/ComponentClass.h 1.28:
+	* Source/MapDefMethod.h 1.7:
+	* Source/UserClassesImpl.cpp 1.36:
+	* Source/UserClassesImpl.h 1.17:
+		[bug 4022]
+		[+] КОП научились поддерживать универсальный интерфейс загрузки
+
+	* Source/System/GlobalMethods.h 1.14:
+		[bug 3979]
+		[*] простой, но полезный класс null_deleter
+
+	* Source/Interfaces/VLResultLoader.h 1.11:
+		[bug 3979]
+		[+] добавлен прокси-объект, реализующий интерфейс источника для СписокЗначений
+
+	* Source/MapDefMethod.h 1.6:
+	* Source/ParamDefs.h 1.11:
+	* Source/UserClassesImpl.cpp 1.35:
+	* Source/UserClassesImpl.h 1.16:
+		[bug 4022]
+		[*] рефакторинг - выделен наследник CParamDefs - CMyParamDefs для поддержки классов КОП
+
+	* Source/AXControl.h 1.10:
+	* Source/Delegate.h 1.3:
+	* Source/ExecuteModule.h 1.8:
+	* Source/System/DllHooker.h 1.4:
+		[*] более точное подключение хедеров
+
+	* Source/UserClassesImpl.cpp 1.37:
+		[bug 4022]
+		[+] мелкая ошибка в GetLastError
+
+2008-07-28	kms
+	* Source/VTExt/VTExtended.cpp 1.37:
+		[*] ВыгрузитьСтроку() приведена в соответствие с интерфейсом
+		[bug  3978]
+
+	* Source/AssocCollection.h 1.6:
+	* Source/Interfaces/VLResultLoader.h 1.9:
+	* Source/SQLITE1C/resultloader.h 1.5:
+	* Source/SimpleCollection.h 1.19:
+	* Source/VTExt/VTExtended.cpp 1.36:
+	* Source/VTExt/VTExtended.h 1.24:
+		[*] интерфейс IResultLoader (рефакторинг IGeneralResultLoader)
+		[+] интерфейс IResultPublisher
+		[bug 3979]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.23:
+	* Source/CursorGrid/CursorGridCtrl.h 1.15:
+		[*] Еще чуть более хитрый скроллер (дин. привязка точки захвата)
+		[bug 3965]
+
+	* Source/Interfaces/VLResultLoader.h 1.10:
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.9:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.13:
+		[-] исправлена загрузка в непустую VT
+		[bug 4021]
+
+	* Source/AssocCollection.h 1.7:
+	* Source/SQLITE1C/resultloader.h 1.6:
+	* Source/SimpleCMN.h 1.3:
+	* Source/SimpleCollection.h 1.20:
+		[*] Уточнения к описанию интерфейсов
+		[+] Реализована загрузка и выгрузка коллекций
+		[bug 3979]
+
+2008-07-28	artbear
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.8:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.12:
+		[bug 4020]
+		[+] соответствующие тесты
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.13:
+		[bug 4020]
+		[+] метод ИТЗ::Выгрузить не изменил своего поведения - он очищает приемники СЗ/ТЗ перед загрузкой данных
+
+	* Source/System/GlobalMethods.h 1.13:
+	* Source/VTExt/VTExtended.cpp 1.35:
+		[bug 4019]
+		[+] универсальная выгрузка научилась работать с объектами КОП, у которых в качестве предка есть объект, реализующий универсальный интерфейс загрузки
+
+	* Source/AssocCollection.h 1.5:
+	* Source/SimpleCollection.h 1.18:
+		[bug 4020]
+		[*] Вектор/АссоциативныйВектор - не очищает себя перед загрузкой данных
+
+	* Source/Interfaces/VLResultLoader.h 1.8:
+		[bug 4020]
+		[*] СписокЗначений/ТаблицаЗначений - не очищают себя перед загрузкой данных при использовании универсальной выгрузки/загрузки
+
+2008-07-25	artbear
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/defcls.prm 1.2:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/ПомощникСозданияКласса.txt 1.1:
+		[bug 4019]
+		[+] Полезный класс "ПомощникСозданияКласса" для создания и подключения классов КОП на лету в режиме Предприятия
+
+	* Testing/UnitTests/LoaderUnitTests/ТестовыйСлучайСДанными.txt 1.2:
+		[bug 4019]
+		[+] полезный метод "ТестовыйСлучайСДанным::СоздатьНовыйКлассНаследник"
+		для создания и подключения временных классов КОП на лету в режиме Предприятия
+		в деструкторе файл класса будет удален
+
+	* Testing/UnitTests/SpecialClasses/defcls.prm 1.4:
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.7:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.11:
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.12:
+		[bug 4019]
+		[+] тесты выгрузки в КОП-наследники от СписокЗначений/ТаблицаЗначений
+
+2008-07-24	kms
+	* Documents/extobjs.rst 1.13:
+	* Source/AssocCollection.h 1.4:
+	* Source/SimpleCMN.h 1.2:
+		[+] АссоциативныйВектор::ПолучитьКлюч()
+		[bug 3992]
+
+2008-07-24	artbear
+	* Documents/extobjs.rst 1.12:
+		[bug 3998]
+		[+] доп.описание
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.10:
+		[bug 3992]
+		[+] доп. тесты методов Выгрузить и ВыгрузитьСтроку для обычного СЗ, а также СЗ и ТЗ на форме
+
+	* Source/System/Clipboard.cpp 1.3:
+		[*] доп.проверки в случае ошибок
+
+	* Documents/extobjs.rst 1.11:
+		[bug 3998]
+		[+] документировал то, что метод Выгрузить умеет выгружать в любой Приемник со спец.интерфейсом.
+
+	* Documents/IndexedTable.rst 1.7:
+		[bug 3998]
+		[+] документировал то, что метод Выгрузить/ВыгрузитьСтроку умеет выгружать в любой Приемник со спец.интерфейсом.
+
+	* Testing/UnitTests/LoaderUnitTests/ТестовыйСлучай.txt 1.2:
+		[+] полезные методы
+		ПроверитьИсключениеНаЧтениеАтрибута
+		ПроверитьИсключениеНаИзменениеАтрибута
+
+	* Source/VTExt/VTExtended.cpp 1.34:
+	* Source/VTExt/VTExtended.h 1.23:
+		[bug 3992]
+		[*] небольшой рефакторинг наименований
+
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.6:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.10:
+		[bug 3992]
+		[+] доп.тесты классов "АссоциативныйВектор" и "Вектор"
+
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.5:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.9:
+		[bug 3992]
+		[-] исправил тесты методов Выгрузить для СЗ на форме
+
+	* Testing/UnitTests/TurboBL/TurboBLТесты.txt 1.2:
+		[+] доп. тест для получения атрибута модуля формы через контекст 
+		формы
+
+	* Testing/UnitTests/SpecialClasses/MetaInfoClassesТесты.txt 1.2:
+	* Testing/UnitTests/SpecialClasses/АктивИкс_Тесты.txt 1.4:
+		[-] исправил ошибочные тесты
+
+	* Source/Interfaces/VLResultLoader.h 1.7:
+		[bug 3992]
+		[-] баг - перепутанная выгрузка значений и ключей
+		[*] рефакторинг
+		[*] добавлен закомментированный код по использованию штатной загрузки в СЗ с багом пропуска пустых значений
+
+	* Testing/UnitTests/FormEx/FormExТесты.txt 1.2:
+		[+] доп. тесты для ВК ФормЕкс
+
+	* Testing/UnitTests/SpecialClasses/ВыполняемыйМодульТесты.txt 1.4:
+		[+] доп. тест метода ВыполнитьПроцедуруКонтекста для проверки пер
+		едачи нескольких параметров в процедуру
+
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.4:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.8:
+		[bug 3992]
+		[+] доп.тесты класса "АссоциативныйВектор" и "Вектор" - метод Выгрузить
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.11:
+		[bug 3992]
+		[+] доп. тесты ИТЗ::ВыгрузитьСтроку для варианта выгрузки имен колонок перед значениями
+
+2008-07-23	kms
+	* Source/SimpleCollection.h 1.17:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.7:
+		[*] выгрузка в некорректный приемник
+		[bug 3961]
+
+	* Source/istrmap.h 1.7:
+		[-] зависимый тип
+		[bug 3848]
+
+	* Source/AssocVector.h 1.2:
+		[-] корр. АссоциативныйВектор::Удалить(стрКлюч)
+		[bug 3992]
+
+	* Source/AssocCollection.h 1.3:
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.3:
+		[*] выгрузка в некорректный приемник
+		[bug 3992]
+
+2008-07-23	artbear
+	* Source/AssocCollection.h 1.2:
+		[bug 3992]
+		[+] АссоциативныйВектор::Выгрузить научился выгружать универсальным образом
+
+	* Documents/MetaInfoClasses.rst 1.3:
+	* Source/CreateMetaInfoClasses.cpp 1.11:
+		[bug 4014]
+		[-] Исправлен баг - MetaInfoClasses::ЗагрузитьОписаниеКлассов - если передаем
+		непосредственно строку описания класса, а не имя файла описания
+		класса
+
+	* Source/istrmap.h 1.6:
+		[+] удобные функции класса "CIStringMap"
+		ForEachValue и ForEachPair
+		[*] небольшой рефакторинг
+
+	* Source/1CPP.icproj 1.32:
+	* Source/1CPP.vcproj 1.31:
+		[-] по ошибке NDEBUG был включен в debug-сборке, в результате в д
+		ебаг-сборке не работали assert-ы и т.д.
+
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.2:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.6:
+		[bug 3992]
+		[+] доп.тесты класса "АссоциативныйВектор"
+
+	* Documents/extobjs.rst 1.10:
+		[bug 3998]
+		[+] Коллекция::Выгрузить(СоответствующийПриемник) - пока в качестве приемника можно передать или СписокЗначений, или ПустоеЗначение
+
+	* Source/System/MyAboutWindowManager.cpp 1.3:
+	* Source/System/MyAboutWindowManager.h 1.2:
+	* Source/System/WrapAboutDlg.cpp 1.2:
+		[-] баг неверной компиляции кода
+
+	* Source/SimpleCollection.h 1.14:
+		[bug 3998]
+		[*] Коллекция::Выгрузить(СоответствующийПриемник) - пока в качестве приемника можно передать или СписокЗначений, или ПустоеЗначение
+
+	* Source/Interfaces/VLResultLoader.h 1.6:
+	* Source/SimpleCollection.h 1.15:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.5:
+		[bug 3998]
+		[+] Коллекция::Выгрузить(СоответствующийПриемник) - в качестве приемника можно передать любой объект, поддерживающий универсальный интерфейс выгрузки данных
+
+	* Source/VTExt/VTExtended.cpp 1.33:
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.9:
+		[bug 3978]
+		[] Баг - Коллекция::ВыгрузитьВСтроку() - порядок параметров не соответствовал документации
+
+	* Source/SimpleCollection.h 1.16:
+		[bug 3998]
+		[-] Коллекция::Выгрузить(СоответствующийПриемник) - не работала выгрузка
+
+	* Testing/UnitTests/SpecialClasses/defcls.prm 1.3:
+	* Testing/UnitTests/SpecialClasses/АссоциативныйВектор_Тесты.txt 1.1:
+		[bug 3992]
+		[+] тесты класса "АссоциативныйВектор"
+
+2008-07-22	kms
+	* Source/1CPP.icproj 1.31:
+	* Source/1CPP.vcproj 1.30:
+		[*] Замена _NDEBUG на NDEBUG
+
+	* Source/1CPP.rc 1.16:
+		сборка 3.0.1.11
+
+	* Source/1CHEADERS/basic.h 1.5:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.20:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.12:
+	* Source/MethodsWrapper.h 1.3:
+		[+] ТП: Завершение редактирования при потере фокуса реквизитом
+		[bug 4002]
+
+2008-07-22	artbear
+	* Testing/UnitTests/SpecialClasses/АктивИкс_Тесты.txt 1.3:
+		[bug 3462]
+		[+] доп.тесты обработки событий для NET-контролов
+
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.4:
+		[bug 3998]
+		[+] тест для Коллекция::Выгрузить(СоответствующийПриемник)
+
+	* Source/CreateMetaInfoClasses.cpp 1.10:
+		[bug 3997]
+		[*] доп.диагностика ошибок для метода MetaInfoClasses::ЗагрузитьОписаниеКлассов
+
+	* Testing/UnitTests/LoaderUnitTests/DEFCLS.PRM 1.2:
+	* Testing/UnitTests/LoaderUnitTests/ДелегатФормы.txt 1.2:
+		[+] класс ДелегатФормы умеет открывать модальные формы - новый ме
+		тод ОткрытьФормуМодально(...)
+
+	* Testing/UnitTests/User/readme.txt 1.1:
+		[bug 3997]
+		[+] файлик доки для пользовательских тестов, не хранящихся в CVS
+
+	* Source/1CHEADERS/ext_header.h 1.2:
+	* Source/System/Informer.cpp 1.12:
+		[bug 3995]
+		[+] рефакторинг наименований классов, связанных с информацией по загруженным ВК
+
+	* Testing/UnitTests/LoaderUnitTests/ЗагрузчикТестов.txt 1.2:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/МодульФормы.1s 1.2:
+		[bug 3997]
+		[+] добавлена автозагрузка пользовательских тестов, не хранящихся в CVS,
+		из каталога КаталогИБ\UnitTests\User
+
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.3:
+		[bug 3961]
+		[+] доп.тесты Вектор - Выгрузить, ИзменитьРазмер, Резервировать, Сортировать
+
+2008-07-21	kms
+	* Source/SQL/MetaDataWork.cpp 1.7:
+		[-] Неверная типизация пустых значений неопределенного типа
+		[bug 3996]
+
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.10:
+		[-] ТП: ошибка ODBCDataProvider.MSSQL для пустых значений
+		неопределенного вида
+		[bug 3993]
+
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.9:
+		[-] ТП: ошибка ODBCDataProvider.MSSQL для остальных типизаций
+		(Перечисление, Календарь, ВидРасчета, Счет, ВидСубконто, ПланСчетов)
+		[bug 3993]
+
+2008-07-21	artbear
+	* Testing/ExtForms/UnitTests/СобытияFormEx/МодульФормы.1s 1.2:
+	* Testing/UnitTests/FormEx/СобытияFormExТесты.txt 1.3:
+		[bug 3964]
+		[+] доп. тест для событий клавиатуры на модальных форм.
+
+	* Source/AXControl.cpp [activex_try_with_NET_controls_events] 1.14.2.1:
+	* Source/AXControl.h [activex_try_with_NET_controls_events] 1.7.2.1:
+		[bug 3462]
+		[+] попытка доп.обработки событий для NET-контролов
+		пока неудачная попытка
+		сохраню для будущего :)
+
+	* Source/AXControl.cpp 1.15:
+	* Source/AXControl.h 1.8:
+		[bug 3462]
+		[-] Исправлен баг при работе с контролами, созданными в VB6
+
+	* Source/AXControl.cpp 1.16:
+	* Source/AXControl.h 1.9:
+		[bug 3462]
+		[-] Исправлен баг - двойной вызов событий для некоторых контролов
+
+	* Source/System/Informer.cpp 1.11:
+		[bug 3995]
+		[+] метод Информатор::ПолучитьТаблицуЗагруженныхВК научился получить имени и путь файлов ВК,
+		загруженных через ПодключитьВнешнююКомпоненту
+
+2008-07-20	kms
+	* Source/VTExt/CVCompare.h 1.2:
+		[*] минимальный рефакторинг (- предупреждения компилятора)
+
+	* Documents/extobjs.rst 1.9:
+		[+] АссоциативныйВектор, Вектор - документация
+		[bug 3992]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.21:
+	* Source/CursorGrid/CursorGridCtrl.h 1.14:
+		[+] Интеллиджент вертикальный скроллер
+		[bug 3965]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.22:
+		[-] отл. печать
+
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.7:
+	* Source/CursorGrid/V7ODBCProvider.h 1.4:
+		[-] ТП: ошибка ODBCDataProvider.MSSQL для типизации типа "Справочник"
+		[bug 3993]
+
+	* Source/1CPP.rc 1.15:
+		сборка 3.0.1.10
+
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.8:
+		[-] ТП: ошибка ODBCDataProvider.MSSQL для типизации типа "Документ"
+		[bug 3993]
+
+2008-07-19	kms
+	* Source/VTExt/VTExtended.cpp 1.32:
+		[+] Управление положением наименований колонок
+		[bug 3978]
+
+	* Source/1CPP.icproj 1.30:
+	* Source/1CPP.vcproj 1.29:
+	* Source/AssocCollection.h 1.1:
+	* Source/AssocVector.h 1.1:
+	* Source/SimpleBLCollections.cpp 1.3:
+	* Source/SimpleBLCollections.h 1.3:
+	* Source/SimpleCMN.h 1.1:
+	* Source/SimpleCollection.h 1.13:
+	* Source/SimpleContext.h 1.8:
+	* Source/SimpleVector.h 1.8:
+	* Source/istrmap.h 1.5:
+		[+] АссоциативныйВектор
+		[bug 3992]
+
+	* Source/VTExt/CVCompare.h 1.1:
+	* Source/VTExt/VTExtended.h 1.22:
+	* Source/VTExt/VTIndex.cpp 1.5:
+		[*] Выделен блок сравнений
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.19:
+	* Source/StdAfx.h 1.13:
+		[*] рефакторинг safe_dynamic_cast
+
+	* Source/VTExt/VTExtended.h 1.21:
+	* Source/VTExt/VTIndex.cpp 1.4:
+		[*] рефакторинг TVTIndexDescrRecord
+
+	* Source/StringArrayEx.h 1.6:
+		[*] Минимальный рефакторинг
+
+	* Documents/IndexedTable.rst 1.6:
+		[+] Редакция документации
+		[bug 3978]
+
+2008-07-17	kms
+	* Source/System/GlobalMethods.cpp 1.11:
+	* Source/System/GlobalMethods.h 1.12:
+	* Source/VTExt/VTExtended.cpp 1.31:
+	* Source/VTExt/VTExtended.h 1.20:
+		[+] Поддержка v7lua (изменения к версии 1.0.1.3)
+		[bug 3813]
+
+2008-07-17	artbear
+	* Source/AXControl.cpp 1.12:
+	* Source/AXControl.cpp 1.13:
+	* Source/AXControl.h 1.6:
+	* Source/AXControl.h 1.7:
+		[bug 3462]
+		[*] рефакторинг
+
+	* Testing/ExtForms/ОбработкаАктивИкс/МодульФормы.1s 1.2:
+	* Testing/UnitTests/SpecialClasses/АктивИкс_Тесты.txt 1.2:
+		[bug 3462]
+		[+] тесты обработки событий для NET-контролов
+
+	* Source/AXControl.cpp 1.14:
+		[bug 3462]
+		[+] при создании нового контрола на элементе управления с уже установленным контролом отключаются ранее подключенные обработчики события для этого контрола
+
+	* Source/ADDIN.CPP 1.19:
+		[bug 3988]
+		[-] Исправлен баг - для некоторых настроек (TurboBL и т.д.) в базе, в которой 1С++ загружается в первый раз, загружались неверные настройки.
+
+	* Source/AXControl.cpp 1.11:
+	* Source/AXControl.h 1.5:
+		[bug 3462]
+		[+] Класс "АктивИкс" научился понимать события от ActiveX контролов, написанных на .NET
+
+2008-07-15	kms
+	* Ints/BinaryData.ints 1.2:
+	* Ints/TableField/VTExtProvider.ints 1.1:
+	* Ints/TableField/VTProvider.ints 1.2:
+	* Ints/АктивИкс.ints 1.2:
+	* Ints/Вектор.ints 1.1:
+	* Ints/ВыполняемыйМодуль.ints 1.2:
+	* Ints/Делегат.ints 1.2:
+	* Ints/Информатор.ints 1.2:
+	* Ints/МенеджерСобытий.ints 1.2:
+	* Ints/Система.ints 1.1:
+	* Ints/СоздатьОбъект.ints 1.2:
+	* Ints/УправлениеНастройками.ints 1.1:
+	* Ints/ФабрикаОбъектов.ints 1.2:
+		[*] обновлен ints (спасибо vandalsvq)
+		http://www.1cpp.ru/forum/YaBB.pl?num=1206042291/374#374
+
+2008-07-15	artbear
+	* Source/ComponentClass.h 1.26:
+		[bug 3978]
+		[+] новая универсальная шаблонная функция CValue2Type<Type>(CBLContext*)
+
+	* Source/Interfaces/VLResultLoader.h 1.5:
+		[bug 3978]
+		[+] новый прокси-класс CTableOfDocResultLoader для загрузки в табличную часть документа
+
+	* Source/Interfaces/VLResultLoader.h 1.4:
+		[bug 3978]
+		[+] класс CVTResultLoader умеет работать с ТаблицейЗначений на форме
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.6:
+		[bug 3978]
+		[+] тесты для ИТЗ::ВыгрузитьСтроку(ТаблицаЗначений)
+		[+] тесты для ИТЗ::ВыгрузитьСтроку(Вектор) только имена колонок
+		[+] тесты для ИТЗ::ВыгрузитьСтроку(СписокЗначений) только имена колонок
+
+	* Source/VTExt/VTExtended.cpp 1.27:
+	* Source/VTExt/VTExtended.h 1.19:
+		[bug 3978]
+		[+] реализована универсальная выгрузка ИТЗ в объекты, поддерживающие универсальный интерфейс выгрузки данных,
+		а также в ТаблицаЗначений и СписокЗначений
+		[*] рефакторинг
+
+	* Source/SQLITE1C/resultloader.h 1.4:
+	* Source/SimpleCollection.h 1.12:
+		[bug 3978]
+		[+] к интерфейсу IGeneralResultLoader добавлен доп.абстрактный метод ldrDone
+
+	* Source/ComponentClassAdd.cpp 1.21:
+		[bug 3987]
+		[-] Исправлен баг - для методов-функций КОП не работали параметры по значению
+
+	* Source/Interfaces/VLResultLoader.h 1.2:
+	* Source/VTExt/VTExtended.cpp 1.25:
+		[bug 3978]
+		[+] реализована выгрузка строки ИТЗ в ТаблицуЗначений - ИТЗ::ВыгрузитьСтроку(ТаблицаЗначений)
+
+	* Source/VTExt/VTExtended.cpp 1.28:
+		[bug 3978]
+		[+] реализована универсальная выгрузка ИТЗ в табличную часть документа
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.8:
+		[bug 3978]
+		[+] доп.тесты выгрузки ИТЗ::Выгрузить в
+		СписокЗначений
+		ТаблицаЗначений
+		Вектор
+
+	* Testing/UnitTests/OOP/defcls.prm 1.10:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.13:
+	* Testing/UnitTests/OOP/Предок.txt 1.7:
+		[bug 3987]
+		[+] доп. тесты бага
+
+	* Source/Interfaces/VLResultLoader.h 1.3:
+	* Source/VTExt/VTExtended.cpp 1.26:
+		[bug 3978]
+		[+] универсальная функция CValue2ResultLoader
+
+	* Documents/IndexedTable.rst 1.5:
+		[bug 3978]
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.7:
+		[bug 3978]
+		[+] доп.тесты выгрузки ИТЗ в СписокЗначений - ИТЗ::Выгрузить(СписокЗначений)
+
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.12:
+	* Testing/UnitTests/OOP/Предок.txt 1.6:
+		[bug 3987]
+		[+] тесты бага
+
+2008-07-14	kms
+	* Source/VTExt/VTExtended.cpp 1.24:
+		[+] Поддержка v7lua (тест)
+		[bug 3813]
+
+	* Source/1CPP.icproj 1.29:
+	* Source/1CPP.vcproj 1.28:
+		[*] Убрал 1cpptlb.h
+		[bug 3985]
+
+	* Source/1CPP.icproj 1.28:
+		[*] Синхронизация проекта (icproj - это песня)
+		[bug 3985]
+
+	* Source/1CPP.icproj 1.27:
+	* Source/1CPP.vcproj 1.27:
+	* Source/BaseClassContext.cpp 1.2:
+	* Source/BaseClassContext.h 1.2:
+	* Source/CodeDecodeFile.cpp 1.2:
+	* Source/CursorGrid/Collections.h 1.2:
+	* Source/MDReader.cpp 1.2:
+	* Source/OXY_Value.cpp 1.2:
+	* Source/OXY_Value.h 1.2:
+	* Source/System/todo.txt 1.2:
+	* Source/resource_reg.h 1.2:
+		[*] Синхронизация проекта
+		[bug 3985]
+
+2008-07-14	artbear
+	* Documents/IndexedTable.rst 1.4:
+		[bug 3978]
+		[+] исправление доки на ИТЗ::ВыгрузитьСтроку()
+
+	* Documents/IndexedTable.rst 1.3:
+	* Source/1CPP.icproj 1.26:
+	* Source/1CPP.vcproj 1.26:
+	* Source/Interfaces/VLResultLoader.h 1.1:
+	* Source/VTExt/VTExtended.cpp 1.21:
+		[bug 3978]
+		[+] реализована выгрузка строки ИТЗ в СписокЗначений - ИТЗ::ВыгрузитьСтроку(СписокЗначений)
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.5:
+		[bug 3978]
+		[+] тесты для ИТЗ::ВыгрузитьСтроку(Вектор)
+		[+] тесты для ИТЗ::ВыгрузитьСтроку(СписокЗначений)
+
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.2:
+		[bug 3961]
+		[+] тест метода Вектор::Сдвинуть
+
+	* Source/VTExt/VTExtended.cpp 1.22:
+	* Source/VTExt/VTExtended.cpp 1.23:
+	* Source/VTExt/VTExtended.h 1.17:
+	* Source/VTExt/VTExtended.h 1.18:
+		[bug 3978]
+		[+] рефакторинг кода реализации ИТЗ::ВыгрузитьСтроку()
+
+	* Source/1CHEADERS/bkend.h 1.5:
+		[*] добавлен удобный конструктор к классу CValueItem
+
+	* Documents/extobjs.rst 1.8:
+		[bug 3961]
+		[+] дока на Вектор
+
+	* Source/1CPP.icproj 1.25:
+	* Source/1CPP.vcproj 1.25:
+		[+] в файлы проекта добавлены файлы, используемые в исходниках
+
+	* Source/ComponentClass.h 1.25:
+		[bug 3978]
+		[*] слегка исправлена универсальная шаблонная функция CValue2Type<Type> для dynamic_cast контекстов
+
+	* Source/SimpleCollection.h 1.11:
+		[bug 3978]
+		[*] предупреждение компилятора
+
+2008-07-13	kms
+	* Source/1CPP.rc 1.14:
+	* Source/TurboBL/docrefboost.cpp 1.5:
+	* Source/TurboBL/docrefboost.h 1.4:
+		[!] Исправление способа захвата объекта Метаданные
+		[bug 3984]
+
+2008-07-12	kms
+	* Source/1CPP.rc 1.13:
+		сборка 3.0.1.8
+
+2008-07-11	kms
+	* Source/SimpleVector.h 1.7:
+		[+] Ограничение на значения индекса в методе Вставить()
+		[bug 3961]
+
+	* Source/SimpleContext.h 1.7:
+		[-] Корректная отработка параметров по умолчанию
+
+	* Source/SimpleCollection.h 1.10:
+		[-] Ограничения на параметры по умолчанию
+
+2008-07-11	artbear
+	* Source/SimpleVector.h 1.6:
+		[bug 3961]
+		[*] TODO по непонятному поведению метода Вектор::Вставить при указании позиции индекса, большем чем количество элементов коллекции
+
+2008-07-10	kms
+	* Source/TurboBL/gcboost.cpp 1.7:
+	* Source/TurboBL/gcboost.h 1.4:
+	* Source/VTExt/VTExtended.h 1.13:
+	* Source/mycontextbase.h 1.4:
+		[+] еще вариант ускорения; TurboBL / CMyContextBase
+		[bug  3962]
+
+	* Source/SQLITE1C/resultloader.h 1.3:
+		[+] описание интерфейса
+		[bug 3979]
+
+	* Source/System/GlobalMethods.cpp 1.10:
+	* Source/System/GlobalMethods.h 1.11:
+	* Source/System/Informer.cpp 1.10:
+		[*] DumpContext (Ex-GetMethOfContext) выделен в целях диагностики
+		
+
+	* Source/1CHEADERS/seven.h 1.5:
+	* Source/TurboBL/docrefboost.cpp 1.4:
+	* Source/TurboBL/gcboost.cpp 1.8:
+		[+] Поддержка ускорения методов регистров
+		[bug 3977]
+
+	* Source/SQLITE1C/resultloader.h 1.2:
+		[+] Интерфейс IGeneralResultLoader
+		[bug 3979]
+
+	* Source/SimpleCollection.h 1.9:
+	* Source/VTExt/VTExtended.cpp 1.20:
+	* Source/VTExt/VTExtended.h 1.16:
+		[+] Редакция метода ВыгрузитьСтроку()
+		[bug 3978]
+
+	* Source/1CHEADERS/basic.h 1.4:
+		[+] добавлено описание класса CEnumContext
+
+	* Source/TurboBL/allboost.cpp 1.2:
+	* Source/TurboBL/docrefboost.cpp 1.3:
+	* Source/TurboBL/docrefboost.h 1.3:
+		[+] Поддержка ряда объектов для TurboBL
+		[bug 3977]
+
+2008-07-10	artbear
+	* Source/Factory.cpp 1.12:
+	* Source/Factory.h 1.5:
+		[bug 3962]
+		[-] удален (закомментирован) весь код с переменной препроцессора TEST_FOR_COMPARE_CREATION_SPEED
+
+	* Documents/IndexedTable.rst 1.2:
+	* Source/VTExt/VTExtended.cpp 1.18:
+	* Source/VTExt/VTExtended.h 1.14:
+		[bug 3978]
+		[+] реализован метод ИТЗ::ВыгрузитьСтроку()
+
+	* Source/BinaryData.cpp 1.4:
+	* Source/BinaryData.h 1.2:
+	* Source/CreateMetaInfoClasses.cpp 1.9:
+	* Source/CreateMetaInfoClasses.h 1.4:
+	* Source/GUID.cpp 1.2:
+	* Source/GUID.h 1.2:
+	* Source/MySQL_Query.cpp 1.3:
+	* Source/MySQL_Query.h 1.2:
+	* Source/ODBC/1CPP_ODBCDatabase.cpp 1.5:
+	* Source/ODBC/1CPP_ODBCDatabase.h 1.2:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.10:
+	* Source/ODBC/1CPP_ODBCRecordSet.h 1.2:
+	* Source/ODBC/SQLLock.cpp 1.3:
+	* Source/ODBC/SQLLock.h 1.2:
+	* Source/SQL/MetaDataWork.cpp 1.6:
+	* Source/SQL/MetaDataWork.h 1.3:
+	* Source/System/MyAddinContext.cpp 1.2:
+	* Source/WorkAsRegister.cpp 1.3:
+	* Source/WorkAsRegister.h 1.2:
+		[bug 3962]
+		[-] в связи с изменениями в CBLContext::InitObject убраны лишние пустые методы InitObject
+
+	* Source/System/CreationBoost.cpp 1.9:
+		[bug 3962]
+		[-] работа с интерфейсом клонирования ICloneCreated временно отключена до реализации подобного поведения в классах,
+		например, для классов КОП
+
+	* Source/Struct.cpp 1.5:
+	* Source/Struct.h 1.4:
+		[bug 3962]
+		[-] в связи с изменениями в CBLContext::InitObject нет необходимости в реализации интерфейса Utils1cpp::ICloneCreated
+
+	* Source/VTExt/VTExtended.cpp 1.19:
+	* Source/VTExt/VTExtended.h 1.15:
+		[bug 3978]
+		[*] добавлены TODO и небольшие комменты
+
+	* Source/ComponentClass.h 1.24:
+		[bug 3978]
+		[+] универсальная шаблонная функция CValue2Type<Type> для dynamic_cast контекстов
+
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.4:
+		[bug 3978]
+		[+] тесты для метода ИТЗ::ВыгрузитьСтроку()
+
+	* Testing/UnitTests/SpecialClasses/defcls.prm 1.2:
+	* Testing/UnitTests/SpecialClasses/Вектор_Тесты.txt 1.1:
+		[bug 3961]
+		[+] тесты объекта Вектор
+
+	* Source/SimpleCollection.h 1.8:
+		[bug 3978]
+		[+] описан универсальный интерфейс Utils1cpp::ICollectionLoader, служащий для загрузки данных в коллекцию
+
+	* Source/System/CreationBoost.cpp 1.8:
+	* Source/System/CreationBoost.h 1.5:
+		[bug 3962]
+		[-] в связи с изменениями в CBLContext::InitObject больше нет необходимости в создании ТЗ и СЗ из строки - код удален (закомментирован);
+		[-] удален (закомментирован) весь код с переменной препроцессора TEST_FOR_COMPARE_CREATION_SPEED
+
+2008-07-09	kms
+	* Source/VTExt/VTExtended.cpp 1.17:
+	* Source/VTExt/VTExtended.h 1.11:
+	* Source/mycontextbase.h 1.3:
+		[+] независимый вариант ускорения
+		[bug  3962]
+
+	* Source/1CHEADERS/basic.h 1.3:
+	* Source/SQL/MetaDataWork.h 1.2:
+		[+] перенос заголовка CMetadataContext
+
+	* Source/TurboBL/gcboost.cpp 1.6:
+	* Source/TurboBL/gcboost.h 1.3:
+	* Source/VTExt/VTExtended.h 1.12:
+		[+] вариант ускорения на базе TurboBL (InitObject)
+		[bug  3962]
+
+2008-07-09	artbear
+	* Documents/MetaInfoClasses.rst 1.2:
+		[bug 3480]
+		[+] добавлено описание методов
+		"ЗагрузитьОписаниеКлассов"
+		"ПолучитьИменаБазовыхКлассов"
+		"ЯвляетсяОбъектом"
+		"ПолучитьВерсиюФайла"
+		"ОчиститьДанныеОптимизацииКлассов"
+
+	* Documents/commonchm.txt 1.2:
+		[bug 3480]
+		[+] в оглавление добавлены пропущенные новые классы за моим авторством
+
+	* Documents/MetaInfoClasses.rst 1.1:
+		[bug 3480]
+		[+] документация по классу MetaInfoClasses - полная копия из существующего als-файла для 1С++
+
+	* Source/System/MyAboutWindowManager.cpp 1.2:
+		[-] забыл описать steban-а в разработчиках :(
+		Кстати, если вдруг еще кого забыл, пишите мне или сами вписывайтесь :)
+
+2008-07-08	kms
+	* Source/CursorGrid/ProxyDataProvider.cpp 1.2:
+		[*] совместимость с vs9
+		[bug 3848]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.20:
+	* Source/CursorGrid/CursorGridCtrl.h 1.13:
+		[-] зависание захвата мыши в событии ПриВыбореЗаголовка
+		[bug 3969]
+
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.11:
+		[*] оптимизация коллекций
+		[bug 3961]
+
+	* Source/1CHEADERS/types.h 1.4:
+		[*] поддержка корректного синтаксиса в определениях типов
+
+2008-07-08	artbear
+	* Source/VTExt/VTExtended.cpp 1.15:
+	* Source/VTExt/VTExtended.h 1.9:
+		[bug 3962]
+		[+] реализовано быстрое создание объектов класса "ИндексированнаяТаблица"
+
+	* Source/ComponentClass.cpp 1.19:
+	* Source/ComponentClass.h 1.23:
+		[bug 3962]
+		[+] реализовано быстрое создание объектов пользовательских классов
+		но это только первое приближение - еще много чего можно ускорить при создании объекта КОП из копии
+
+	* Source/Struct.cpp 1.3:
+	* Source/Struct.h 1.2:
+		[bug 3962]
+		[+] реализовано быстрое создание объектов класса "Структура"
+
+	* Source/System/CreationBoost.cpp 1.6:
+	* Source/System/CreationBoost.h 1.4:
+		[bug 3962]
+		[+] реализовано быстрое создание объектов, которые реализуют интерфейс Utils1cpp::ICloneCreated
+		[*] рефакторинг класса CCreateInstanceBoostImpl
+
+	* Source/Factory.cpp 1.11:
+	* Source/Factory.h 1.4:
+		[bug 3962]
+		[+] для тестирования при наличии переменной препроцессора TEST_FOR_COMPARE_CREATION_SPEED
+		существует тестовый метод ФабрикаОбъектов::ТестОтключитьБыстроеСоздание_Артур
+		подробно он описан в ветке http://www.1cpp.ru/forum/YaBB.pl?num=1215146216/17#17
+
+	* Source/Interfaces/ICloneCreated.h 1.2:
+	* Source/Struct.cpp 1.4:
+	* Source/Struct.h 1.3:
+	* Source/System/CreationBoost.cpp 1.7:
+	* Source/VTExt/VTExtended.cpp 1.16:
+	* Source/VTExt/VTExtended.h 1.10:
+		[bug 3962]
+		[*] интерфейс Utils1cpp::ICloneCreated слегка модифицирован для большей результативности
+
+2008-07-07	kms
+	* Source/1CPP.icproj 1.23:
+	* Source/1CPP.vcproj 1.23:
+	* Source/SimpleBLCollections.cpp 1.1:
+	* Source/SimpleBLCollections.h 1.1:
+	* Source/SimpleCollection.h 1.6:
+		[+] вариант реализации коллекции типа "вектор"
+		[bug 3961]
+
+	* Source/SimpleContext.h 1.6:
+	* Source/System/GroupContextWrap.cpp 1.20:
+	* Source/V7SerializeToString.h 1.6:
+		[*] совместимость с vs9
+		[bug 3848]
+
+	* Source/SimpleBLCollections.cpp 1.2:
+	* Source/SimpleBLCollections.h 1.2:
+	* Source/SimpleCollection.h 1.7:
+	* Source/SimpleVector.h 1.5:
+		[*] оптимизация коллекций
+		[bug 3961]
+
+2008-07-07	artbear
+	* Source/System/CreationBoost.cpp 1.4:
+		[bug 3962]
+		[*] рефакторинг - выделен базовый интерфейс для различных вариантов быстрого создания объектов
+
+	* Source/1CPP.icproj 1.24:
+	* Source/1CPP.vcproj 1.24:
+	* Source/Interfaces/ICloneCreated.h 1.1:
+		[bug 3962]
+		[*] абстрактный интерфейс Utils1cpp::ICloneCreated
+
+	* Source/System/CreationBoost.cpp 1.5:
+		[bug 3962]
+		[*] рефакторинг
+
+	* Source/System/CreationBoost.cpp 1.3:
+	* Source/System/CreationBoost.h 1.3:
+		[bug 3962]
+		[-] пропущенный баг компиляции класса CCreateInstanceBoost
+
+	* Source/1CPP.icproj 1.22:
+	* Source/1CPP.vcproj 1.22:
+	* Source/ADDIN.CPP 1.18:
+	* Source/System/CreationBoost.cpp 1.1:
+	* Source/System/CreationBoost.h 1.1:
+		[bug 3962]
+		[*] рефакторинг - класс CCreateInstanceBoost выделен в отдельные файлы
+
+	* Source/System/CreationBoost.cpp 1.2:
+	* Source/System/CreationBoost.h 1.2:
+		[bug 3962]
+		[*] рефакторинг класса CCreateInstanceBoost - использована идиома pImpl
+
+	* Source/Calling.h 1.1:
+		[-] удобные вызовы функций/процедур модуля
+
+2008-07-05	kms
+	* Source/SimpleCollection.h 1.5:
+	* Source/SimpleContext.cpp 1.1:
+	* Source/SimpleContext.h 1.5:
+		[*] Редакция контекстов
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.18:
+	* Source/CursorGrid/CursorGridCtrl.h 1.12:
+		[*] Более корректная реализация плоского стиля рамки ТП
+		[bug 3851]
+
+	* Source/1CPP.icproj 1.21:
+	* Source/1CPP.vcproj 1.21:
+	* Source/CursorGrid/ProxyDataProvider.cpp 1.1:
+	* Source/CursorGrid/ProxyDataProvider.h 1.1:
+		[*] Провайдер перенесен в каталог CursorGrid
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.19:
+		[-] AV при попытке выбора строк с шифтом при пустом ТП
+		[bug 3916]
+
+2008-07-03	artbear
+	* Source/1CPP.icproj 1.20:
+	* Source/1CPP.vcproj 1.20:
+		[bug 3845]
+		[+] реализован объект ПроксиПоставщикДанных / ProxyDataProvider - для возможности написания поставщиков данных для ТП на языке 1С с помощью классов 1С++
+		http://www.1cpp.ru/forum/YaBB.pl?num=1210942597/0#0
+
+	* Source/1CPP.rc 1.12:
+		сборка 3.0.1.7
+
+2008-07-02	artbear
+	* Source/1CPP.icproj 1.19:
+	* Source/1CPP.vcproj 1.19:
+	* Source/SQLITE1C/resultloader.h 1.1:
+	* Source/VTExt/VTExtended.cpp 1.14:
+	* Source/VTExt/VTExtended.h 1.8:
+		[bug 3953]
+		[+] ИндексированнаяТаблица научилась принимать результат запроса от ВК 1SQLite - ВыполнитьЗапрос
+
+	* Source/1CPP.rc 1.11:
+		сборка 3.0.1.6
+
+2008-06-27	artbear
+	* Source/System/Hooker.h 1.4:
+		[bug 3933]
+		[*] чуть более точное определение наследования интерфейсов
+
+	* Source/System/OwnAboutWindowManager.h 1.2:
+	* Source/System/OwnAboutWindowManager.h 1.3:
+		[+] пример подключения собственного окна "О программе..." для сто
+		ронних ВК, кроме 1С++ и ФормЕкс
+
+	* Source/CreateMetaInfoClasses.cpp 1.8:
+		[bug 3937]
+		[-] Баг - методы класса "MetaInfoClasses" было невозможно выполнить из других ВК
+
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.9:
+		[bug 3936]
+		[-] Баг - свойство "md" было невозможно прочитать в других ВК
+
+2008-06-26	artbear
+	* Source/1CPP.icproj 1.18:
+	* Source/1CPP.rc 1.10:
+	* Source/1CPP.vcproj 1.18:
+	* Source/ADDIN.CPP 1.17:
+	* Source/System/Hooker.cpp 1.6:
+	* Source/System/Hooker.h 1.3:
+	* Source/System/HyperLink.cpp 1.1:
+	* Source/System/HyperLink.h 1.1:
+	* Source/System/MyAboutWindowManager.cpp 1.1:
+	* Source/System/MyAboutWindowManager.h 1.1:
+	* Source/System/OwnAboutWindowManager.h 1.1:
+	* Source/System/WrapAboutDlg.cpp 1.1:
+	* Source/System/WrapAboutDlg.h 1.1:
+	* Source/resource.h 1.3:
+	* Testing/UnitTests/OleDB/OleDBТесты.txt 1.2:
+		[bug 3933]
+		[+] реализован единый с ВК FormEx интерфейс для удобного встраивания своих окон
+		в качестве закладок в окно 1С "О программе..."
+
+2008-06-25	artbear
+	* Testing/UnitTests/FormEx/СобытияFormExТесты.txt 1.2:
+		[bug 3906]
+		[+] тесты событий блокировки
+		[+] тесты событий клавиатуры
+		[+] тесты обработчиков событий в доп.глобальниках
+
+2008-06-19	artbear
+	* Testing/UnitTests/SpecialClasses/КлассПерехватчикГК_Документ.txt 1.2:
+	* Testing/UnitTests/SpecialClasses/КлассПерехватчикГлобальногоМодуля.txt 1.3:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.6:
+		[bug 3920]
+		[+] соответствующие тесты
+
+	* Source/System/DllHooker.cpp 1.8:
+	* Source/System/DllHooker.h 1.3:
+	* Source/System/GroupContextWrap.cpp 1.19:
+		[bug 3920]
+		[-] исправлен баг - в случае одновременного перехвата события ВводНаОсновании сначала для глобального события, а потом для события формы,
+		не работал перехват события формы документа ВводНаОсновании
+
+	* Source/1CPP.rc 1.9:
+		[bug 3920]
+		[+] версия 3.0.1.4
+
+2008-06-17	artbear
+	* Source/1CPP.rc 1.8:
+		[+] версия 3.0.1.3
+
+	* Source/UserClassesImpl.cpp 1.34:
+	* Testing/UnitTests/OOP/ПредокПотомок.txt 1.7:
+		[bug 3889]
+		[-] имена вирт() и я() были регистрозависимы
+
+	* Source/AXControl.cpp 1.10:
+		[bug 3917]
+		[-] не работали родные события АктивИкс для двойного щелчка мышью
+
+2008-06-11	artbear
+	* Documents/kb/TSQLInV7FirstSteps.html 1.3:
+		[-] был указан неверный текст для параметризованного запроса
+		обсуждение http://www.1cpp.ru/forum/YaBB.pl?num=1212807275/7#7
+
+2008-06-07	artbear
+	* Source/ExecuteModule.cpp 1.20:
+		[bug 3905]
+		[-] баг - для классов-наследников от ВыполняемыйМодуль методы-наследников вызывались по два раза
+
+	* Source/System/DllHooker.cpp 1.7:
+	* Source/System/GroupContextWrap.cpp 1.10:
+	* Source/System/GroupContextWrap.h 1.7:
+		[bug 3904]
+		[*] рефакторинг
+
+	* Source/System/GroupContextWrap.cpp 1.11:
+	* Source/System/GroupContextWrap.h 1.9:
+		[bug 3904]
+		[*] сильный рефакторинг имени класса
+
+	* Source/System/GroupContextWrap.cpp 1.17:
+	* Source/System/GroupContextWrap.h 1.14:
+		[bug 3904]
+		[*] рефакторинг класса CUserHandlersManager
+
+	* Source/System/GroupContextWrap.cpp 1.14:
+	* Source/System/GroupContextWrap.cpp 1.15:
+	* Source/System/GroupContextWrap.h 1.12:
+		[bug 3904]
+		[*] рефакторинг класса CUserHandlersManagerImpl
+
+	* Source/System/GroupContextWrap.cpp 1.13:
+		[bug 3904]
+		[*] рефакторинг - в классе CUserHandlersManagerImpl от хранения одного элемента как члена класса
+		перехожу к хранению его в векторе
+
+	* Source/1CPP.rc 1.7:
+		[+] очередная версия 3.0.1.1
+
+	* Source/System/GroupContextWrap.cpp 1.12:
+	* Source/System/GroupContextWrap.h 1.10:
+		[bug 3904]
+		[*] рефакторинг - использую идиому pImpl для класса CUserHandlersManager
+
+	* Source/System/GroupContextWrap.cpp 1.16:
+	* Source/System/GroupContextWrap.h 1.13:
+		[bug 3904]
+		[*] мелкий рефакторинг
+
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.4:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.5:
+		[bug 3904]
+		[+] тест повторного перехвата контекста формы, на которой уже установлен перехват
+
+	* Source/System/GroupContextWrap.h 1.8:
+		[bug 3904]
+		[*] мелкий рефакторинг имени класса
+
+	* Documents/ActiveX.rst 1.6:
+		[bug 3902]
+		[*] доп. описание события
+
+2008-06-06	artbear
+	* Source/System/GroupContextWrap.cpp 1.9:
+	* Source/System/GroupContextWrap.h 1.6:
+	* Source/System/Hooker.cpp 1.5:
+		[bug 3904]
+		[*] рефакторинг - переход от использования единственного контекста класса-обработчика к классу-менеджеру подобных обработчиков
+
+	* Documents/ActiveX.rst 1.2:
+	* Source/AXControl.cpp 1.9:
+	* Source/AXControl.h 1.4:
+		[bug 3902]
+		[+] добавлено новое событие АктивИкс "Выбор" при нажатии Enter или двойном щелчке мышью
+
+	* Documents/ActiveX.rst 1.3:
+	* Documents/ActiveX.rst 1.4:
+	* Documents/ActiveX.rst 1.5:
+		[bug 3902]
+		[*] доп. описание события
+
+2008-06-05	artbear
+	* Source/UserClassesImpl.cpp 1.31:
+		[bug 3889]
+		[+] реализация соответствующего поведения предопределенных функций вирт() и я()
+
+	* Documents/classes.rst 1.8:
+		[bug 3889]
+		[+] дополнена документация на методы вирт() и я()
+
+	* Testing/UnitTests/OOP/defcls.prm 1.9:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.10:
+	* Testing/UnitTests/OOP/ПредокПотомок.txt 1.6:
+		[bug 3889]
+		[+] соответствующие тесты
+
+	* Source/ComponentClassAdd.cpp 1.20:
+	* Source/UserClassesImpl.cpp 1.33:
+		[bug 3891]
+		[-] при включенной отладке 1С++ могла выдавать исключения при создании правильных классов
+
+	* Source/UserClassesImpl.cpp 1.32:
+		[bug 3903]
+		[-] устранение бага 1С при работе с возвращаемым значением при вызове функции
+
+	* Source/UserClassesImpl.h 1.15:
+		[bug 3889]
+		[*] рефакторинг
+
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.11:
+		[bug 3889]
+		[*] небольшое дополнение тестов
+
+2008-06-04	artbear
+	* Source/ComponentClass.h 1.22:
+		[*] мелкий коммент по использованию интерфейсов
+
+	* Source/AXControl.cpp 1.8:
+	* Source/AXControl.h 1.3:
+		[bug 3473]
+		[*] нерабочая попытка решения проблемы, но с более верным подходом к решению
+
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.9:
+		[bug 3893]
+		[-] в ранних тестах ООП неверно открывались/закрывались формы документов и справочников, что влияло на другие тесты
+
+	* Source/1CPP.rc 1.6:
+		[+] новая версия от 04.06.2008
+
+	* Documents/classes.rst 1.7:
+		[*] коммент к описанию метода ПолучитьКонтекстОкружения()
+
+	* Source/ComponentClass.cpp 1.18:
+	* Source/ComponentClass.h 1.21:
+	* Source/UserClassesImpl.cpp 1.30:
+	* Source/UserClassesImpl.h 1.14:
+		[+] рефакторинг - новый интерфейс IGetModule для возможности независимого получения указателей на модули КОП
+		например, из КЗК-2
+
+	* Source/AXControl.cpp 1.7:
+		[bug 3473]
+		[-] при создании АктивИкс-а на кнопке без формулы при нажатии Enter на этом АктивИкс
+		в окне сообщений вылетает ошибка - Не обнаружена процедура ( ИмяКнопки )
+
+2008-06-03	artbear
+	* Testing/Config/Документы/Новый1/МодульФормы.1s 1.2:
+	* Testing/UnitTests/SpecialClasses/КлассПерехватчикГлобальногоМодуля.txt 1.2:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.3:
+		[bug 3893]
+		[+] соответствующие тесты
+
+	* Source/System/GroupContextWrap.cpp 1.8:
+		[bug 3893]
+		[-] если в модуле формы документа нет обработчика ВводНаОсновании, не работал глобальный перехват СобытиеГМ_ВводНаОсновании
+
+	* Source/System/GroupContextWrap.h 1.4:
+	* Source/System/GroupContextWrap.h 1.5:
+		[*] рефакторинг класса CEventsWrapperManager - публичные и приват
+		ные методы выделены отдельно
+
+	* Source/ADDIN.CPP 1.16:
+		[bug 3897]
+		[-] неверное восстановление настроек 1С++
+
+	* Source/UserClassesImpl.cpp 1.29:
+		[bug 3889]
+		[+] закомментированная заготовка - код Саши Орефкова
+
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.8:
+		[bug 3758]
+		[*] соответствующий коммент к коду
+
+2008-06-02	artbear
+	* Source/BLModuleWrapper.cpp 1.18:
+	* Source/BLModuleWrapper.h 1.18:
+		[bug 3802]
+		[*] мелкий рефакторинг
+
+	* Source/ExecuteModule.cpp [execute_module_exception] 1.18.2.3:
+	* Source/ExecuteModule.h [execute_module_exception] 1.6.2.1:
+		[bug 3802]
+		[+] класс ВыполняемыйМодуль научился выдавать исключения
+
+	* Source/BLModuleWrapper.cpp 1.20:
+		[bug 3802]
+		[*] рефакторинг
+
+	* Source/BLModuleWrapper.cpp 1.19:
+	* Source/BLModuleWrapper.h 1.19:
+		[bug 3802]
+		[*] рефакторинг - выделен базовый класс CBaseModuleWithErrorHandlers
+
+	* Source/RuntimeException.h 1.2:
+		[*] мелкий рефакторинг
+
+	* Source/ExecuteModule.cpp [execute_module_exception] 1.18.2.1:
+		[bug 3802]
+		[+] поддержка исключений для ВыполняемыйМодуль;
+
+	* Source/1CHEADERS/seven.h [execute_module_exception] 1.3.2.1:
+		[bug 3802]
+		[*] для класса CBLModule7 новый friend class CModuleWithDebugSupport;
+
+	* Source/BLModuleWrapper.cpp [execute_module_exception] 1.16.2.1:
+		[bug 3802]
+		[+] поддержка исключений для ВыполняемыйМодуль;
+		[*] рефакторинг класса CBLModuleWrapperImpl
+
+	* Source/BLModuleWrapper.cpp [execute_module_exception] 1.16.2.4:
+		[bug 3802]
+		[*] класс CSimpleModule использован в качестве модуля для класса CExecuteModule
+
+	* Source/BLModuleWrapper.cpp [execute_module_exception] 1.16.2.6:
+	* Source/ExecuteModule.cpp [execute_module_exception] 1.18.2.4:
+		[bug 3802]
+		[*] рефакторинг - исключение для синтаксиса обрабатываем с помощью класса CRuntimeExceptionClass, а не с помощью исключений С++
+
+	* Testing/UnitTests/SpecialClasses/ВыполняемыйМодульТесты.txt 1.3:
+		[bug 3802]
+		[+] исправлены тесты под новое поведение ВМ с исключениями
+
+	* Source/BLModuleWrapper.cpp [execute_module_exception] 1.16.2.5:
+	* Source/BLModuleWrapper.h 1.16:
+	* Source/ExecuteModule.cpp [execute_module_exception] 1.18.2.2:
+		[bug 3802]
+		[*] рефакторинг класса CBLModuleWrapperImpl - выбрасываем исключение для синтаксиса, как положено, а не извращенно
+
+	* Source/BLModuleWrapper.cpp [execute_module_exception] 1.16.2.3:
+		[bug 3802]
+		[*] выделен новый класс CSimpleModule, будет использоваться внутри класса ВыполняемыйМодуль
+
+	* Source/BLModuleWrapper.cpp [execute_module_exception] 1.16.2.2:
+		[bug 3802]
+		[*] рефакторинг класса CSimpleModuleWithDebugSupport
+
+	* Documents/extobjs.rst 1.7:
+		[bug 3802]
+		[+] слегка описано новое поведение
+
+	* Source/BLModuleWrapper.cpp [execute_module_exception] 1.16.2.7:
+	* Source/ExecuteModule.cpp [execute_module_exception] 1.18.2.5:
+		[bug 3802]
+		[*] рефакторинг - включена постоянная поддержка исключений в случае ошибок, ранее включение было по флагу
+
+	* Source/1CHEADERS/seven.h 1.4:
+	* Source/BLModuleWrapper.cpp 1.17:
+	* Source/BLModuleWrapper.h 1.17:
+	* Source/ExecuteModule.cpp 1.19:
+	* Source/ExecuteModule.h 1.7:
+		[bug 3802]
+		[*] перенос из ветки в основной ствол разработки
+
+2008-05-29	kms
+	* Source/VTExt/VTExtended.cpp 1.13:
+		[*] Устранение дублирования
+
+	* Source/V7SerializeToString.h 1.5:
+		[+] комментарий
+
+	* Source/V7SerializeToString.cpp 1.6:
+		[-] исправлен коммит Артура
+		[-] исправлена лишняя ";"
+
+2008-05-29	artbear
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.6:
+		[bug 3881]
+		[-] при восстановлении КОП из строки конструктор вызываться не должен
+
+	* Testing/UnitTests/OOP/defcls.prm 1.8:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.8:
+	* Testing/UnitTests/OOP/ПредокПотомок.txt 1.5:
+		[bug 3881]
+		[+] тесты исключений в методах КОП для сериализации
+
+	* Testing/UnitTests/OOP/defcls.prm 1.7:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.7:
+	* Testing/UnitTests/OOP/ПредокПотомок.txt 1.4:
+		[bug 3881]
+		[+] тест исключений в методе КОП::ЗагрузитьИзСтроки
+
+	* Documents/classes.rst 1.6:
+		[bug 3881]
+		[+] коммент насчет невызова конструктора
+
+	* Source/ComponentClass.h 1.20:
+	* Source/UserClassesImpl.cpp 1.24:
+	* Source/V7SerializeToString.cpp 1.8:
+		[bug 3881]
+		[*] мелкий рефакторинг
+
+	* Source/UserClassesImpl.cpp 1.27:
+	* Source/UserClassesImpl.cpp 1.28:
+		[*] мелкий рефакторинг
+
+	* Testing/UnitTests/OOP/defcls.prm 1.6:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.5:
+	* Testing/UnitTests/OOP/ПредокПотомок.txt 1.3:
+		[bug 3881]
+		[+] соответствующие тесты
+
+	* Source/ParamDefs.h 1.10:
+	* Source/UserClassesImpl.cpp 1.25:
+		[bug 3881]
+		[+] ускорение работы методов сериализации за счет кеширования номеров методов при компиляции класса КОП
+
+	* Source/ADDIN.CPP 1.15:
+		[*] рефакторинг классов CCreateInstanceBoost и 
+		CAddInPropertyCollection
+
+	* Source/V7SerializeToString.cpp 1.5:
+		[bug 3881]
+		[-] нельзя было добавить более чем один класс, использующий интерфейс интерфейс IV7SerializeToString;
+		[+] поддержка классов, имеющих один рантайм-класс, но разные инстанс-имена, например, CComponentClass;
+
+	* Source/ComponentClass.cpp 1.17:
+	* Source/ComponentClass.h 1.18:
+	* Source/UserClassesImpl.cpp 1.22:
+	* Source/UserClassesImpl.h 1.13:
+		[bug 3881]
+		[+] поддержка нативной сериализации КОП в строку;
+		[+] поддержка интерфейса IV7SerializeToString;
+
+	* Source/V7SerializeToString.cpp 1.7:
+		[bug 3881]
+		[-] при восстановлении КОП из строки конструктор вызываться не должен
+		(более точный вариант)
+
+	* Documents/classes.rst 1.5:
+		[bug 3881]
+		[+] поддержка нативной сериализации КОП в строку;
+
+	* Source/V7SerializeToString.h 1.4:
+		[bug 3881]
+		[-] баг компиляции при использовании хедера
+
+	* Source/ComponentClass.h 1.19:
+	* Source/Factory.cpp 1.10:
+		[bug 3881]
+		[-] при неудаче создания класса через Фабрика::Новый следующий класс мог создаваться без вызова конструктора
+
+2008-05-28	artbear
+	* Source/ADDIN.CPP 1.12:
+	* Source/ADDIN.H 1.5:
+		[bug 3875]
+		[-] 1C падало при завершении работы 1С на текущей сборке
+
+	* Source/mycontextbase.cpp 1.4:
+		[*] убираю регистрацию ранее зарегистрированных контекстов
+
+	* Source/CastContext.h 1.2:
+		[*] избавился от предупреждения
+
+	* Source/istrmap.h 1.4:
+		[*] Важный коммент про использование класса CCollection
+
+	* Source/ADDIN.CPP 1.13:
+	* Source/ADDIN.H 1.6:
+		[*] рефакторинг класс CAddIn
+
+	* Documents/classes.rst 1.4:
+		[*] поправка к описанию ПриПолучении_ИмяАтрибута
+
+	* Source/Form/V7Form.cpp 1.6:
+		[*] рефакторинг - избавился от приведений в стиле С
+
+	* Source/Factory.cpp 1.9:
+	* Source/Factory.h 1.3:
+		[*] leak - cозданные объекта CClassItem* никогда не удалялись.
+
+2008-05-27	artbear
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.4:
+	* Testing/UnitTests/OOP/Предок.txt 1.4:
+		[bug 3800]
+		[+] соответствующие тесты
+
+	* Source/UserClassesImpl.cpp 1.21:
+		[*] мелкий рефакторинг
+
+	* Source/UserClassesImpl.cpp 1.20:
+	* Source/UserClassesImpl.h 1.12:
+		[*] рефакторинг класса CComponentClassImpl - упрощен код по работ
+		е со свойствами класса
+
+	* Testing/UnitTests/SpecialClasses/ТестыКлассовНаСоответствиеМетодовИСвойствТесты.txt 1.2:
+		[-] класс больше не участвует в тестировании, т.к. только мешает 
+		в разработке новых методов/свойств
+
+	* Source/ADDIN.CPP 1.11:
+	* Source/ADDIN.H 1.4:
+		[*] рефакторинг класса CAddin - его внутренние классы убраны из хедера в файл реализации
+		[*] рефакторинг - спец. определения для DynaValue убраны из addin.h
+
+	* Source/DML.h 1.2:
+		[*] рефакторинг - спец. определения для DynaValue убраны из 
+		addin.h
+
+2008-05-26	artbear
+	* Testing/UnitTests/OOP/defcls.prm 1.5:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.3:
+	* Testing/UnitTests/OOP/ПредокПотомок.txt 1.2:
+		[bug 3871]
+		[+] тест, подтверждающий баг
+
+	* Source/BLModuleWrapper.cpp 1.16:
+		[*] небольшое ускорение работы
+
+	* Source/ComponentClassAdd.cpp 1.19:
+	* Source/UserClassesImpl.cpp 1.15:
+		[bug 3798]
+		[*] рефакторинг кода по работе с параметрами, передаваемыми по значению
+
+	* Source/ADDIN.CPP 1.10:
+	* Source/UserClassesImpl.cpp 1.17:
+		[*] мелкий рефакторинг
+
+	* Testing/UnitTests/OOP/defcls.prm 1.4:
+	* Testing/UnitTests/OOP/Предок.txt 1.3:
+	* Testing/UnitTests/OOP/Тесты_ПарамПоУмолчаниюC_3ТочкамиВнутри.txt 1.3:
+		[bug 3798]
+		[*] доп.тесты
+
+	* Source/UserClassesImpl.h 1.9:
+		[bug 3798]
+		[*] рефакторинг кода по работе с параметрами, передаваемыми по значению
+		[*] класс InfoUnlimitsParams перенесен в Paramdefs.h
+		[*] рефакторинг класса CParamsReceivedByValueManager
+
+	* Source/UserClassesImpl.cpp 1.16:
+	* Source/UserClassesImpl.h 1.10:
+		[bug 3798]
+		[+] в случае различия параметров Знач в prm-файле и модуле класса при компиляции класса выдается сообщение об ошибке,
+		а в случае вызова подобного метода выдается исключение вместо вызова
+		[*] рефакторинг класса CComponentClassImpl
+
+	* Testing/UnitTests/OOP/Тесты_ПарамПоУмолчаниюC_3ТочкамиВнутри.txt 1.4:
+		[bug 3798]
+		[*] доп.тест на различие параметров Знач в prm-файле и модуле
+
+	* Source/SetOfHierarchy.cpp 1.18:
+	* Source/SetOfHierarchy.h 1.13:
+		[bug 3798]
+		[*] мелкий рефакторинг классов ISetOfHierarchy и СSetOfHierarchyImpl
+
+	* Source/UserClassesImpl.cpp 1.19:
+	* Source/UserClassesImpl.h 1.11:
+		[bug 3871]
+		[-] Устранены неверные ограничения доступа к свойствам при наследовании классов -
+		например, у базы доступ к свойству только для чтения, а у наследника можно и записывать.
+
+	* Source/UserClassesImpl.cpp 1.18:
+		[*] маленький коммент по непонятной нумерации :)
+
+	* Source/ParamDefs.h 1.9:
+		[bug 3798]
+		[*] рефакторинг класса CParamDefs
+
+2008-05-23	artbear
+	* Source/MapDefMethod.h 1.5:
+	* Source/UserClassesImpl.cpp 1.13:
+		[bug 3798]
+		[*] рефакторинг класса CParamDefsWithRefCountPtr - использую boost::shared_ptr
+
+	* Source/ComponentClassAdd.cpp 1.16:
+	* Source/UserClassesImpl.cpp 1.12:
+		[bug 3798]
+		[-] если у метода класса различаются определения в прм-файле и модуле класса, а именно у параметров метода есть/нет Знач,
+		выдается ошибка при компиляции класса и при попытке вызова данного метода;
+		[*] рефакторинг классов InfoUnlimitsParams, CImplicitParams
+		[*] из класса CImplicitParams выделен отдельный класс CParamsReceivedByValueManager
+
+	* Source/ParamDefs.h 1.8:
+		[bug 3798]
+		[*] рефакторинг класса CArrayOfMethodsParamData - использую CSimpleVector;
+		[+] ускорение работы сравнения объектов cparamdefs
+
+	* Source/SimpleVector.h 1.4:
+		[-] при include этого файла могли возникать ошибки;
+
+	* Source/SetOfHierarchy.cpp 1.17:
+		[bug 3798]
+		[*] рефакторинг класса CArrayOfMethodsParamData - использую CSimpleVector;
+		[*] мелкий рефакторинг методов по работе с параметрами по значению
+
+	* Source/SimpleCollection.h 1.4:
+		[*] рефакторинг класса CValueListContextFriend - добавлена пара п
+		олезных функций
+
+	* Source/ComponentClassAdd.cpp 1.18:
+	* Source/UserClassesImpl.cpp 1.14:
+	* Source/UserClassesImpl.h 1.8:
+		[bug 3798]
+		[*] рефакторинг класса CImplicitParams
+
+	* Source/MetaDataOfClasses.cpp 1.9:
+	* Source/MetaDataOfClasses.h 1.11:
+		[bug 3798]
+		[*] мелкий рефакторинг класса CMetaDataOfClasses - его методов по работе с параметрами по значению
+
+	* Source/UserClassesImpl.h 1.7:
+		[bug 3798]
+		[*] внутренний класс CInfoUnlimitsParamsPtr спрятан в файл реализации
+		[*] рефакторинг классов InfoUnlimitsParams, CImplicitParams
+		[*] из класса CImplicitParams выделен отдельный класс CParamsReceivedByValueManager
+
+	* Source/ComponentClass.h 1.17:
+		[bug 3798]
+		[*] внутренний класс CInfoUnlimitsParamsPtr спрятан в файл реализации
+
+	* Source/ComponentClassAdd.cpp 1.17:
+		[bug 3798]
+		[*] мелкий рефакторинг
+
+2008-05-22	artbear
+	* Source/System/ModuleEvents.cpp 1.2:
+		[-] в сообщении об ошибке вкралась опечатка, что может путать пол
+		ьзователя :(
+
+	* Source/SetOfHierarchy.cpp 1.16:
+	* Source/SetOfHierarchy.h 1.12:
+		[*] рефакторинг
+
+	* Source/ParamDefs.h 1.7:
+		[*] рефакторинг класса CParamDefs и paramdefs
+		также ускорение работы этих классов
+
+2008-05-21	artbear
+	* Source/BLModuleWrapper.h 1.15:
+	* Source/MapDefMethod.h 1.4:
+	* Source/UserClassesImpl.cpp 1.11:
+		[*] рефакторинг класса CComponentClassModulePtr - теперь это 
+		boost::shared_ptr
+
+	* Source/BLModuleWrapper.cpp 1.15:
+	* Source/BLModuleWrapper.h 1.13:
+	* Source/ExecuteModule.cpp 1.18:
+	* Source/UserClassesImpl.cpp 1.9:
+		[*] рефакторинг класса CBLModuleWrapper
+
+	* Source/BinaryData.cpp 1.3:
+		[-] устранен лик из-за использования неверного смарт-пойнтера
+
+	* Source/BLModuleWrapper.h 1.14:
+	* Source/MapDefMethod.h 1.3:
+		[*] мелкий рефакторинг
+
+	* Source/UserClassesImpl.cpp 1.10:
+	* Source/UserClassesImpl.h 1.6:
+		[*] рефакторинг класса CComponentClassImpl
+
+2008-05-20	kms
+	* Source/mycontextbase.h 1.2:
+		[!] Поддержка VS /LTCG (проблема регистрации контекстов)
+		[bug 3848]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.17:
+	* Source/CursorGrid/CursorGridCtrl.h 1.11:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.18:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.10:
+		[+] Добавлено свойство ТП::СтильРамки
+		[bug 3851]
+		[*] Поддержка ТП высотой точно в одну строку
+		[bug 3854]
+
+2008-05-20	artbear
+	* Source/System/GlobalMethods.cpp 1.9:
+	* Source/System/GlobalMethods.h 1.8:
+	* Source/System/GroupContextWrap.cpp 1.7:
+		[*] рефакторинг - вместо CPtrArray использую std::vector
+
+	* Source/System/GlobalMethods.h 1.10:
+	* Source/UserClassesImpl.h 1.5:
+		[*] рефакторинг - избавился от неверных приведений в стиле С
+
+	* Source/ExecuteModule.cpp 1.16:
+	* Source/SQL/MetaDataWork.cpp 1.4:
+	* Source/System/GlobalMethods.h 1.9:
+		[*] рефакторинг - исправил определение PValueItemArrayT
+
+	* Source/ADDIN.CPP 1.9:
+	* Source/BLModuleWrapper.cpp 1.12:
+	* Source/BLModuleWrapper.cpp 1.13:
+	* Source/ComponentClassAdd.cpp 1.13:
+	* Source/ComponentClassAdd.cpp 1.14:
+	* Source/ComponentClassAdd.cpp 1.15:
+	* Source/ComputeExpression.cpp 1.2:
+	* Source/Delegate.cpp 1.4:
+	* Source/Delegate.cpp 1.5:
+	* Source/ExecuteModule.cpp 1.15:
+	* Source/Factory.cpp 1.8:
+	* Source/MethodsWrapper.h 1.2:
+	* Source/ModuleString.cpp 1.3:
+	* Source/ODBC/Odbccore.cpp 1.5:
+	* Source/Preprocessor.cpp 1.12:
+	* Source/Preprocessor.cpp 1.8:
+	* Source/RuntimeException.cpp 1.2:
+	* Source/STDAFX.CPP 1.3:
+	* Source/SafeContext.cpp 1.5:
+	* Source/SetOfHierarchy.cpp 1.14:
+	* Source/SetOfHierarchy.cpp 1.15:
+	* Source/Struct.cpp 1.2:
+	* Source/System/DllHooker.cpp 1.6:
+	* Source/System/GlobalMethods.cpp 1.7:
+	* Source/System/GlobalMethods.cpp 1.8:
+	* Source/System/GlobalMethods.h 1.7:
+	* Source/System/Informer.cpp 1.8:
+	* Source/System/Informer.cpp 1.9:
+	* Source/System/LogFile.cpp 1.2:
+	* Source/System/Settings.cpp 1.4:
+	* Source/System/System.cpp 1.8:
+	* Source/System/System.cpp 1.9:
+	* Source/TableEx.cpp 1.7:
+	* Source/blptr.h 1.4:
+	* Source/istrmap.cpp 1.5:
+	* Source/mycontextbase.cpp 1.2:
+		[*] рефакторинг - избавился от приведений в стиле С, перейдя к пр
+		иведениям в стиле С++
+
+	* Source/BLModuleWrapper.cpp 1.14:
+	* Source/BLModuleWrapper.h 1.11:
+	* Source/ExecuteModule.cpp 1.17:
+	* Source/UserClassesImpl.cpp 1.8:
+		[*] рефакторинг класса CBLModuleWrapper - идиома pImpl
+
+	* Source/ADDIN.CPP 1.8:
+	* Source/BLModuleWrapper.cpp 1.11:
+	* Source/ComponentClassAdd.cpp 1.12:
+	* Source/CreateMetaInfoClasses.cpp 1.7:
+	* Source/CursorGrid/V7LogProvider.h 1.3:
+	* Source/DynaValue.cpp 1.6:
+	* Source/ExecuteModule.cpp 1.14:
+	* Source/MetaDataOfClasses.h 1.9:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.7:
+	* Source/Preprocessor.cpp 1.6:
+	* Source/SetOfHierarchy.h 1.11:
+	* Source/TurboBL/gcboost.cpp 1.5:
+	* Source/UserClassesImpl.cpp 1.5:
+		[*] рефакторинг - класс СSetOfHierarchy заменен абстрактным класс
+		ом ISetOfHierarchy
+
+	* Source/1CHEADERS/seven.h 1.2:
+		[*] избавился от ненужных friend-объявлений
+
+	* Source/SQL/MetaDataWork.cpp 1.5:
+		[*] показана возможная ошибка реализации :)
+
+	* Source/Preprocessor.cpp 1.10:
+	* Source/Preprocessor.cpp 1.11:
+		[*] рефакторинг
+
+	* Source/ComponentClass.h 1.16:
+	* Source/ExecuteModule.h 1.6:
+	* Source/TableEx.cpp 1.6:
+		[-] использование std::auto_ptr заменено на boost::scoped_ptr
+
+	* Source/BLModuleWrapper.h 1.12:
+		[*] рефакторинг класса CBLModuleWrapper
+
+	* Source/StdAfx.h 1.12:
+		[+] добавил хедер boost/scoped_ptr.hpp
+
+	* Source/1CPP.icproj 1.17:
+	* Source/1CPP.vcproj 1.17:
+	* Source/BLModuleWrapper.h 1.10:
+	* Source/UserClassesImpl.cpp 1.7:
+		[*] рефакторинг класса CBLModuleWrapper
+		и перенос части его статических методов в глобальную область
+
+	* Source/1CHEADERS/seven.h 1.3:
+		[*] рефакторинг - изменил friend class для CBLModule7
+
+	* Source/Preprocessor.cpp 1.7:
+	* Source/Preprocessor.h 1.8:
+		[-] ошибка использования std::auto_ptr
+
+2008-05-18	kms
+	* Source/Forwarder/Release/forwarder.lib 1.2:
+		[*] файл собран ICL 10.1.021 (совместимость с VS9)
+		[bug 3848]
+
+	* Source/Forwarder/forwarder.lib 1.2:
+		[!] файл перемещен
+		[bug 3848]
+
+	* Source/msxml.tlh 1.2:
+		[*] исправлен #include
+		[bug 3848]
+
+	* Source/1CHEADERS/bkend.h 1.3:
+	* Source/1CHEADERS/moxel.h 1.2:
+	* Source/1CHEADERS/types.h 1.3:
+	* Source/1CPP.icproj 1.16:
+	* Source/1CPP.sln 1.4:
+	* Source/1CPP.vcproj 1.16:
+	* Source/AXControl.cpp 1.6:
+	* Source/CreateMetaInfoClasses.h 1.3:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.16:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.17:
+	* Source/CursorGrid/V7LogEvent.cpp 1.2:
+	* Source/CursorGrid/V7LogFilter.cpp 1.3:
+	* Source/CursorGrid/V7LogProvider.cpp 1.4:
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.6:
+	* Source/CursorGrid/VTExtProvider.cpp 1.7:
+	* Source/CursorGrid/VTProvider.cpp 1.3:
+	* Source/Delegate.cpp 1.3:
+	* Source/EventManager.cpp 1.3:
+	* Source/Factory.cpp 1.7:
+	* Source/Font.cpp 1.6:
+	* Source/Form/V7Form.cpp 1.5:
+	* Source/Forwarder/Release/forwarder.lib 1.1:
+	* Source/Forwarder/ReleaseVS/forwarder.lib 1.1:
+	* Source/Forwarder/forwarder.icproj 1.2:
+	* Source/Forwarder/forwarder.sln 1.2:
+	* Source/Forwarder/forwarder.vcproj 1.2:
+	* Source/OLEDB/sp_cooledb.cpp 1.7:
+	* Source/OLEDB/sp_oledb.cpp 1.4:
+	* Source/SafeContext.cpp 1.4:
+	* Source/SimpleCollection.h 1.3:
+	* Source/SimpleContext.h 1.4:
+	* Source/SimpleVector.h 1.3:
+	* Source/StdAfx.h 1.11:
+	* Source/System/Clipboard.cpp 1.2:
+	* Source/System/DllHooker.cpp 1.5:
+	* Source/System/Hooker.cpp 1.4:
+	* Source/System/Informer.cpp 1.7:
+	* Source/System/Math.cpp 1.2:
+	* Source/System/Settings.cpp 1.3:
+	* Source/System/System.cpp 1.7:
+	* Source/Tests/Tests.icproj 1.2:
+	* Source/Tests/Tests.vcproj 1.2:
+	* Source/TurboBL/allboost.h 1.2:
+	* Source/TurboBL/boostgc.cpp 1.2:
+	* Source/TurboBL/docrefboost.cpp 1.2:
+	* Source/TurboBL/docrefboost.h 1.2:
+	* Source/UserClassesImpl.h 1.4:
+	* Source/V7SerializeToString.cpp 1.4:
+	* Source/VTExt/VTExtended.cpp 1.12:
+	* Source/forwarder.cpp 1.5:
+	* Source/msxml.tlh 1.1:
+	* Source/msxml.tli 1.1:
+		[!] Обеспечение совместимости с компиляторами VS8/VS9
+		[bug 3848]
+
+2008-05-17	uzhast
+	* Source/1CPP.icproj 1.15:
+	* Source/1CPP.vcproj 1.15:
+	* Source/ODBC/MetaNameParserProxy.cpp 1.1:
+	* Source/ODBC/MetaNameParserProxy.h 1.1:
+		Добавлены прокси-классы для метапарсера.
+
+2008-05-16	kms
+	* Source/UserClassesImpl.h 1.3:
+		[-] Ошибка сборки release
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.15:
+	* Source/CursorGrid/CursorGridCtrl.h 1.10:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.16:
+		[-] Коллекция выделенных строк модифицируется до вызова событий ПриАктивизации***
+		[bug 3846]
+		[*] Изменена логика выделения строк ТП
+		[bug 3847]
+
+2008-05-15	kms
+	* Documents/TableField.rst 1.6:
+		[*] Документировано свойство ОформлениеЯчейки::ДанныеКартинки
+		[bug 3665]
+
+	* Source/CursorGrid/VTExtProvider.cpp 1.6:
+		[-] ABR при позиционировании на строку
+		[bug 3837]
+
+2008-05-14	kms
+	* Source/SimpleCollection.h 1.2:
+		[-] Исправлена иерархия базовых классов для CSimpleCollection
+		[bug 3840]
+
+	* Source/SimpleContext.h 1.3:
+		[+] Комментарий
+
+	* Source/CursorGrid/VTExtProvider.cpp 1.5:
+		[-] AV при сбросе ИТ в ноль
+		[bug 3841]
+
+2008-05-13	artbear
+	* Source/StringArrayEx.h 1.5:
+	* Source/UserClassesImpl.cpp 1.4:
+		[*] небольшой рефакторинг
+
+	* Source/StringArrayEx.h 1.3:
+		[+] рефакторинг класса CStringArrayEx -
+		избавился от виртуального деструктора, т.к. наследование от класса
+		пока не нужно.
+
+	* Source/StringArrayEx.cpp 1.2:
+	* Source/StringArrayEx.h 1.2:
+		[+] сильный рефакторинг класса CStringArrayEx -
+		избавление от тормозного CStringArray
+		и замена на более шустрый вариант c vector
+
+	* Source/ComponentClass.cpp 1.16:
+	* Source/ComponentClass.h 1.15:
+		[*] удалил устаревший, закомментированный код
+
+	* Source/StringArrayEx.h 1.4:
+		[-] баг падения 1С
+
+2008-05-12	artbear
+	* Source/ADDIN.CPP 1.7:
+	* Source/BLModuleWrapper.cpp 1.10:
+	* Source/ComponentClassAdd.cpp 1.10:
+	* Source/CreateMetaInfoClasses.cpp 1.6:
+	* Source/CursorGrid/V7LogEvent.h 1.2:
+	* Source/DynaValue.cpp 1.5:
+	* Source/ExecuteModule.cpp 1.13:
+	* Source/OLEDB/sp_oledb.h 1.3:
+	* Source/Preprocessor.cpp 1.4:
+	* Source/Preprocessor.h 1.6:
+	* Source/SetOfHierarchy.cpp 1.13:
+	* Source/SetOfHierarchy.h 1.10:
+	* Source/SetOfHierarchy.h 1.9:
+	* Source/System/GroupContextWrap.cpp 1.6:
+	* Source/System/Settings.cpp 1.2:
+	* Source/TurboBL/gcboost.cpp 1.3:
+	* Source/UserClassesImpl.cpp 1.3:
+		[*] более точное указание нужных хедеров
+
+	* Source/ComponentClassAdd.cpp 1.9:
+	* Source/MetaDataOfClasses.h 1.8:
+	* Source/SetOfHierarchy.cpp 1.12:
+	* Source/SetOfHierarchy.h 1.8:
+	* Source/TurboBL/gcboost.cpp 1.4:
+	* Source/UserClassesImpl.cpp 1.2:
+		[+] сильный рефакторинг класса CSetOfHierarchy - переход к исполь
+		зованию абстрактных интерфейсов класса
+
+	* Source/ComponentClass.cpp 1.15:
+	* Source/ComponentClass.h 1.13:
+	* Source/ComponentClass.h 1.14:
+	* Source/ComponentClassAdd.cpp 1.11:
+	* Source/UserClassesImpl.h 1.2:
+		[*] мелкий рефакторинг класса CComponentClass
+
+	* Source/Preprocessor.cpp 1.5:
+	* Source/Preprocessor.h 1.7:
+		[*] рефакторинг класса CPreprocessor
+
+	* Testing/UnitTests/OOP/ООП_ДинамическиеКлассыТесты.txt 1.1:
+		[+] тесты динамических методов
+
+	* Source/SetOfHierarchy.h 1.7:
+		[*] рефакторинг - публичные методы класс выложил рядом
+
+	* Source/ComponentClass.h 1.11:
+		[*] удалил устаревший, закомментированный код
+
+	* Source/1CPP.icproj 1.14:
+	* Source/1CPP.vcproj 1.14:
+	* Source/ADDIN.CPP 1.6:
+	* Source/ADDIN.H 1.3:
+	* Source/BLModuleWrapper.cpp 1.9:
+	* Source/CastContext.h 1.1:
+	* Source/ComponentClass.cpp 1.14:
+	* Source/ComponentClass.h 1.10:
+	* Source/ComponentClassAdd.cpp 1.8:
+	* Source/ExecuteModule.cpp 1.12:
+	* Source/Factory.h 1.2:
+	* Source/MetaDataOfClasses.cpp 1.8:
+	* Source/MetaDataOfClasses.h 1.7:
+	* Source/RuntimeException.cpp 1.1:
+	* Source/RuntimeException.h 1.1:
+	* Source/SafeContext.h 1.6:
+	* Source/SetOfHierarchy.cpp 1.11:
+	* Source/UserClassesImpl.cpp 1.1:
+	* Source/UserClassesImpl.h 1.1:
+		[+] сильный рефакторинг класса CComponentClass - переход к исполь
+		зованию абстрактных интерфейсов класса
+
+2008-05-11	kms
+	* Source/SimpleContext.h 1.2:
+	* Source/SimpleVector.h 1.2:
+		[-] Неверная очистка памяти при удалении наследников коллекций
+		[bug 3832]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.14:
+	* Source/CursorGrid/CursorGridCtrl.h 1.9:
+	* Source/CursorGrid/DataProvider.h 1.2:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.15:
+		[!] Управление временем жизни строки вынесено за пределы класса CDataRow
+		[bug 3831]
+
+2008-05-09	kms
+	* Source/V7SerializeToString.cpp 1.3:
+	* Source/V7SerializeToString.h 1.3:
+	* Source/VTExt/VTExtended.cpp 1.11:
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.3:
+		[+] Полная поддержка сериализации в строку и обратно для ИТ
+		[bug 3715]
+
+2008-05-08	kms
+	* Source/CursorGrid/VTExtProvider.cpp 1.4:
+		[*] обновление ТП отключено для момента установки поставщика
+		[bug 3827]
+
+	* Source/VTExt/VTExtended.cpp 1.10:
+	* Source/VTExt/VTExtended.h 1.7:
+		[*] продолжение темы заполнения колонки по алгоритму
+		[bug 3813]
+
+	* Documents/LogDataProvider.rst 1.2:
+		[*] тотальная замена табов на пробелы
+		[bug 3825]
+
+	* Documents/TableField.rst 1.5:
+		[+] документирован ПоставщикДанныхИТ
+		[bug 3793]
+
+2008-05-08	adirks
+	* Source/VTExt/VTExtended.cpp 1.9:
+	* Source/VTExt/VTExtended.h 1.6:
+		[+] заполнение колонки вычисляемым значением
+
+2008-05-07	kms
+	* Documents/txt2html.bat 1.3:
+		[*] Обеспечить форматирование документации rst в едином стиле
+		[bug 3825]
+
+	* Source/1CHEADERS/basic.h 1.2:
+	* Source/1CHEADERS/bkend.h 1.2:
+	* Source/VTExt/VTExtended.cpp 1.8:
+		[*] исправлена иерархия
+
+2008-05-07	artbear
+	* Documents/Informer.rst 1.6:
+	* Documents/classes.rst 1.3:
+	* Documents/extobjs.rst 1.6:
+		[bug 3801]
+		[-] баг сборки документации
+
+2008-05-06	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.13:
+		[-] Вылет при перетаскивании заголовка пустого ТП
+		[bug 3812]
+
+2008-05-05	kms
+	* Source/VTExt/VTExtRow.cpp 1.2:
+		[!] ИТ: Разрушение памяти при использовании метода УдалитьКолонку()
+		[bug 3811]
+
+2008-05-05	fez
+	* nightbuild.bat 1.2:
+		Исправил синтаксическую ошибку
+
+2008-05-04	fez
+	* Documents/txt2html.bat 1.2:
+		Не учитывалась возможность наличия пробела в имени каталога.
+
+	* nightbuild.bat 1.1:
+		Добавил скрипт ночной сборки. Пока тут только документация в 
+		html формате.
+
+2008-05-04	artbear
+	* Testing/UnitTests/OOP/defcls.prm 1.2:
+	* Testing/UnitTests/OOP/КлассСКонструкторами.txt 1.2:
+	* Testing/UnitTests/OOP/КлассыСДинамическимиСвойствами.txt 1.2:
+	* Testing/UnitTests/OOP/ООП_КлассыВОдномФайле_Тесты.txt 1.2:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.2:
+	* Testing/UnitTests/OOP/Предок.txt 1.2:
+	* Testing/UnitTests/OOP/ПредокПотомокСОдинаковымиМетодами.txt 1.2:
+	* Testing/UnitTests/OOP/Тесты_Фабрика.txt 1.2:
+	* Testing/UnitTests/SpecialClasses/ВыполняемыйМодульТесты.txt 1.2:
+	* Testing/UnitTests/SpecialClasses/ИнформаторТесты.txt 1.2:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.2:
+	* Testing/UnitTests/SpecialClasses/СистемаТесты.txt 1.2:
+		[+] последние версии тестов из ветки 2.5
+		почему-то они были забыты :)
+
+	* Testing/UnitTests/OOP/defcls.prm 1.3:
+	* Testing/UnitTests/OOP/Тесты_ПарамПоУмолчаниюC_3ТочкамиВнутри.txt 1.2:
+		[bug 3798]
+		[+] соответствующий тест
+
+2008-05-04	adirks
+	* Source/VTExt/VTIterator.cpp 1.4:
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.2:
+		[-] ошибка при обратном итерировании по неуникальному индексу
+
+	* Source/VTExt/VTExtended.h 1.5:
+	* Source/VTExt/VTIndex.cpp 1.3:
+	* Source/VTExt/VTIterator.cpp 1.3:
+		[+] проверка валидности итераторов (итераторы инвалидируются при 
+		любом изменении индекса)
+
+2008-05-03	kms
+	* Source/V7SerializeToString.cpp 1.2:
+	* Source/V7SerializeToString.h 1.2:
+		[-] Исправлены неточности
+		[bug 3715]
+
+	* Source/VTExt/VTIterator.cpp 1.2:
+		[-] Неверное позиционирование ВКонец()
+		для неуникального индекса при наличии фильтра
+		[bug 3794]
+
+	* Source/1CPP.icproj 1.13:
+	* Source/1CPP.sln 1.3:
+	* Source/1CPP.vcproj 1.13:
+	* Source/V7SerializeToString.cpp 1.1:
+	* Source/V7SerializeToString.h 1.1:
+	* Source/VTExt/VTExtended.cpp 1.7:
+	* Source/VTExt/VTExtended.h 1.4:
+		[+] Преобразование в строку и обратно встроенных классов icpp
+		[bug 3715]
+
+	* Source/1CHEADERS/type32.h 1.3:
+	* Source/TableEx.cpp 1.5:
+		[+] нормально описана иерархия CGenericItem
+
+	* Source/CursorGrid/VTExtProvider.cpp 1.3:
+		[-] падение при подключении пустого поставщика данных ИТ
+		[bug 3797]
+
+2008-05-01	kms
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.14:
+		[+] возможность использования наследников поставщиков данных
+		[bug 3796]
+
+	* Testing/.cvsignore 1.1:
+	* Testing/Config/GUIDData 1.1:
+	* Testing/Config/PictureGallery/Gallery.bmp 1.1:
+	* Testing/Config/PictureGallery/Gallery.head 1.1:
+	* Testing/Config/PictureGallery/Gallery.tail 1.1:
+	* Testing/Config/PictureGallery/__Picture.10000004.bmp 1.1:
+	* Testing/Config/PictureGallery/__Picture.10000008.bmp 1.1:
+	* Testing/Config/PictureGallery/__Picture.10000009.bmp 1.1:
+	* Testing/Config/TagStream 1.1:
+	* Testing/Config/gcomp.ini 1.1:
+	* Testing/Config/gcomp.ver 1.1:
+	* Testing/Config/АлгоритмыРасчета/ЛюбойРасчет1/Структура.mdp 1.1:
+	* Testing/Config/АлгоритмыРасчета/ЛюбойРасчет2/Структура.mdp 1.1:
+	* Testing/Config/АлгоритмыРасчета/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/ГлобальныйМодуль.1s 1.1:
+	* Testing/Config/ГрафыОтбораДокументов/ГрафыОтбораДокументов.mdp 1.1:
+	* Testing/Config/ГруппыРасчетов/ГруппыРасчетов.mdp 1.1:
+	* Testing/Config/Документы/Новый1/МодульПроведения.1s 1.1:
+	* Testing/Config/Документы/Новый1/МодульФормы.1s 1.1:
+	* Testing/Config/Документы/Новый1/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Документы/Новый1/Структура.mdp 1.1:
+	* Testing/Config/Документы/Новый1/Таблица.mxl 1.1:
+	* Testing/Config/Документы/Новый1/Форма.frm 1.1:
+	* Testing/Config/Документы/Новый2/МодульПроведения.1s 1.1:
+	* Testing/Config/Документы/Новый2/МодульФормы.1s 1.1:
+	* Testing/Config/Документы/Новый2/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Документы/Новый2/Структура.mdp 1.1:
+	* Testing/Config/Документы/Новый2/Таблица.mxl 1.1:
+	* Testing/Config/Документы/Новый2/Форма.frm 1.1:
+	* Testing/Config/Документы/Операция/Структура.mdp 1.1:
+	* Testing/Config/Документы/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/ИдентификаторыКонфигурации.mdp 1.1:
+	* Testing/Config/Интерфейсы/Новый1/Команды.txt 1.1:
+	* Testing/Config/Интерфейсы/Новый1/Меню.txt 1.1:
+	* Testing/Config/Интерфейсы/Новый1/Панели.bmp 1.1:
+	* Testing/Config/Интерфейсы/Новый1/Панели.txt 1.1:
+	* Testing/Config/Интерфейсы/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Календари/Календари.mdp 1.1:
+	* Testing/Config/Константы/Константы.mdp 1.1:
+	* Testing/Config/Нумераторы/Нумераторы.mdp 1.1:
+	* Testing/Config/Обработки/defcls/МодульФормы.1s 1.1:
+	* Testing/Config/Обработки/defcls/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Обработки/defcls/Структура.mdp 1.1:
+	* Testing/Config/Обработки/defcls/Таблица.mxl 1.1:
+	* Testing/Config/Обработки/defcls/Форма.frm 1.1:
+	* Testing/Config/Обработки/ЗагрузчикЮнитТестов/МодульФормы.1s 1.1:
+	* Testing/Config/Обработки/ЗагрузчикЮнитТестов/Структура.mdp 1.1:
+	* Testing/Config/Обработки/ЗагрузчикЮнитТестов/Форма.frm 1.1:
+	* Testing/Config/Обработки/КлассПрофайлер/МодульФормы.1s 1.1:
+	* Testing/Config/Обработки/КлассПрофайлер/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Обработки/КлассПрофайлер/Структура.mdp 1.1:
+	* Testing/Config/Обработки/КлассПрофайлер/Таблица.mxl 1.1:
+	* Testing/Config/Обработки/КлассПрофайлер/Форма.frm 1.1:
+	* Testing/Config/Обработки/КлассСТаблицейВКонфигурации/МодульФормы.1s 1.1:
+	* Testing/Config/Обработки/КлассСТаблицейВКонфигурации/Описание.txt 1.1:
+	* Testing/Config/Обработки/КлассСТаблицейВКонфигурации/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Обработки/КлассСТаблицейВКонфигурации/Структура.mdp 1.1:
+	* Testing/Config/Обработки/КлассСТаблицейВКонфигурации/Таблица.mxl 1.1:
+	* Testing/Config/Обработки/КлассСТаблицейВКонфигурации/Форма.frm 1.1:
+	* Testing/Config/Обработки/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Обработки/РаботаСОбразамиКлассов/МодульФормы.1s 1.1:
+	* Testing/Config/Обработки/РаботаСОбразамиКлассов/Описание.txt 1.1:
+	* Testing/Config/Обработки/РаботаСОбразамиКлассов/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Обработки/РаботаСОбразамиКлассов/Структура.mdp 1.1:
+	* Testing/Config/Обработки/РаботаСОбразамиКлассов/Таблица.mxl 1.1:
+	* Testing/Config/Обработки/РаботаСОбразамиКлассов/Форма.frm 1.1:
+	* Testing/Config/Обработки/ТестоваяДляFormEx/МодульФормы.1s 1.1:
+	* Testing/Config/Обработки/ТестоваяДляFormEx/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Обработки/ТестоваяДляFormEx/Структура.mdp 1.1:
+	* Testing/Config/Обработки/ТестоваяДляFormEx/Таблица.mxl 1.1:
+	* Testing/Config/Обработки/ТестоваяДляFormEx/Форма.frm 1.1:
+	* Testing/Config/Обработки/ТрассировкаФорма/Container.Profile 1.1:
+	* Testing/Config/Обработки/ТрассировкаФорма/МодульФормы.1s 1.1:
+	* Testing/Config/Обработки/ТрассировкаФорма/Описание.txt 1.1:
+	* Testing/Config/Обработки/ТрассировкаФорма/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Обработки/ТрассировкаФорма/Структура.mdp 1.1:
+	* Testing/Config/Обработки/ТрассировкаФорма/Таблица.mxl 1.1:
+	* Testing/Config/Обработки/ТрассировкаФорма/Форма.frm 1.1:
+	* Testing/Config/ОбщиеПоляДокументов/ОбщиеПоляДокументов.mdp 1.1:
+	* Testing/Config/ОбщиеТаблицы/ОбщаяТаблица.mxl 1.1:
+	* Testing/Config/ОбщиеТаблицы/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/ОбъектыМетаданных.txt 1.1:
+	* Testing/Config/ОписаниеКонфигурации.mdp 1.1:
+	* Testing/Config/Отчеты/ПолучениеМетодовИСвойств/МодульФормы.1s 1.1:
+	* Testing/Config/Отчеты/ПолучениеМетодовИСвойств/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Отчеты/ПолучениеМетодовИСвойств/Структура.mdp 1.1:
+	* Testing/Config/Отчеты/ПолучениеМетодовИСвойств/Таблица.mxl 1.1:
+	* Testing/Config/Отчеты/ПолучениеМетодовИСвойств/Форма.frm 1.1:
+	* Testing/Config/Отчеты/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Отчеты/новый1/МодульФормы.1s 1.1:
+	* Testing/Config/Отчеты/новый1/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Отчеты/новый1/Структура.mdp 1.1:
+	* Testing/Config/Отчеты/новый1/Таблица.mxl 1.1:
+	* Testing/Config/Отчеты/новый1/Форма.frm 1.1:
+	* Testing/Config/Отчеты/новый2/МодульФормы.1s 1.1:
+	* Testing/Config/Отчеты/новый2/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Отчеты/новый2/Структура.mdp 1.1:
+	* Testing/Config/Отчеты/новый2/Таблица.mxl 1.1:
+	* Testing/Config/Отчеты/новый2/Форма.frm 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/НеизвестнаяФорма.mdp 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Операция/ФормаОперации/Форма.frm 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Операция/ФормыЖурнала.mdp 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Проводка/ФормаСписка.fls/Форма.frm 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Проводка/ФормыЖурнала.mdp 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Структура.mdp 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/Основной.pln/00.acc 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/Основной.pln/01.acc 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/Основной.pln/02.acc 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/Основной.pln/03.acc 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/Основной.pln/04.acc 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/Основной.pln/05.acc 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/Основной.pln/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/Основной.pln/Структура.mdp 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/ФормаСписка.fls/Форма.frm 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/ФормаСчета/Форма.frm 1.1:
+	* Testing/Config/ПараметрыБухгалтерии/Счета/ФормыСписка.mdp 1.1:
+	* Testing/Config/Перечисления/Перечисления.mdp 1.1:
+	* Testing/Config/ПоследовательностиДокументов/ПоследовательностиДокументов.mdp 1.1:
+	* Testing/Config/Права/Администратор.txt 1.1:
+	* Testing/Config/Права/НаборыПравОбъединенные.csv 1.1:
+	* Testing/Config/Права/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/ПравилаПерерасчета/ПравилаПерерасчета.mdp 1.1:
+	* Testing/Config/Регистры/Регистры.mdp 1.1:
+	* Testing/Config/Справочники/Классы1СПП/Структура.mdp 1.1:
+	* Testing/Config/Справочники/Классы1СПП/ФормаСписка.fls/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Справочники/Классы1СПП/ФормаСписка.fls/Таблица.mxl 1.1:
+	* Testing/Config/Справочники/Классы1СПП/ФормаСписка.fls/Форма.frm 1.1:
+	* Testing/Config/Справочники/Новый1/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Справочники/Новый1/Структура.mdp 1.1:
+	* Testing/Config/Справочники/Новый1/Таблица.mxl 1.1:
+	* Testing/Config/Справочники/Новый1/Форма.frm 1.1:
+	* Testing/Config/Справочники/Новый2/Структура.mdp 1.1:
+	* Testing/Config/Справочники/Новый2/ФормаСписка.fls/МодульФормы.1s 1.1:
+	* Testing/Config/Справочники/Новый2/ФормаСписка.fls/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Справочники/Новый2/ФормаСписка.fls/Таблица.mxl 1.1:
+	* Testing/Config/Справочники/Новый2/ФормаСписка.fls/Форма.frm 1.1:
+	* Testing/Config/Справочники/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Справочники/Разделы1СПП/Структура.mdp 1.1:
+	* Testing/Config/Справочники/Разделы1СПП/ФормаСписка.fls/ПорядокОбъектов.ord 1.1:
+	* Testing/Config/Справочники/Разделы1СПП/ФормаСписка.fls/Таблица.mxl 1.1:
+	* Testing/Config/Справочники/Разделы1СПП/ФормаСписка.fls/Форма.frm 1.1:
+	* Testing/Config/Справочники/ТестовыеДанные/Структура.mdp 1.1:
+	* Testing/Config/Справочники/ТестовыеДанные/ФормаСписка.fls/Форма.frm 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК/gcomp.ini 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК/gcomp.ver 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК/МодульФормы.1s 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК/Структура.mdp 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК/Форма.frm 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_События/gcomp.ini 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_События/gcomp.ver 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_События/МодульФормы.1s 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_События/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_События/Структура.mdp 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_События/Форма.frm 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormEx/gcomp.ini 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormEx/gcomp.ver 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormEx/МодульФормы.1s 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormEx/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormEx/Структура.mdp 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormEx/Форма.frm 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormExДоПерехвата/gcomp.ini 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormExДоПерехвата/gcomp.ver 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormExДоПерехвата/МодульФормы.1s 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormExДоПерехвата/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormExДоПерехвата/Структура.mdp 1.1:
+	* Testing/ExtForms/UnitTests/КлассПерехватчикГК_СобытияFormExДоПерехвата/Форма.frm 1.1:
+	* Testing/ExtForms/UnitTests/СобытияFormEx/gcomp.ini 1.1:
+	* Testing/ExtForms/UnitTests/СобытияFormEx/gcomp.ver 1.1:
+	* Testing/ExtForms/UnitTests/СобытияFormEx/МодульФормы.1s 1.1:
+	* Testing/ExtForms/UnitTests/СобытияFormEx/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/UnitTests/СобытияFormEx/ПорядокОбъектов.ord 1.1:
+	* Testing/ExtForms/UnitTests/СобытияFormEx/Структура.mdp 1.1:
+	* Testing/ExtForms/UnitTests/СобытияFormEx/Таблица.mxl 1.1:
+	* Testing/ExtForms/UnitTests/СобытияFormEx/Форма.frm 1.1:
+	* Testing/ExtForms/UnitTests/ТестыИсходнойТаблицы/gcomp.ini 1.1:
+	* Testing/ExtForms/UnitTests/ТестыИсходнойТаблицы/gcomp.ver 1.1:
+	* Testing/ExtForms/UnitTests/ТестыИсходнойТаблицы/МодульФормы.1s 1.1:
+	* Testing/ExtForms/UnitTests/ТестыИсходнойТаблицы/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/UnitTests/ТестыИсходнойТаблицы/ПорядокОбъектов.ord 1.1:
+	* Testing/ExtForms/UnitTests/ТестыИсходнойТаблицы/Структура.mdp 1.1:
+	* Testing/ExtForms/UnitTests/ТестыИсходнойТаблицы/Таблица.mxl 1.1:
+	* Testing/ExtForms/UnitTests/ТестыИсходнойТаблицы/Форма.frm 1.1:
+	* Testing/ExtForms/ОбработкаАктивИкс/gcomp.ini 1.1:
+	* Testing/ExtForms/ОбработкаАктивИкс/gcomp.ver 1.1:
+	* Testing/ExtForms/ОбработкаАктивИкс/МодульФормы.1s 1.1:
+	* Testing/ExtForms/ОбработкаАктивИкс/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/ОбработкаАктивИкс/Структура.mdp 1.1:
+	* Testing/ExtForms/ОбработкаАктивИкс/Форма.frm 1.1:
+	* Testing/ExtForms/ОтчетНовый1/gcomp.ini 1.1:
+	* Testing/ExtForms/ОтчетНовый1/gcomp.ver 1.1:
+	* Testing/ExtForms/ОтчетНовый1/МодульФормы.1s 1.1:
+	* Testing/ExtForms/ОтчетНовый1/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/ОтчетНовый1/ПорядокОбъектов.ord 1.1:
+	* Testing/ExtForms/ОтчетНовый1/Структура.mdp 1.1:
+	* Testing/ExtForms/ОтчетНовый1/Таблица.mxl 1.1:
+	* Testing/ExtForms/ОтчетНовый1/Форма.frm 1.1:
+	* Testing/ExtForms/ОтчетЭлементУправления/gcomp.ini 1.1:
+	* Testing/ExtForms/ОтчетЭлементУправления/gcomp.ver 1.1:
+	* Testing/ExtForms/ОтчетЭлементУправления/МодульФормы.1s 1.1:
+	* Testing/ExtForms/ОтчетЭлементУправления/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/ОтчетЭлементУправления/Структура.mdp 1.1:
+	* Testing/ExtForms/ОтчетЭлементУправления/Форма.frm 1.1:
+	* Testing/ExtForms/ПолучениеМетодовИСвойств/gcomp.ini 1.1:
+	* Testing/ExtForms/ПолучениеМетодовИСвойств/gcomp.ver 1.1:
+	* Testing/ExtForms/ПолучениеМетодовИСвойств/МодульФормы.1s 1.1:
+	* Testing/ExtForms/ПолучениеМетодовИСвойств/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/ПолучениеМетодовИСвойств/ПорядокОбъектов.ord 1.1:
+	* Testing/ExtForms/ПолучениеМетодовИСвойств/Структура.mdp 1.1:
+	* Testing/ExtForms/ПолучениеМетодовИСвойств/Таблица.mxl 1.1:
+	* Testing/ExtForms/ПолучениеМетодовИСвойств/Форма.frm 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/Gallery.bmp 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/Gallery.head 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/Gallery.tail 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000001.bmp 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000004.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000005.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000007.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000008.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000009.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f00000c.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f00000d.bmp 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f00000e.bmp 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000010.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000011.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000012.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000013.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/PictureGallery/__Picture.1f000014.ico 1.1:
+	* Testing/ExtForms/РедакторТЗ/gcomp.ini 1.1:
+	* Testing/ExtForms/РедакторТЗ/gcomp.ver 1.1:
+	* Testing/ExtForms/РедакторТЗ/МодульФормы.1s 1.1:
+	* Testing/ExtForms/РедакторТЗ/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/РедакторТЗ/Описание.txt 1.1:
+	* Testing/ExtForms/РедакторТЗ/Структура.mdp 1.1:
+	* Testing/ExtForms/РедакторТЗ/Форма.frm 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/Gallery.bmp 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/Gallery.head 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/Gallery.tail 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000002.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000004.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000005.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000006.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000007.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000008.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000009.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f00000a.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f00000b.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f00000c.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f00000d.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f00000e.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000010.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000011.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000012.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/PictureGallery/__Picture.1f000013.ico 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/gcomp.ini 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/gcomp.ver 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/МодульФормы.1s 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/ОбъектыМетаданных.txt 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/Описание.txt 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/ПорядокОбъектов.ord 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/Ресурсы.mxl 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/Структура.mdp 1.1:
+	* Testing/ExtForms/ТестТабличногоПоляПоставщикДанныхЛог/Форма.frm 1.1:
+	* Testing/Run.bat.template 1.1:
+	* Testing/Scripts/.cvsignore 1.1:
+	* Testing/Scripts/GComp.dll 1.1:
+	* Testing/Scripts/OC_scripts/autoload.vbs 1.1:
+	* Testing/Scripts/OC_scripts/readme.txt 1.1:
+	* Testing/Scripts/compile_all.py 1.1:
+	* Testing/Scripts/compile_db.py 1.1:
+	* Testing/Scripts/compile_extfiles.py 1.1:
+	* Testing/Scripts/config_starter.py 1.1:
+	* Testing/Scripts/dbc_dbf2txt.py 1.1:
+	* Testing/Scripts/dbc_txt2dbf.py 1.1:
+	* Testing/Scripts/dbconvert.py 1.1:
+	* Testing/Scripts/dbfpy/.cvsignore 1.1:
+	* Testing/Scripts/dbfpy/README 1.1:
+	* Testing/Scripts/dbfpy/__init__.py 1.1:
+	* Testing/Scripts/dbfpy/binnum.py 1.1:
+	* Testing/Scripts/dbfpy/dbf.py 1.1:
+	* Testing/Scripts/dbfpy/dbfload.py 1.1:
+	* Testing/Scripts/dbfpy/dbfnew.py 1.1:
+	* Testing/Scripts/dbfpy/strutil.py 1.1:
+	* Testing/Scripts/decompile_all.py 1.1:
+	* Testing/Scripts/decompile_bd.py 1.1:
+	* Testing/Scripts/decompile_cfg.bat 1.1:
+	* Testing/Scripts/decompile_cfg.py 1.1:
+	* Testing/Scripts/decompile_db.py 1.1:
+	* Testing/Scripts/decompile_extfiles.py 1.1:
+	* Testing/Scripts/gcomp.exe 1.1:
+	* Testing/Scripts/gcompLib.py 1.1:
+	* Testing/Scripts/scripts.ini.example 1.1:
+	* Testing/Scripts/update_bd.py 1.1:
+	* Testing/Scripts/update_cfg.py 1.1:
+	* Testing/TestDB/1SACCS.csv 1.1:
+	* Testing/TestDB/1SACCS.hdr 1.1:
+	* Testing/TestDB/1SBLOB.csv 1.1:
+	* Testing/TestDB/1SBLOB.hdr 1.1:
+	* Testing/TestDB/1SCONST.csv 1.1:
+	* Testing/TestDB/1SCONST.hdr 1.1:
+	* Testing/TestDB/1SCORENT.csv 1.1:
+	* Testing/TestDB/1SCORENT.hdr 1.1:
+	* Testing/TestDB/1SENTRY.csv 1.1:
+	* Testing/TestDB/1SENTRY.hdr 1.1:
+	* Testing/TestDB/1SJOURN.csv 1.1:
+	* Testing/TestDB/1SJOURN.hdr 1.1:
+	* Testing/TestDB/1SOPER.csv 1.1:
+	* Testing/TestDB/1SOPER.hdr 1.1:
+	* Testing/TestDB/1STOPER.csv 1.1:
+	* Testing/TestDB/1STOPER.hdr 1.1:
+	* Testing/TestDB/CL.csv 1.1:
+	* Testing/TestDB/CL.hdr 1.1:
+	* Testing/TestDB/DH16.csv 1.1:
+	* Testing/TestDB/DH16.hdr 1.1:
+	* Testing/TestDB/DT16.csv 1.1:
+	* Testing/TestDB/DT16.hdr 1.1:
+	* Testing/TestDB/SC12.csv 1.1:
+	* Testing/TestDB/SC12.hdr 1.1:
+	* Testing/TestDB/SC14.csv 1.1:
+	* Testing/TestDB/SC14.hdr 1.1:
+	* Testing/TestDB/SC31.csv 1.1:
+	* Testing/TestDB/SC31.hdr 1.1:
+	* Testing/TestDB/SC34.csv 1.1:
+	* Testing/TestDB/SC34.hdr 1.1:
+	* Testing/TestDB/SC42.csv 1.1:
+	* Testing/TestDB/SC42.hdr 1.1:
+	* Testing/UnitTests/CursorGrid/defcls.prm 1.1:
+	* Testing/UnitTests/CursorGrid/ТабличноеПолеТесты.txt 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1/gcomp.ini 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1/gcomp.ver 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1/МодульФормы.1s 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1/Структура.mdp 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1/Форма.frm 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1_ШтатныйУжеСуществует/gcomp.ini 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1_ШтатныйУжеСуществует/gcomp.ver 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1_ШтатныйУжеСуществует/МодульФормы.1s 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1_ШтатныйУжеСуществует/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1_ШтатныйУжеСуществует/Структура.mdp 1.1:
+	* Testing/UnitTests/FormEx/FormEx_ДобавитьАтрибут1_ШтатныйУжеСуществует/Форма.frm 1.1:
+	* Testing/UnitTests/FormEx/FormEx_Окна_Тесты.txt 1.1:
+	* Testing/UnitTests/FormEx/FormEx_РасширениеФормы.txt 1.1:
+	* Testing/UnitTests/FormEx/FormEx_Таймер_Тесты.txt 1.1:
+	* Testing/UnitTests/FormEx/FormExТесты.txt 1.1:
+	* Testing/UnitTests/FormEx/defcls.prm 1.1:
+	* Testing/UnitTests/FormEx/СобытияFormExТесты.txt 1.1:
+	* Testing/UnitTests/FormEx/ТестИсходнойТаблицы.mxl 1.1:
+	* Testing/UnitTests/FormEx/Тесты_FormEx_ДобавлениеАтрибутов.txt 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/.mxl 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/gcomp.ini 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/gcomp.ver 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/ВтораяТаблица.mxl 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/МодульФормы.1s 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/ПорядокОбъектов.ord 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/Структура.mdp 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/Таблица.mxl 1.1:
+	* Testing/UnitTests/FormEx/ТестыИсходнойТаблицы/Форма.frm 1.1:
+	* Testing/UnitTests/LoaderUnitTests/DEFCLS.PRM 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ДелегатФормы.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗагрузчикТестов.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/PictureGallery/Gallery.bmp 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/PictureGallery/Gallery.head 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/PictureGallery/Gallery.tail 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/PictureGallery/__Picture.1f000001.bmp 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/PictureGallery/__Picture.1f000002.bmp 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/PictureGallery/__Picture.1f000003.bmp 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/gcomp.ini 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/gcomp.ver 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/МодульФормы.1s 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/Структура.mdp 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ЗапускЮнитТестов/Форма.frm 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Исключение_ПропуститьТест.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/НаборТестов.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Общие.ЛогФайл.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Общие.Трассировка.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/РезультатТеста.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ТестовыйСлучай.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ТестовыйСлучайСДанными.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/ТестовыйСлучайФормы.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/defcls.prm 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/БылЗапущен.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/Тесты_ДелегатФормы/gcomp.ini 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/Тесты_ДелегатФормы/gcomp.ver 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/Тесты_ДелегатФормы/МодульФормы.1s 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/Тесты_ДелегатФормы/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/Тесты_ДелегатФормы/Структура.mdp 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/Тесты_ДелегатФормы/Форма.frm 1.1:
+	* Testing/UnitTests/LoaderUnitTests/Тесты/ТестыТестовогоСлучая.txt 1.1:
+	* Testing/UnitTests/ODBC/ODBC_DBF_Тесты.txt 1.1:
+	* Testing/UnitTests/ODBC/ODBC_SQL_Тесты.txt 1.1:
+	* Testing/UnitTests/ODBC/SQL_DBF_Базовый.txt 1.1:
+	* Testing/UnitTests/ODBC/defcls.prm 1.1:
+	* Testing/UnitTests/OOP/defcls.prm 1.1:
+	* Testing/UnitTests/OOP/defcls_bad1.prm 1.1:
+	* Testing/UnitTests/OOP/defcls_ВПапке_Относительно_Текущего_DefClsPrm.prm 1.1:
+	* Testing/UnitTests/OOP/defcls_ОтносительныеПути.prm 1.1:
+	* Testing/UnitTests/OOP/Документ_Записать.txt 1.1:
+	* Testing/UnitTests/OOP/Документ_Новый2.txt 1.1:
+	* Testing/UnitTests/OOP/ДокументПотомок.txt 1.1:
+	* Testing/UnitTests/OOP/ДокументПотомокЕще.txt 1.1:
+	* Testing/UnitTests/OOP/ЖурналВызоваМетодов.txt 1.1:
+	* Testing/UnitTests/OOP/ЗначенияПараметровПоУмолчанию.txt 1.1:
+	* Testing/UnitTests/OOP/ИзменчивыйКласс.txt 1.1:
+	* Testing/UnitTests/OOP/Класс_ВПапке_Относительно_Текущего_DefClsPrm.txt 1.1:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_ert/gcomp.ini 1.1:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_ert/gcomp.ver 1.1:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_ert/МодульФормы.1s 1.1:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_ert/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_ert/Структура.mdp 1.1:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_ert/Форма.frm 1.1:
+	* Testing/UnitTests/OOP/Класс_ОписанныйВФайлеРеализацииКласса_txt.txt 1.1:
+	* Testing/UnitTests/OOP/Класс_Относительно_Текущего_DefClsPrm.txt 1.1:
+	* Testing/UnitTests/OOP/КлассОпределенныйВDefclsВКонфе.txt 1.1:
+	* Testing/UnitTests/OOP/КлассСИсключениемВДеструкторе.txt 1.1:
+	* Testing/UnitTests/OOP/КлассСКонструкторами.txt 1.1:
+	* Testing/UnitTests/OOP/КлассСОшибкойПриСоздании.txt 1.1:
+	* Testing/UnitTests/OOP/КлассСПустымМодулем.txt 1.1:
+	* Testing/UnitTests/OOP/КлассыСДинамическимиСвойствами.txt 1.1:
+	* Testing/UnitTests/OOP/НаследникВК.txt 1.1:
+	* Testing/UnitTests/OOP/ООП_КлассыВОдномФайле_Тесты.txt 1.1:
+	* Testing/UnitTests/OOP/ООПТесты.txt 1.1:
+	* Testing/UnitTests/OOP/Потомок.txt 1.1:
+	* Testing/UnitTests/OOP/Предок.txt 1.1:
+	* Testing/UnitTests/OOP/ПредокПотомок.txt 1.1:
+	* Testing/UnitTests/OOP/ПредокПотомокСОдинаковымиМетодами.txt 1.1:
+	* Testing/UnitTests/OOP/РегистрыПотомок.txt 1.1:
+	* Testing/UnitTests/OOP/СинтаксисТесты.txt 1.1:
+	* Testing/UnitTests/OOP/СинтаксисТесты1.txt 1.1:
+	* Testing/UnitTests/OOP/СправочникПотомок.txt 1.1:
+	* Testing/UnitTests/OOP/Тесты_КомпиляцияКласса/gcomp.ini 1.1:
+	* Testing/UnitTests/OOP/Тесты_КомпиляцияКласса/gcomp.ver 1.1:
+	* Testing/UnitTests/OOP/Тесты_КомпиляцияКласса/МодульФормы.1s 1.1:
+	* Testing/UnitTests/OOP/Тесты_КомпиляцияКласса/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/OOP/Тесты_КомпиляцияКласса/Структура.mdp 1.1:
+	* Testing/UnitTests/OOP/Тесты_КомпиляцияКласса/Форма.frm 1.1:
+	* Testing/UnitTests/OOP/Тесты_НаследникГрупповойКонтекст.txt 1.1:
+	* Testing/UnitTests/OOP/Тесты_ПарамПоУмолчаниюC_3ТочкамиВнутри.txt 1.1:
+	* Testing/UnitTests/OOP/Тесты_Фабрика.txt 1.1:
+	* Testing/UnitTests/OleDB/OleDBТесты.txt 1.1:
+	* Testing/UnitTests/OleDB/defcls.prm 1.1:
+	* Testing/UnitTests/SQL/SQLТесты.txt 1.1:
+	* Testing/UnitTests/SQL/defcls.prm 1.1:
+	* Testing/UnitTests/SpecialClasses/BinaryDataТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/DynaCryptТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/DynaValueТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/GUIDТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/MathТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/MetaDataWorkТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/MetaInfoClassesТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/defcls.prm 1.1:
+	* Testing/UnitTests/SpecialClasses/АктивИкс_Тесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/БуферОбмена_Тесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ВыполняемыйМодуль_КлассПроверки.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ВыполняемыйМодуль_ОбразыКлассов.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ВыполняемыйМодуль_Потомок.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ВыполняемыйМодуль_Предок.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ВыполняемыйМодульТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ДелегатОбработчик.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ДелегатТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ИнформаторТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/КлассПерехватчикГК_Документ.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/КлассПерехватчикГлобальногоМодуля.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/КлассПотомокАктивИкс.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/КлассЭлементУправления.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/МенеджерСобытийТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/НоваяСтрокаЧерезКонтекст_Тесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/BinaryData.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/DynaCrypt.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/DynaValue.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/GUID.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/MetaDataWork.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/MetaInfoClasses.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ODBCDatabase.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ODBCRecordSet.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/OLEDBData.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/SQLLock.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/SQL_DBF_Базовый.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/АктивИкс.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/АтрибутФормы.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ВыполняемыйМодуль.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ВыполняемыйМодуль_КлассПроверки.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ВыполняемыйМодуль_ОбразыКлассов.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/Делегат.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ЗагрузчикТестов.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ИндексированнаяТаблица.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/МенеджерСобытий.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/Общие.ЛогФайл.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/Общие.Трассировка.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/Окна.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ПоставщикДанныхЖурналРегистрации.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/РаботаСРегистромWin.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/РасширениеФормы.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/Сервис.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/Структура.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ТабличноеПоле.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ТестовыйСлучайСДанными.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Образы классов/ТестовыйСлучайФормы.lst 1.1:
+	* Testing/UnitTests/SpecialClasses/Общие.Форма.Привязка/gcomp.ini 1.1:
+	* Testing/UnitTests/SpecialClasses/Общие.Форма.Привязка/gcomp.ver 1.1:
+	* Testing/UnitTests/SpecialClasses/Общие.Форма.Привязка/МодульФормы.1s 1.1:
+	* Testing/UnitTests/SpecialClasses/Общие.Форма.Привязка/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/Общие.Форма.Привязка/Описание.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/Общие.Форма.Привязка/Структура.mdp 1.1:
+	* Testing/UnitTests/SpecialClasses/Общие.Форма.Привязка/Форма.frm 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/defcls.prm 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Артур_Общие.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/ОБЩИЕМЕТОДЫ.PRM 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Общие.Автозагрузка.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Общие.АнализКоманднойСтроки1С.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/ОбщиеМетоды.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/artbear_timer.als 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Пример работы таймера/gcomp.ini 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Пример работы таймера/gcomp.ver 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Пример работы таймера/МодульФормы.1s 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Пример работы таймера/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Пример работы таймера/Структура.mdp 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Пример работы таймера/Форма.frm 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/ТАЙМЕР.PRM 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Таймер/gcomp.ini 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Таймер/gcomp.ver 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Таймер/МодульФормы.1s 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Таймер/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Таймер/Структура.mdp 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/Таймер/Форма.frm 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/ТаймерСКоличеством/gcomp.ini 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/ТаймерСКоличеством/gcomp.ver 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/ТаймерСКоличеством/МодульФормы.1s 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/ТаймерСКоличеством/ОбъектыМетаданных.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/ТаймерСКоличеством/Структура.mdp 1.1:
+	* Testing/UnitTests/SpecialClasses/ОбщиеКлассы/Таймер/ТаймерСКоличеством/Форма.frm 1.1:
+	* Testing/UnitTests/SpecialClasses/ПерехватчикТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ПотокТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/РаботаСРегистромWinТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/СистемаТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/СтруктураТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/ТестыКлассовНаСоответствиеМетодовИСвойствТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/УправлениеНастройкамиТесты.txt 1.1:
+	* Testing/UnitTests/SpecialClasses/Форма_Тесты.txt 1.1:
+	* Testing/UnitTests/TurboBL/TurboBLТесты.txt 1.1:
+	* Testing/UnitTests/TurboBL/defcls.prm 1.1:
+	* Testing/UnitTests/VTExt/VTExt_tests.prm 1.1:
+	* Testing/UnitTests/VTExt/ТЗРасшТесты.txt 1.1:
+	* Testing/UnitTests/defcls.prm 1.1:
+	* Testing/UnitTests/defcls_ВПред_Папке_Относительно_Текущего_DefClsPrm.prm 1.1:
+	* Testing/UnitTests/Класс_ВПред_Папке_Относительно_Текущего_DefClsPrm.txt 1.1:
+	* Testing/UnitTests/Тест_ПроверкаПовторнойЗагрузки1СПП.txt 1.1:
+	* Testing/readme.txt 1.1:
+	* Testing/update_extfles.bat 1.1:
+		[+] добавлены тесты
+		(bug 3795)
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.12:
+		[+] исправлено отображение верт. скроллбара при смене индекса
+
+	* Source/CursorGrid/VTExtProvider.cpp 1.2:
+	* Source/CursorGrid/VTExtProvider.h 1.2:
+		[*] рефакторинг
+		[bug 3793]
+
+2008-05-01	uzhast
+	* Source/Utils/ComScopedPtr.h 1.1:
+		Добавлен класс Utils::ComScopedPtr_t.
+
+	* Source/Utils/CorrectMinMax.h 1.1:
+		Добавлен файл для решения проблемы с std::min,max.
+
+	* Source/Utils1s/Interfaces.h 1.1:
+		Добавлен файл с определениями идентификаторов интерфейсов, испльз
+		уемых для взаимодействия внутри 1С++.
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.13:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.9:
+		CV7CursorGridCtrl: добавлена интеграция с поставщиками данных, ис
+		пользующих обертки Utils1s::Context.
+
+	* Source/Utils1s/UserInterface.cpp 1.1:
+	* Source/Utils1s/UserInterface.h 1.1:
+		Добавлен класс Utils1s::CUserInterface.
+
+	* Source/Utils/UserInterface.cpp 1.1:
+	* Source/Utils/UserInterface.h 1.1:
+		Добавлен класс Utils::CUserInterface.
+
+	* Source/Utils/ErrorProcessing.cpp 1.1:
+	* Source/Utils/ErrorProcessing.h 1.1:
+		Добавлена функция Utils::ErrorProcessing для централизованной обр
+		аботки ошибок.
+
+	* Source/Utils/StringAlgo.cpp 1.1:
+	* Source/Utils/StringAlgo.h 1.1:
+		Добавлены буферизованные конвертеры строк <=> юникод.
+
+	* Source/1CPP.icproj 1.12:
+	* Source/1CPP.vcproj 1.12:
+	* Source/OLEDB/CommandProxy.cpp 1.1:
+	* Source/OLEDB/CommandProxy.h 1.1:
+	* Source/OLEDB/OleDbResult.cpp 1.1:
+	* Source/OLEDB/OleDbResult.h 1.1:
+	* Source/OLEDB/ResultProxy.cpp 1.1:
+	* Source/OLEDB/ResultProxy.h 1.1:
+	* Source/OLEDB/Utils.cpp 1.1:
+	* Source/OLEDB/Utils.h 1.1:
+	* Source/OLEDB/ValueTo.cpp 1.2:
+	* Source/OLEDB/ValueTo.h 1.2:
+	* Source/OLEDB/sp_cooledb.cpp 1.6:
+	* Source/OLEDB/sp_cooledb.h 1.2:
+	* Source/OLEDB/sp_oledb.cpp 1.3:
+	* Source/OLEDB/sp_oledb.h 1.2:
+	* Source/OLEDB/sp_oledbparam.cpp 1.2:
+	* Source/OLEDB/sp_oledbparam.h 1.2:
+	* Source/OLEDB/sp_oledbparamhlpr.cpp 1.4:
+	* Source/OLEDB/sp_oledbparamhlpr.h 1.2:
+	* Source/OLEDB/sp_oledbptr.h 1.2:
+		Рефакторинг подсистемы OLE DB.
+
+	* Source/Utils1s/Context/ContextBase.h 1.1:
+	* Source/Utils1s/Context/ContextBaseFwd.h 1.1:
+		Добавлен класс Utils1s::Context::CContextBase.
+
+	* Source/Utils1s/SystemInterface.h 1.1:
+		Добавлен класс Utils1s::CSystemInterface.
+
+	* Source/1CPP.sln 1.2:
+	* Source/Tests/1CTestResultsCollector.cpp 1.1:
+	* Source/Tests/1CTestResultsCollector.h 1.1:
+	* Source/Tests/CppUnitIncludes.h 1.1:
+	* Source/Tests/ReadMe.txt 1.1:
+	* Source/Tests/Resource.h 1.1:
+	* Source/Tests/Tests.cpp 1.1:
+	* Source/Tests/Tests.def 1.1:
+	* Source/Tests/Tests.icproj 1.1:
+	* Source/Tests/Tests.rc 1.1:
+	* Source/Tests/Tests.vcproj 1.1:
+	* Source/Tests/TestsSuite.cpp 1.1:
+	* Source/Tests/Utils/StringAlgoTest.cpp 1.1:
+	* Source/Tests/Utils/StringAlgoTest.h 1.1:
+	* Source/Tests/Utils/TestAssert.cpp 1.1:
+	* Source/Tests/Utils/TestAssert.h 1.1:
+	* Source/Tests/res/Tests.rc2 1.1:
+	* Source/Tests/stdafx.cpp 1.1:
+	* Source/Tests/stdafx.h 1.1:
+		Добавлен проект Tests.
+
+	* Source/Utils/SystemInterface.cpp 1.1:
+	* Source/Utils/SystemInterface.h 1.1:
+		Добавлен класс Utils::CSystemInterface.
+
+2008-04-30	kms
+	* Source/VTExt/VTExtended.h 1.3:
+		[*] убраны лишние объявления
+		[bug 3793]
+
+	* Source/1CPP.icproj 1.11:
+	* Source/1CPP.rc 1.5:
+	* Source/1CPP.vcproj 1.11:
+	* Source/CursorGrid/VTExtProvider.cpp 1.1:
+	* Source/CursorGrid/VTExtProvider.h 1.1:
+	* Source/System/compare.cpp 1.4:
+	* Source/System/compare.h 1.2:
+	* Source/VTExt/VTExtended.cpp 1.6:
+	* Source/VTExt/VTExtended.h 1.2:
+		[+] Поставщик данных ИТ
+		[bug 3793]
+
+2008-04-30	artbear
+	* Source/System/Informer.cpp 1.6:
+		[bug 3789]
+		[+] рефакторинг кода для метода Информатор::ПолучитьТекстМодуля(Конт)
+
+	* Documents/history.txt 1.13:
+	* Source/System/GroupContextWrap.cpp 1.5:
+		[bug 3791]
+		[-] баг Перехватчика - нельзя было установить еще один перехват на уже перехваченную форму
+
+	* Source/System/DllHooker.cpp 1.4:
+		[bug 3711]
+		[+] рефакторинг кода для метода Перехватчик::ВключитьРазбиениеДлинныхСтрокДляМетодаСообщить
+
+	* Documents/Informer.rst 1.4:
+	* Documents/history.txt 1.14:
+	* Source/System/Informer.cpp 1.5:
+	* Source/System/Informer.h 1.4:
+		[bug 3789]
+		[+] новый метод Информатор::ПолучитьТекстМодуля(Конт)
+
+	* Source/System/Hooker.cpp 1.3:
+		[*] мелкий рефакторинг приведения типов
+
+2008-04-29	artbear
+	* Source/System/DllHooker.cpp 1.3:
+		[bug 3711]
+		[*] более точное определение класса CMainMessageHandlerEx
+
+	* Documents/Hooker.rst 1.2:
+	* Documents/history.txt 1.12:
+	* Source/System/DllHooker.cpp 1.2:
+	* Source/System/DllHooker.h 1.2:
+	* Source/System/Hooker.cpp 1.2:
+	* Source/System/Hooker.h 1.2:
+		[bug 3711]
+		[+] новый метод Перехватчик::ВключитьРазбиениеДлинныхСтрокДляМетодаСообщить
+
+	* Source/StdAfx.h 1.10:
+		[*] более точное определение методов класса CBLMyEx
+
+	* Source/System/System.cpp 1.5:
+	* Source/System/System.cpp 1.6:
+	* Source/System/System.h 1.3:
+		[bug 3783]
+		[-] Система::Сериализовать - устранен leak, из-за которого по завершении работы 1С зависал процесс 1С
+
+	* Documents/extobjs.rst 1.5:
+	* Documents/history.txt 1.11:
+		[bug 3783]
+		[+] класс Система - новый метод "Сериализовать"
+		http://www.1cpp.ru/forum/YaBB.pl?num=1205930698/12#12
+
+2008-04-28	kms
+	* Source/CtrlEvents.cpp 1.4:
+		[*] вызовы событий объекта и формы сделаны независимыми
+
+2008-04-28	artbear
+	* Source/System/Informer.cpp 1.4:
+	* Source/System/Informer.h 1.3:
+		[bug 3778]
+		[+] Класс "Информатор" : новый метод ПолучитьТекстТекущегоМодуля
+
+	* Source/System/System.cpp 1.4:
+	* Source/System/System.h 1.2:
+		[bug 3783]
+		[+] класс Система - новый метод "Сериализовать"
+		http://www.1cpp.ru/forum/YaBB.pl?num=1205930698/12#12
+
+	* Source/OLEDB/sp_cooledb.cpp 1.5:
+		[bug 3781]
+		[-] Утечка памяти
+
+2008-04-27	kms
+	* Documents/TableField.rst 1.4:
+		[*] документированы изменения ТП
+
+	* Source/1CPP.rc 1.4:
+	* Source/CtrlEvents.cpp 1.3:
+	* Source/CtrlEvents.h 1.2:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.11:
+	* Source/System/GlobalMethods.cpp 1.6:
+		[+] обработка событий ТП сделена безопасной относительно исключений в КОП
+		[bug 3766]
+
+	* Source/CursorGrid/VTProvider.cpp 1.2:
+	* Source/CursorGrid/VTProvider.h 1.2:
+		[+] свойство ТаблицаЗначений поставщика ТЗ
+		[bug 3774]
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.12:
+		[*] метод ОформлениеЯчейки::УстановитьКартинку() приведен в соотв
+		етствие со свойством ИндексКартинки
+
+2008-04-25	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.11:
+		[*] исправлена обработка добавления и вставки колонок с одинаковыми именами
+		[bug 3777]
+
+2008-04-25	artbear
+	* Documents/Informer.rst 1.2:
+	* Documents/history.txt 1.10:
+	* Source/System/Informer.cpp 1.3:
+	* Source/System/Informer.h 1.2:
+		[bug 3778]
+		[+] Класс "Информатор" : новый метод ПолучитьТекстТекущегоМодуля
+
+	* Documents/history.txt 1.9:
+	* Source/ExecuteModule.cpp 1.11:
+		[bug 3775]
+		[-] методы ВыполняемыйМодуль::GetMethOfContext и Информатор::GetMethOfContext
+		могли вызывать падение 1С.
+
+2008-04-24	kms
+	* Source/1CPP.icproj 1.10:
+	* Source/1CPP.vcproj 1.10:
+		[*] управление сообщениями 1738,1744,1011 перенесено в настройки 
+		проекта
+
+	* Source/CursorGrid/CursorGridCtrl.h 1.7:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.8:
+	* Source/StdAfx.h 1.9:
+	* Source/System/GlobalMethods.cpp 1.5:
+	* Source/System/GlobalMethods.h 1.6:
+		[*] рефакторинг
+
+	* Source/1CHEADERS/blang.h 1.2:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.10:
+	* Source/CursorGrid/CursorGridCtrl.h 1.8:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.10:
+		[-] ТП: AV при очистке поставщика Шапки/Подвала
+		[bug 3772]
+		[-] ТП: AV при добавлении колонки при установленной Шапке/Подвале
+		[bug 3773]
+
+2008-04-24	artbear
+	* Documents/extobjs.rst 1.4:
+	* Documents/history.txt 1.8:
+	* Source/ExecuteModule.cpp 1.10:
+	* Source/ExecuteModule.h 1.5:
+		[bug 3764]
+		[+] новый метод ВыполняемыйМодуль::ПолучитьТекстМодуля()
+
+2008-04-23	kms
+	* Source/System/compare.cpp 1.3:
+		[*] Вес пробела сделан минимально возможным
+		[bug 3755]
+
+2008-04-22	kms
+	* Source/1CPP.icproj 1.9:
+	* Source/1CPP.rc 1.3:
+	* Source/1CPP.vcproj 1.9:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.9:
+	* Source/CursorGrid/CursorGridCtrl.h 1.6:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.9:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.7:
+	* Source/CursorGrid/V7LogFilter.h 1.4:
+	* Source/CursorGrid/V7ODBCProvider.h 1.3:
+	* Source/SimpleCollection.h 1.1:
+	* Source/SimpleContext.h 1.1:
+	* Source/SimpleVector.h 1.1:
+		[+] FR: Добавить возможность вывода нескольких картинок в одной колонке
+		[bug 3665]
+		[!] FR: Прямое редактирование ячеек
+		[bug 3762]
+
+2008-04-22	artbear
+	* Source/BLModuleWrapper.cpp 1.8:
+	* Source/BLModuleWrapper.h 1.5:
+	* Source/BLModuleWrapper.h 1.7:
+	* Source/ExecuteModule.cpp 1.8:
+		[*] рефакторинг;
+
+	* Source/BLModuleWrapper.h 1.8:
+	* Source/ExecuteModule.cpp 1.9:
+		[*] рефакторинг метода CBLModuleWrapper::SafedSetEnableThrow;
+
+	* Source/System/GlobalMethods.h 1.5:
+		[-] неверное объявление вложенных инклюдов - http://www.1cpp.ru/
+		forum/YaBB.pl?num=1204706900/301#301
+
+	* Source/BLModuleWrapper.h 1.6:
+	* Source/ExecuteModule.cpp 1.7:
+		[*] рефакторинг класса CBLModuleWrapper;
+
+2008-04-21	artbear
+	* Source/ExecuteModule.cpp 1.6:
+		[*] рефакторинг;
+
+2008-04-19	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.8:
+		[-] Удаление колонки ТП может приводить к падению 1С
+		[bug 3753]
+
+	* Documents/TableField.rst 1.3:
+	* Source/BLCollection.h 1.3:
+		[+] Возможность удаления элемента коллекции по его имени
+		[bug 3752]
+
+2008-04-18	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.7:
+		[-] Изменен момент вызова события ПриВыводеСтроки
+		[bug 3750]
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.8:
+		[-] ОформлениеЯчейки::Текст не возвращает значения
+		[bug 3751]
+
+2008-04-18	steban
+	* Source/AXControl.cpp 1.5:
+		Английское название класса приведено в соответствие с документаци
+		ей
+
+2008-04-17	artbear
+	* Documents/extobjs.rst 1.3:
+	* Documents/history.txt 1.6:
+		[bug 1858]
+		[+] тесты метода РазрешитьВложенныйВызовМетодов
+
+	* Source/ExecuteModule.cpp 1.5:
+	* Source/ExecuteModule.h 1.4:
+		[bug 1858]
+		[+] тесты метода РазрешитьВложенныйВызовМетодов
+		[*] сильный рефакторинг класса - выделены публичные методы и т.д.
+
+	* Documents/history.txt 1.7:
+		[+] свежее исправление по ИТ
+
+2008-04-15	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.6:
+	* Source/CursorGrid/CursorGridCtrl.h 1.5:
+		[*] изменен момент сброса массива выделенных строк
+		[bug 3742]
+
+2008-04-15	adirks
+	* Source/VTExt/VTExtended.cpp 1.5:
+		[-] исправлена ошибка в методах RightJoin() и FullJoin(): неверно
+		 выделялась память, что приводило к исключению, и падению 1С
+
+2008-04-15	artbear
+	* Documents/history.txt 1.5:
+	* Source/OLEDB/sp_cooledb.cpp 1.4:
+		[bug 3739]
+		[-] метод OLEDBCommand::ДобПараметр() имеет 4 параметра, а не 5.
+
+2008-04-10	kms
+	* Source/1CHEADERS/frame.h 1.2:
+		[-] частично убраны сообщения о сокрытии имен
+
+	* Source/forwarder.h 1.6:
+		[-] исправлены неточности
+
+	* Source/StdAfx.h 1.8:
+		[*] добавлена диагностика ошибки 1011
+
+	* Source/1CHEADERS/type32.h 1.2:
+		[-] исправлен default int у extern "C" определений
+
+	* Source/1CPP.icproj 1.8:
+	* Source/1CPP.vcproj 1.8:
+		[*] убраны сообщения в модулях PurifyPlus
+		[*] Qms* предлагается устанавливать в свойствах компилятора
+
+	* Source/1CPP.icproj 1.7:
+	* Source/1CPP.vcproj 1.7:
+		[*] по умолчанию /Qms1; решение проблемы ICL/PCH
+
+	* Source/1CPP.rc 1.2:
+	* Source/resource.h 1.2:
+		[*] корректировка версии сборки
+
+	* Source/StdAfx.h 1.7:
+		[*] отключена диагностика 1738, 1744
+
+2008-04-10	artbear
+	* Source/ComponentClass.cpp 1.13:
+	* Source/ComponentClass.h 1.9:
+	* Source/ComponentClassAdd.cpp 1.7:
+		[-] исправлена некорректная работа с методами с неопределенным чи
+		слом параметров и возможный вылет 1С в результате
+
+	* Source/SafeContext.h 1.5:
+	* Source/blptr.h 1.3:
+		[*] исправление некоторые опасных преобразований, ведущих к некор
+		ректной работе класса;
+
+2008-04-09	kms
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.7:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.6:
+		[-] ПолучитьЭлементУправления не возвращает иерархию для наследников ТП
+		[bug 3460]
+
+	* Source/AXControl.cpp 1.4:
+		[-] ПолучитьЭлементУправления не возвращает иерархию для наследников АктивИкс
+		[bug 3460]
+
+2008-04-09	artbear
+	* Documents/history.txt 1.4:
+		[+] описал мои последние изменения для ООП
+
+	* Source/ComponentClass.cpp 1.12:
+	* Source/ComponentClass.h 1.8:
+		[bug 3710]
+		[-] Исправлен баг при вызове экспортных методов и свойств базового класса при вызове в деструкторе базового класса уже после отработки деструктор потомка;
+		[*] рефакторинг класса CComponentClass;
+		[*] публичные методы пользовательских классов типа "ПолучитьПуть" выделены как публичные методы интерфейса класса CComponentClass;
+		[*] рефакторинг работы с классом InfoUnlimitsParams + использование смарт-пойнтеров для хранения объектов этого класса;
+		[*] класс CComponentClass сделан некопируемым;
+		[*] конструктор CComponentClass закрыт от клиентов;
+		[*] рефакторинг - часть методов перенесена из CSetOfHierarchy
+		[*] точный тип поля m_MapOfModulesAndComp;
+		[*] вместо поиска в Find строки с одним символом использую поиск именно одного символа, типа быстрее :)
+
+	* Source/ComponentClassAdd.cpp 1.6:
+		[*] рефакторинг работы с классом CComponentClass::
+		InfoUnlimitsParams + использование смарт-пойнтеров для хранения о
+		бъектов этого класса;
+
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.5:
+	* Source/CursorGrid/V7LogFilter.h 1.3:
+	* Source/CursorGrid/V7ODBCProvider.h 1.2:
+	* Source/Font.h 1.4:
+	* Source/Preprocessor.h 1.5:
+		[*] избавился от простых предупреждений компилятора
+
+	* Source/CreateMetaInfoClasses.cpp 1.5:
+	* Source/ModuleString.cpp 1.2:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.6:
+	* Source/SQL/MetaDataWork.cpp 1.3:
+		[*] вместо поиска в Find строки с одним символом использую поиск 
+		именно одного символа, типа быстрее :)
+
+	* Source/SafeContext.cpp 1.3:
+	* Source/SafeContext.h 1.4:
+		[+] добавил проверку для компилятора - тип, используемый шаблоном, должен быть CBLContext* или его наследники.
+		[*] рефакторинг
+
+	* Source/BLModuleWrapper.cpp 1.7:
+		[*] нормальное использование типа строки для CModuleString, а не 
+		C-приведение к строке
+
+	* Source/TurboBL/gcboost.cpp 1.2:
+		[*] рефакторинг класса CPreprocessor
+
+	* Source/SetOfHierarchy.cpp 1.10:
+	* Source/SetOfHierarchy.h 1.6:
+		[*] рефакторинг - часть методов перенес в CComponentClass
+		[*] вместо поиска в Find строки с одним символом использую поиск именно одного символа, типа быстрее :)
+
+	* Source/blptr.h 1.2:
+		[+] добавил правильный конструктор копирования для CBLPtr<T>
+		[+] добавил проверку для компилятора - тип, используемый шаблоном, должен быть CBLContext* или его наследники.
+		[*] поставил TODO для шаблонного конструктора копирования - тут что-то непонятное :(
+		нужно разобраться
+		его код вроде неверен, но без него в 3.0 не проходят тесты :(
+
+2008-04-05	artbear
+	* Source/MapDefMethod.h 1.2:
+		[*] более точная и быстрая работа с параметрами шаблонного класса
+		 CIStringMap
+
+	* Source/MetaDataOfClasses.cpp 1.5:
+	* Source/MetaDataOfClasses.h 1.4:
+	* Source/SetOfHierarchy.cpp 1.8:
+	* Source/SetOfHierarchy.h 1.4:
+		[*] рефакторинг - перенос из 2.5
+		0) часть методов из класса CSetOfHierarchy перенесена в класс CMetaDataOfClasses
+		1) часть кода деструктора CSetOfHierarchy перенесен в деструктор класса CMetaDataOfClasses
+		2) рефакторинг граничных операторов в методе CheckTypeOfParam
+		3) вместо карты указателей m_TypeOfClassMeth используется карта смарт-пойнтеров;
+
+	* Source/ADDIN.CPP 1.5:
+	* Source/BLModuleWrapper.cpp 1.6:
+	* Source/ComponentClass.cpp 1.11:
+	* Source/ComponentClassAdd.cpp 1.5:
+	* Source/CreateMetaInfoClasses.cpp 1.4:
+	* Source/CursorGrid/V7LogProvider.h 1.2:
+	* Source/DynaValue.cpp 1.4:
+	* Source/ExecuteModule.cpp 1.4:
+		[*] рефакторинг - перенос из моей соответствующей ветки
+		часть методов из класса CSetOfHierarchy перенесена в класс CMetaDataOfClasses и обратно
+
+	* Source/ADDIN.CPP 1.4:
+	* Source/ADDIN.H 1.2:
+	* Source/AXControl.cpp 1.3:
+	* Source/CreateMetaInfoClasses.h 1.2:
+	* Source/CtrlEvents.cpp 1.2:
+	* Source/CursorGrid/SQLProvider.cpp 1.3:
+	* Source/CursorGrid/V7LogFilter.h 1.2:
+	* Source/CursorGrid/V7LogProvider.cpp 1.3:
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.5:
+	* Source/Delegate.cpp 1.2:
+	* Source/DynaValue.cpp 1.3:
+	* Source/DynaValueList.cpp 1.3:
+	* Source/DynaValueList.h 1.2:
+	* Source/EventManager.cpp 1.2:
+	* Source/ExecuteModule.cpp 1.3:
+	* Source/Factory.cpp 1.6:
+	* Source/Font.cpp 1.5:
+	* Source/Font.h 1.3:
+	* Source/Form/V7Form.cpp 1.4:
+	* Source/ODBC/1CPP_ODBCDatabase.cpp 1.4:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.5:
+	* Source/ODBC/MetaNameParser.cpp 1.4:
+	* Source/ODBC/SQLLock.cpp 1.2:
+	* Source/OLEDB/sp_cooledb.cpp 1.3:
+	* Source/OLEDB/sp_oledb.cpp 1.2:
+	* Source/Preprocessor.cpp 1.2:
+	* Source/Preprocessor.h 1.3:
+	* Source/SQL/MetaDataWork.cpp 1.2:
+	* Source/System/GroupContextWrap.cpp 1.4:
+	* Source/System/System.cpp 1.3:
+	* Source/TableEx.cpp 1.4:
+	* Source/VTExt/VTExtGrouping.cpp 1.2:
+	* Source/VTExt/VTExtended.cpp 1.4:
+	* Source/VTExt/VTIndex.cpp 1.2:
+	* Source/WorkAsRegister.cpp 1.2:
+		[*] избавился от простых предупреждений компилятора
+
+	* Source/MetaDataOfClasses.cpp 1.6:
+	* Source/MetaDataOfClasses.h 1.5:
+	* Source/SetOfHierarchy.cpp 1.9:
+	* Source/SetOfHierarchy.h 1.5:
+		[*] сильный рефакторинг - перенос из моей соответствующей ветки
+		часть методов из класса CSetOfHierarchy перенесена в класс CMetaDataOfClasses и обратно
+
+	* Source/MetaDataOfClasses.cpp 1.4:
+		[*] рефакторинг
+
+	* Source/MetaDataOfClasses.cpp 1.3:
+	* Source/MetaDataOfClasses.h 1.3:
+	* Source/SetOfHierarchy.cpp 1.7:
+		[*] рефакторинг - перенос из 2.5
+		[*] рефакторинг - инкапсуляция поля m_ValParamInMeth
+
+	* Source/ComponentClass.cpp 1.10:
+	* Source/ComponentClass.h 1.7:
+		[bug 3658]
+		Исправлен баг - Для публичного метода класса, не описанного в prm-файле, а
+		описанного только в модуле класса, не работает передача
+		параметров по значению, а работает только по ссылке
+
+	* Source/Preprocessor.cpp 1.3:
+	* Source/Preprocessor.h 1.4:
+		[*] рефакторинг класса CPreprocessor
+
+	* Source/ComponentClass.cpp 1.9:
+	* Source/ComponentClass.h 1.6:
+	* Source/ComponentClassAdd.cpp 1.4:
+		[*] рефакторинг - перенос из 2.5
+		[*] рефакторинг - вместо массива указателей CValue использую массив смарт-пойнтеров
+		[*] рефакторинга кода по поиску базового класса
+
+	* Source/System/GlobalMethods.cpp 1.4:
+	* Source/System/GlobalMethods.h 1.4:
+		[*] более точная и быстрая передача параметров в методы
+		CallMethodOfGlobalContexts0
+		CallMethodOfGlobalContexts1
+		FindMethodOfGlobalContexts
+		[*] избавился от простых предупреждений компилятора
+
+	* Source/ComponentClass.cpp 1.8:
+	* Source/ComponentClass.h 1.5:
+	* Source/ComponentClassAdd.cpp 1.3:
+	* Source/CreateMetaInfoClasses.cpp 1.3:
+	* Source/MetaDataOfClasses.cpp 1.2:
+	* Source/MetaDataOfClasses.h 1.2:
+	* Source/ParamDefs.h 1.5:
+	* Source/SetOfHierarchy.cpp 1.6:
+	* Source/SetOfHierarchy.h 1.3:
+		[*] довольно сильный рефакторинг:
+		[*] класс NameBindOfType переименован в
+		CMethodsParamData
+		[*] инкапсуляция полей класса CMethodsParamData
+		[*] вместо указателей на CMethodsParamData использую смарт-пойнтеры
+		[*] использование смарт-пойнтеров вместо указателей в классе CParamDefs
+		[*]
+		1) вместо CMapStringToOb* CParamDefs::pMapFunc используется смарт-пойнтер
+		2) инкапсуляция поля CParamDefs::pMapFunc
+		[*] рефакторинг инициализации в классе CParamDefs::paramdefs
+		[*] CParamDefs - для членов типа CIStringMap точное указание типа, а не обобщенное
+
+2008-04-04	artbear
+	* Source/BLModuleWrapper.cpp 1.3:
+	* Source/BLModuleWrapper.h 1.3:
+	* Source/ComponentClass.cpp 1.4:
+		[bug 3701]
+		- Исправлен баг - не всегда была возможность отлаживать классы с установкой точки отладки через Конфигуратор
+
+	* Source/ParamDefs.h 1.4:
+	* Source/SetOfHierarchy.cpp 1.5:
+		[*] рефакторинг класса CParamDefs - исправил имена полей класса
+
+	* Source/BLModuleWrapper.cpp 1.2:
+	* Source/BLModuleWrapper.h 1.2:
+	* Source/ComponentClass.cpp 1.3:
+		[bug 3701]
+		+ Доработа отладка классов 1С++.
+		Теперь кнопка "Отладка" в настройках 1С++ не нужна, т.к. возможна обычная отладка через отладчик 1С++
+
+	* Source/ComponentClass.cpp 1.6:
+		[*] временная возможность работы с отладкой через настройку 1С++ 
+		"Отладка"
+
+	* Source/BLModuleWrapper.cpp 1.5:
+	* Source/BLModuleWrapper.h 1.4:
+		[*] небольшой рефакторинг
+
+	* Source/Factory.cpp 1.5:
+		[bug 3620]
+		[*] Если в метод Фабрика.Новый передано несуществующее имя класса,
+		выдается исключение с точным обозначением ошибки
+
+	* Source/SafeContext.h 1.3:
+	* Source/System/GroupContextWrap.h 1.3:
+	* Source/System/sh_ptr.hpp 1.2:
+		[*] убраны предупреждения компилятора
+
+	* Documents/classes.rst 1.2:
+	* Documents/history.txt 1.2:
+	* Source/ComponentClass.cpp 1.5:
+	* Source/ComponentClass.h 1.3:
+		[bug 3606]
+		[+] исправил реализацию динамических свойств для обеспечения нормального ООП
+
+	* Source/BLModuleWrapper.cpp 1.4:
+		[bug 3701]
+		[-] временно убрана возможность отладки текстовых файлов без кнопки "Отладка" 1С++
+		http://www.1cpp.ru/forum/YaBB.pl?num=1206042291/85#85
+
+	* Documents/history.txt 1.3:
+	* Source/ComponentClass.cpp 1.7:
+	* Source/ComponentClass.h 1.4:
+		[bug 3621]
+		[-] Исправлен неверный вызов произвольного конструктора для класса-наследника
+		при создании класса через Фабрика.Новый()
+
+2008-04-03	artbear
+	* Source/ADDIN.CPP 1.3:
+		[bug 3659]
+		- При запуске 1С++ в первый раз для конкретной базы включались неверные настройки 1с++
+
+2008-03-28	kms
+	* Source/istrmap.cpp 1.4:
+	* Source/istrmap.h 1.3:
+		[*] устранение избыточного хранения данных
+
+	* Documents/extobjs.rst 1.2:
+	* Source/AXControl.cpp 1.2:
+	* Source/AXControl.h 1.2:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.4:
+	* Source/Form/V7Form.cpp 1.2:
+	* Source/Form/V7Form.h 1.2:
+	* Source/V7Control.h 1.2:
+		[+] Возможность получения объекта элемента управления по идентификатору элемента диалога
+		[bug 3460]
+
+	* Source/Form/V7Form.cpp 1.3:
+	* Source/StdAfx.h 1.6:
+		[+] шаблон функции безопасного преобразования safe_dynamic_cast<>
+		
+
+2008-03-27	kms
+	* Documents/ODBC.rst 1.3:
+	* Source/ODBC/Odbccore.cpp 1.4:
+		[*] безопасная редакция получения текстового ИД документа
+		[+] получение текстового ИД Документа по полю типа char(4) (SQL)
+		[bug 3655]
+
+	* Source/1CHEADERS/types.h 1.2:
+	* Source/Factory.cpp 1.4:
+	* Source/Font.cpp 1.3:
+		[*] некорректная обработка параметров по-умолчанию для шрифтов - final
+		[bug 3690]
+
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.4:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.4:
+	* Source/ODBC/MetaNameParser.cpp 1.3:
+	* Source/OLEDB/sp_cooledb.cpp 1.2:
+	* Source/System/GlobalMethods.cpp 1.3:
+	* Source/System/GlobalMethods.h 1.3:
+		[+] поддержка объектов метаданных, содержащих в названии символ '_', метапарсером
+		[bug 3694]
+
+	* Source/Font.cpp 1.4:
+		[-] удален неактуальный комментарий
+
+	* Source/ODBC/Odbccore.cpp 1.3:
+	* Source/ODBC/Odbccore.h 1.2:
+		[+] получение текстового ИД документа
+		[bug 3655]
+
+	* Documents/ODBC.rst 1.2:
+		[+] документировано получение текстового ИД документа
+		[bug 3655]
+
+2008-03-27	artbear
+	* Source/ExecuteModule.h 1.3:
+		- неверная работа с вектором без элементов
+
+2008-03-26	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.5:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.6:
+	* Source/Factory.cpp 1.3:
+	* Source/Font.cpp 1.2:
+	* Source/Font.h 1.2:
+		[+] ТП.Шрифт возвращает действительную ссылку на шрифт
+		[bug 3674]
+		[-] исправлена потеря GDI объектов при установке основного шрифта ТП
+		[bug 3689]
+		[-] предварительно исправлена некорректная обработка дефолтных параметров в классе Шрифт при создании с помощью фабрики объектов
+		[bug 3690]
+
+	* Source/bmp00001.bmp 1.2:
+		[-] исправлено отображение маленьких чекбоксов
+		[bug 3684]
+
+	* Source/1CHEADERS/1cheaders.h 1.4:
+	* Source/ComponentClass.h 1.2:
+	* Source/CreateMetaInfoClasses.cpp 1.2:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.5:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.3:
+	* Source/CursorGrid/V7LogProvider.cpp 1.2:
+	* Source/Delegate.h 1.2:
+	* Source/ExecuteModule.h 1.2:
+	* Source/Factory.cpp 1.2:
+	* Source/ODBC/MetaNameParser.cpp 1.2:
+	* Source/ODBC/MetaNameParser.h 1.2:
+	* Source/ParamDefs.h 1.2:
+	* Source/Preprocessor.h 1.2:
+	* Source/SafeContext.h 1.2:
+	* Source/SetOfHierarchy.cpp 1.3:
+	* Source/SetOfHierarchy.h 1.2:
+	* Source/StdAfx.h 1.5:
+	* Source/System/GlobalMethods.cpp 1.2:
+	* Source/System/Informer.cpp 1.2:
+	* Source/TableEx.cpp 1.3:
+		[*] удалена глобальная директива using namespace std
+		[-] исправлен вылет при некорректной установке провайдера ТП
+		[bug 3681]
+		[bug 3683]
+
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.4:
+	* Source/System/compare.cpp 1.2:
+	* Source/istrmap.cpp 1.3:
+		[*] рефакторинг
+
+	* Source/SafeContext.cpp 1.2:
+	* Source/SetOfHierarchy.cpp 1.4:
+		[*] удалена глобальная директива using namespace std
+		[bug 3683]
+
+2008-03-25	kms
+	* Source/1CPP.icproj 1.6:
+	* Source/1CPP.vcproj 1.6:
+	* Source/Forwarder/forwarder.icproj 1.1:
+	* Source/Forwarder/forwarder.lib 1.1:
+	* Source/Forwarder/forwarder.sln 1.1:
+	* Source/Forwarder/forwarder.vcproj 1.1:
+	* Source/Forwarder/forwarder_ex.h 1.1:
+	* Source/Forwarder/forwarder_n.cpp 1.1:
+	* Source/Forwarder/forwarder_n.h 1.1:
+	* Source/Forwarder/stdafx.cpp 1.1:
+	* Source/Forwarder/stdafx.h 1.1:
+	* Source/StdAfx.h 1.4:
+	* Source/forwarder.cpp 1.4:
+	* Source/forwarder.h 1.5:
+		[!] Третья редакция ремаппера специализаций vc6 и wchar_t (lib)
+		[bug 3660]
+		[bug 3661]
+
+	* Source/1CHEADERS/1cheaders.h 1.3:
+		[!] вернул declspec(__dllimport)
+
+2008-03-23	kms
+	* Source/CursorGrid/CursorGridCtrl.h 1.4:
+		[*] классы CUpdateLock, CDrawLock сделаны доступными
+
+	* Source/forwarder.h 1.4:
+		[*] Добавлены граничные условия корректности преобразований
+		[bug 3660]
+		[bug 3661]
+
+	* Source/1CHEADERS/1cheaders.h 1.2:
+		[*] изменена диагностика ошибок 1738,1744
+
+	* Source/1CPP.icproj 1.5:
+	* Source/1CPP.vcproj 1.5:
+		[*] выключен inline в debug версии
+
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.4:
+	* Source/ODBC/1CPP_ODBCDatabase.cpp 1.3:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.3:
+	* Source/OLEDB/sp_oledbparamhlpr.cpp 1.3:
+	* Source/System/GroupContextWrap.cpp 1.3:
+	* Source/VTExt/VTExtended.cpp 1.3:
+	* Source/forwarder.cpp 1.3:
+		[-] не всегда при сборке использовался PCH
+
+	* Source/forwarder.cpp 1.2:
+	* Source/forwarder.h 1.3:
+		[!] Вторая редакция ремаппера специализаций vc6 и wchar_t
+		[bug 3660]
+		[bug 3661]
+
+	* Source/1CPP.icproj 1.4:
+	* Source/1CPP.vcproj 1.4:
+	* Source/StdAfx.h 1.3:
+	* Source/forwarder.cpp 1.1:
+	* Source/forwarder.h 1.2:
+		[!] Initial редакция ремаппера специализаций vc6 и wchar_t
+		[bug 3660]
+		[bug 3661]
+
+2008-03-22	kms
+	* Source/1CPP.icproj 1.3:
+	* Source/1CPP.vcproj 1.3:
+	* Source/ADDIN.CPP 1.2:
+	* Source/BLCollection.h 1.2:
+	* Source/BinaryData.cpp 1.2:
+	* Source/ComponentClass.cpp 1.2:
+	* Source/ComponentClassAdd.cpp 1.2:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.3:
+	* Source/CursorGrid/V7LogFilter.cpp 1.2:
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.3:
+	* Source/DynaValue.cpp 1.2:
+	* Source/DynaValueList.cpp 1.2:
+	* Source/ExecuteModule.cpp 1.2:
+	* Source/MySQL_Query.cpp 1.2:
+	* Source/ODBC/1CPP_ODBCDatabase.cpp 1.2:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.2:
+	* Source/ODBC/Odbccore.cpp 1.2:
+	* Source/OLEDB/sp_oledbparamhlpr.cpp 1.2:
+	* Source/PicService.cpp 1.2:
+	* Source/STDAFX.CPP 1.2:
+	* Source/SetOfHierarchy.cpp 1.2:
+	* Source/StdAfx.h 1.2:
+	* Source/System/GlobalMethods.h 1.2:
+	* Source/System/GroupContextWrap.cpp 1.2:
+	* Source/System/GroupContextWrap.h 1.2:
+	* Source/System/System.cpp 1.2:
+	* Source/TableEx.cpp 1.2:
+	* Source/TurboBL/gcboost.h 1.2:
+	* Source/VTExt/VTExtended.cpp 1.2:
+	* Source/forwarder.h 1.1:
+	* Source/istrmap.cpp 1.2:
+	* Source/istrmap.h 1.2:
+		[!] Редакция совместимости компиляции c ICL:: /Qvc9 /Qms0
+		Uzhast/kms
+		[bug 3660]
+		[bug 3661]
+
+2008-03-20	kms
+	* Documents/TableField.rst 1.2:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.3:
+	* Source/CursorGrid/CursorGridCtrl.h 1.3:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.2:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.2:
+		[*] изменен интерфейс события ПриОкончанииБыстрогоПоиска()
+		[bug 3656]
+
+	* Documents/kb/TSQLInV7FirstSteps.html 1.2:
+		[*] синхронизация с 2.5
+
+	* Source/1CPP.icproj 1.2:
+	* Source/1CPP.vcproj 1.2:
+		[*] изменены параметры проекта
+
+2008-03-19	kms
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.2:
+	* Source/CursorGrid/CursorGridCtrl.h 1.2:
+		[-] исправлена синхронизация видимых колонок ТП с селект-листами поставщиков всех регионов
+		[bug 3650]
+
+2008-03-17	kms
+	* Documents/.cvsignore 1.1:
+	* Documents/1cpp.rst 1.1:
+	* Documents/ActiveX.rst 1.1:
+	* Documents/BinaryData.rst 1.1:
+	* Documents/DataProviderSDK.rst 1.1:
+	* Documents/DevelopersReadme.txt 1.1:
+	* Documents/Documents.sln 1.1:
+	* Documents/Documents.vcproj 1.1:
+	* Documents/DocumentsRules.rst 1.1:
+	* Documents/Hooker.rst 1.1:
+	* Documents/IndexedTable.rst 1.1:
+	* Documents/Informer.rst 1.1:
+	* Documents/LogDataProvider.rst 1.1:
+	* Documents/Math.rst 1.1:
+	* Documents/ODBC.rst 1.1:
+	* Documents/Release.txt 1.1:
+	* Documents/SettingsManager.rst 1.1:
+	* Documents/TableField.rst 1.1:
+	* Documents/TurboBL.rst 1.1:
+	* Documents/als/1C++.als 1.1:
+	* Documents/als/ИндексированнаяТаблица.als 1.1:
+	* Documents/als/ТабличоеПоле.als 1.1:
+	* Documents/chm_all.bat 1.1:
+	* Documents/chmcreate.rst 1.1:
+	* Documents/classes.rst 1.1:
+	* Documents/commonchm.txt 1.1:
+	* Documents/extobjs.rst 1.1:
+	* Documents/guid.rst 1.1:
+	* Documents/history.txt 1.1:
+	* Documents/html2chm.js 1.1:
+	* Documents/html_all.bat 1.1:
+	* Documents/kb/TSQLInV7FirstSteps.html 1.1:
+	* Documents/kb/Типы 1С.xls 1.1:
+	* Documents/oledb.rst 1.1:
+	* Documents/simplechm.js 1.1:
+	* Documents/txt2chm.bat 1.1:
+	* Documents/txt2html.bat 1.1:
+	* Ints/BinaryData.ints 1.1:
+	* Ints/DynaCrypt.ints 1.1:
+	* Ints/DynaValue.ints 1.1:
+	* Ints/Guid.ints 1.1:
+	* Ints/Math.ints 1.1:
+	* Ints/MetaDataWork.ints 1.1:
+	* Ints/MetaInfoClasses.ints 1.1:
+	* Ints/ODBCDataBase.ints 1.1:
+	* Ints/ODBCRecordSet.ints 1.1:
+	* Ints/SQLLock.ints 1.1:
+	* Ints/TableField/ODBCDataProvider.MSSQL.ints 1.1:
+	* Ints/TableField/VTProvider.ints 1.1:
+	* Ints/TableField/ВыделенныеСтроки.ints 1.1:
+	* Ints/TableField/ДанныеСтроки.ints 1.1:
+	* Ints/TableField/КолонкаТабличногоПоля.ints 1.1:
+	* Ints/TableField/КолонкиТабличногоПоля.ints 1.1:
+	* Ints/TableField/ОформлениеСтроки.ints 1.1:
+	* Ints/TableField/ОформлениеЯчейки.ints 1.1:
+	* Ints/TableField/ТабличноеПоле.ints 1.1:
+	* Ints/TableField/ФиксированныеСтроки.ints 1.1:
+	* Ints/АктивИкс.ints 1.1:
+	* Ints/БуферОбмена.ints 1.1:
+	* Ints/ВыполняемыйМодуль.ints 1.1:
+	* Ints/Делегат.ints 1.1:
+	* Ints/ИндексированнаяТаблица.ints 1.1:
+	* Ints/Информатор.ints 1.1:
+	* Ints/Математика.ints 1.1:
+	* Ints/МенеджерСобытий.ints 1.1:
+	* Ints/Перехватчик.ints 1.1:
+	* Ints/ПолеДанныхODBC.ints 1.1:
+	* Ints/ПоляДанныхODBC.ints 1.1:
+	* Ints/РаботаСРегистромWin.ints 1.1:
+	* Ints/СоздатьОбъект.ints 1.1:
+	* Ints/Структура.ints 1.1:
+	* Ints/УскорительГК.ints 1.1:
+	* Ints/ФабрикаОбъектов.ints 1.1:
+	* Source/.cvsignore 1.1:
+	* Source/1CHEADERS/1cheaders.h 1.1:
+	* Source/1CHEADERS/basic.h 1.1:
+	* Source/1CHEADERS/bkend.h 1.1:
+	* Source/1CHEADERS/blang.h 1.1:
+	* Source/1CHEADERS/br32.h 1.1:
+	* Source/1CHEADERS/dbeng32.h 1.1:
+	* Source/1CHEADERS/editr.h 1.1:
+	* Source/1CHEADERS/ext_header.h 1.1:
+	* Source/1CHEADERS/frame.h 1.1:
+	* Source/1CHEADERS/moxel.h 1.1:
+	* Source/1CHEADERS/mxl2xl.h 1.1:
+	* Source/1CHEADERS/rgproc.h 1.1:
+	* Source/1CHEADERS/seven.h 1.1:
+	* Source/1CHEADERS/txtedt.h 1.1:
+	* Source/1CHEADERS/type32.h 1.1:
+	* Source/1CHEADERS/types.h 1.1:
+	* Source/1CHEADERS/userdef.h 1.1:
+	* Source/1CPP.DEF 1.1:
+	* Source/1CPP.RGS 1.1:
+	* Source/1CPP.icproj 1.1:
+	* Source/1CPP.idl 1.1:
+	* Source/1CPP.rc 1.1:
+	* Source/1CPP.sln 1.1:
+	* Source/1CPP.vcproj 1.1:
+	* Source/ADDIN.CPP 1.1:
+	* Source/ADDIN.H 1.1:
+	* Source/APP.CPP 1.1:
+	* Source/AXControl.cpp 1.1:
+	* Source/AXControl.h 1.1:
+	* Source/BLCollection.h 1.1:
+	* Source/BLModuleWrapper.cpp 1.1:
+	* Source/BLModuleWrapper.h 1.1:
+	* Source/BaseClassContext.cpp 1.1:
+	* Source/BaseClassContext.h 1.1:
+	* Source/BinaryData.cpp 1.1:
+	* Source/BinaryData.h 1.1:
+	* Source/CodeDecodeFile.cpp 1.1:
+	* Source/CodeDecodeFile.h 1.1:
+	* Source/ComponentClass.cpp 1.1:
+	* Source/ComponentClass.h 1.1:
+	* Source/ComponentClassAdd.cpp 1.1:
+	* Source/ComputeExpression.cpp 1.1:
+	* Source/ComputeExpression.h 1.1:
+	* Source/CreateMetaInfoClasses.cpp 1.1:
+	* Source/CreateMetaInfoClasses.h 1.1:
+	* Source/CtrlEvents.cpp 1.1:
+	* Source/CtrlEvents.h 1.1:
+	* Source/CursorGrid/Collections.h 1.1:
+	* Source/CursorGrid/CursorGridCtrl.cpp 1.1:
+	* Source/CursorGrid/CursorGridCtrl.h 1.1:
+	* Source/CursorGrid/DataProvider.h 1.1:
+	* Source/CursorGrid/MemDC.h 1.1:
+	* Source/CursorGrid/SQLProvider.cpp 1.1:
+	* Source/CursorGrid/SQLProvider.h 1.1:
+	* Source/CursorGrid/V7CursorGridCtrl.cpp 1.1:
+	* Source/CursorGrid/V7CursorGridCtrl.h 1.1:
+	* Source/CursorGrid/V7DataProvider.h 1.1:
+	* Source/CursorGrid/V7LogEvent.cpp 1.1:
+	* Source/CursorGrid/V7LogEvent.h 1.1:
+	* Source/CursorGrid/V7LogFilter.cpp 1.1:
+	* Source/CursorGrid/V7LogFilter.h 1.1:
+	* Source/CursorGrid/V7LogProvider.cpp 1.1:
+	* Source/CursorGrid/V7LogProvider.h 1.1:
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.1:
+	* Source/CursorGrid/V7ODBCProvider.h 1.1:
+	* Source/CursorGrid/VTProvider.cpp 1.1:
+	* Source/CursorGrid/VTProvider.h 1.1:
+	* Source/CursorGrid/commons.h 1.1:
+	* Source/DML.cpp 1.1:
+	* Source/DML.h 1.1:
+	* Source/Delegate.cpp 1.1:
+	* Source/Delegate.h 1.1:
+	* Source/DynaCrypt.cpp 1.1:
+	* Source/DynaCrypt.h 1.1:
+	* Source/DynaValue.cpp 1.1:
+	* Source/DynaValue.h 1.1:
+	* Source/DynaValueList.cpp 1.1:
+	* Source/DynaValueList.h 1.1:
+	* Source/EventManager.cpp 1.1:
+	* Source/EventManager.h 1.1:
+	* Source/ExecuteModule.cpp 1.1:
+	* Source/ExecuteModule.h 1.1:
+	* Source/Factory.cpp 1.1:
+	* Source/Factory.h 1.1:
+	* Source/Font.cpp 1.1:
+	* Source/Font.h 1.1:
+	* Source/Form/V7Form.cpp 1.1:
+	* Source/Form/V7Form.h 1.1:
+	* Source/GUID.cpp 1.1:
+	* Source/GUID.h 1.1:
+	* Source/HashMap.cpp 1.1:
+	* Source/HashMap.h 1.1:
+	* Source/LIBS/Account.lib 1.1:
+	* Source/LIBS/BASIC.lib 1.1:
+	* Source/LIBS/FRAME.lib 1.1:
+	* Source/LIBS/Salary.lib 1.1:
+	* Source/LIBS/Tracer.lib 1.1:
+	* Source/LIBS/Trade.lib 1.1:
+	* Source/LIBS/bkend.lib 1.1:
+	* Source/LIBS/blang.lib 1.1:
+	* Source/LIBS/br32.lib 1.1:
+	* Source/LIBS/dbeng32.lib 1.1:
+	* Source/LIBS/editr.lib 1.1:
+	* Source/LIBS/moxel.lib 1.1:
+	* Source/LIBS/mxl2xl.lib 1.1:
+	* Source/LIBS/rgproc.lib 1.1:
+	* Source/LIBS/seven.lib 1.1:
+	* Source/LIBS/txtedt.lib 1.1:
+	* Source/LIBS/type32.lib 1.1:
+	* Source/LIBS/userdef.lib 1.1:
+	* Source/MDReader.cpp 1.1:
+	* Source/MapDefMethod.h 1.1:
+	* Source/MetaDataOfClasses.cpp 1.1:
+	* Source/MetaDataOfClasses.h 1.1:
+	* Source/MethodsWrapper.h 1.1:
+	* Source/ModuleString.cpp 1.1:
+	* Source/ModuleString.h 1.1:
+	* Source/MySQL_Query.cpp 1.1:
+	* Source/MySQL_Query.h 1.1:
+	* Source/ODBC/1CPP_ODBCDatabase.cpp 1.1:
+	* Source/ODBC/1CPP_ODBCDatabase.h 1.1:
+	* Source/ODBC/1CPP_ODBCRecordSet.cpp 1.1:
+	* Source/ODBC/1CPP_ODBCRecordSet.h 1.1:
+	* Source/ODBC/MetaNameParser.cpp 1.1:
+	* Source/ODBC/MetaNameParser.h 1.1:
+	* Source/ODBC/Odbccore.cpp 1.1:
+	* Source/ODBC/Odbccore.h 1.1:
+	* Source/ODBC/SQLLock.cpp 1.1:
+	* Source/ODBC/SQLLock.h 1.1:
+	* Source/ODBC/SQLNumeric.cpp 1.1:
+	* Source/ODBC/SQLNumeric.h 1.1:
+	* Source/OLEDB/DBPropSet.cpp 1.1:
+	* Source/OLEDB/DBPropSet.h 1.1:
+	* Source/OLEDB/ValueTo.cpp 1.1:
+	* Source/OLEDB/ValueTo.h 1.1:
+	* Source/OLEDB/sp_ConvHlpr.h 1.1:
+	* Source/OLEDB/sp_cooledb.cpp 1.1:
+	* Source/OLEDB/sp_cooledb.h 1.1:
+	* Source/OLEDB/sp_oledb.cpp 1.1:
+	* Source/OLEDB/sp_oledb.h 1.1:
+	* Source/OLEDB/sp_oledbparam.cpp 1.1:
+	* Source/OLEDB/sp_oledbparam.h 1.1:
+	* Source/OLEDB/sp_oledbparamhlpr.cpp 1.1:
+	* Source/OLEDB/sp_oledbparamhlpr.h 1.1:
+	* Source/OLEDB/sp_oledbptr.h 1.1:
+	* Source/OXY_Value.cpp 1.1:
+	* Source/OXY_Value.h 1.1:
+	* Source/ParamDefs.h 1.1:
+	* Source/PicService.cpp 1.1:
+	* Source/PicService.h 1.1:
+	* Source/Preprocessor.cpp 1.1:
+	* Source/Preprocessor.h 1.1:
+	* Source/PropDefs.h 1.1:
+	* Source/RC6.cpp 1.1:
+	* Source/RC6.h 1.1:
+	* Source/SQL/MetaDataWork.cpp 1.1:
+	* Source/SQL/MetaDataWork.h 1.1:
+	* Source/STDAFX.CPP 1.1:
+	* Source/SafeContext.cpp 1.1:
+	* Source/SafeContext.h 1.1:
+	* Source/SetOfHierarchy.cpp 1.1:
+	* Source/SetOfHierarchy.h 1.1:
+	* Source/StdAfx.h 1.1:
+	* Source/StringArrayEx.cpp 1.1:
+	* Source/StringArrayEx.h 1.1:
+	* Source/Struct.cpp 1.1:
+	* Source/Struct.h 1.1:
+	* Source/System/BatchGuard.h 1.1:
+	* Source/System/Clipboard.cpp 1.1:
+	* Source/System/Clipboard.h 1.1:
+	* Source/System/DllHooker.cpp 1.1:
+	* Source/System/DllHooker.h 1.1:
+	* Source/System/FuncDelegate.h 1.1:
+	* Source/System/GlobalMethods.cpp 1.1:
+	* Source/System/GlobalMethods.h 1.1:
+	* Source/System/GroupContextWrap.cpp 1.1:
+	* Source/System/GroupContextWrap.h 1.1:
+	* Source/System/Hooker.cpp 1.1:
+	* Source/System/Hooker.h 1.1:
+	* Source/System/Informer.cpp 1.1:
+	* Source/System/Informer.h 1.1:
+	* Source/System/LogFile.cpp 1.1:
+	* Source/System/LogFile.h 1.1:
+	* Source/System/Math.cpp 1.1:
+	* Source/System/Math.h 1.1:
+	* Source/System/ModuleEvents.cpp 1.1:
+	* Source/System/ModuleEvents.h 1.1:
+	* Source/System/MyAddinContext.cpp 1.1:
+	* Source/System/MyAddinContext.h 1.1:
+	* Source/System/MyThread.cpp 1.1:
+	* Source/System/MyThread.h 1.1:
+	* Source/System/Settings.cpp 1.1:
+	* Source/System/Settings.h 1.1:
+	* Source/System/System.cpp 1.1:
+	* Source/System/System.h 1.1:
+	* Source/System/compare.cpp 1.1:
+	* Source/System/compare.h 1.1:
+	* Source/System/fix_alloc.cpp 1.1:
+	* Source/System/fix_alloc.hpp 1.1:
+	* Source/System/pure.h 1.1:
+	* Source/System/pure_api.c 1.1:
+	* Source/System/sh_ptr.hpp 1.1:
+	* Source/System/todo.txt 1.1:
+	* Source/TableEx.cpp 1.1:
+	* Source/TableEx.h 1.1:
+	* Source/TurboBL/allboost.cpp 1.1:
+	* Source/TurboBL/allboost.h 1.1:
+	* Source/TurboBL/boostgc.cpp 1.1:
+	* Source/TurboBL/boostgc.h 1.1:
+	* Source/TurboBL/docrefboost.cpp 1.1:
+	* Source/TurboBL/docrefboost.h 1.1:
+	* Source/TurboBL/gcboost.cpp 1.1:
+	* Source/TurboBL/gcboost.h 1.1:
+	* Source/TurboBL/readme.txt 1.1:
+	* Source/V7Control.cpp 1.1:
+	* Source/V7Control.h 1.1:
+	* Source/VTExt/BinaryTree.h 1.1:
+	* Source/VTExt/RBTree.h 1.1:
+	* Source/VTExt/SerialStorage.cpp 1.1:
+	* Source/VTExt/SerialStorage.h 1.1:
+	* Source/VTExt/VTExtGrouping.cpp 1.1:
+	* Source/VTExt/VTExtRow.cpp 1.1:
+	* Source/VTExt/VTExtended.cpp 1.1:
+	* Source/VTExt/VTExtended.h 1.1:
+	* Source/VTExt/VTIndex.cpp 1.1:
+	* Source/VTExt/VTIterator.cpp 1.1:
+	* Source/ValueCollection.cpp 1.1:
+	* Source/ValueCollection.h 1.1:
+	* Source/WorkAsRegister.cpp 1.1:
+	* Source/WorkAsRegister.h 1.1:
+	* Source/_protected_string_table.h 1.1:
+	* Source/bitmap.bmp 1.1:
+	* Source/bitmap2.bmp 1.1:
+	* Source/blmap.cpp 1.1:
+	* Source/blmap.h 1.1:
+	* Source/blptr.h 1.1:
+	* Source/bmp00001.bmp 1.1:
+	* Source/bmp00002.bmp 1.1:
+	* Source/checks.bmp 1.1:
+	* Source/config.h 1.1:
+	* Source/cursor1.cur 1.1:
+	* Source/icon1.ico 1.1:
+	* Source/istrmap.cpp 1.1:
+	* Source/istrmap.h 1.1:
+	* Source/logo.bmp 1.1:
+	* Source/mycontextbase.cpp 1.1:
+	* Source/mycontextbase.h 1.1:
+	* Source/resource.h 1.1:
+	* Source/resource_reg.h 1.1:
+	* Source/xt_list.cpp 1.1:
+	* Source/xt_list.h 1.1:
+	* Source/zlibeng.tlh 1.1:
+	* Source/zlibeng.tli 1.1:
+	* Source/Лицензия.txt 1.1:
+	* killme.txt 1.2:
+		[!] Initial update
+
+	* Source/CursorGrid/SQLProvider.cpp 1.2:
+	* Source/CursorGrid/SQLProvider.h 1.2:
+	* Source/CursorGrid/V7ODBCProvider.cpp 1.2:
+		[-] Нарушение логики обновления ТП в случае установки КП без отключения провайдера
+		[bug 3633]
+
+2008-03-07	fez
+	* killme.txt 1.1.1.1:
+		init message
+
