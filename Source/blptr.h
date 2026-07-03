@@ -33,7 +33,7 @@
 template <class T>
 class CBLPtr
 {
-	template<class Y> friend class CBLPtr;
+	// VC6: 'template<class Y> friend class CBLPtr;' unsupported -> public accessor _get_p() below
 public:
 	typedef T _PtrClass;
 	CBLPtr() : p(NULL), m_bIsGroupContext(FALSE)
@@ -55,14 +55,14 @@ public:
 
 	CBLPtr(const CBLPtr<T>& lp) : p(NULL), m_bIsGroupContext(FALSE)
 	{
-		_Assign(lp.p);
+		_Assign(lp._get_p());
 	}
 
 	// explicit, скорее всего, не нужен - artbear нет, все-таки нужен для исключения неявного преобразования
 	template<class U>
 	explicit CBLPtr(const CBLPtr<U>& lp) : p(NULL), m_bIsGroupContext(FALSE)
 	{
-		_Assign(lp.p); // разрешено использовать только простые преобразования - от CBLPtr<Наследник_CBLContext> к CBLPtr<CBLContext>
+		_Assign(lp._get_p()); // разрешено использовать только простые преобразования - от CBLPtr<Наследник_CBLContext> к CBLPtr<CBLContext>
 	}
 
 	// создать через СRuntimeClass::CreateObject
@@ -158,7 +158,7 @@ public:
 		if (&lp == this)
 			return *this;
 
-		return operator=(lp.p);
+		return operator=(lp._get_p());
 	}
 
 	template<class U>
@@ -168,7 +168,7 @@ public:
 		//if (static_cast<void*>(const_cast<CBLPtr<U>*>(&lp)) == static_cast<void*>(this))
 		//	return *this;
 
-		return operator=(lp.p); // разрешено использовать только простые преобразования - от CBLPtr<Наследник_CBLContext> к CBLPtr<CBLContext>
+		return operator=(lp._get_p()); // разрешено использовать только простые преобразования - от CBLPtr<Наследник_CBLContext> к CBLPtr<CBLContext>
 	}
 
 	bool operator!() const
@@ -234,6 +234,8 @@ public:
 		return boost::shared_ptr<T>(p, CBLContext_deleter<T>());
 	}
 
+public:
+	T* _get_p() const { return p; }  // VC6: cross-instantiation access without template friend
 protected: // artbear
 	//T* ptr;
 	T* p;
