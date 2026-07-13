@@ -29,20 +29,19 @@ $stl=(Short (Join-Path $root $StlportDir))+'\stlport'
 $src=Short (Join-Path $root 'Source')
 $out83=Short $out; $obj83=Short $obj
 
-# INCLUDE for /Qvc6: coherent all-VC6 set (MFC/ATL/CRT/Win32), with a patched winbase.h
-# (deps\vc6patch) placed first to skip x86 Interlocked decls that clash with ICL intrinsics.
-$patch = Short (Join-Path $root 'deps\vc6patch')
-$env:INCLUDE = "$stl;$vc98\MFC\Include;$vc98\ATL\Include;$patch;$vc98\Include"
+# INCLUDE (no-STLport variant): VC6 MFC/ATL (class CString) FIRST, then VS2005 STL/CRT/Win32.
+# The code also builds with native STL (proven on VS2022); VS2005 STL provides <hash_map>.
+$vs = 'C:\Program Files (x86)\Microsoft Visual Studio 8\VC'
+$env:INCLUDE = "$vc98\MFC\Include;$vc98\ATL\Include;$vs\include;$vs\PlatformSDK\include"
 
 $defs=@('/D_AFXDLL','/DWIN32','/DNDEBUG','/D_ANSI','/D_WINDOWS','/D_USRDLL','/D_AFX_DLL',
         '/D_ATL_STATIC_REGISTRY','/D_WIN_DLL','/D_MBCS',
-        '/D_STLP_USE_STATIC_LIB','/D_STLP_VERBOSE_AUTO_LINK','/D_STLP_NEW_PLATFORM_SDK',
-        '/D_STLP_USING_PLATFORM_SDK_COMPILER',
-        '/D_STLP_NO_NATIVE_MBSTATE_T','/D_STLP_NO_NATIVE_WIDE_FUNCTIONS',
-        '/D_STLP_NO_NATIVE_WIDE_STREAMS')
+        '/D_CRT_SECURE_NO_DEPRECATE','/D_CRT_NONSTDC_NO_DEPRECATE',
+        '/D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=0',
+        '/D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT=0')
 $flags=@('/nologo','/Ob1','/O2','-W0','/Qwd1738,1744','/Qwe1011','/Qinline-max-size:100',
          '/EHsc','/Qms2','/Qvc6','/Zl','/MD','/Zm800')
-$incs=@("/I$src","/I$src\1CHEADERS","/I$boost","/I$stl")
+$incs=@("/I$src","/I$src\1CHEADERS","/I$boost")
 $pch="$out83\1CPP.pch"
 
 Write-Output ("icl: " + ((cmd /c "icl 2>&1") | Select-String 'Version' | Select-Object -First 1))
