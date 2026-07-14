@@ -12,3 +12,8 @@
 *.suo
 *.opt
 *.plg
+
+# Рабочий каталог ICL-сборки (артефакты регенерируются build_icl.ps1)
+build_icl/
+build_vc6/
+*.rsp

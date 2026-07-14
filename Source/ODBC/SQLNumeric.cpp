@@ -104,6 +104,7 @@ l0:
         pSData = Buf2;
         pSData += SQLNUM_LONG_UINT_LEN - 1;
     }
+    void* (__cdecl *pMalloc)(size_t) = malloc;
 
     UINT* pBuffer_end = m_Buffer + 4;
 
@@ -146,7 +147,7 @@ l1:
         push    edx
         mov     eax, SQLNUM_DYN_BUFFER_LEN * 4
         push    eax
-        call    dword ptr [malloc]
+        call    dword ptr [pMalloc]
         add     esp, 4
         mov     edi, this
         mov     [edi].m_pBuffer, eax

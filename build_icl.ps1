@@ -92,19 +92,40 @@ Write-Output "RC OK"
 # compile GUID file 1CPP_i.c
 & icl /nologo /c /MD "/Fo$obj83\1CPP_i.obj" "$src\1CPP_i.c" 2>&1 | Out-Null
 
-# --- link (xilink): VC6 CRT (msvcrt) + mfc42 (class CString) + 1C libs ---
-Write-Output "=== [LINK] 1CPP.dll (xilink) ==="
-$objs = Get-ChildItem "$out\obj\*.obj" | ForEach-Object { (New-Object -ComObject Scripting.FileSystemObject).GetFile($_.FullName).ShortPath }
-$libpaths = @("/LIBPATH:C:\stlport_icl\lib","/LIBPATH:$vc6l\MFC\Lib","/LIBPATH:$vc6l\Lib","/LIBPATH:$psdk\Lib","/LIBPATH:$src\LIBS")
-$syslibs = @('mfc42.lib','msvcrt.lib','kernel32.lib','user32.lib','gdi32.lib','winspool.lib',
-             'comdlg32.lib','advapi32.lib','shell32.lib','ole32.lib','oleaut32.lib','uuid.lib',
-             'odbc32.lib','odbccp32.lib','Rpcrt4.lib','winmm.lib','version.lib','msimg32.lib','shlwapi.lib')
+# --- link (MS link.exe): VC6 CRT (msvcrt) + mfc42 (class CString) + 1C libs + forwarder ---
+# NOTE: link with MS link.exe, NOT xilink -- xilink drops the /DEF: value during its IPO
+# passthrough. Our objs are plain COFF (no /Qipo), so link.exe + explicit Intel runtime libs works.
+Write-Output "=== [LINK] 1CPP.dll (link.exe) ==="
+$objs = Get-ChildItem "$out\obj\*.obj" | ForEach-Object { $fso.GetFile($_.FullName).ShortPath }
+# 1C import libs (class CString ABI) from Source\LIBS ; forwarder.lib = N:: wchar_t bridge (prebuilt Intel)
+$fwd = Short "$src\Forwarder\Release"
+$c1libs = @('bkend.lib','seven.lib','type32.lib','blang.lib','br32.lib','dbeng32.lib',
+            'editr.lib','moxel.lib','mxl2xl.lib','rgproc.lib','txtedt.lib','userdef.lib',
+            'BASIC.lib','FRAME.lib','forwarder.lib')
+# Intel C++ runtime (dynamic-CRT model /MD): libmmd(.dll), libirc/libdecimal(static), svml
+$intel = Short 'C:\Program Files (x86)\Intel\Compiler\11.1\054\lib\ia32'
+$intellibs = @('libmmd.lib','libirc.lib','libdecimal.lib','svml_dispmd.lib')
+$libpaths = @("/LIBPATH:C:\stlport_icl\lib","/LIBPATH:$vc6l\MFC\Lib","/LIBPATH:$vc6l\Lib",
+              "/LIBPATH:$psdk\Lib","/LIBPATH:$src\LIBS","/LIBPATH:$fwd","/LIBPATH:$intel")
+$syslibs = $c1libs + $intellibs + @('mfc42.lib','msvcrt.lib','kernel32.lib','user32.lib','gdi32.lib',
+             'winspool.lib','comdlg32.lib','advapi32.lib','shell32.lib','ole32.lib','oleaut32.lib',
+             'uuid.lib','odbc32.lib','odbccp32.lib','Rpcrt4.lib','winmm.lib','version.lib','msimg32.lib','shlwapi.lib')
 $dll="$out83\1CPP.dll"
-$la = @('/dll','/nologo','/MACHINE:IX86','/DEF:'+"$src\1CPP.DEF",'/BASE:0x24000000',
-        '/IGNORE:4199','/NODEFAULTLIB:atlthunk.lib','/FORCE:MULTIPLE','/OUT:'+$dll) + $objs + @($res) + $libpaths + $syslibs
-& xilink @la 2>&1 | Tee-Object "$out\link.log" | Out-Null
+$def="$src\1CPP.DEF"
+# NB: use "/DEF:$def" interpolation, NOT '/DEF:'+$def -- inside @() the latter splits into two
+# array elements ('/DEF:' and the path) and link sees a bare /DEF: (LNK1146). Same for /OUT.
+# forwarder.lib was built vs STLport 5.1 -> ignore its auto-link pragma; our stlpx_std 5.2 supplies it.
+$la = @('/dll','/nologo','/MACHINE:IX86',"/DEF:$def",'/BASE:0x24000000','/IGNORE:4199',
+        '/NODEFAULTLIB:atlthunk.lib','/NODEFAULTLIB:stlport_statix.5.1.lib','/FORCE:MULTIPLE',
+        "/OUT:$dll") + $objs + @($res) + $libpaths + $syslibs
+$rsp="$out\link.rsp"; Set-Content -Path $rsp -Value ($la -join "`r`n") -Encoding ASCII
+& link "@$rsp" 2>&1 | Tee-Object "$out\link.log" | Out-Null
 if(Test-Path $dll){
-  Write-Output "LINK OK -> $dll"; Get-Item $dll | Select-Object Name,Length | Format-List
+  Write-Output "LINK OK -> $dll"
+  # Intel math runtime is a dynamic dependency (ICL 11.1 has no static libmmt) -> ship libmmd.dll
+  $mmd = Get-ChildItem 'C:\Program Files (x86)\Intel\Compiler\11.1\054\bin\ia32\libmmd.dll' -ErrorAction SilentlyContinue
+  if($mmd){ Copy-Item $mmd.FullName "$out\libmmd.dll" -Force }
+  Get-Item $dll | Select-Object Name,Length | Format-List
 }else{
   $u=(Select-String -Path "$out\link.log" -Pattern 'LNK2001|LNK2019'|Measure-Object).Count
   Write-Output "LINK FAILED. unresolved lines: $u"
