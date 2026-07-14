@@ -29,17 +29,20 @@ $stl=(Short (Join-Path $root $StlportDir))+'\stlport'
 $src=Short (Join-Path $root 'Source')
 $out83=Short $out; $obj83=Short $obj
 
-# INCLUDE (/Qvc8, NO STLport): PSDK2003 MFC(6.0=class CString)/ATL ; PSDK Win32 ;
-# VS2005 CRT/STL (native STL has <hash_map>; code builds on native STL, proven on VS2022).
+# INCLUDE (forum coherent recipe): STLport(built for VC6 CRT) ; PSDK2003 MFC(6.0=
+# class CString)/ATL ; PSDK Win32 ; VC6 CRT (MSVC98) -> single CRT (msvcrt), matches mfc42.
+$stlA = 'C:\stlport_icl\stlport'
 $psdk = Short 'D:\psdk2003\Microsoft Platform SDK for Windows Server 2003 R2'
-$vsinc = 'C:\Program Files (x86)\Microsoft Visual Studio 8\VC\include'
-$env:INCLUDE = "$psdk\Include\mfc;$psdk\Include\atl;$psdk\Include;$vsinc"
+$vc6inc = ((Short $Vc6)+'\VC98\Include')
+$env:INCLUDE = "$stlA;$psdk\Include\mfc;$psdk\Include\atl;$psdk\Include;$vc6inc"
 
 $defs=@('/D_AFXDLL','/DWIN32','/DNDEBUG','/D_ANSI','/D_WINDOWS','/D_USRDLL','/D_AFX_DLL',
-        '/D_ATL_STATIC_REGISTRY','/D_WIN_DLL','/D_MBCS')
+        '/D_ATL_STATIC_REGISTRY','/D_WIN_DLL','/D_MBCS',
+        '/D_STLP_USE_STATIC_LIB','/D_STLP_NEW_PLATFORM_SDK','/D_STLP_USING_PLATFORM_SDK_COMPILER',
+        '/D_STLP_NO_LONG_DOUBLE')
 $flags=@('/nologo','/c','/Ob1','/O2','-W0','/Qwd1738,1744','/Qwe1011','/Qinline-max-size:100',
          '/EHsc','/Qms2','/Qvc8','/Zl','/MD','/Zm800')
-$incs=@("/I$src","/I$src\1CHEADERS","/I$boost")
+$incs=@("/I$stlA","/I$src","/I$src\1CHEADERS","/I$boost")
 $pch="$out83\1CPP.pch"     # ICL writes the PCH as 1CPP.pchi
 
 Write-Output ("icl: " + ((cmd /c "icl 2>&1") | Select-String 'Version' | Select-Object -First 1))
@@ -56,6 +59,7 @@ $cpps = ([regex]::Matches($vcproj,'RelativePath="([^"]+)"') | ForEach-Object { $
         Where-Object { $_ -match '\.cpp$' } |
         ForEach-Object { ($_ -replace '^\.\\','') -replace '/','\' } | Sort-Object -Unique |
         Where-Object { $_ -notmatch 'StdAfx\.cpp$' -and $_ -notmatch '^Forwarder\\' }
+$cpps = @($cpps) + 'icl_compat.cpp'   # our operator delete[] shim for VC6 CRT
 Write-Output "=== [COMPILE] $($cpps.Count) .cpp (ICL /Yu) ==="
 $log="$out\compile.log"; "" | Set-Content $log; $failed=@(); $i=0
 foreach($rel in $cpps){
@@ -91,14 +95,14 @@ Write-Output "RC OK"
 
 # --- link (xilink): VC6 CRT (msvcrt) + mfc42 (class CString) + 1C libs ---
 Write-Output "=== [LINK] 1CPP.dll (xilink) ==="
-$objs = Get-ChildItem "$out\obj\*.obj" | ForEach-Object { $_.FullName }
-$libpaths = @("/LIBPATH:$vc6l\MFC\Lib","/LIBPATH:$vc6l\Lib","/LIBPATH:$psdk\Lib","/LIBPATH:$src\LIBS")
+$objs = Get-ChildItem "$out\obj\*.obj" | ForEach-Object { (New-Object -ComObject Scripting.FileSystemObject).GetFile($_.FullName).ShortPath }
+$libpaths = @("/LIBPATH:C:\stlport_icl\lib","/LIBPATH:$vc6l\MFC\Lib","/LIBPATH:$vc6l\Lib","/LIBPATH:$psdk\Lib","/LIBPATH:$src\LIBS")
 $syslibs = @('mfc42.lib','msvcrt.lib','kernel32.lib','user32.lib','gdi32.lib','winspool.lib',
              'comdlg32.lib','advapi32.lib','shell32.lib','ole32.lib','oleaut32.lib','uuid.lib',
              'odbc32.lib','odbccp32.lib','Rpcrt4.lib','winmm.lib','version.lib','msimg32.lib','shlwapi.lib')
 $dll="$out83\1CPP.dll"
 $la = @('/dll','/nologo','/MACHINE:IX86','/DEF:'+"$src\1CPP.DEF",'/BASE:0x24000000',
-        '/IGNORE:4199','/OUT:'+$dll) + $objs + @($res) + $libpaths + $syslibs
+        '/IGNORE:4199','/NODEFAULTLIB:atlthunk.lib','/FORCE:MULTIPLE','/OUT:'+$dll) + $objs + @($res) + $libpaths + $syslibs
 & xilink @la 2>&1 | Tee-Object "$out\link.log" | Out-Null
 if(Test-Path $dll){
   Write-Output "LINK OK -> $dll"; Get-Item $dll | Select-Object Name,Length | Format-List
