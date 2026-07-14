@@ -41,7 +41,7 @@ $defs=@('/D_AFXDLL','/DWIN32','/DNDEBUG','/D_ANSI','/D_WINDOWS','/D_USRDLL','/D_
         '/D_STLP_USE_STATIC_LIB','/D_STLP_NEW_PLATFORM_SDK','/D_STLP_USING_PLATFORM_SDK_COMPILER')
 $flags=@('/nologo','/c','/Ob1','/O2','-W0','/Qwd1738,1744','/Qwe1011','/Qinline-max-size:100',
          '/EHsc','/Qms2','/Qvc8','/Zl','/MD','/Zm800')
-$incs=@("/I$stlA","/I$src","/I$src\1CHEADERS","/I$boost")
+$incs=@("/I$src","/I$src\1CHEADERS","/I$boost")   # STLport only via INCLUDE env (explicit /I breaks native-header resolution)
 $pch="$out83\1CPP.pch"     # ICL writes the PCH as 1CPP.pchi
 
 Write-Output ("icl: " + ((cmd /c "icl 2>&1") | Select-String 'Version' | Select-Object -First 1))
