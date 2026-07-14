@@ -29,26 +29,49 @@ $stl=(Short (Join-Path $root $StlportDir))+'\stlport'
 $src=Short (Join-Path $root 'Source')
 $out83=Short $out; $obj83=Short $obj
 
-# INCLUDE (/Qvc6 + coherent VC6 + built STLport): STLport(configured) ; VC6 MFC/ATL ;
-# patched winbase ; VC6 CRT/Win32. STLportDir points at the ICL-built STLport (ASCII path).
-$stlA = 'C:\stlport_icl\stlport'
-$patch = Short (Join-Path $root 'deps\vc6patch')
-$env:INCLUDE = "$stlA;$vc98\MFC\Include;$vc98\ATL\Include;$patch;$vc98\Include"
+# INCLUDE (/Qvc8, NO STLport): PSDK2003 MFC(6.0=class CString)/ATL ; PSDK Win32 ;
+# VS2005 CRT/STL (native STL has <hash_map>; code builds on native STL, proven on VS2022).
+$psdk = Short 'D:\psdk2003\Microsoft Platform SDK for Windows Server 2003 R2'
+$vsinc = 'C:\Program Files (x86)\Microsoft Visual Studio 8\VC\include'
+$env:INCLUDE = "$psdk\Include\mfc;$psdk\Include\atl;$psdk\Include;$vsinc"
 
 $defs=@('/D_AFXDLL','/DWIN32','/DNDEBUG','/D_ANSI','/D_WINDOWS','/D_USRDLL','/D_AFX_DLL',
-        '/D_ATL_STATIC_REGISTRY','/D_WIN_DLL','/D_MBCS',
-        '/D_STLP_USE_STATIC_LIB','/D_STLP_NEW_PLATFORM_SDK','/D_STLP_USING_PLATFORM_SDK_COMPILER',
-        '/D_STLP_NO_NATIVE_MBSTATE_T','/D_STLP_NO_NATIVE_WIDE_FUNCTIONS',
-        '/D_STLP_NO_NATIVE_WIDE_STREAMS')
-$flags=@('/nologo','/Ob1','/O2','-W0','/Qwd1738,1744','/Qwe1011','/Qinline-max-size:100',
-         '/EHsc','/Qms2','/Qvc6','/Zl','/MD','/Zm800')
-$incs=@("/I$stlA","/I$src","/I$src\1CHEADERS","/I$boost")
-$pch="$out83\1CPP.pch"
+        '/D_ATL_STATIC_REGISTRY','/D_WIN_DLL','/D_MBCS')
+$flags=@('/nologo','/c','/Ob1','/O2','-W0','/Qwd1738,1744','/Qwe1011','/Qinline-max-size:100',
+         '/EHsc','/Qms2','/Qvc8','/Zl','/MD','/Zm800')
+$incs=@("/I$src","/I$src\1CHEADERS","/I$boost")
+$pch="$out83\1CPP.pch"     # ICL writes the PCH as 1CPP.pchi
 
 Write-Output ("icl: " + ((cmd /c "icl 2>&1") | Select-String 'Version' | Select-Object -First 1))
-Write-Output "INCLUDE=$($env:INCLUDE)"
-Write-Output "=== [PCH] $File (ICL + MFC42 headers) ==="
-$a=@($flags)+$defs+$incs+@("/YcStdAfx.h","/Fp$pch","/Fo$obj83\StdAfx.obj","$src\$File")
-& icl @a 2>&1 | Tee-Object -FilePath "$out\pch_build.log" | Select-Object -First 45
-if(-not (Test-Path $pch)){ Write-Output 'PCH FAILED'; exit 1 }
+Write-Output "=== [PCH] StdAfx.cpp (ICL /Qvc8 + PSDK2003 MFC + native STL) ==="
+$a=@($flags)+$defs+$incs+@("/YcStdAfx.h","/Fp$pch","/Fo$obj83\StdAfx.obj","$src\StdAfx.cpp")
+& icl @a 2>&1 | Tee-Object -FilePath "$out\pch_build.log" | Out-Null
+if(-not (Test-Path "$out\obj\StdAfx.obj")){ Write-Output 'PCH FAILED'; Get-Content "$out\pch_build.log" | Select-Object -Last 25; exit 1 }
 Write-Output 'PCH OK'
+if($Stage -eq 'pch'){ exit 0 }
+
+# --- compile all .cpp from vcproj (with /Yu) ---
+$vcproj = Get-Content (Join-Path $src '1CPP.vcproj') -Raw
+$cpps = ([regex]::Matches($vcproj,'RelativePath="([^"]+)"') | ForEach-Object { $_.Groups[1].Value }) |
+        Where-Object { $_ -match '\.cpp$' } |
+        ForEach-Object { ($_ -replace '^\.\\','') -replace '/','\' } | Sort-Object -Unique |
+        Where-Object { $_ -notmatch 'StdAfx\.cpp$' -and $_ -notmatch '^Forwarder\\' }
+Write-Output "=== [COMPILE] $($cpps.Count) .cpp (ICL /Yu) ==="
+$log="$out\compile.log"; "" | Set-Content $log; $failed=@(); $i=0
+foreach($rel in $cpps){
+  $i++
+  if(-not (Test-Path (Join-Path $src $rel))){ Write-Output "  MISS $rel"; continue }
+  $o="$obj83\"+(($rel -replace '[\\/]','_') -replace '\.cpp$','.obj')
+  $ca=@($flags)+$defs+$incs+@("/YuStdAfx.h","/Fp$pch","/Fo$o","$src\$rel")
+  $r = & icl @ca 2>&1; $r | Add-Content $log
+  if(-not (Test-Path ($o -replace '/','\'))){ $failed+=$rel
+    $ec=($r|Select-String ': error'|Measure-Object).Count
+    Write-Output ("  FAIL [{0}/{1}] {2} ({3} err)" -f $i,$cpps.Count,$rel,$ec) }
+}
+Write-Output "=== COMPILE: $($cpps.Count-$failed.Count)/$($cpps.Count) OK, $($failed.Count) failed ==="
+if($failed.Count -gt 0){
+  Write-Output "=== top error codes ==="
+  Select-String -Path $log -Pattern 'error #(\d+)' | ForEach-Object { $_.Matches[0].Groups[1].Value } |
+    Group-Object | Sort-Object Count -Descending | Select-Object -First 12 |
+    ForEach-Object { Write-Output ("  #{0} x{1}" -f $_.Name,$_.Count) }
+}
