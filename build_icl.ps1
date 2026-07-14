@@ -102,12 +102,16 @@ $fwd = Short "$src\Forwarder\Release"
 $c1libs = @('bkend.lib','seven.lib','type32.lib','blang.lib','br32.lib','dbeng32.lib',
             'editr.lib','moxel.lib','mxl2xl.lib','rgproc.lib','txtedt.lib','userdef.lib',
             'BASIC.lib','FRAME.lib','forwarder.lib')
-# Intel C++ runtime (dynamic-CRT model /MD): libmmd(.dll), libirc/libdecimal(static), svml
+# Intel C++ runtime -- ВСЁ статически, чтобы 1cpp.dll был самодостаточным (как оригинал,
+# без зависимости от libmmd.dll): libmmt=static math, libirc/libdecimal, svml_disp=static SVML.
 $intel = Short 'C:\Program Files (x86)\Intel\Compiler\11.1\054\lib\ia32'
-$intellibs = @('libmmd.lib','libirc.lib','libdecimal.lib','svml_dispmd.lib')
+$intellibs = @('libmmt.lib','libirc.lib','libdecimal.lib','svml_disp.lib')
 $libpaths = @("/LIBPATH:C:\stlport_icl\lib","/LIBPATH:$vc6l\MFC\Lib","/LIBPATH:$vc6l\Lib",
               "/LIBPATH:$psdk\Lib","/LIBPATH:$src\LIBS","/LIBPATH:$fwd","/LIBPATH:$intel")
-$syslibs = $c1libs + $intellibs + @('mfc42.lib','msvcrt.lib','kernel32.lib','user32.lib','gdi32.lib',
+# КРИТИЧНО: mfcs42.lib ПЕРЕД msvcrt.lib. Иначе пустой _DllMain@12 из msvcrt(dllmain.obj)
+# побеждает настоящий DllMain из mfcs42(dllmodul.obj), MFC не инициализируется, и при загрузке
+# в 1С компонента падает (AV в frame.dll) -- "1С не запускается с компонентой".
+$syslibs = @('mfcs42.lib','mfc42.lib') + $c1libs + $intellibs + @('msvcrt.lib','kernel32.lib','user32.lib','gdi32.lib',
              'winspool.lib','comdlg32.lib','advapi32.lib','shell32.lib','ole32.lib','oleaut32.lib',
              'uuid.lib','odbc32.lib','odbccp32.lib','Rpcrt4.lib','winmm.lib','version.lib','msimg32.lib','shlwapi.lib')
 $dll="$out83\1CPP.dll"
@@ -122,9 +126,7 @@ $rsp="$out\link.rsp"; Set-Content -Path $rsp -Value ($la -join "`r`n") -Encoding
 & link "@$rsp" 2>&1 | Tee-Object "$out\link.log" | Out-Null
 if(Test-Path $dll){
   Write-Output "LINK OK -> $dll"
-  # Intel math runtime is a dynamic dependency (ICL 11.1 has no static libmmt) -> ship libmmd.dll
-  $mmd = Get-ChildItem 'C:\Program Files (x86)\Intel\Compiler\11.1\054\bin\ia32\libmmd.dll' -ErrorAction SilentlyContinue
-  if($mmd){ Copy-Item $mmd.FullName "$out\libmmd.dll" -Force }
+  # Рантайм Intel слинкован статически (libmmt/svml_disp) -> DLL самодостаточна, libmmd.dll не нужна.
   Get-Item $dll | Select-Object Name,Length | Format-List
 }else{
   $u=(Select-String -Path "$out\link.log" -Pattern 'LNK2001|LNK2019'|Measure-Object).Count

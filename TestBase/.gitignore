@@ -1,0 +1,8 @@
+# Транзиентные файлы прогона 1С (регенерируются run_base.ps1)
+*.LCK
+test_log.txt
+1SUSERS.DBF
+SYSLOG/
+# Компонента и вывод сборки — копируются из build_icl/ (не храним дубль в git)
+1cpp.dll
+libmmd.dll
