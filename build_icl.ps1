@@ -38,8 +38,7 @@ $env:INCLUDE = "$stlA;$psdk\Include\mfc;$psdk\Include\atl;$psdk\Include;$vc6inc"
 
 $defs=@('/D_AFXDLL','/DWIN32','/DNDEBUG','/D_ANSI','/D_WINDOWS','/D_USRDLL','/D_AFX_DLL',
         '/D_ATL_STATIC_REGISTRY','/D_WIN_DLL','/D_MBCS',
-        '/D_STLP_USE_STATIC_LIB','/D_STLP_NEW_PLATFORM_SDK','/D_STLP_USING_PLATFORM_SDK_COMPILER',
-        '/D_STLP_NO_LONG_DOUBLE')
+        '/D_STLP_USE_STATIC_LIB','/D_STLP_NEW_PLATFORM_SDK','/D_STLP_USING_PLATFORM_SDK_COMPILER')
 $flags=@('/nologo','/c','/Ob1','/O2','-W0','/Qwd1738,1744','/Qwe1011','/Qinline-max-size:100',
          '/EHsc','/Qms2','/Qvc8','/Zl','/MD','/Zm800')
 $incs=@("/I$stlA","/I$src","/I$src\1CHEADERS","/I$boost")
@@ -47,7 +46,7 @@ $pch="$out83\1CPP.pch"     # ICL writes the PCH as 1CPP.pchi
 
 Write-Output ("icl: " + ((cmd /c "icl 2>&1") | Select-String 'Version' | Select-Object -First 1))
 Write-Output "=== [PCH] StdAfx.cpp (ICL /Qvc8 + PSDK2003 MFC + native STL) ==="
-$a=@($flags)+$defs+$incs+@("/YcStdAfx.h","/Fp$pch","/Fo$obj83\StdAfx.obj","$src\StdAfx.cpp")
+$a=@($flags)+$defs+$incs+@("/Fo$obj83\StdAfx.obj","$src\StdAfx.cpp")  # no PCH (ICL /Yc mis-triggers STLport FLT_)
 & icl @a 2>&1 | Tee-Object -FilePath "$out\pch_build.log" | Out-Null
 if(-not (Test-Path "$out\obj\StdAfx.obj")){ Write-Output 'PCH FAILED'; Get-Content "$out\pch_build.log" | Select-Object -Last 25; exit 1 }
 Write-Output 'PCH OK'
@@ -66,7 +65,7 @@ foreach($rel in $cpps){
   $i++
   if(-not (Test-Path (Join-Path $src $rel))){ Write-Output "  MISS $rel"; continue }
   $o="$obj83\"+(($rel -replace '[\\/]','_') -replace '\.cpp$','.obj')
-  $ca=@($flags)+$defs+$incs+@("/YuStdAfx.h","/Fp$pch","/Fo$o","$src\$rel")
+  $ca=@($flags)+$defs+$incs+@("/Fo$o","$src\$rel")
   $r = & icl @ca 2>&1; $r | Add-Content $log
   if(-not (Test-Path ($o -replace '/','\'))){ $failed+=$rel
     $ec=($r|Select-String ': error'|Measure-Object).Count
