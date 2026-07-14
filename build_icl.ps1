@@ -74,4 +74,37 @@ if($failed.Count -gt 0){
   Select-String -Path $log -Pattern 'error #(\d+)' | ForEach-Object { $_.Matches[0].Groups[1].Value } |
     Group-Object | Sort-Object Count -Descending | Select-Object -First 12 |
     ForEach-Object { Write-Output ("  #{0} x{1}" -f $_.Name,$_.Count) }
+  exit 1
+}
+if($Stage -eq 'compile'){ exit 0 }
+
+# --- resources ---
+$vc6l = (Short $Vc6)+'\VC98'
+$res="$out83\1CPP.res"
+Write-Output "=== [RC] 1CPP.rc ==="
+& rc /l 0x419 /d NDEBUG /d _AFXDLL "/I$psdk\Include\mfc" "/I$src" "/fo$res" "$src\1CPP.rc" 2>&1 |
+  Tee-Object "$out\rc.log" | Out-Null
+if(-not (Test-Path $res)){ Write-Output "RC FAILED"; Get-Content "$out\rc.log" | Select-Object -Last 15; exit 1 }
+Write-Output "RC OK"
+# compile GUID file 1CPP_i.c
+& icl /nologo /c /MD "/Fo$obj83\1CPP_i.obj" "$src\1CPP_i.c" 2>&1 | Out-Null
+
+# --- link (xilink): VC6 CRT (msvcrt) + mfc42 (class CString) + 1C libs ---
+Write-Output "=== [LINK] 1CPP.dll (xilink) ==="
+$objs = Get-ChildItem "$out\obj\*.obj" | ForEach-Object { $_.FullName }
+$libpaths = @("/LIBPATH:$vc6l\MFC\Lib","/LIBPATH:$vc6l\Lib","/LIBPATH:$psdk\Lib","/LIBPATH:$src\LIBS")
+$syslibs = @('mfc42.lib','msvcrt.lib','kernel32.lib','user32.lib','gdi32.lib','winspool.lib',
+             'comdlg32.lib','advapi32.lib','shell32.lib','ole32.lib','oleaut32.lib','uuid.lib',
+             'odbc32.lib','odbccp32.lib','Rpcrt4.lib','winmm.lib','version.lib','msimg32.lib','shlwapi.lib')
+$dll="$out83\1CPP.dll"
+$la = @('/dll','/nologo','/MACHINE:IX86','/DEF:'+"$src\1CPP.DEF",'/BASE:0x24000000',
+        '/IGNORE:4199','/OUT:'+$dll) + $objs + @($res) + $libpaths + $syslibs
+& xilink @la 2>&1 | Tee-Object "$out\link.log" | Out-Null
+if(Test-Path $dll){
+  Write-Output "LINK OK -> $dll"; Get-Item $dll | Select-Object Name,Length | Format-List
+}else{
+  $u=(Select-String -Path "$out\link.log" -Pattern 'LNK2001|LNK2019'|Measure-Object).Count
+  Write-Output "LINK FAILED. unresolved lines: $u"
+  Select-String -Path "$out\link.log" -Pattern 'error LNK\d+' | Select-Object -First 15 | ForEach-Object { $_.Line }
+  exit 1
 }
