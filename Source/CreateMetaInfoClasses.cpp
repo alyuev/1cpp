@@ -958,7 +958,7 @@ int  CCreateMetaInfoClasses::CallAsFunc(int iMethNum,CValue & rValue,CValue * *p
 				CString sVersion = ::GetVersionField(filePath, fieldName);
 				rValue = sVersion;
 			}
-			catch(CFileException exception)
+			catch(CFileException* exception)
 			{
 				RuntimeError("Не удалось получить доступ к файлу "+filePath);
 			}
