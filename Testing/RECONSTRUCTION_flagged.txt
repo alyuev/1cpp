@@ -1,0 +1,26 @@
+ВСЕГО файлов: 622
+
+ОСТАЛОСЬ С БИТЫМ ИМЕНЕМ (14):
+UnitTests/OOP/���_�����������������������.txt
+UnitTests/OOP/��������_�����2.txt
+UnitTests/OOP/������������������Defcls������.txt
+UnitTests/SpecialClasses/DynaCrypt�����.txt
+UnitTests/SpecialClasses/DynaValue�����.txt
+UnitTests/SpecialClasses/GUID�����.txt
+UnitTests/SpecialClasses/Образы классов/�������.lst
+UnitTests/SpecialClasses/Образы классов/���������.lst
+UnitTests/SpecialClasses/Образы классов/�������������.lst
+UnitTests/SpecialClasses/Образы классов/����������������Win.lst
+UnitTests/SpecialClasses/ОбщиеКлассы/�����������.txt
+UnitTests/SpecialClasses/�����������������.txt
+UnitTests/SpecialClasses/�����������������_�������������.txt
+UnitTests/SpecialClasses/��������������������.txt
+
+КОНФЛИКТЫ .CONFLICT — сохранены обе версии (7):
+UnitTests/ODBC/ODBC_DBF_Тесты.CONFLICT2.txt
+UnitTests/ODBC/ODBC_SQL_Тесты.CONFLICT2.txt
+UnitTests/OOP/ИзменчивыйКласс.CONFLICT2.txt
+UnitTests/OOP/КлассОпределенныйВDefclsВКонфе.CONFLICT2.txt
+UnitTests/SpecialClasses/КлассПотомокАктивИкс.CONFLICT2.txt
+UnitTests/SpecialClasses/Образы классов/MetaInfoClasses.CONFLICT2.lst
+UnitTests/SpecialClasses/Образы классов/SQL_DBF_Базовый.CONFLICT2.lst
