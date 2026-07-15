@@ -31,9 +31,17 @@ $out83=Short $out; $obj83=Short $obj
 
 # INCLUDE (forum coherent recipe): STLport(built for VC6 CRT) ; PSDK2003 MFC(6.0=
 # class CString)/ATL ; PSDK Win32 ; VC6 CRT (MSVC98) -> single CRT (msvcrt), matches mfc42.
-$stlA = 'C:\stlport_icl\stlport'
 $psdk = Short 'D:\psdk2003\Microsoft Platform SDK for Windows Server 2003 R2'
 $vc6inc = ((Short $Vc6)+'\VC98\Include')
+# STLport подготовлен и лежит В РЕПОЗИТОРИИ (deps\stlport_icl): патченные заголовки + собранная
+# под /MD статическая либа (stlpx_std). Нативные C/C++ заголовки STLport тянет через ../include и
+# ../crt — это junction'ы на VC6 CRT (в git не хранятся) -> создаём их здесь из пути VC6.
+$stlRoot = Join-Path $root 'deps\stlport_icl'
+foreach($j in 'include','crt'){
+  $jp = Join-Path $stlRoot $j
+  if(-not (Test-Path $jp)){ cmd /c "mklink /J `"$jp`" `"$vc6inc`"" | Out-Null }
+}
+$stlA = (Short $stlRoot) + '\stlport'
 $env:INCLUDE = "$stlA;$psdk\Include\mfc;$psdk\Include\atl;$psdk\Include;$vc6inc"
 
 $defs=@('/D_AFXDLL','/DWIN32','/DNDEBUG','/D_ANSI','/D_WINDOWS','/D_USRDLL','/D_AFX_DLL',
@@ -106,7 +114,7 @@ $c1libs = @('bkend.lib','seven.lib','type32.lib','blang.lib','br32.lib','dbeng32
 # без зависимости от libmmd.dll): libmmt=static math, libirc/libdecimal, svml_disp=static SVML.
 $intel = Short 'C:\Program Files (x86)\Intel\Compiler\11.1\054\lib\ia32'
 $intellibs = @('libmmt.lib','libirc.lib','libdecimal.lib','svml_disp.lib')
-$libpaths = @("/LIBPATH:C:\stlport_icl\lib","/LIBPATH:$vc6l\MFC\Lib","/LIBPATH:$vc6l\Lib",
+$libpaths = @("/LIBPATH:$((Short $stlRoot))\lib","/LIBPATH:$vc6l\MFC\Lib","/LIBPATH:$vc6l\Lib",
               "/LIBPATH:$psdk\Lib","/LIBPATH:$src\LIBS","/LIBPATH:$fwd","/LIBPATH:$intel")
 # КРИТИЧНО: mfcs42.lib ПЕРЕД msvcrt.lib. Иначе пустой _DllMain@12 из msvcrt(dllmain.obj)
 # побеждает настоящий DllMain из mfcs42(dllmodul.obj), MFC не инициализируется, и при загрузке

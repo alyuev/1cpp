@@ -22,3 +22,7 @@ build_vc6/
 deps/boost_1_34_1/
 deps/boost_1_85_0/
 deps/STLport/
+
+# junction на нативные заголовки VC6 (создаются build_icl.ps1, не хранятся в git)
+deps/stlport_icl/include/
+deps/stlport_icl/crt/
