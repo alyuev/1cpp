@@ -17,3 +17,8 @@
 build_icl/
 build_vc6/
 *.rsp
+
+# Тяжёлые сторонние зависимости — качаются отдельно (см. DEPS.md)
+deps/boost_1_34_1/
+deps/boost_1_85_0/
+deps/STLport/
