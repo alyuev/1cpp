@@ -1,0 +1,62 @@
+Анализ изменений в структуре информации.
+New DD generate...
+Old DD open process...
+New DD open process...
+Old DB open access...
+Новая константа - ХранилищеКомпонент.
+Новый справочник - Новый1.
+Обработка справочника:  Новый1
+Create Table SC12
+Новый справочник - Новый2.
+Обработка справочника:  Новый2
+Create Table SC14
+Новый справочник - Разделы1СПП.
+Обработка справочника:  Разделы1СПП
+Create Table SC34
+Новый справочник - Классы1СПП.
+Обработка справочника:  Классы1СПП
+Create Table SC31
+Новый справочник - ТестовыеДанные.
+Обработка справочника:  ТестовыеДанные
+Create Table SC42
+Обработка журнала документов.
+Create Doc Journal Table 
+Новый документ - Новый1.
+Обработка  шапки документа: Новый1
+Create Table DH16
+Обработка  табличной части документа: Новый1
+Create Table DT16
+Новый документ - Новый2.
+Новый документ - Операция.
+Обработка  документа: ... Новый1
+Обработка  документа: ... Новый2
+Обработка  документа: ... Операция
+Создание нового календаря Пятидневка
+Создание нового календаря Шестидневка
+Create Table CL
+Изменилось максимальное количество субконто!
+Новый вид субконто ЛюбойВидСубконто1
+Новый вид субконто ЛюбойВидСубконто2
+Новый план счетов - Основной
+Create Table 1SACCS
+Copy Unique ID table to buffer directory
+Create Table 1SBKTTL
+Create Table 1SBKTTLC
+Create Table 1SCORENT
+Create Table 1SACCSEL
+Create Table 1SSBSEL
+Create Table 1STOPER
+Проводка.СодержаниеПроводки - новый.
+Проводка - изменен состав отбора
+Create Table 1SENTRY
+Create Table 1SOPER
+Meta Data File write progress...
+Meta Data File write complete...
+Copy new files to main directory progress...
+Copy all *.cdx
+Copy all *.dbf
+Copy Recalc file
+Copy Data dictionary file
+Copy MetaData file
+Copy new files to main directory complete...
+Delete table CJPROP
